@@ -1,2 +1,2 @@
-# hh-orion
-web based software for managing historical archives
+# HH Orion
+Web based software for managing historical archives.
