@@ -1,0 +1,13 @@
+{
+  "name": "hh-orion",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start:web": "cd ./packages/web/ && yarn start"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
