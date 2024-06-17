@@ -3,7 +3,13 @@
 # IDE
 .idea
 
+# Configuration
+.env
+package-lock.json
+yarn-error.log
+
 # Dependencies
 node_modules
 
-package-lock.json
+# Build
+dist
