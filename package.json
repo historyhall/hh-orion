@@ -7,7 +7,9 @@
     "build:server": "cd ./packages/server/ && yarn build",
     "build:web": "cd ./packages/web/ && yarn build",
     "start:server": "cd ./packages/server/ && yarn start",
-    "start:web": "cd ./packages/web/ && yarn start"
+    "start:web": "cd ./packages/web/ && yarn start",
+    "fix:lint": "eslint --fix",
+    "test:lint": "eslint"
   },
   "workspaces": {
     "packages": [
@@ -17,6 +19,7 @@
   "type": "module",
   "devDependencies": {
     "@types/cors": "^2.8.17",
+    "@types/debug": "^4.1.12",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
