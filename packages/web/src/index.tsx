@@ -9,6 +9,9 @@ import {MainMenu} from "./Layout";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
 import About from "./About";
+import debug from 'debug';
+
+const d = debug('some.domain');
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
