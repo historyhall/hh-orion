@@ -16,7 +16,7 @@ jobs:
           node-version: "lts/iron"
 
       - name: node_modules cache
-        uses: actions/cache@v5
+        uses: actions/cache@v4
         id: cache
         with:
           path: |
