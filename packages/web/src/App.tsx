@@ -1,21 +1,19 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {useQuery, gql} from "@apollo/client";
+
+
+const HELLO_QUERY = gql`
+ query hello {
+      world
+    }
+`;
 
 function App() {
-  useEffect(() => {
-    fetch("http://localhost:5001/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ query: "{ hello }" }),
-    })
-        .then(r => r.json())
-        .then(data => console.log("data returned:", data))
-  }, []);
+  const { data, loading, error } = useQuery(HELLO_QUERY);
 
+  console.log(data);
   return (
     <div className="App">
       <header className="App-header">
