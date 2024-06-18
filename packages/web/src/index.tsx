@@ -4,7 +4,7 @@ import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from '@apollo/cli
 import 'semantic-ui-css/semantic.min.css'
 import {Page} from "./types";
 import Home from "./Home";
-import Donate from "./Donate";
+import Donate from "./Contribute";
 import {MainMenu} from "./Layout";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
