@@ -6,15 +6,13 @@ import cors from 'cors';
 
 config();
 
-
 const query = new GraphQLObjectType({
-    name: 'world',
+    name: 'getApiVersion',
     fields: () => ({
-        world: {
+        apiVersion: {
             type: GraphQLString,
             resolve: () => {
-                console.log('hello');
-                return "Hello world!";
+                return process.env.API_VERSION || '0.0.1';
             }
         }
     })

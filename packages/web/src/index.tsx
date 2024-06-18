@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from '@apollo/client';
 
@@ -10,7 +9,7 @@ const root = ReactDOM.createRoot(
 
 const client = new ApolloClient({
     link: new HttpLink({
-        uri: 'http://localhost:5001/api/',
+        uri: process.env.REACT_APP_API_URL,
     }),
     cache: new InMemoryCache(),
     defaultOptions: {query: {fetchPolicy: 'no-cache'}}
