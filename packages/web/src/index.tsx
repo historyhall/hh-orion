@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from '@apollo/client';
+import 'semantic-ui-css/semantic.min.css'
+import {Page} from "./types";
+import Home from "./Home";
+import Donate from "./Donate";
+import {MainMenu} from "./Layout";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -15,8 +19,10 @@ const client = new ApolloClient({
     defaultOptions: {query: {fetchPolicy: 'no-cache'}}
 });
 
+const pages: Page[] = [Home, Donate];
+
 root.render(
     <ApolloProvider client={client}>
-        <App />
+        <MainMenu pages={pages} />
     </ApolloProvider>,
 );
