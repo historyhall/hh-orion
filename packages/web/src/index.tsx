@@ -6,6 +6,7 @@ import {Page} from "./types";
 import Home from "./Home";
 import Donate from "./Donate";
 import {MainMenu} from "./Layout";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -23,6 +24,13 @@ const pages: Page[] = [Home, Donate];
 
 root.render(
     <ApolloProvider client={client}>
-        <MainMenu pages={pages} />
+        <BrowserRouter>
+            <MainMenu pages={pages} />
+            <Routes>
+            {pages.map(page => {
+                return <Route path={page.menu.path} element={<page.component />} />
+            })}
+            </Routes>
+        </BrowserRouter>
     </ApolloProvider>,
 );

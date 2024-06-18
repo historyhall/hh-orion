@@ -7,4 +7,5 @@ export type Page = {
 
 type Menu = {
     name: string;
+    path: string;
 }
