@@ -29,10 +29,41 @@ jobs:
         run: |
           yarn
 
+      # Domain
       - name: Test Lint
         run: |
-          yarn test:lint
+          yarn test:domain:lint
 
       - name: Test Types
         run: |
-          yarn test:types
+          yarn test:domain:types
+
+      - name: Test Dependencies
+        run: |
+          yarn test:domain:deps
+
+      # Server
+      - name: Test Lint
+        run: |
+          yarn test:server:lint
+
+      - name: Test Types
+        run: |
+          yarn test:server:types
+
+      - name: Test Dependencies
+        run: |
+          yarn test:server:deps
+
+      # Web
+      - name: Test Lint
+        run: |
+          yarn test:web:lint
+
+      - name: Test Types
+        run: |
+          yarn test:web:types
+
+      - name: Test Dependencies
+        run: |
+          yarn test:web:deps
