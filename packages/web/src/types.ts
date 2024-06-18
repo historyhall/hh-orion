@@ -1,4 +1,5 @@
 import type {JSX} from 'react'
+import {SemanticICONS} from "semantic-ui-react";
 
 export type Page = {
     menu: Menu
@@ -8,4 +9,5 @@ export type Page = {
 type Menu = {
     name: string;
     path: string;
+    icon: SemanticICONS;
 }

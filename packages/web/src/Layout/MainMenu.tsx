@@ -1,5 +1,5 @@
 import {Page} from "../types";
-import {Menu, MenuItem} from "semantic-ui-react";
+import {Icon, Menu, MenuItem} from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 export function MainMenu({pages}: Props) {
     return (<Menu inverted attached>{pages.map(page => {
-        return <Link to={page.menu.path}><MenuItem>{page.menu.name}</MenuItem></Link>;
+        return <Link to={page.menu.path}><MenuItem><Icon name={page.menu.icon}/>{page.menu.name}</MenuItem></Link>;
     })}
     </Menu>);
 }

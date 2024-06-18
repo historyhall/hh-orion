@@ -5,6 +5,7 @@ export default {
     menu: {
         name: 'Donate',
         path: '/donate',
+        icon: 'gift',
     },
     component: Donate
 } as Page

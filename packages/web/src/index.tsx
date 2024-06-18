@@ -7,6 +7,7 @@ import Home from "./Home";
 import Donate from "./Donate";
 import {MainMenu} from "./Layout";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Grid, GridColumn, GridRow} from "semantic-ui-react";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -28,7 +29,18 @@ root.render(
             <MainMenu pages={pages} />
             <Routes>
             {pages.map(page => {
-                return <Route path={page.menu.path} element={<page.component />} />
+                return <Route path={page.menu.path} key={page.menu.path} element={
+                    <Grid padded stackable divided>
+                        <GridRow>
+                            <GridColumn width={14}>
+                                <page.component/>
+                            </GridColumn>
+                            <GridColumn width={2}>
+                                Sidebar
+                            </GridColumn>
+                        </GridRow>
+                    </Grid>
+                } />
             })}
             </Routes>
         </BrowserRouter>

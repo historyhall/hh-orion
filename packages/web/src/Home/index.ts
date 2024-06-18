@@ -5,6 +5,7 @@ export default {
     menu: {
         name: 'Home',
         path: '/',
+        icon: 'home',
     },
     component: Home
 } as Page
