@@ -30,40 +30,40 @@ jobs:
           yarn
 
       # Domain
-      - name: Test Lint
+      - name: Domain - Test Lint
         run: |
           yarn test:domain:lint
 
-      - name: Test Types
+      - name: Domain - Test Types
         run: |
           yarn test:domain:types
 
-      - name: Test Dependencies
+      - name: Domain - Test Dependencies
         run: |
           yarn test:domain:deps
 
       # Server
-      - name: Test Lint
+      - name: Server - Test Lint
         run: |
           yarn test:server:lint
 
-      - name: Test Types
+      - name: Server - Test Types
         run: |
           yarn test:server:types
 
-      - name: Test Dependencies
+      - name: Server - Test Dependencies
         run: |
           yarn test:server:deps
 
       # Web
-      - name: Test Lint
+      - name: Web - Test Lint
         run: |
           yarn test:web:lint
 
-      - name: Test Types
+      - name: Web - Test Types
         run: |
           yarn test:web:types
 
-      - name: Test Dependencies
+      - name: Web - Test Dependencies
         run: |
           yarn test:web:deps
