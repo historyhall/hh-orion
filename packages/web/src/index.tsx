@@ -8,6 +8,7 @@ import Donate from "./Donate";
 import {MainMenu} from "./Layout";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
+import About from "./About";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -21,7 +22,7 @@ const client = new ApolloClient({
     defaultOptions: {query: {fetchPolicy: 'no-cache'}}
 });
 
-const pages: Page[] = [Home, Donate];
+const pages: Page[] = [Home, About, Donate];
 
 root.render(
     <ApolloProvider client={client}>
