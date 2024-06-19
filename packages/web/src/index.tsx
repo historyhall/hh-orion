@@ -8,8 +8,11 @@ import {MainMenu} from './Layout';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Grid, GridColumn, GridRow} from 'semantic-ui-react';
 import About from './About';
+import debug from 'debug';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
+const d = debug('hh.test');
 
 const client = new ApolloClient({
 	link: new HttpLink({
@@ -20,6 +23,8 @@ const client = new ApolloClient({
 });
 
 const pages: Page[] = [Home, About, Donate];
+
+d('Start Web');
 
 root.render(
 	<ApolloProvider client={client}>
