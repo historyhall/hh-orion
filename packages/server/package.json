@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@mikro-orm/core": "^6.2.9",
+    "@mikro-orm/postgresql": "^6.2.9",
     "cors": "^2.8.5",
     "debug": "^4.3.5",
     "dotenv": "^16.4.5",
