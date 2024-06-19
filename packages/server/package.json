@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "hh-domain": "file:../domain/dist",
     "@mikro-orm/core": "^6.2.9",
     "@mikro-orm/postgresql": "^6.2.9",
     "cors": "^2.8.5",

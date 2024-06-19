@@ -4,7 +4,7 @@ import {graphqlHTTP} from 'express-graphql';
 import {GraphQLObjectType, GraphQLSchema, GraphQLString} from 'graphql/type';
 import cors from 'cors';
 import d from 'debug';
-import {environment} from "./core/environment";
+import {environment} from './core/environment';
 
 d('test.domain');
 

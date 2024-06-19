@@ -1,6 +1,6 @@
 import type {Options} from '@mikro-orm/core';
-import {entities} from 'hh-domain';
 import {environment} from './environment';
+import {entities} from "hh-orion-domain/dist";
 
 export function mikroOrmConfig(): Options {
     return {
