@@ -24,18 +24,15 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-nm-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Build Domain
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          cd ./packages/domain && yarn && yarn build
+
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           yarn
-
-      - name: Build Domain
-        run: |
-          yarn build:domain
-
-      - name: Install dependencies
-        run: |
-          yarn --force
 
       # Domain
       - name: Domain - Test Lint
