@@ -35,7 +35,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn
+          yarn --force
 
       # Domain
       - name: Domain - Test Lint
