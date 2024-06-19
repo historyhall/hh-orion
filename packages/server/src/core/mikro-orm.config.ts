@@ -6,7 +6,6 @@ export function mikroOrmConfig(): Options {
     return {
         entities,
         clientUrl: `postgres://${environment.dbUsername}:${environment.dbPassword}@${environment.dbDomain}:${environment.dbPort}/${environment.dbServer}`,
-        type: 'postgresql',
         debug: process.env.POSTGRESQL_LOGGING === 'true',
         discovery: {
             disableDynamicFileAccess: true,
