@@ -31,7 +31,6 @@
     ]
   },
   "devDependencies": {
-    "@mikro-orm/cli": "^6.2.9",
-    "ts-node": "^10.9.2"
+    "@mikro-orm/cli": "^6.2.9"
   }
 }
