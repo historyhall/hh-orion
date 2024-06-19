@@ -18,7 +18,7 @@
   "scripts": {
     "build": "tsc --build",
     "start": "ts-node-dev src/index.ts",
-    "schema:changes": "MIKRO_ORM_CLI_CONFIG=dist/core/mikro-orm.config.js MIKRO_ORM_CLI_USE_TS_NODE=true mikro-orm schema:update -d",
+    "schema:changes": "yarn build && MIKRO_ORM_CLI_CONFIG=dist/core/mikro-orm.config.js yarn mikro-orm schema:update -d",
     "test:deps": "depcheck",
     "test:lint": "eslint",
     "test:types": "tsc"

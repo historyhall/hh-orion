@@ -1,14 +1,15 @@
 import {environment} from './environment';
 import {entities} from "hh-orion-domain/dist";
-import {Options} from "@mikro-orm/postgresql";
+import {PostgreSqlDriver} from "@mikro-orm/postgresql";
 
-const config: Options = {
+const config = {
     entities,
     clientUrl: `postgres://${environment.dbUsername}:${environment.dbPassword}@${environment.dbDomain}:${environment.dbPort}/${environment.dbServer}`,
     debug: environment.dbLogging,
     discovery: {
         disableDynamicFileAccess: true,
     },
+    driver: PostgreSqlDriver,
     driverOptions:
         process.env.POSTGRESQL_SSL === 'true'
             ? {
