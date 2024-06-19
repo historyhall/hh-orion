@@ -1,1 +1,3 @@
-console.log('Domain')
+import d from 'debug';
+
+d('test.domain');

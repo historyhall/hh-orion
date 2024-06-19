@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.10.5",
+    "debug": "^4.3.5",
+    "eslint-config-react-app": "^7.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
@@ -15,7 +17,10 @@
   "scripts": {
     "start": "BROWSER=none PORT=5000 react-scripts start",
     "build": "BUILD_PATH='./dist' react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:deps": "depcheck",
+    "test:lint": "eslint",
+    "test:types": "tsc"
   },
   "eslintConfig": {
     "extends": [

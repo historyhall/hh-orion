@@ -1,0 +1,69 @@
+name: Test Workflow
+on:
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/iron"
+
+      - name: Node Modules Cache
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-nm-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          yarn
+
+      # Domain
+      - name: Domain - Test Lint
+        run: |
+          yarn test:domain:lint
+
+      - name: Domain - Test Types
+        run: |
+          yarn test:domain:types
+
+      - name: Domain - Test Dependencies
+        run: |
+          yarn test:domain:deps
+
+      # Server
+      - name: Server - Test Lint
+        run: |
+          yarn test:server:lint
+
+      - name: Server - Test Types
+        run: |
+          yarn test:server:types
+
+      - name: Server - Test Dependencies
+        run: |
+          yarn test:server:deps
+
+      # Web
+      - name: Web - Test Lint
+        run: |
+          yarn test:web:lint
+
+      - name: Web - Test Types
+        run: |
+          yarn test:web:types
+
+      - name: Web - Test Dependencies
+        run: |
+          yarn test:web:deps
