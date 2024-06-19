@@ -8,7 +8,7 @@ const HELLO_QUERY = gql`
 
 
 export function Home() {
-    const { data, loading, error } = useQuery(HELLO_QUERY);
+    const {data} = useQuery(HELLO_QUERY);
 
     return <>Home, Server Version: {data?.apiVersion}</>;
 }

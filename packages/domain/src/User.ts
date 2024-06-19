@@ -29,5 +29,6 @@ export class User {
 	constructor({firstName, lastName}: MemberEntityConstructor) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		d('User Constructor');
 	}
 }
