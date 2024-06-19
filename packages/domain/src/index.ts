@@ -1,3 +1,4 @@
 import d from 'debug';
+import {User} from './User';
 
-d('test.domain');
+export const entities = [User];

@@ -4,6 +4,7 @@ import {graphqlHTTP} from 'express-graphql';
 import {GraphQLObjectType, GraphQLSchema, GraphQLString} from 'graphql/type';
 import cors from 'cors';
 import d from 'debug';
+import {environment} from "./core/environment";
 
 d('test.domain');
 
@@ -15,7 +16,7 @@ const query = new GraphQLObjectType({
 		apiVersion: {
 			type: GraphQLString,
 			resolve: () => {
-				return process.env.API_VERSION || '0.0.1';
+				return environment.apiVersion;
 			},
 		},
 	}),
@@ -24,7 +25,7 @@ const query = new GraphQLObjectType({
 const schema = new GraphQLSchema({query});
 
 const app: Express = express();
-const port = process.env.PORT || 5001;
+const port = environment.serverPort;
 app.use(cors({credentials: true, origin: 'http://localhost:5000'}));
 
 app.use(

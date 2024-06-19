@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "hh-domain": "file:../domain/dist",
+    "@mikro-orm/core": "^6.2.9",
+    "@mikro-orm/postgresql": "^6.2.9",
     "cors": "^2.8.5",
     "debug": "^4.3.5",
     "dotenv": "^16.4.5",
@@ -10,7 +13,8 @@
     "express-graphql": "^0.12.0",
     "graphql": "^16.8.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "uuid": "^10.0.0"
   },
   "scripts": {
     "build": "tsc --build",
