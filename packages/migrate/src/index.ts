@@ -1,8 +1,9 @@
 import d from 'debug';
 import {MikroORM} from '@mikro-orm/core';
-import {mikroOrmConfig} from './core/mikro-orm.config';
+import mikroOrmConfig from './core/mikro-orm.config';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import {migrations} from './migrations';
+import {Migration} from 'hh-orion-domain/dist/Migration';
 
 d('test.domain');
 

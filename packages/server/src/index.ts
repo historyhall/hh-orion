@@ -5,7 +5,7 @@ import cors from 'cors';
 import d from 'debug';
 import {environment} from './core/environment';
 import {MikroORM} from '@mikro-orm/core';
-import {mikroOrmConfig} from './core/mikro-orm.config';
+import mikroOrmConfig from './core/mikro-orm.config.js';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 
 d('test.domain');

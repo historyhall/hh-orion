@@ -1,13 +1,11 @@
-import type {Options} from '@mikro-orm/core';
 import {environment} from './environment';
 import {entities} from "hh-orion-domain/dist";
-import {PostgreSqlDriver} from "@mikro-orm/postgresql";
+import {Options} from "@mikro-orm/postgresql";
 
-export const mikroOrmConfig: Options<PostgreSqlDriver> = {
+const config: Options = {
     entities,
     clientUrl: `postgres://${environment.dbUsername}:${environment.dbPassword}@${environment.dbDomain}:${environment.dbPort}/${environment.dbServer}`,
     debug: environment.dbLogging,
-    driver: PostgreSqlDriver,
     discovery: {
         disableDynamicFileAccess: true,
     },
@@ -23,4 +21,6 @@ export const mikroOrmConfig: Options<PostgreSqlDriver> = {
                 },
             }
             : {},
-}
+};
+
+export default config;
