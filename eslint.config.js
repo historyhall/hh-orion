@@ -12,7 +12,7 @@ export default tseslint.config(
             'react-hooks':  reactHooks,
             'prettier': eslintPluginPrettier
         },
-        files: ["packages/**/src/*.ts"],
+        files: ["packages/**/src/*.ts", "packages/**/src/*.tsx"],
         rules: {
             // General
             'no-underscore-dangle': ['warn', {allowAfterThis: true, allow: ['_id']}],

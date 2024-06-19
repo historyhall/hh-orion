@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     "arrowParens": "avoid",
     "printWidth": 150,
     "trailingComma": "all",
