@@ -29,6 +29,14 @@ jobs:
         run: |
           yarn
 
+      - name: Build Domain
+        run: |
+          yarn build:domain
+
+      - name: Install dependencies
+        run: |
+          yarn
+
       # Domain
       - name: Domain - Test Lint
         run: |
