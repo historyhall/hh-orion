@@ -30,7 +30,7 @@ export default tseslint.config(
 
             // Typescript
             '@typescript-eslint/indent': ['off'],
-            // '@typescript-eslint/no-unused-vars': ['error', {varsIgnorePattern: 'd', argsIgnorePattern: 'server|context|ctx|type'}],
+            // '@typescript-eslint/no-unused-vars': ['error', {varsIgnorePattern: 'd'}],
             '@typescript-eslint/no-unused-expressions': ['off'], // This was disabled because some upgrade to airbnb rules.
             '@typescript-eslint/explicit-member-accessibility': ['off'],
             '@typescript-eslint/explicit-function-return-type': ['off', {allowExpressions: true, allowTypedFunctionExpressions: true}],

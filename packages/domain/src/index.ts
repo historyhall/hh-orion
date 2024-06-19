@@ -1,3 +1,4 @@
-import d from 'debug';
+import {User} from './User';
+import {Migration} from './Migration';
 
-d('test.domain');
+export const entities = [Migration, User];

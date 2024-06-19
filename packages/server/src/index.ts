@@ -1,40 +1,45 @@
 import express, {Express} from 'express';
-import {config} from 'dotenv';
 import {graphqlHTTP} from 'express-graphql';
 import {GraphQLObjectType, GraphQLSchema, GraphQLString} from 'graphql/type';
 import cors from 'cors';
-import d from 'debug';
+import debug from 'debug';
+import {environment} from './core/environment';
+import {MikroORM} from '@mikro-orm/core';
+import mikroOrmConfig from './core/mikro-orm.config';
+import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 
-d('test.domain');
+const d = debug('hh-orion.domain');
 
-config();
+MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
+	const app: Express = express();
+	const port = environment.serverPort;
+	const em = orm.em.fork();
 
-const query = new GraphQLObjectType({
-	name: 'getApiVersion',
-	fields: () => ({
-		apiVersion: {
-			type: GraphQLString,
-			resolve: () => {
-				return process.env.API_VERSION || '0.0.1';
+	const query = new GraphQLObjectType({
+		name: 'getApiVersion',
+		fields: () => ({
+			apiVersion: {
+				type: GraphQLString,
+				resolve: () => {
+					return environment.apiVersion;
+				},
 			},
-		},
-	}),
-});
+		}),
+	});
 
-const schema = new GraphQLSchema({query});
+	const schema = new GraphQLSchema({query});
 
-const app: Express = express();
-const port = process.env.PORT || 5001;
-app.use(cors({credentials: true, origin: 'http://localhost:5000'}));
+	d(em.schema || 'schema not defined');
+	app.use(cors({credentials: true, origin: `http://localhost:5000`}));
+	app.use(
+		'/api',
+		graphqlHTTP({
+			schema: schema,
+			graphiql: true,
+		}),
+	);
 
-app.use(
-	'/api',
-	graphqlHTTP({
-		schema: schema,
-		graphiql: true,
-	}),
-);
-
-app.listen(port, () => {
-	d('Server is running at http://localhost:${port}`');
+	app.listen(port, () => {
+		d(`Server is running at http://localhost:${port}`);
+	});
 });

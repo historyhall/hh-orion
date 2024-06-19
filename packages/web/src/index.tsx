@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from '@apollo/client';
 import 'semantic-ui-css/semantic.min.css';
@@ -11,9 +10,9 @@ import {Grid, GridColumn, GridRow} from 'semantic-ui-react';
 import About from './About';
 import debug from 'debug';
 
-const d = debug('some.domain');
-
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
+const d = debug('hh.test');
 
 const client = new ApolloClient({
 	link: new HttpLink({
@@ -24,6 +23,8 @@ const client = new ApolloClient({
 });
 
 const pages: Page[] = [Home, About, Donate];
+
+d('Start Web');
 
 root.render(
 	<ApolloProvider client={client}>

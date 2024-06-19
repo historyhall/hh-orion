@@ -7,7 +7,7 @@ interface Props {
 }
 export function MainMenu({pages}: Props) {
     return (<Menu inverted attached>{pages.map(page => {
-        return <Link to={page.menu.path}><MenuItem><Icon name={page.menu.icon}/>{page.menu.name}</MenuItem></Link>;
+        return <Link to={page.menu.path} key={page.menu.path}><MenuItem><Icon name={page.menu.icon}/>{page.menu.name}</MenuItem></Link>;
     })}
     </Menu>);
 }
