@@ -31,7 +31,7 @@ jobs:
       # Docker Login
       - name: Docker repo login
         run: |
-          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login registry.historyhall.org -u local --password-stdin
+          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login registry.historyhall.org -u dockerreguser --password-stdin
 
       # Install dependencies
       - name: Install dependencies
@@ -39,21 +39,22 @@ jobs:
         run: |
           yarn
 
-      # Build Types
-      - name: Build Docker - Types
+      # Build Domain
+      - name: Build Docker - Domain
         run: |
-          yarn build:types
+          yarn build:domain
 
-      - name: Force installation of types package
+      - name: Force installation of Domain package
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           yarn --force
 
-      # Docker Build
+      # Docker Web
       - name: Build Docker - Web
         run: |
           yarn build:web && docker build -t historyhall-web -f packages/deploy/docker/web.dockerfile .
 
+      # Docker Server
       - name: Build Docker - Server
         run: |
           yarn build:server && docker build -t historyhall-server -f packages/deploy/docker/server.dockerfile .
