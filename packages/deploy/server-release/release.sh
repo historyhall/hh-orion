@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo docker login registry.historyhall.org -u local
+sudo docker login registry.historyhall.org -u dockerreguser
 
 cp -n ./web/.default.env ./web.env
 cp -n ./server/.default.env ./server.env
