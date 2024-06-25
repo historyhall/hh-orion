@@ -5,13 +5,11 @@ server {
     return 301 https://$host$request_uri;
 }
 server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-    server_name historyhall.org;
-    ssl_certificate /etc/letsencrypt/live/your_domain/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/your_domain/privkey.pem;
+    listen 443;
+    listen [::]:443;
+    server_name registry.historyhall.org www.registry.historyhall.org;
     location / {
-        proxy_pass http://localhost:5000;
+        proxy_pass http://localhost:6000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -19,13 +17,11 @@ server {
     }
 }
 server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-    server_name registry.historyhall.org;
-    ssl_certificate /etc/letsencrypt/live/your_domain/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/your_domain/privkey.pem;
+    listen 443;
+    listen [::]:443;
+    server_name historyhall.org www.historyhall.org;
     location / {
-        proxy_pass http://localhost:6000;
+        proxy_pass http://localhost:5000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
