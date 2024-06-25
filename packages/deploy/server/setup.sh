@@ -4,7 +4,7 @@
 sudo apt update -y;
 sudo apt upgrade -y;
 
-sudo apt install -y nginx certbot;
+sudo apt install -y nginx certbot python3-certbot-nginx;
 
 # Docker
 curl -fsSL https://get.docker.com -o get-docker.sh;
@@ -22,3 +22,7 @@ sudo docker compose --project-directory /srv/docker-registry up -d;
 sudo cp ./historyhall.org /etc/nginx/sites-available/historyhall.org
 sudo ln -s /etc/nginx/sites-available/historyhall.org /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
+
+# certificate
+sudo certbot --nginx -d historyhall.org -d www.historyhall.org
+sudo certbot --nginx -d registry.historyhall.org -d www.registry.historyhall.org
