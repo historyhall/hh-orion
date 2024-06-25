@@ -8,7 +8,5 @@ services:
     environment:
       - TZ="America/Winnipeg"
       - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
-      - LETSENCRYPT_HOST=terrene.ca
-      - VIRTUAL_HOST=terrene.ca
     ports:
       - "5000:80"
