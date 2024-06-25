@@ -1,0 +1,68 @@
+name: Release Workflow
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    name: Production Build
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.event.release.tag_name }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: "16.14"
+
+      - name: node_modules cache
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-nm-${{ hashFiles('**/yarn.lock') }}
+
+      # Docker Login
+      - name: Docker repo login
+        run: |
+          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login registry.historyhall.org -u dockerreguser --password-stdin
+
+      # Install dependencies
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          yarn
+
+      # Build Domain
+      - name: Build Docker - Domain
+        run: |
+          yarn build:domain
+
+      - name: Force installation of Domain package
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          yarn --force
+
+      # Docker Web
+      - name: Build Docker - Web
+        run: |
+          yarn build:web && docker build -t historyhall-web -f packages/deploy/docker/web.dockerfile .
+
+      # Docker Server
+      - name: Build Docker - Server
+        run: |
+          yarn build:server && docker build -t historyhall-server -f packages/deploy/docker/server.dockerfile .
+
+      # Docker Push
+      - name: Push Docker - Web
+        run: |
+          docker tag historyhall-web registry.historyhall.org/historyhall-web && docker push registry.historyhall.org/historyhall-web
+      - name: Push Docker - Server
+        run: |
+          docker tag historyhall-server registry.historyhall.org/historyhall-server && docker push registry.historyhall.org/historyhall-server
