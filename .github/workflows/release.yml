@@ -52,11 +52,11 @@ jobs:
       # Docker Build
       - name: Build Docker - Web
         run: |
-          yarn build:web && docker build -t historyhall-web -f docker/web/web.dockerfile .
+          yarn build:web && docker build -t historyhall-web -f packages/deploy/docker/web.dockerfile .
 
       - name: Build Docker - Server
         run: |
-          yarn build:server && docker build -t historyhall-server -f docker/server/server.dockerfile .
+          yarn build:server && docker build -t historyhall-server -f packages/deploy/docker/server.dockerfile .
 
       # Docker Push
       - name: Push Docker - Web
@@ -65,11 +65,3 @@ jobs:
       - name: Push Docker - Server
         run: |
           docker tag historyhall-server registry.historyhall.org/historyhall-server && docker push registry.historyhall.org/historyhall-server
-
-      # Notify Watchtower
-      - name: Notify watchtower
-        env:
-          WATCHTOWER_TOKEN: ${{ secrets.WATCHTOWER_TOKEN }}
-          WATCHTOWER_URI: ${{ secrets.WATCHTOWER_URI }}
-        run: |
-          bash docker/watchtower.sh

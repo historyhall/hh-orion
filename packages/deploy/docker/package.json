@@ -1,0 +1,13 @@
+{
+  "description": "History Hall Production Workspace",
+  "license": "UNLICENSED",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "ls": "ls"
+  }
+}
