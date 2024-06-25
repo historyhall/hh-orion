@@ -1,0 +1,13 @@
+services:
+  registry:
+    container_name: server
+    restart: always
+    image: registry.historyhall.org/historyhall-server
+    environment:
+      - TZ="America/Winnipeg"
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
+    volumes:
+      - ./.env.default:/app/packages/server/.env
+      - ./assets:/app/packages/server/assets
+    expose:
+      - "3001"
