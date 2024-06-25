@@ -13,21 +13,13 @@ jobs:
       REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "lts/iron"
-
-      - name: node_modules cache
-        uses: actions/cache@v3
-        id: cache
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-nm-${{ hashFiles('**/yarn.lock') }}
+          cache: 'yarn'
 
       # Docker Login
       - name: Docker repo login
