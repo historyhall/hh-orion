@@ -1,0 +1,75 @@
+name: Release Workflow
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    name: Production Build
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.event.release.tag_name }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: "16.14"
+
+      - name: node_modules cache
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-nm-${{ hashFiles('**/yarn.lock') }}
+
+      # Docker Login
+      - name: Docker repo login
+        run: |
+          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login registry.historyhall.org -u local --password-stdin
+
+      # Install dependencies
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          yarn
+
+      # Build Types
+      - name: Build Docker - Types
+        run: |
+          yarn build:types
+
+      - name: Force installation of types package
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          yarn --force
+
+      # Docker Build
+      - name: Build Docker - Web
+        run: |
+          yarn build:web && docker build -t historyhall-web -f docker/web/web.dockerfile .
+
+      - name: Build Docker - Server
+        run: |
+          yarn build:server && docker build -t historyhall-server -f docker/server/server.dockerfile .
+
+      # Docker Push
+      - name: Push Docker - Web
+        run: |
+          docker tag historyhall-web registry.historyhall.org/historyhall-web && docker push registry.historyhall.org/historyhall-web
+      - name: Push Docker - Server
+        run: |
+          docker tag historyhall-server registry.historyhall.org/historyhall-server && docker push registry.historyhall.org/historyhall-server
+
+      # Notify Watchtower
+      - name: Notify watchtower
+        env:
+          WATCHTOWER_TOKEN: ${{ secrets.WATCHTOWER_TOKEN }}
+          WATCHTOWER_URI: ${{ secrets.WATCHTOWER_URI }}
+        run: |
+          bash docker/watchtower.sh
