@@ -1,4 +1,4 @@
-FROM nginx:stable-bookworm
+FROM node:iron-bookworm
 MAINTAINER Shayne Thiessen <shayne@shaynethiessen.com>
 
 ADD packages/web/dist/ /usr/share/nginx/html
