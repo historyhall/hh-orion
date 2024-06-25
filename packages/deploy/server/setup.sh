@@ -21,5 +21,5 @@ sudo docker-compose up -d;
 
 # nginx
 sudo ./historyhall.org /etc/nginx/sites-available/historyhall.org
-$ sudo ln -s /etc/nginx/sites-available/historyhall.org /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/historyhall.org /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
