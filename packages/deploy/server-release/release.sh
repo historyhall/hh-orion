@@ -2,8 +2,8 @@
 
 sudo docker login registry.historyhall.org -u dockerreguser
 
-cp -n ./web/.default.env ./web.env
-cp -n ./server/.default.env ./server.env
+cp -n ./web/.env.default ./web.env
+cp -n ./server/.env.default ./server.env
 
 cd ./web
 sudo docker compose pull
