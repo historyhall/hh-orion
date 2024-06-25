@@ -19,9 +19,9 @@ RUN yarn install --prod && \
     yarn cache clean
 
 # Add built code
-ADD packages/domain/build/ /app/packages/domain
-ADD packages/server/build/ /app/packages/server
-ADD packages/domain/build/ /app/packages/server/node_modules/hh-orion-domain/build
+ADD packages/domain/dist/ /app/packages/domain
+ADD packages/server/dist/ /app/packages/server
+ADD packages/domain/dist/ /app/packages/server/node_modules/hh-orion-domain/dist
 
 ADD packages/deploy/docker/server.sh /app
 RUN chmod +x docker_command.sh
