@@ -8,6 +8,7 @@ server {
     listen 443;
     listen [::]:443;
     server_name registry.historyhall.org www.registry.historyhall.org;
+    client_max_body_size 5000m;
     location / {
         proxy_pass http://localhost:6000;
         proxy_set_header Host $host;

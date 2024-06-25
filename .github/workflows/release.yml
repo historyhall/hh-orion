@@ -43,12 +43,12 @@ jobs:
       # Docker Web
       - name: Build Docker - Web
         run: |
-          yarn build:web && docker build -t historyhall-web -f packages/deploy/docker/web.dockerfile .
+          yarn build:web && docker build -t historyhall-web -f packages/deploy/docker-web/web.dockerfile .
 
       # Docker Server
       - name: Build Docker - Server
         run: |
-          yarn build:server && docker build -t historyhall-server -f packages/deploy/docker/server.dockerfile .
+          yarn build:server && docker build -t historyhall-server -f packages/deploy/docker-server/server.dockerfile .
 
       # Docker Push
       - name: Push Docker - Web

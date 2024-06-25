@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  registry:
+    container_name: web
+    restart: always
+    image: registry.historyhall.org/historyhall-web
+    environment:
+      - TZ="America/Winnipeg"
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
+      - LETSENCRYPT_HOST=terrene.ca
+      - VIRTUAL_HOST=terrene.ca
+    expose:
+      - "80"
