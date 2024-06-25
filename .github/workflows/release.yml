@@ -31,7 +31,6 @@ jobs:
 
       # Docker Login
       - name: Docker repo login
-        env:
         run: |
           docker login registry.historyhall.org -u dockerreguser -p $REGISTRY_PASSWORD
 
