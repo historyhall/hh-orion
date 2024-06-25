@@ -15,8 +15,7 @@ ADD packages/server/package.json /app/packages/server
 ADD packages/domain/package.json /app/packages/domain
 
 # Install packages
-RUN yarn install --prod && \
-    yarn cache clean
+RUN yarn install --prod
 
 # Add built code
 ADD packages/domain/dist/ /app/packages/domain

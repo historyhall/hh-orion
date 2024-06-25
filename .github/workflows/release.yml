@@ -28,7 +28,6 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           yarn
 
@@ -38,7 +37,6 @@ jobs:
           yarn build:domain
 
       - name: Force installation of Domain package
-        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           yarn --force
 
