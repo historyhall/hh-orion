@@ -23,8 +23,8 @@ ADD packages/server/dist/ /app/packages/server
 ADD packages/domain/dist/ /app/packages/server/node_modules/hh-orion-domain/dist
 
 ADD packages/deploy/docker/server.sh /app
-RUN chmod +x docker_command.sh
+RUN chmod +x server.sh
 
 ENV NODE_ENV production
 
-CMD /app/docker_command.sh
+CMD /app/server.sh
