@@ -15,6 +15,7 @@ export function MainMenu({pages}: Props) {
                 if (page.menu) {
                     return <MenuSubItem menu={page.menu} path={page.path} />;
                 }
+                return null;
             })}
             {rightMenuItems.length > 0} {
                 <MenuMenu position="right">
@@ -22,6 +23,7 @@ export function MainMenu({pages}: Props) {
                         if (page.menu) {
                             return <MenuSubItem menu={page.menu} path={page.path} />;
                         }
+                        return null;
                     })}
                 </MenuMenu>
             }
