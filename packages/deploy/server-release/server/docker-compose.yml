@@ -7,7 +7,7 @@ services:
       - TZ="America/Winnipeg"
       - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
     volumes:
-      - ./.env.default:/app/packages/server/.env
+      - ./.env:/app/packages/server/.env
       - ./assets:/app/packages/server/assets
     expose:
-      - "3001"
+      - "5001"

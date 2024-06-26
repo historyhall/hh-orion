@@ -6,7 +6,5 @@ services:
     environment:
       - TZ="America/Winnipeg"
       - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
-    volumes:
-      - ./.env.default:/usr/share/nginx/html.env
     ports:
       - "5000:80"

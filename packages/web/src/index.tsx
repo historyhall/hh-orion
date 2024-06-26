@@ -16,7 +16,7 @@ const d = debug('hh.test');
 
 const client = new ApolloClient({
 	link: new HttpLink({
-		uri: process.env.REACT_APP_API_URL,
+		uri: process.env.REACT_APP_API_URL || 'https://api.historyhall.org/api',
 	}),
 	cache: new InMemoryCache(),
 	defaultOptions: {query: {fetchPolicy: 'no-cache'}},
