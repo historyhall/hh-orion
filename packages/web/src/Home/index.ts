@@ -7,7 +7,7 @@ export default {
         name: 'Home',
         path: '/',
         image,
-        icon: 'home'
+        icon: 'home',
     },
     component: Home
 } as Page

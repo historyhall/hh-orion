@@ -7,8 +7,9 @@ export type Page = {
 };
 
 type Menu = {
-	name: string;
+	name?: string;
 	path: string;
 	icon: SemanticICONS;
 	image?: string;
+	position?: 'left' | 'right';
 };
