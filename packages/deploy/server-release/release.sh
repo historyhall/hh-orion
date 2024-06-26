@@ -2,15 +2,20 @@
 
 sudo docker login registry.historyhall.org -u dockerreguser
 
-cp -n ./web/.env.default ./web.env
-cp -n ./server/.env.default ./server.env
+cp -n ./server/.env.default ./server/.env
+cp -n ./postgres/.env.default ./postgres/.env
 
-cd ./web
+cd ./postgres
 sudo docker compose pull
 sudo docker compose down
 sudo docker compose up -d
 
-cd ./server
+cd ../server
+sudo docker compose pull
+sudo docker compose down
+sudo docker compose up -d
+
+cd ../web
 sudo docker compose pull
 sudo docker compose down
 sudo docker compose up -d
