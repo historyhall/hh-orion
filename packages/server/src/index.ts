@@ -30,7 +30,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	const schema = new GraphQLSchema({query});
 
 	d(em.schema || 'schema not defined');
-	app.use(cors({credentials: true, origin: `http://localhost:5000`}));
+	app.use(cors({credentials: true, origin: [`http://localhost:5000`, `https://historyhall.org`]}));
 	app.use(
 		'/api',
 		graphqlHTTP({

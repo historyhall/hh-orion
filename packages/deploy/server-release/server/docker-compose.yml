@@ -9,5 +9,5 @@ services:
     volumes:
       - ./.env:/app/packages/server/.env
       - ./assets:/app/packages/server/assets
-    expose:
-      - "5001"
+    ports:
+      - "5001:5001"
