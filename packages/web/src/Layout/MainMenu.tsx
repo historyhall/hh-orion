@@ -20,7 +20,7 @@ export function MainMenu({pages}: Props) {
                         return <MenuSubItem page={page} />;
                     })}
                 </MenuMenu>
-        }
+            }
             </Menu>
         </Fragment>
     );
