@@ -9,6 +9,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Grid, GridColumn, GridRow} from 'semantic-ui-react';
 import About from './About';
 import debug from 'debug';
+import Profile from './Profile';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
@@ -22,7 +23,7 @@ const client = new ApolloClient({
 	defaultOptions: {query: {fetchPolicy: 'no-cache'}},
 });
 
-const pages: Page[] = [Home, About, Donate];
+const pages: Page[] = [Home, About, Donate, Profile];
 
 d('Start Web');
 
@@ -34,8 +35,8 @@ root.render(
 				{pages.map(page => {
 					return (
 						<Route
-							path={page.menu.path}
-							key={page.menu.path}
+							path={page.path}
+							key={page.path}
 							element={
 								<Grid padded stackable divided>
 									<GridRow>

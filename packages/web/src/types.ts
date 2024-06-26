@@ -2,12 +2,14 @@ import type {JSX} from 'react';
 import {SemanticICONS} from 'semantic-ui-react';
 
 export type Page = {
-	menu: Menu;
+	menu?: Menu;
+	path: string;
 	component: () => JSX.Element;
 };
 
-type Menu = {
-	name: string;
-	path: string;
+export type Menu = {
+	name?: string;
 	icon: SemanticICONS;
+	image?: string;
+	position?: 'left' | 'right';
 };
