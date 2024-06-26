@@ -1,12 +1,6 @@
 server {
-    listen 80;
-    listen [::]:80;
-    server_name historyhall.org;
-    return 301 https://$host$request_uri;
-}
-server {
-    listen 443;
-    listen [::]:443;
+    listen 443 ssl;
+    listen [::]:443 ssl;
     server_name registry.historyhall.org www.registry.historyhall.org;
     client_max_body_size 5000m;
     location / {
@@ -18,8 +12,8 @@ server {
     }
 }
 server {
-    listen 443;
-    listen [::]:443;
+    listen 443 ssl;
+    listen [::]:443 ssl;
     server_name historyhall.org www.historyhall.org;
     location / {
         proxy_pass http://localhost:5000;
