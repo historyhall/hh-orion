@@ -4,7 +4,7 @@ import {PostgreSqlDriver} from "@mikro-orm/postgresql";
 
 const config = {
     entities,
-    clientUrl: `postgres://${environment.dbUsername}:${environment.dbPassword}@${environment.dbDomain}:${environment.dbPort}/${environment.dbServer}`,
+    clientUrl: `postgres://${environment.dbUsername}:${environment.dbPassword}@${environment.dbDomain}:${environment.dbPort}/${environment.dbName}`,
     debug: environment.dbLogging,
     discovery: {
         disableDynamicFileAccess: true,
