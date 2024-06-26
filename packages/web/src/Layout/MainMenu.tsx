@@ -7,17 +7,21 @@ interface Props {
     pages: Page[]
 }
 export function MainMenu({pages}: Props) {
-    const leftMenuItems = pages.filter(page => page.menu.position === 'left' || page.menu.position === undefined);
-    const rightMenuItems = pages.filter(page => page.menu.position === 'right');
+    const leftMenuItems = pages.filter(page => page.menu?.position === 'left' || page.menu?.position === undefined);
+    const rightMenuItems = pages.filter(page => page.menu?.position === 'right');
     return (
         <Fragment>
             <Menu attached inverted>{leftMenuItems.map(page => {
-                return <MenuSubItem page={page} />;
+                if (page.menu) {
+                    return <MenuSubItem menu={page.menu} path={page.path} />;
+                }
             })}
             {rightMenuItems.length > 0} {
                 <MenuMenu position="right">
                     {rightMenuItems.map(page => {
-                        return <MenuSubItem page={page} />;
+                        if (page.menu) {
+                            return <MenuSubItem menu={page.menu} path={page.path} />;
+                        }
                     })}
                 </MenuMenu>
             }

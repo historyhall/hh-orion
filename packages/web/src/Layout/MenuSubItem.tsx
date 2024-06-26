@@ -1,25 +1,26 @@
 import {Icon, Image, MenuItem} from "semantic-ui-react";
 import {Fragment} from "react";
 import {Link} from "react-router-dom";
-import {Page} from "../types";
+import {Menu} from "../types";
 
 interface Props {
-    page: Page;
+    menu: Menu;
+    path: string;
 }
 
-export function MenuSubItem({page}: Props) {
+export function MenuSubItem({menu, path}: Props) {
     return (
-        <Fragment key={page.menu.path}>
-            {page.menu.image && (
-                <Link to={page.menu.path}>
-                    <MenuItem position={page.menu.position}><Image src={page.menu.image} verticalAlign="middle" width={20} height={20}/></MenuItem>
+        <Fragment key={path}>
+            {menu.image && (
+                <Link to={path}>
+                    <MenuItem position={menu.position}><Image src={menu.image} verticalAlign="middle" width={20} height={20}/></MenuItem>
                 </Link>
             )}
-            {(page.menu.name || page.menu.icon) && (
-                <Link to={page.menu.path}>
-                    <MenuItem color="yellow" position={page.menu.position}>
-                        {page.menu.icon && <Icon name={page.menu.icon} />}
-                        {page.menu.name && <>{page.menu.name}</>}
+            {(menu.name || menu.icon) && (
+                <Link to={path}>
+                    <MenuItem color="yellow" position={menu.position}>
+                        {menu.icon && <Icon name={menu.icon} />}
+                        {menu.name && <>{menu.name}</>}
                     </MenuItem>
                 </Link>
             )}

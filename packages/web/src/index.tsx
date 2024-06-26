@@ -35,8 +35,8 @@ root.render(
 				{pages.map(page => {
 					return (
 						<Route
-							path={page.menu.path}
-							key={page.menu.path}
+							path={page.path}
+							key={page.path}
 							element={
 								<Grid padded stackable divided>
 									<GridRow>

@@ -3,9 +3,9 @@ import {Page} from "../types";
 
 export default {
     menu: {
-        path: '/profile',
         icon: 'user',
         position: 'right',
     },
+    path: '/profile',
     component: Profile
 } as Page
