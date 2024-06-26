@@ -10,4 +10,5 @@ type Menu = {
 	name: string;
 	path: string;
 	icon: SemanticICONS;
+	image?: string;
 };
