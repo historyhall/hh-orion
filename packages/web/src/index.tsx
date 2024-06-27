@@ -10,11 +10,12 @@ import {MainMenu} from './Layout';
 import Profile from './Profile';
 import {Page} from './types';
 import {StrictMode} from 'react';
+import System from './System';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 const d = debug('hh.web');
-const pages: Page[] = [Home, About, Donate, Profile];
+const pages: Page[] = [Home, About, Donate, Profile, System];
 
 d('Start Web');
 
