@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build:domain": "cd ./packages/domain/ && yarn build",
+    "build:migrate": "cd ./packages/migrate/ && yarn build",
     "build:server": "cd ./packages/server/ && yarn build",
     "build:web": "cd ./packages/web/ && yarn build",
     "start:migrate": "cd ./packages/migrate/ && yarn start",

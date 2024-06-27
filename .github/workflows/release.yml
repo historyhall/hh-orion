@@ -50,6 +50,11 @@ jobs:
         run: |
           yarn build:server && docker build -t historyhall-server -f packages/deploy/docker-server/server.dockerfile .
 
+      # Docker Migrate
+      - name: Build Docker - Migrate
+        run: |
+          yarn build:migrate && docker build -t historyhall-migrate -f packages/deploy/docker-migrate/migrate.dockerfile .
+
       # Docker Push
       - name: Push Docker - Web
         run: |
