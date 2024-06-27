@@ -2,7 +2,7 @@ import {Entity, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
 
-const d = debug('terrene.server.Entities.Migration');
+const d = debug('hh.domain.Migration');
 
 export type MigrationEntityConstructor = {
 	name: string;
