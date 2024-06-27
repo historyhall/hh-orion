@@ -1,10 +1,6 @@
-import {EntityClass} from "@mikro-orm/core";
 import {defineConfig, PostgreSqlDriver} from "@mikro-orm/postgresql";
-import {domain} from "hh-orion-domain/dist";
+import {entities} from "hh-orion-domain/dist";
 import {environment} from './environment';
-
-let entities: EntityClass<Partial<any>>[] = [];
-domain.forEach(d => entities = [...entities, ...d.entities]);
 
 export default defineConfig({
     entities,

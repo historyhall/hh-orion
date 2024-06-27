@@ -2,7 +2,7 @@ import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
 
-const d = debug('hh.domain.Accounts.User');
+const d = debug('hh.domain.accounts.entities.User');
 
 export type MemberEntityConstructor = {
 	firstName: string;
@@ -24,7 +24,7 @@ export class User {
 	lastName: string;
 
 	@Property({type: 'date'})
-	joined = new Date();
+	createdAt = new Date();
 
 	constructor({firstName, lastName}: MemberEntityConstructor) {
 		this.firstName = firstName;
