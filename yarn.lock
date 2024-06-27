@@ -2216,7 +2216,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jscodeshift@^0.11.6":
+"@types/jscodeshift@^0.11.11":
   version "0.11.11"
   resolved "https://registry.yarnpkg.com/@types/jscodeshift/-/jscodeshift-0.11.11.tgz#30d7c986f372cd63c670017371da8fbced2b7acf"
   integrity sha512-d7CAfFGOupj5qCDqMODXxNz2/NwCv/Lha78ZFbnr6qpk3K98iSB8I+ig9ERE2+EeYML352VMRsjPyOpeA+04eQ==
