@@ -10,10 +10,10 @@ interface Props {
 
 export function MenuSubItem({menu, path}: Props) {
     return (
-        <Fragment key={path}>
+        <Fragment>
             {menu.image && (
                 <Link to={path}>
-                    <MenuItem position={menu.position}><Image src={menu.image} verticalAlign="middle" width={20} height={20}/></MenuItem>
+                    <MenuItem position={menu.position}><Image src={menu.image} verticalAlign="middle" width={20} height={20} /></MenuItem>
                 </Link>
             )}
             {(menu.name || menu.icon) && (

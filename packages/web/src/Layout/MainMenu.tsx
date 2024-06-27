@@ -13,20 +13,20 @@ export function MainMenu({pages}: Props) {
         <Fragment>
             <Menu attached inverted>{leftMenuItems.map(page => {
                 if (page.menu) {
-                    return <MenuSubItem menu={page.menu} path={page.path} />;
+                    return <MenuSubItem menu={page.menu} path={page.path} key={page.path} />;
                 }
                 return null;
             })}
-            {rightMenuItems.length > 0} {
+            {rightMenuItems.length > 0 && (
                 <MenuMenu position="right">
                     {rightMenuItems.map(page => {
                         if (page.menu) {
-                            return <MenuSubItem menu={page.menu} path={page.path} />;
+                            return <MenuSubItem menu={page.menu} path={page.path} key={page.path} />;
                         }
                         return null;
                     })}
                 </MenuMenu>
-            }
+            )}
             </Menu>
         </Fragment>
     );

@@ -23,7 +23,7 @@ export function useFetch(path: string) {
 				setLoading(false);
 			}
 		};
-		fetchData();
+		fetchData().catch(setError);
 	}, [path, serverURL]);
 	return {data, loading, error};
 }
