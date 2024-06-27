@@ -1,6 +1,6 @@
-import {Icon, Image, MenuItem} from "semantic-ui-react";
 import {Fragment} from "react";
 import {Link} from "react-router-dom";
+import {Icon, Image, MenuItem} from "semantic-ui-react";
 import {Menu} from "../types";
 
 interface Props {

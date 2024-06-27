@@ -1,6 +1,6 @@
-import {Page} from "../types";
-import {Menu, MenuMenu} from "semantic-ui-react";
 import {Fragment} from "react";
+import {Menu, MenuMenu} from "semantic-ui-react";
+import {Page} from "../types";
 import {MenuSubItem} from "./MenuSubItem";
 
 interface Props {

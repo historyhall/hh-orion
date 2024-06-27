@@ -1,11 +1,11 @@
-import debug from 'debug';
 import {MikroORM} from '@mikro-orm/core';
-import mikroOrmConfig from './core/mikro-orm.config';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
-import {migrations} from './migrations';
+import debug from 'debug';
 import {Migration} from 'hh-orion-domain/dist/Migration';
+import mikroOrmConfig from './core/mikro-orm.config';
+import {migrations} from './migrations';
 
-const d = debug('hh.domain');
+const d = debug('hh.migrate');
 
 MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 	const em = orm.em.fork();
