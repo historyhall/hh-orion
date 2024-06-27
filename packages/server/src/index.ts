@@ -1,14 +1,14 @@
+import {MikroORM} from '@mikro-orm/core';
+import {PostgreSqlDriver} from '@mikro-orm/postgresql';
+import cors from 'cors';
+import debug from 'debug';
 import express, {Express} from 'express';
 import {graphqlHTTP} from 'express-graphql';
 import {GraphQLObjectType, GraphQLSchema, GraphQLString} from 'graphql/type';
-import cors from 'cors';
-import debug from 'debug';
 import {environment} from './core/environment';
-import {MikroORM} from '@mikro-orm/core';
 import mikroOrmConfig from './core/mikro-orm.config';
-import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 
-const d = debug('hh-orion.domain');
+const d = debug('hh.server');
 
 MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	const app: Express = express();
@@ -30,7 +30,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	const schema = new GraphQLSchema({query});
 
 	d(em.schema || 'schema not defined');
-	app.use(cors({credentials: true, origin: `http://localhost:5000`}));
+	app.use(cors({credentials: true, origin: [`http://localhost:5000`, `https://historyhall.org`]}));
 	app.use(
 		'/api',
 		graphqlHTTP({

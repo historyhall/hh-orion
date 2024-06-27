@@ -1,0 +1,69 @@
+name: Release Workflow
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    name: Production Build
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.event.release.tag_name }}
+      REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/iron"
+          cache: 'yarn'
+
+      # Docker Login
+      - name: Docker repo login
+        run: |
+          docker login registry.historyhall.org -u dockerreguser -p $REGISTRY_PASSWORD
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          yarn
+
+      # Build Domain
+      - name: Build Docker - Domain
+        run: |
+          yarn build:domain
+
+      - name: Force installation of Domain package
+        run: |
+          yarn --force
+
+      # Docker Web
+      - name: Build Docker - Web
+        run: |
+          yarn build:web && docker build -t historyhall-web -f packages/deploy/docker-web/web.dockerfile .
+
+      # Docker Server
+      - name: Build Docker - Server
+        run: |
+          yarn build:server && docker build -t historyhall-server -f packages/deploy/docker-server/server.dockerfile .
+
+      # Docker Migrate
+      - name: Build Docker - Migrate
+        run: |
+          yarn build:migrate && docker build -t historyhall-migrate -f packages/deploy/docker-migrate/migrate.dockerfile .
+
+      # Docker Push
+      - name: Push Docker - Web
+        run: |
+          docker tag historyhall-web registry.historyhall.org/historyhall-web && docker push registry.historyhall.org/historyhall-web
+
+      - name: Push Docker - Server
+        run: |
+          docker tag historyhall-server registry.historyhall.org/historyhall-server && docker push registry.historyhall.org/historyhall-server
+
+      - name: Push Docker - Migrate
+        run: |
+          docker tag historyhall-server registry.historyhall.org/historyhall-migrate && docker push registry.historyhall.org/historyhall-migrate

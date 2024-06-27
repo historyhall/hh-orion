@@ -1,11 +1,11 @@
-import {About} from "./About";
 import {Page} from "../types";
+import {About} from "./About";
 
 export default {
     menu: {
         name: 'About',
-        path: '/about',
         icon: 'users',
     },
+    path: '/about',
     component: About
 } as Page

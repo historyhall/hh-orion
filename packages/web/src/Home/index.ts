@@ -1,11 +1,13 @@
-import {Home} from "./Home";
 import {Page} from "../types";
+import {Home} from "./Home";
+import image from './logo.png';
 
 export default {
     menu: {
         name: 'Home',
-        path: '/',
+        image,
         icon: 'home',
     },
+    path: '/',
     component: Home
 } as Page

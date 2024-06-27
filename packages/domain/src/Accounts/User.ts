@@ -2,7 +2,7 @@ import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
 
-const d = debug('hh.server.Entities.Member');
+const d = debug('hh.domain.Accounts.User');
 
 export type MemberEntityConstructor = {
 	firstName: string;

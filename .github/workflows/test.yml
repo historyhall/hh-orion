@@ -34,6 +34,12 @@ jobs:
         run: |
           yarn build:domain && yarn
 
+      # Organize
+      - name: Global - Check Organization
+        run: |
+          yarn fix:organize
+          ./tools/check_git_status.sh
+
       # Domain
       - name: Domain - Test Lint
         run: |

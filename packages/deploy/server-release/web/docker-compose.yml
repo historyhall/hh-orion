@@ -1,0 +1,10 @@
+services:
+  registry:
+    container_name: web
+    restart: always
+    image: registry.historyhall.org/historyhall-web
+    environment:
+      - TZ="America/Winnipeg"
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
+    ports:
+      - "5000:80"

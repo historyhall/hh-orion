@@ -1,11 +1,11 @@
-import debug from 'debug';
 import {MikroORM} from '@mikro-orm/core';
-import mikroOrmConfig from './core/mikro-orm.config';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
+import debug from 'debug';
+import {Migration} from 'hh-orion-domain/dist';
+import mikroOrmConfig from './core/mikro-orm.config';
 import {migrations} from './migrations';
-import {Migration} from 'hh-orion-domain/dist/Migration';
 
-const d = debug('hh.domain');
+const d = debug('hh.migrate');
 
 MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 	const em = orm.em.fork();
@@ -15,30 +15,32 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 		await em.find(Migration, {});
 	} catch {
 		d('Insert migration table');
-		em.execute(`
+		await em.execute(`
 				create table "migration" ("id" uuid not null, "name" varchar(255) not null, "index" int not null, "date" date not null, "success" boolean not null, constraint "migration_pkey" primary key ("id"));
 				alter table "migration" add constraint "migration_index_unique" unique ("index");`);
 	}
 
-	migrations.map(async (migration, index) => {
-		d(`Run migration: ${migration.name}`);
-		const duplicateMigration = await em.find(Migration, {name: migration.name});
-		if (duplicateMigration.length === 0) {
-			migration.action.map(async action => {
-				await em.execute(action);
+	await Promise.all(
+		migrations.map(async (migration, index) => {
+			d(`Run migration: ${migration.name}`);
+			const duplicateMigration = await em.find(Migration, {name: migration.name});
+			if (duplicateMigration.length === 0) {
+				migration.action.map(async action => {
+					await em.transactional(async () => {
+						await em.execute(action);
+					});
+				});
 
-				return true;
-			});
+				const mig = new Migration({
+					name: migration.name,
+					success: true,
+					index,
+				});
 
-			const mig = new Migration({
-				name: migration.name,
-				success: true,
-				index,
-			});
-
-			await em.persistAndFlush(mig);
-		}
-	});
+				await em.persistAndFlush(mig);
+			}
+		}),
+	);
 
 	await orm.close();
 });

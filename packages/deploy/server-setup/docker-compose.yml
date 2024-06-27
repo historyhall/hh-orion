@@ -1,0 +1,13 @@
+services:
+  registry:
+    image: registry:latest
+    ports:
+      - "6000:5000"
+    environment:
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /registry
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/registry.password
+    volumes:
+      - ./registry:/registry
+      - ./auth:/auth

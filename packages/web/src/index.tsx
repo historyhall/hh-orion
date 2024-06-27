@@ -1,28 +1,29 @@
-import ReactDOM from 'react-dom/client';
 import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from '@apollo/client';
-import 'semantic-ui-css/semantic.min.css';
-import {Page} from './types';
-import Home from './Home';
-import Donate from './Contribute';
-import {MainMenu} from './Layout';
+import debug from 'debug';
+import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
 import {Grid, GridColumn, GridRow} from 'semantic-ui-react';
 import About from './About';
-import debug from 'debug';
+import Donate from './Contribute';
+import Home from './Home';
+import {MainMenu} from './Layout';
+import Profile from './Profile';
+import {Page} from './types';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-const d = debug('hh.test');
+const d = debug('hh.web');
 
 const client = new ApolloClient({
 	link: new HttpLink({
-		uri: process.env.REACT_APP_API_URL,
+		uri: process.env.REACT_APP_API_URL || 'https://api.historyhall.org/api',
 	}),
 	cache: new InMemoryCache(),
 	defaultOptions: {query: {fetchPolicy: 'no-cache'}},
 });
 
-const pages: Page[] = [Home, About, Donate];
+const pages: Page[] = [Home, About, Donate, Profile];
 
 d('Start Web');
 
@@ -34,8 +35,8 @@ root.render(
 				{pages.map(page => {
 					return (
 						<Route
-							path={page.menu.path}
-							key={page.menu.path}
+							path={page.path}
+							key={page.path}
 							element={
 								<Grid padded stackable divided>
 									<GridRow>
