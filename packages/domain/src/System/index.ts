@@ -1,8 +1,11 @@
 import {Domain} from "../types";
-import {Migration} from "./Migration";
+import {Migration} from "./entities";
+import {MigrationController} from "./controllers";
 
 export const system: Domain = {
-    entities: [Migration]
+    entities: [Migration],
+    controllers: [MigrationController],
 }
 
-export * from './Migration';
+export * from './controllers';
+export * from './entities';
