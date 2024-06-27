@@ -59,6 +59,11 @@ jobs:
       - name: Push Docker - Web
         run: |
           docker tag historyhall-web registry.historyhall.org/historyhall-web && docker push registry.historyhall.org/historyhall-web
+
       - name: Push Docker - Server
         run: |
           docker tag historyhall-server registry.historyhall.org/historyhall-server && docker push registry.historyhall.org/historyhall-server
+
+      - name: Push Docker - Migrate
+        run: |
+          docker tag historyhall-server registry.historyhall.org/historyhall-migrate && docker push registry.historyhall.org/historyhall-migrate
