@@ -24,7 +24,7 @@ export class User {
 	lastName: string;
 
 	@Property({type: 'date'})
-	joined = new Date();
+	createdAt = new Date();
 
 	constructor({firstName, lastName}: MemberEntityConstructor) {
 		this.firstName = firstName;
