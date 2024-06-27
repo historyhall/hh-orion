@@ -9,7 +9,7 @@
     "start:server": "cd ./packages/server/ && yarn start",
     "start:web": "cd ./packages/web/ && yarn start",
     "fix:lint": "eslint --fix",
-    "fix:sort": "node node_modules/jscodeshift/bin/jscodeshift.js packages  --extensions=tsx,ts --parser=tsx -t tools/sort.ts",
+    "fix:auto": "node node_modules/jscodeshift/bin/jscodeshift.js packages  --extensions=tsx,ts --parser=tsx -t tools/fix-auto.ts",
     "test:domain:deps": "cd ./packages/domain/ && yarn depcheck",
     "test:domain:lint": "cd ./packages/domain/ && yarn eslint",
     "test:domain:types": "cd ./packages/domain/ && yarn tsc",
