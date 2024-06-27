@@ -1,7 +1,7 @@
 services:
   registry:
     container_name: migrate
-    restart: always
+    restart: no
     image: registry.historyhall.org/historyhall-migrate
     environment:
       - TZ="America/Winnipeg"
