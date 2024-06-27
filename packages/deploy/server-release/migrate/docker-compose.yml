@@ -1,0 +1,10 @@
+services:
+  registry:
+    container_name: migrate
+    restart: always
+    image: registry.historyhall.org/historyhall-migrate
+    environment:
+      - TZ="America/Winnipeg"
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
+    volumes:
+      - ./.env:/app/packages/migrate/.env
