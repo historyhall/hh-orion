@@ -1,3 +1,5 @@
+import {EntityClass} from '@mikro-orm/core';
+
 export type Domain = {
-	entities: Object[];
+	entities: EntityClass<Partial<any>>[];
 };
