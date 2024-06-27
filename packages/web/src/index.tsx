@@ -1,4 +1,3 @@
-import {ApolloClient, ApolloProvider, HttpLink, InMemoryCache} from '@apollo/client';
 import debug from 'debug';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
@@ -10,25 +9,17 @@ import Home from './Home';
 import {MainMenu} from './Layout';
 import Profile from './Profile';
 import {Page} from './types';
+import {StrictMode} from 'react';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 const d = debug('hh.web');
-
-const client = new ApolloClient({
-	link: new HttpLink({
-		uri: process.env.REACT_APP_API_URL || 'https://api.historyhall.org/api',
-	}),
-	cache: new InMemoryCache(),
-	defaultOptions: {query: {fetchPolicy: 'no-cache'}},
-});
-
 const pages: Page[] = [Home, About, Donate, Profile];
 
 d('Start Web');
 
 root.render(
-	<ApolloProvider client={client}>
+	<StrictMode>
 		<BrowserRouter>
 			<MainMenu pages={pages} />
 			<Routes>
@@ -52,5 +43,5 @@ root.render(
 				})}
 			</Routes>
 		</BrowserRouter>
-	</ApolloProvider>,
+	</StrictMode>,
 );
