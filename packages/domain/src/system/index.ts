@@ -1,11 +1,10 @@
 import {Migration} from "./entities";
 import {MigrationController} from "./controllers";
-import {EntityClass, EntityManager} from "@mikro-orm/core";
-import {Class} from "../types";
+import {EntityClass} from "@mikro-orm/core";
 
 export const entities: EntityClass<Partial<any>>[] = [Migration];
-export function controllers(em: EntityManager): {[key: string]: Class} {
-    return {migrationController: new MigrationController(em)}
+export const controllers = {
+    migrationController: MigrationController
 }
 
 export * from './controllers';

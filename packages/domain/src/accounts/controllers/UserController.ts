@@ -9,6 +9,6 @@ export class UserController {
     }
 
     getAll() {
-        this.em.find({});
+        return this.em.find({});
     }
 }

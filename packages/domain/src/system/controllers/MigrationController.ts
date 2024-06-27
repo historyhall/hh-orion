@@ -9,6 +9,6 @@ export class MigrationController {
     }
 
     getAll() {
-        this.em.find({});
+        return this.em.find({});
     }
 }
