@@ -1,5 +1,5 @@
-import {About} from "./About";
 import {Page} from "../types";
+import {About} from "./About";
 
 export default {
     menu: {

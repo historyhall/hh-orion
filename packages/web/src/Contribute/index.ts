@@ -1,5 +1,5 @@
-import {Contribute} from "./Contribute";
 import {Page} from "../types";
+import {Contribute} from "./Contribute";
 
 export default {
     menu: {

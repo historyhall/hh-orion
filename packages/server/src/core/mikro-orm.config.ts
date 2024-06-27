@@ -1,6 +1,6 @@
-import {environment} from './environment';
-import {entities} from "hh-orion-domain/dist";
 import {PostgreSqlDriver} from "@mikro-orm/postgresql";
+import {entities} from "hh-orion-domain/dist";
+import {environment} from './environment';
 
 const config = {
     entities,

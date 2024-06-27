@@ -1,5 +1,5 @@
-import {Profile} from "./Profile";
 import {Page} from "../types";
+import {Profile} from "./Profile";
 
 export default {
     menu: {
