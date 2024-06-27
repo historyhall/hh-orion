@@ -1,6 +1,8 @@
 import {PostgreSqlDriver} from "@mikro-orm/postgresql";
-import {entities} from "hh-orion-domain/dist";
+import {domain} from "hh-orion-domain/dist";
 import {environment} from './environment';
+
+const entities = domain.map(d => d.entities);
 
 const config = {
     entities,

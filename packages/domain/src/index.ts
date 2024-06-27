@@ -1,4 +1,5 @@
-import {Migration} from './Migration';
-import {User} from './User';
+import {accounts} from './Accounts';
+import {system} from './System';
+import {Domain} from './types';
 
-export const entities = [Migration, User];
+export const domain: Domain[] = [accounts, system];
