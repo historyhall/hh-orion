@@ -4,3 +4,5 @@ import {User} from "./User";
 export const accounts: Domain = {
     entities: [User]
 }
+
+export * from './User';

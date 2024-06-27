@@ -1,10 +1,11 @@
-import {PostgreSqlDriver} from "@mikro-orm/postgresql";
+import {EntityClass} from "@mikro-orm/core";
+import {defineConfig, PostgreSqlDriver} from "@mikro-orm/postgresql";
 import {domain} from "hh-orion-domain/dist";
 import {environment} from './environment';
 
-const entities = domain.map(d => d.entities);
+const entities: EntityClass<Partial<any>>[] = domain.map(d => d.entities);
 
-const config = {
+export default defineConfig({
     entities,
     clientUrl: `postgres://${environment.dbUsername}:${environment.dbPassword}@${environment.dbDomain}:${environment.dbPort}/${environment.dbName}`,
     debug: environment.dbLogging,
@@ -24,6 +25,4 @@ const config = {
                 },
             }
             : {},
-};
-
-export default config;
+});

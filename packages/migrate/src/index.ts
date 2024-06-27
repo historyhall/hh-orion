@@ -1,7 +1,7 @@
 import {MikroORM} from '@mikro-orm/core';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import debug from 'debug';
-import {Migration} from 'hh-orion-domain/dist/Migration';
+import {Migration} from 'hh-orion-domain/dist';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {migrations} from './migrations';
 
