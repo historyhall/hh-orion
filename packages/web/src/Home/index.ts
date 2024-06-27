@@ -1,6 +1,6 @@
 import {Page} from "../types";
 import {Home} from "./Home";
-import image from './logo.png';
+import image from './components/logo.png';
 
 const pages: Page[] = [
     {
