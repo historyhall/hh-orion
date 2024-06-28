@@ -2,9 +2,9 @@ import {MikroORM} from '@mikro-orm/core';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import debug from 'debug';
 import {Migration} from 'hh-orion-domain/dist';
+import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {migrations} from './migrations';
-import {environment} from './core/environment';
 
 const d = debug('hh.migrate');
 
