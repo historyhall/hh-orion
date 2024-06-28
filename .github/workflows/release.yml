@@ -67,3 +67,12 @@ jobs:
       - name: Push Docker - Migrate
         run: |
           docker tag historyhall-server registry.historyhall.org/historyhall-migrate && docker push registry.historyhall.org/historyhall-migrate
+
+      # Deploy
+      - name: Run Release Script
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.RELEASE_HOST }}
+          username: ${{ secrets.RELEASE_USERNAME }}
+          password: ${{ secrets.RELEASE_PASSWORD }}
+          script: ${{ secrets.RELEASE_SCRIPT_COMMAND }}
