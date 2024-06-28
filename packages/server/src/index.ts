@@ -3,9 +3,9 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
+import {controllers} from 'hh-orion-domain/dist';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
-import {controllers} from 'hh-orion-domain/dist';
 
 const d = debug('hh.server');
 

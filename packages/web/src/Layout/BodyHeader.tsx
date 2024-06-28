@@ -1,5 +1,5 @@
-import {Header} from "../types";
 import {Header as SemanticHeader, HeaderContent, Icon} from "semantic-ui-react";
+import {Header} from "../types";
 
 interface Props {
     header: Header;

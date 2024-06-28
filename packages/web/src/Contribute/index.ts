@@ -1,8 +1,8 @@
 import {Page} from "../types";
 import {Contribute} from "./Contribute";
 
-const pages: Page[] = [
-    {
+const pages: Record<string, Page> = {
+    contribute: {
         header: {
             name: 'Contribute',
             icon: 'gift'
@@ -14,5 +14,5 @@ const pages: Page[] = [
         path: '/contribute',
         component: Contribute
     }
-]
+}
 export default pages;

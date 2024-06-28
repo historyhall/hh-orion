@@ -1,6 +1,6 @@
-import {useFetch} from "../server";
-import {Loading} from "../Layout";
 import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from "semantic-ui-react";
+import {Loading} from "../Layout";
+import {useFetch} from "../server";
 
 export function Migrations() {
     const {data, loading} = useFetch<{id: string, name: string, index: number, date: Date, success: boolean}[]>('migrations/get-all');

@@ -2,8 +2,8 @@ import {Page} from "../types";
 import {Home} from "./Home";
 import image from './components/logo.png';
 
-const pages: Page[] = [
-    {
+const pages: Record<string, Page> = {
+    home: {
         menu: {
             name: 'Home',
             image,
@@ -12,5 +12,5 @@ const pages: Page[] = [
         path: '/',
         component: Home
     }
-]
+}
 export default pages;

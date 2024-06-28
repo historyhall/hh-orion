@@ -1,9 +1,9 @@
 import {Page} from "../types";
-import {System} from "./System";
 import {Migrations} from "./Migrations";
+import {System} from "./System";
 
-const pages: Page[] = [
-    {
+const pages: Record<string, Page> = {
+    system: {
         path: '/system',
         component: System,
         header: {
@@ -11,7 +11,7 @@ const pages: Page[] = [
             icon: 'server'
         }
     },
-    {
+    systemMigrations: {
         path: '/system/migrations',
         component: Migrations,
         header: {
@@ -19,5 +19,5 @@ const pages: Page[] = [
             icon: 'database'
         }
     }
-]
+}
 export default pages;

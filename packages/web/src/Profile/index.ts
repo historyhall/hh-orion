@@ -1,8 +1,8 @@
 import {Page} from "../types";
 import {Profile} from "./Profile";
 
-const pages: Page[] = [
-    {
+const pages: Record<string, Page> = {
+    profile: {
         header: {
             name: 'Profile',
             icon: 'user'
@@ -14,5 +14,5 @@ const pages: Page[] = [
         path: '/profile',
         component: Profile
     }
-]
+}
 export default pages;

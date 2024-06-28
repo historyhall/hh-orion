@@ -1,4 +1,5 @@
 import debug from 'debug';
+import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
@@ -8,14 +9,13 @@ import Donate from './Contribute';
 import Home from './Home';
 import {BodyHeader, MainMenu} from './Layout';
 import Profile from './Profile';
-import {Page} from './types';
-import {StrictMode} from 'react';
 import System from './System';
+import {Page} from './types';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 const d = debug('hh.web');
-const pages: Page[] = [...Home, ...About, ...Donate, ...Profile, ...System];
+const pages: Record<string, Page> = {...Home, ...About, ...Donate, ...Profile, ...System};
 
 d('Start Web');
 
@@ -24,7 +24,7 @@ root.render(
 		<BrowserRouter>
 			<MainMenu pages={pages} />
 			<Routes>
-				{pages.map(page => {
+				{Object.values(pages).map(page => {
 					return (
 						<Route
 							path={page.path}
