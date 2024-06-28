@@ -12,4 +12,5 @@ export const environment = {
     dbRejectUnauthorized: process.env.DB_REJECT_UNAUTHORIZED === 'true',
     dbLogging: process.env.DB_LOGGING === 'true',
     apiVersion: process.env.API_VERSION,
+    corsOrigin: process.env.CORS_ORIGIN
 };

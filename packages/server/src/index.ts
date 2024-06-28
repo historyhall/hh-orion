@@ -13,11 +13,14 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	const app: Express = express();
 	const port = environment.serverPort;
 	const em = orm.em.fork();
-	const corsOptions = {credentials: true, origin: [`http://localhost:5000`, `https://historyhall.org`]};
+	const corsOptions = {credentials: false, origin: environment.corsOrigin};
 
-	app.get('/migrations/get-all', cors(corsOptions), async (req, res) => {
+	app.options('*', cors(corsOptions));
+
+	app.get('/migrations/get-all', async (req, res) => {
 		d(req.ip);
 		const controller = new controllers.migrationController(em);
+		res.header('Access-Control-Allow-Origin', environment.corsOrigin);
 		res.send(await controller.getAll());
 	});
 

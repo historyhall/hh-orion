@@ -35,6 +35,11 @@ jobs:
           yarn build:domain && yarn
 
       # Organize
+      - name: Global - Sort Package.json
+        run: |
+          yarn fix:package
+          ./tools/check_git_status.sh
+
       - name: Global - Check Organization
         run: |
           yarn fix:organize

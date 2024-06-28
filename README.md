@@ -55,3 +55,6 @@ Issues are tagged with several different labels.
 6. Start Server `yarn start:server`
 7. Start Web `yarn start:web`
 
+### Enable Debug Statements
+For browsers, run `localStorage.debug = "hh.*"` in the console.
+
