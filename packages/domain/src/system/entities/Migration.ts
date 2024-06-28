@@ -29,9 +29,9 @@ export class Migration {
 	success: boolean;
 
 	constructor({name, success, index}: MigrationEntityConstructor) {
+		d('Domain: Create New Migration');
 		this.name = name;
 		this.success = success;
 		this.index = index;
-		d('Migration Constructor');
 	}
 }

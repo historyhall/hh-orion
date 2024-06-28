@@ -1,4 +1,5 @@
 import {config} from "dotenv";
+import process from "node:process";
 
 config();
 
@@ -12,4 +13,5 @@ export const environment = {
     dbRejectUnauthorized: process.env.DB_REJECT_UNAUTHORIZED === 'true',
     dbLogging: process.env.DB_LOGGING === 'true',
     apiVersion: process.env.API_VERSION,
+    debug: process.env.DEUBG || 'hh.*'
 };

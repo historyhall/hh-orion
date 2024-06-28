@@ -10,7 +10,7 @@ export function useFetch<T>(path: string): {data?: T; loading: boolean; error?: 
 		const fetchData = async () => {
 			setLoading(true);
 			try {
-				const response = await fetch(`${serverURL}/${path}`, {headers: {'Access-Control-Allow-Origin': serverURL}});
+				const response = await fetch(`${serverURL}/${path}`);
 				if (!response.ok) {
 					throw new Error(response.statusText);
 				}
