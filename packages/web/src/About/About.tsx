@@ -1,3 +1,3 @@
 export function About() {
-    return <>About</>;
+    return <p>Virtually walk through history</p>;
 }

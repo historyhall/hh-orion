@@ -6,7 +6,7 @@ import {Grid, GridColumn, GridRow} from 'semantic-ui-react';
 import About from './About';
 import Donate from './Contribute';
 import Home from './Home';
-import {MainMenu} from './Layout';
+import {BodyHeader, MainMenu} from './Layout';
 import Profile from './Profile';
 import {Page} from './types';
 import {StrictMode} from 'react';
@@ -33,6 +33,7 @@ root.render(
 								<Grid padded stackable divided>
 									<GridRow>
 										<GridColumn width={14}>
+											{page.header && <BodyHeader header={page.header} />}
 											<page.component />
 										</GridColumn>
 										<GridColumn width={2}>Sidebar</GridColumn>

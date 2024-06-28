@@ -3,6 +3,10 @@ import {Contribute} from "./Contribute";
 
 const pages: Page[] = [
     {
+        header: {
+            name: 'Contribute',
+            icon: 'gift'
+        },
         menu: {
             name: 'Contribute',
             icon: 'gift',

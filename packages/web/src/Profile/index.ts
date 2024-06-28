@@ -3,6 +3,10 @@ import {Profile} from "./Profile";
 
 const pages: Page[] = [
     {
+        header: {
+            name: 'Profile',
+            icon: 'user'
+        },
         menu: {
             icon: 'user',
             position: 'right',

@@ -1,3 +1,3 @@
 export function Profile() {
-    return <>Profile</>;
+    return <p>Public registration is not yet available.</p>;
 }
