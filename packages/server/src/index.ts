@@ -13,9 +13,9 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	const app: Express = express();
 	const port = environment.serverPort;
 	const em = orm.em.fork();
+	const corsOptions = {credentials: true, origin: [`http://localhost:5000`, `https://historyhall.org`]};
 
-	app.use(cors({credentials: true, origin: [`http://localhost:5000`, `https://historyhall.org`]}));
-	app.get('/migrations/get-all', async (req, res) => {
+	app.get('/migrations/get-all', cors(corsOptions), async (req, res) => {
 		d(req.ip);
 		const controller = new controllers.migrationController(em);
 		res.send(await controller.getAll());
