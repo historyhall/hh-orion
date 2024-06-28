@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc --build && yarn tsc ",
+    "start": "tsc --build --watch && yarn tsc ",
     "test:deps": "depcheck",
     "test:lint": "eslint",
     "test:types": "tsc"

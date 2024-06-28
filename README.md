@@ -54,6 +54,7 @@ Issues are tagged with several different labels.
 5. In the project root, run postgres migrations `yarn start:migrations`
 6. Start Server `yarn start:server`
 7. Start Web `yarn start:web`
+8. Start Domain `yarn start:domain`
 
 ### Enable Debug Statements
 For browsers, run `localStorage.debug = "hh.*"` in the console.
