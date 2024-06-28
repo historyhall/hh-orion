@@ -27,8 +27,8 @@ export class User {
 	createdAt = new Date();
 
 	constructor({firstName, lastName}: MemberEntityConstructor) {
+		d('Domain: Create New User');
 		this.firstName = firstName;
 		this.lastName = lastName;
-		d('User Constructor');
 	}
 }
