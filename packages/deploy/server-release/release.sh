@@ -1,6 +1,8 @@
 #!/bin/bash
 
-docker login registry.historyhall.org -u dockerreguser -p
+source .env
+
+docker login registry.historyhall.org -u dockerreguser -p $REGISTRY_PASSWORD
 
 cp -n ./server/.env.default ./server/.env
 cp -n ./postgres/.env.default ./postgres/.env
