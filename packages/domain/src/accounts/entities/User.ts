@@ -1,6 +1,7 @@
-import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
+import {Collection, Entity, ManyToMany, PrimaryKey, Property} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
+import {Author} from "./Author";
 
 const d = debug('hh.domain.accounts.entities.User');
 
@@ -17,14 +18,17 @@ export class User {
 	@Property({type: 'number', version: true})
 	version = 1;
 
+	@Property({type: 'date'})
+	createdAt = new Date();
+
 	@Property({type: 'text'})
 	firstName: string;
 
 	@Property({type: 'text'})
 	lastName: string;
 
-	@Property({type: 'date'})
-	createdAt = new Date();
+	@ManyToMany('Author')
+	authors = new Collection<Author>(this);
 
 	constructor({firstName, lastName}: MemberEntityConstructor) {
 		d('Domain: Create New User');
