@@ -15,16 +15,18 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	const em = orm.em.fork();
 	const corsOptions = {credentials: false, origin: environment.corsOrigin};
 
+	debug.enable(environment.debug);
+
 	app.options('*', cors(corsOptions));
 
 	app.get('/migrations/get-all', async (req, res) => {
-		d(req.ip);
+		d('/migrations/get-all', req.body);
 		const controller = new controllers.migrationController(em);
 		res.header('Access-Control-Allow-Origin', environment.corsOrigin);
 		res.send(await controller.getAll());
 	});
 
 	app.listen(port, () => {
-		d(`Server is running at http://localhost:${port}`);
+		d(`Server is running at ${environment.corsOrigin}`);
 	});
 });

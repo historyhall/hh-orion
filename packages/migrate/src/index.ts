@@ -4,11 +4,13 @@ import debug from 'debug';
 import {Migration} from 'hh-orion-domain/dist';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {migrations} from './migrations';
+import {environment} from './core/environment';
 
 const d = debug('hh.migrate');
 
 MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 	const em = orm.em.fork();
+	debug.enable(environment.debug);
 
 	try {
 		d('Check if migration table exists...');
