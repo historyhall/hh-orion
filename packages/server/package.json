@@ -2,6 +2,14 @@
   "name": "hh-orion-server",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "build": "tsc --build",
+    "schema:changes": "yarn build && MIKRO_ORM_CLI_CONFIG=dist/core/mikro-orm.config.js yarn mikro-orm schema:update -d",
+    "start": "ts-node-dev src/index.ts",
+    "test:deps": "depcheck",
+    "test:lint": "eslint",
+    "test:types": "tsc"
+  },
   "dependencies": {
     "@mikro-orm/core": "^6.2.9",
     "@mikro-orm/postgresql": "^6.2.9",
@@ -13,13 +21,8 @@
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.5"
   },
-  "scripts": {
-    "build": "tsc --build",
-    "start": "ts-node-dev src/index.ts",
-    "schema:changes": "yarn build && MIKRO_ORM_CLI_CONFIG=dist/core/mikro-orm.config.js yarn mikro-orm schema:update -d",
-    "test:deps": "depcheck",
-    "test:lint": "eslint",
-    "test:types": "tsc"
+  "devDependencies": {
+    "@mikro-orm/cli": "^6.2.9"
   },
   "mikro-orm": {
     "useTsNode": true,
@@ -27,8 +30,5 @@
       "src/mikro-orm.config.ts",
       "dist/mikro-orm.config.js"
     ]
-  },
-  "devDependencies": {
-    "@mikro-orm/cli": "^6.2.9"
   }
 }

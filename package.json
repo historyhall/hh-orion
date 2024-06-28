@@ -2,16 +2,23 @@
   "name": "hh-orion",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
     "build:domain": "cd ./packages/domain/ && yarn build",
     "build:migrate": "cd ./packages/migrate/ && yarn build",
     "build:server": "cd ./packages/server/ && yarn build",
     "build:web": "cd ./packages/web/ && yarn build",
+    "fix:lint": "eslint --fix",
+    "fix:organize": "node node_modules/jscodeshift/bin/jscodeshift.js packages  --extensions=tsx,ts --parser=tsx -t tools/organize.ts",
+    "fix:package": "sort-package-json \"package.json\" \"packages/*/package.json\"",
     "start:migrate": "cd ./packages/migrate/ && yarn start",
     "start:server": "cd ./packages/server/ && yarn start",
     "start:web": "cd ./packages/web/ && yarn start",
-    "fix:lint": "eslint --fix",
-    "fix:organize": "node node_modules/jscodeshift/bin/jscodeshift.js packages  --extensions=tsx,ts --parser=tsx -t tools/organize.ts",
     "test:domain:deps": "cd ./packages/domain/ && yarn depcheck",
     "test:domain:lint": "cd ./packages/domain/ && yarn eslint",
     "test:domain:types": "cd ./packages/domain/ && yarn tsc",
@@ -22,12 +29,6 @@
     "test:web:lint": "cd ./packages/web/ && yarn eslint",
     "test:web:types": "cd ./packages/web/ && yarn tsc"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
-  "type": "module",
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/debug": "^4.1.12",
@@ -45,6 +46,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "jscodeshift": "^0.16.1",
     "prettier": "^3.3.2",
+    "sort-package-json": "^2.10.0",
     "typescript-eslint": "^7.13.1"
   }
 }
