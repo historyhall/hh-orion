@@ -75,4 +75,5 @@ jobs:
           host: ${{ secrets.RELEASE_HOST }}
           username: ${{ secrets.RELEASE_USERNAME }}
           password: ${{ secrets.RELEASE_PASSWORD }}
+          port: 22
           script: ${{ secrets.RELEASE_SCRIPT_COMMAND }}
