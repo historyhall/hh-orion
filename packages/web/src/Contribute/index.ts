@@ -1,11 +1,18 @@
 import {Page} from "../types";
 import {Contribute} from "./Contribute";
 
-export default {
-    menu: {
-        name: 'Contribute',
-        icon: 'gift',
-    },
-    path: '/contribute',
-    component: Contribute
-} as Page
+const pages: Record<string, Page> = {
+    contribute: {
+        header: {
+            name: 'Contribute',
+            icon: 'gift'
+        },
+        menu: {
+            name: 'Contribute',
+            icon: 'gift',
+        },
+        path: '/contribute',
+        component: Contribute
+    }
+}
+export default pages;

@@ -1,11 +1,18 @@
 import {Page} from "../types";
 import {Profile} from "./Profile";
 
-export default {
-    menu: {
-        icon: 'user',
-        position: 'right',
-    },
-    path: '/profile',
-    component: Profile
-} as Page
+const pages: Record<string, Page> = {
+    profile: {
+        header: {
+            name: 'Profile',
+            icon: 'user'
+        },
+        menu: {
+            icon: 'user',
+            position: 'right',
+        },
+        path: '/profile',
+        component: Profile
+    }
+}
+export default pages;
