@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 
 export function useFetch<T>(path: string): {data?: T; loading: boolean; error?: string} {
-	const serverURL = process.env.REACT_APP_API_URL || 'https://historyhall.org';
+	const serverURL = process.env.REACT_APP_API_URL || 'https://api.historyhall.org';
 	const [data, setData] = useState<any>();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
