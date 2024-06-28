@@ -11,6 +11,7 @@ Before a pull request can be merged, it will have to pass the branch checks. Thi
 The following automated tests are run:
 - Global
   - `yarn fix:organize`
+  - `yarn fix:package`
 - Web
   - `yarn test:web:lint`
   - `yarn test:web:types`

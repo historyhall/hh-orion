@@ -2,16 +2,16 @@
   "name": "hh-orion-domain",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@mikro-orm/core": "^6.2.9",
-    "debug": "^4.3.5",
-    "typescript": "^4.9.5",
-    "uuid": "^10.0.0"
-  },
   "scripts": {
     "build": "tsc --build && yarn tsc ",
     "test:deps": "depcheck",
     "test:lint": "eslint",
     "test:types": "tsc"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^6.2.9",
+    "debug": "^4.3.5",
+    "typescript": "^4.9.5",
+    "uuid": "^10.0.0"
   }
 }
