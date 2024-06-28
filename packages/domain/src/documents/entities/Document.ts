@@ -3,7 +3,7 @@ import debug from 'debug';
 import {v4} from 'uuid';
 import {Author} from "../../accounts";
 
-const d = debug('tacs.domain.documents.entities.Document');
+const d = debug('hh.domain.documents.entities.Document');
 
 export type DocumentEntityConstructor = {
     name: string;
