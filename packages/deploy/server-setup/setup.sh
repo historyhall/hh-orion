@@ -32,3 +32,9 @@ cd /srv/docker-registry/auth
 sudo htpasswd -Bc registry.password dockerreguser
 
 sudo docker compose --project-directory /srv/docker-registry up -d;
+
+# Docker Permissions
+sudo groupadd docker;
+sudo usermod -aG docker $USER;
+
+newgrp docker;
