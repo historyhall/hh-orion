@@ -1,7 +1,7 @@
-import {Page} from "../types";
-import {Profile} from "./Profile";
-import {Login} from "./Login";
 import {Logout} from "../Layout/Logout";
+import {Page} from "../types";
+import {Login} from "./Login";
+import {Profile} from "./Profile";
 import {Register} from "./Register";
 
 const pages: Record<string, Page> = {
