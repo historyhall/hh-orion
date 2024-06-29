@@ -66,7 +66,7 @@ jobs:
 
       - name: Push Docker - Migrate
         run: |
-          docker tag historyhall-server registry.historyhall.org/historyhall-migrate && docker push registry.historyhall.org/historyhall-migrate
+          docker tag historyhall-migrate registry.historyhall.org/historyhall-migrate && docker push registry.historyhall.org/historyhall-migrate
 
       # Deploy
       - name: Run Release Script
