@@ -17,8 +17,6 @@ server {
     server_name api.historyhall.org www.api.historyhall.org;
     client_max_body_size 5000m;
     location / {
-        add_header 'Access-Control-Allow-Origin' "$http_origin" always;
-        add_header 'Access-Control-Allow-Credentials' 'true';
         proxy_pass http://localhost:5001;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
