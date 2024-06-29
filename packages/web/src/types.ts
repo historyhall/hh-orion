@@ -18,4 +18,11 @@ export type Menu = {
 	icon: SemanticICONS;
 	image?: string;
 	position?: 'left' | 'right';
+	secondaryMenuItem?: SecondaryMenuItem[];
+};
+
+type SecondaryMenuItem = {
+	name: string;
+	icon: SemanticICONS;
+	path: string;
 };
