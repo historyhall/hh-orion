@@ -1,5 +1,5 @@
-#!/bin/bash
-SOURCE ./server-release/.env
+#!/usr/bin/env bash
+SOURCE .env
 
 sql="postgres://$DB_USERNAME:$DB_PASSWORD@$DB_DOMAIN:$DB_PORT/$DB_NAME"
 
