@@ -23,7 +23,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 	}
 
 	await Promise.all(
-		migrations.map(async (migrationTask) => {
+		migrations.map(async migrationTask => {
 			const duplicateMigration = await em.find(Migration, {name: migrationTask.name, success: true});
 			if (duplicateMigration.length === 0) {
 				let migration;

@@ -1,4 +1,4 @@
 export type Migration = {
-    name: string;
-    action: string;
-}
+	name: string;
+	action: string;
+};
