@@ -11,4 +11,8 @@ export class UserController {
     getAll() {
         return this.em.find({});
     }
+
+    getTotal() {
+        return this.em.count({});
+    }
 }

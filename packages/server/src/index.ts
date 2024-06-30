@@ -55,6 +55,12 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		res.status(200).send(await controller.getAll());
 	});
 
+	app.get('/users/get-total', async (req, res) => {
+		d('/users/get-total', req.body);
+		const controller = new controllers.userController(em);
+		res.status(200).send((await controller.getTotal()).toString());
+	});
+
 	app.listen(port, () => {
 		d(`Server is running at ${environment.corsOrigin}`);
 	});
