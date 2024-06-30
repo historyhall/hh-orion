@@ -53,7 +53,7 @@ jobs:
       # Docker Migrate
       - name: Build Docker - Migrate
         run: |
-          yarn build:migrate && docker build -t historyhall-migrate:$VERSION -t historyhall-migrate:latest-f packages/deploy/docker-migrate/migrate.dockerfile .
+          yarn build:migrate && docker build -t historyhall-migrate:$VERSION -t historyhall-migrate:latest -f packages/deploy/docker-migrate/migrate.dockerfile .
 
       # Docker Push
       - name: Push Docker - Web
