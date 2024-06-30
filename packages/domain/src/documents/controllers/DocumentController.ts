@@ -8,6 +8,12 @@ export class DocumentController {
         this.em = em.getRepository(Document);
     }
 
+    async getById(id: string) {
+        const document = await this.em.findOne({id});
+        if (!document) throw new Error('document not found');
+        return document;
+    }
+
     getAll() {
         return this.em.find({});
     }
