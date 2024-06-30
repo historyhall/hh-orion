@@ -5,8 +5,9 @@ import {useFetch} from "../../server";
 export function Statistics() {
     const {data: documentData, loading: documentLoading} = useFetch<number>('documents/get-total');
     const {data: authorData, loading: authorLoading} = useFetch<number>('authors/get-total');
+    const {data: userData, loading: userLoading} = useFetch<number>('users/get-total');
 
-    if(documentLoading || authorLoading) return <Loading />
+    if(documentLoading || authorLoading || userLoading) return <Loading />
 
     return (
         <>
@@ -17,6 +18,10 @@ export function Statistics() {
             <Statistic>
                 <StatisticValue><Icon name='user' />{authorData}</StatisticValue>
                 <StatisticLabel>Authors</StatisticLabel>
+            </Statistic>
+            <Statistic>
+                <StatisticValue><Icon name='user' />{userData}</StatisticValue>
+                <StatisticLabel>Users</StatisticLabel>
             </Statistic>
         </>
     );
