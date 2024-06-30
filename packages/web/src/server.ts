@@ -18,7 +18,7 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 
 				let url = `${serverURL}/${path}`;
 
-				if(paramList) url += '?' + paramList;
+				if (paramList) url += '?' + paramList;
 				const response = await fetch(url);
 				if (!response.ok) {
 					throw new Error(response.statusText);
@@ -33,6 +33,6 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 			}
 		};
 		fetchData().catch(setError);
-	}, [path, serverURL]);
+	}, [path, serverURL, params]);
 	return {data, loading, error};
 }
