@@ -43,17 +43,17 @@ jobs:
       # Docker Web
       - name: Build Docker - Web
         run: |
-          yarn build:web && docker build -t historyhall-web -f packages/deploy/docker-web/web.dockerfile .
+          yarn build:web && docker build -t historyhall-web:$VERSION -t historyhall-web:latest -f packages/deploy/docker-web/web.dockerfile .
 
       # Docker Server
       - name: Build Docker - Server
         run: |
-          yarn build:server && docker build -t historyhall-server -f packages/deploy/docker-server/server.dockerfile .
+          yarn build:server && docker build -t historyhall-server:$VERSION -t historyhall-server:latest -f packages/deploy/docker-server/server.dockerfile .
 
       # Docker Migrate
       - name: Build Docker - Migrate
         run: |
-          yarn build:migrate && docker build -t historyhall-migrate -f packages/deploy/docker-migrate/migrate.dockerfile .
+          yarn build:migrate && docker build -t historyhall-migrate:$VERSION -t historyhall-migrate:latest-f packages/deploy/docker-migrate/migrate.dockerfile .
 
       # Docker Push
       - name: Push Docker - Web
