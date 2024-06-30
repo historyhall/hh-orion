@@ -34,6 +34,6 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 			}
 		};
 		fetchData().catch(setError);
-	}, [path, serverURL]);
+	}, [path, serverURL, params]);
 	return {data, loading, error};
 }
