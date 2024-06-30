@@ -18,47 +18,21 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	debug.enable(environment.debug);
 
 	app.use(cors(corsOptions));
+	const routes: {path: string; action: () => Promise<any>}[] = [
+		{path: '/migrations/get-all', action: async () => await new controllers.migrationController(em).getAll()},
+		{path: '/documents/get-all', action: async () => await new controllers.documentController(em).getAll()},
+		{path: '/documents/get-total', action: async () => await new controllers.documentController(em).getTotal()},
+		{path: '/authors/get-all', action: async () => await new controllers.authorController(em).getAll()},
+		{path: '/authors/get-total', action: async () => await new controllers.authorController(em).getTotal()},
+		{path: '/users/get-all', action: async () => await new controllers.userController(em).getAll()},
+		{path: '/users/get-total', action: async () => await new controllers.userController(em).getTotal()},
+	];
 
-	app.get('/migrations/get-all', async (req, res) => {
-		d('/migrations/get-all', req.body);
-		const controller = new controllers.migrationController(em);
-		res.status(200).send(await controller.getAll());
-	});
-
-	app.get('/documents/get-all', async (req, res) => {
-		d('/documents/get-all', req.body);
-		const controller = new controllers.documentController(em);
-		res.status(200).send(await controller.getAll());
-	});
-
-	app.get('/documents/get-total', async (req, res) => {
-		d('/documents/get-total', req.body);
-		const controller = new controllers.documentController(em);
-		res.status(200).send((await controller.getTotal()).toString());
-	});
-
-	app.get('/authors/get-all', async (req, res) => {
-		d('/authors/get-all', req.body);
-		const controller = new controllers.authorController(em);
-		res.status(200).send(await controller.getAll());
-	});
-
-	app.get('/authors/get-total', async (req, res) => {
-		d('/authors/get-total', req.body);
-		const controller = new controllers.authorController(em);
-		res.status(200).send((await controller.getTotal()).toString());
-	});
-
-	app.get('/users/get-all', async (req, res) => {
-		d('/users/get-all', req.body);
-		const controller = new controllers.userController(em);
-		res.status(200).send(await controller.getAll());
-	});
-
-	app.get('/users/get-total', async (req, res) => {
-		d('/users/get-total', req.body);
-		const controller = new controllers.userController(em);
-		res.status(200).send((await controller.getTotal()).toString());
+	routes.map(route => {
+		app.get(route.path, async (req, res) => {
+			d(route.path, req.body);
+			res.status(200).send(JSON.stringify(await route.action()));
+		});
 	});
 
 	app.listen(port, () => {
