@@ -13,13 +13,12 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 				let paramList = '';
 
 				params?.forEach((param, index) => {
-					paramList = `${paramList}data${index}=${param}&`
-				})
+					paramList = `${paramList}data${index}=${param}&`;
+				});
 
 				let url = `${serverURL}/${path}`;
 
-				if(paramList) url += "?" + paramList;
-				console.log(url);
+				if(paramList) url += '?' + paramList;
 				const response = await fetch(url);
 				if (!response.ok) {
 					throw new Error(response.statusText);
