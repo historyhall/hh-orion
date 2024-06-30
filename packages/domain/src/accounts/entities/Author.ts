@@ -1,4 +1,4 @@
-import {Collection, Entity, ManyToMany, PrimaryKey, Property} from '@mikro-orm/core';
+import {Check, Collection, Entity, ManyToMany, PrimaryKey, Property} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
 import {User} from "./User";
@@ -11,6 +11,7 @@ export type AuthorEntityConstructor = {
 };
 
 @Entity()
+@Check({name: 'name_or_organization', expression: '(first_name IS NOT NULL AND last_name IS NOT NULL) OR organization IS NOT NULL'})
 export class Author {
     @PrimaryKey({type: 'uuid'})
     id = v4();
@@ -21,11 +22,14 @@ export class Author {
     @Property({type: 'date'})
     createdAt = new Date();
 
-    @Property({type: 'text'})
-    firstName: string;
+    @Property({type: 'text', nullable: true})
+    firstName?: string;
 
-    @Property({type: 'text'})
-    lastName: string;
+    @Property({type: 'text', nullable: true})
+    lastName?: string;
+
+    @Property({type: 'text', nullable: true})
+    organization?: string;
 
     @ManyToMany('User', 'authors', {nullable: true})
     authorizedUsers = new Collection<User>(this);
