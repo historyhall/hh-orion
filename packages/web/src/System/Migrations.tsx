@@ -3,7 +3,7 @@ import {Loading} from "../Layout";
 import {useFetch} from "../server";
 
 export function Migrations() {
-    const {data, loading} = useFetch<{id: string, name: string, index: number, date: Date, success: boolean}[]>('migrations/get-all');
+    const {data, loading} = useFetch<{id: string, name: string, date: Date, success: boolean}[]>('migrations/get-all');
     if(loading) return <Loading />
 
     return (
@@ -11,7 +11,6 @@ export function Migrations() {
             <TableHeader>
                 <TableRow>
                     <TableHeaderCell>Name</TableHeaderCell>
-                    <TableHeaderCell>Index</TableHeaderCell>
                     <TableHeaderCell>Date</TableHeaderCell>
                     <TableHeaderCell>Success</TableHeaderCell>
                 </TableRow>
@@ -22,9 +21,6 @@ export function Migrations() {
                         <TableRow key={migration.id}>
                             <TableCell>
                                 {migration.name}
-                            </TableCell>
-                            <TableCell>
-                                {migration.index}
                             </TableCell>
                             <TableCell>
                                 {migration.date.toString()}
