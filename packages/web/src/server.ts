@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-export function useFetch<T>(path: string): {data?: T; loading: boolean; error?: string} {
+export function useFetch<T>(path: string, params?: string[]): {data?: T; loading: boolean; error?: string} {
 	const serverURL = process.env.REACT_APP_API_URL || 'https://api.historyhall.org';
 	const [data, setData] = useState<any>();
 	const [loading, setLoading] = useState<boolean>(false);
@@ -10,7 +10,17 @@ export function useFetch<T>(path: string): {data?: T; loading: boolean; error?: 
 		const fetchData = async () => {
 			setLoading(true);
 			try {
-				const response = await fetch(`${serverURL}/${path}`);
+				let paramList = '';
+
+				params?.forEach((param, index) => {
+					paramList = `${paramList}data${index}=${param}&`
+				})
+
+				let url = `${serverURL}/${path}`;
+
+				if(paramList) url += "?" + paramList;
+				console.log(url);
+				const response = await fetch(url);
 				if (!response.ok) {
 					throw new Error(response.statusText);
 				}

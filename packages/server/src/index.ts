@@ -18,9 +18,12 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	debug.enable(environment.debug);
 
 	app.use(cors(corsOptions));
-	const routes: {path: string; action: () => Promise<any>}[] = [
+
+	// eslint-disable-next-line no-unused-vars
+	const routes: {path: string; action: (data: any) => Promise<any>}[] = [
 		{path: '/migrations/get-all', action: async () => await new controllers.migrationController(em).getAll()},
 		{path: '/documents/get-all', action: async () => await new controllers.documentController(em).getAll()},
+		{path: '/documents/get-by-id', action: async data => await new controllers.documentController(em).getById(data)},
 		{path: '/documents/get-total', action: async () => await new controllers.documentController(em).getTotal()},
 		{path: '/authors/get-all', action: async () => await new controllers.authorController(em).getAll()},
 		{path: '/authors/get-total', action: async () => await new controllers.authorController(em).getTotal()},
@@ -30,8 +33,12 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 
 	routes.map(route => {
 		app.get(route.path, async (req, res) => {
-			d(route.path, req.body);
-			res.status(200).send(JSON.stringify(await route.action()));
+			try {
+				d(route.path, req.query, req.query.data0);
+				res.status(200).send(JSON.stringify(await route.action(req.query?.data0)));
+			} catch (error) {
+				d(error);
+			}
 		});
 	});
 
