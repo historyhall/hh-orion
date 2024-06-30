@@ -12,7 +12,6 @@ export const environment = {
     dbPort: process.env.DB_PORT || '5432',
     dbRejectUnauthorized: process.env.DB_REJECT_UNAUTHORIZED === 'true',
     dbLogging: process.env.DB_LOGGING === 'true',
-    apiVersion: process.env.API_VERSION,
     corsOrigin: process.env.CORS_ORIGIN,
     debug: process.env.DEUBG || 'hh.*'
 };
