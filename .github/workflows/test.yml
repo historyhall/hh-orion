@@ -85,14 +85,14 @@ jobs:
           yarn test:web:deps
 
       # Migrate
-      - name: Web - Test Lint
+      - name: Migrate - Test Lint
         run: |
           yarn test:migrate:lint
 
-      - name: Web - Test Types
+      - name: Migrate - Test Types
         run: |
           yarn test:migrate:types
 
-      - name: Web - Test Dependencies
+      - name: Migrate - Test Dependencies
         run: |
           yarn test:migrate:deps

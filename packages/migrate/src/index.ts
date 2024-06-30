@@ -23,23 +23,27 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 	}
 
 	await Promise.all(
-		migrations.map(async (migration, index) => {
-			const duplicateMigration = await em.find(Migration, {name: migration.name});
+		migrations.map(async migrationTask => {
+			const duplicateMigration = await em.find(Migration, {name: migrationTask.name, success: true});
 			if (duplicateMigration.length === 0) {
-				d(`Run migration: ${migration.name}`);
-				migration.action.map(async action => {
+				let migration;
+				try {
+					d(`Run migration: ${migrationTask.name}`);
 					await em.transactional(async () => {
-						await em.execute(action);
+						await em.execute(migrationTask.action);
 					});
-				});
 
-				const mig = new Migration({
-					name: migration.name,
-					success: true,
-					index,
-				});
-
-				await em.persistAndFlush(mig);
+					migration = new Migration({
+						name: migrationTask.name,
+						success: true,
+					});
+				} catch {
+					migration = new Migration({
+						name: migrationTask.name,
+						success: false,
+					});
+				}
+				await em.persistAndFlush(migration);
 			}
 		}),
 	);
