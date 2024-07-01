@@ -46,15 +46,21 @@ Issues are tagged with several different labels.
 - Yarn
 
 ### Development Setup
+#### Setup Environment
 1. Clone the repository `git clone https://github.com/historyhall/hh-orion.git`
 2. Copy `packages/server/.env.default` to `packages/server/.env`. The default configuration will work with the included docker-compose file.
 3. Copy `packages/migrate/.env.default` to `packages/migrate/.env`. The default configuration will work with the included docker-compose file.
 4. Start docker containers (postgres, pgadmin) using `docker compose up-d` in `packages/deploy/develop-setup`
    -This step can be skipped if you already have a running instance of postgres
-5. In the project root, run postgres migrations `yarn start:migrations`
-6. Start Server `yarn start:server`
-7. Start Web `yarn start:web`
-8. Start Domain `yarn start:domain`
+5. Run `yarn schema:init` to setup postgres tables
+
+#### Start Project (For KDE uses with Yakuake terminal)
+1. In the project root, run `yarn start:dev:yak`
+
+#### Start Project (Manual)
+1. Start Server `yarn start:server`
+2. Start Web `yarn start:web`
+3. Start Domain `yarn start:domain`
 
 ### Enable Debug Statements
 For browsers, run `localStorage.debug = "hh.*"` in the console.
