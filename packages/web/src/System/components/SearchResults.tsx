@@ -21,6 +21,7 @@ export function SearchResults() {
 
     return (
         <>
+            {data?.length === 0 && <p>No results found...</p>}
             {data?.map(searchResult => {
                 return (
                     <Link to={`/document/${searchResult.id}`} key={searchResult.id} style={{width: '100%', padding: '8px'}}>
