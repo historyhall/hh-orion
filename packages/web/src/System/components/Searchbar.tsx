@@ -10,12 +10,12 @@ export function Searchbar() {
 
     function onSearchClick() {
         if(searchTerm) {
-            navigate(`/search/${searchTerm}`)
+            navigate(`/search/${encodeURIComponent(searchTerm)}`)
         }
     }
     function onSearchKeyChange(event: KeyboardEvent<HTMLInputElement>) {
         if(event.code === 'Enter' && searchTerm) {
-            navigate(`/search/${searchTerm}`)
+            navigate(`/search/${encodeURIComponent(searchTerm)}`)
         }
     }
     return (
