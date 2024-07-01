@@ -37,7 +37,7 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 		if(params) {
 			fetchData().catch(setError);
 		}
-	}, []);
+	}, [JSON.stringify(params)]);
 
 	return {data, loading, error};
 }

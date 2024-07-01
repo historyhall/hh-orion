@@ -19,7 +19,7 @@ export class DocumentController {
     }
 
     getNameLike(term: string) {
-        return this.em.find({name: {$like: `%${term}%`}});
+        return this.em.find({name: {$ilike: `%${term}%`}});
     }
 
     getTotal() {
