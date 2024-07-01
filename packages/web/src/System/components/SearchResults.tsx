@@ -3,7 +3,7 @@ import {useFetch} from "../../server";
 import {Loading} from "../../Layout";
 import {Card, CardContent, CardGroup, Divider, Label, List} from "semantic-ui-react";
 
-type SearchResults = {
+type SearchResultsEntity = {
     id: string;
     version: number;
     createdAt: string;
@@ -15,7 +15,7 @@ type SearchResults = {
 
 export function SearchResults() {
     const {searchTerm} = useParams<{searchTerm: string}>()
-    const {data, loading} = useFetch<SearchResults[]>('documents/get-like-name', [searchTerm || '']);
+    const {data, loading} = useFetch<SearchResultsEntity[]>('documents/get-like-name', [searchTerm || '']);
 
     if(loading) return <Loading />;
 
