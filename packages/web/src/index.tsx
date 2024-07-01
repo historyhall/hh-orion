@@ -8,10 +8,10 @@ import Donate from './Contribute';
 import Document from './Document';
 import Home from './Home';
 import {MainMenu} from './Layout';
+import {Content} from './Layout/Content';
 import Profile from './Profile';
 import System from './System';
 import {Page} from './types';
-import {Content} from './Layout/Content';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

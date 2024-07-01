@@ -1,7 +1,7 @@
 import {JSX} from "react";
-import {BodyHeader} from "./BodyHeader";
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
 import {Header} from "../types";
+import {BodyHeader} from "./BodyHeader";
 
 interface Props {
     main: () => JSX.Element;
