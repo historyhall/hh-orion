@@ -23,6 +23,10 @@ const pages: Record<string, Page> = {
     searchResults: {
         path: '/search/:searchTerm',
         component: Search,
+        header: {
+            name: 'Search',
+            icon: 'search'
+        }
     }
 }
 export default pages;

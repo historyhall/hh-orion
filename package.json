@@ -16,6 +16,7 @@
     "fix:lint": "eslint --fix",
     "fix:organize": "node node_modules/jscodeshift/bin/jscodeshift.js packages  --extensions=tsx,ts --parser=tsx -t tools/organize.ts",
     "fix:package": "sort-package-json \"package.json\" \"packages/*/package.json\"",
+    "start:dev:yak": "./packages/deploy/develop-setup/start-yak.sh core",
     "start:domain": "cd ./packages/domain/ && yarn start",
     "start:migrate": "cd ./packages/migrate/ && yarn start",
     "start:server": "cd ./packages/server/ && yarn start",
