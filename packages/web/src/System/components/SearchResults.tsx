@@ -20,7 +20,7 @@ export function SearchResults() {
     if(loading) return <Loading />;
 
     return (
-        <CardGroup>
+        <>
             {data?.map(searchResult => {
                 return (
                     <Link to={`/document/${searchResult.id}`} key={searchResult.id} style={{width: '100%', padding: '8px'}}>
@@ -42,6 +42,6 @@ export function SearchResults() {
                     </Link>
                 );
             })}
-        </CardGroup>
+        </>
     )
 }
