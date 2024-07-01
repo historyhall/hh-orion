@@ -6,6 +6,7 @@ export type Page = {
 	menu?: Menu;
 	path: string;
 	component: () => JSX.Element;
+	sidebar?: () => JSX.Element;
 };
 
 export type Header = {
