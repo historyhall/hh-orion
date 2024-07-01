@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
-import {useFetch} from "../../server";
-import {Loading} from "../../Layout";
 import {Card, CardContent, CardGroup, Divider, Label, List} from "semantic-ui-react";
+import {Loading} from "../../Layout";
+import {useFetch} from "../../server";
 
 type SearchResultsEntity = {
     id: string;

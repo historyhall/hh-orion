@@ -1,6 +1,6 @@
 import {Grid} from "semantic-ui-react";
-import {Searchbar} from "./components/Searchbar";
 import {SearchResults} from "./components/SearchResults";
+import {Searchbar} from "./components/Searchbar";
 
 export function Search() {
     return (

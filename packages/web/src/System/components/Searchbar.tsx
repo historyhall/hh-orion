@@ -1,7 +1,7 @@
-import {Icon, Input} from "semantic-ui-react";
 import {useState} from "react";
 import {KeyboardEvent} from "react";
 import {useNavigate} from "react-router-dom";
+import {Icon, Input} from "semantic-ui-react";
 
 export function Searchbar() {
     const navigate = useNavigate();

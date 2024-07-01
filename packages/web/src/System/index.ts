@@ -1,7 +1,7 @@
 import {Page} from "../types";
 import {Migrations} from "./Migrations";
-import {System} from "./System";
 import {Search} from "./Search";
+import {System} from "./System";
 
 const pages: Record<string, Page> = {
     system: {
