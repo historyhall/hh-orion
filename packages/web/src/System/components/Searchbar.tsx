@@ -1,10 +1,11 @@
 import {useState} from "react";
 import {KeyboardEvent} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {Icon, Input} from "semantic-ui-react";
 
 export function Searchbar() {
     const navigate = useNavigate();
+    const {searchTerm: urlSearchTerm} = useParams<{searchTerm: string}>()
 
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -20,7 +21,7 @@ export function Searchbar() {
     }
     return (
         <Input
-            value={searchTerm}
+            value={searchTerm || urlSearchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
             placeholder='Search...'
             fluid
