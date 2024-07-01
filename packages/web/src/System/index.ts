@@ -1,6 +1,7 @@
 import {Page} from "../types";
 import {Migrations} from "./Migrations";
 import {System} from "./System";
+import {Search} from "./Search";
 
 const pages: Record<string, Page> = {
     system: {
@@ -18,6 +19,10 @@ const pages: Record<string, Page> = {
             name: 'Migrations',
             icon: 'database'
         }
+    },
+    searchResults: {
+        path: '/search/:searchTerm',
+        component: Search,
     }
 }
 export default pages;

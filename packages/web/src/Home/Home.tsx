@@ -1,22 +1,8 @@
-import {Grid, GridColumn, GridRow, Header, Icon, Input} from "semantic-ui-react";
+import {Grid, GridColumn, GridRow, Header} from "semantic-ui-react";
 import {Statistics} from "./components/Statistics";
-import {useNavigate} from 'react-router-dom';
-import {KeyboardEvent, useState} from "react";
+import {Searchbar} from "../System/components/Searchbar";
 
 export function Home() {
-    const navigate = useNavigate();
-    const [searchTerm, setSearchTerm] = useState("");
-
-    function onSearchClick() {
-        if(searchTerm) {
-            navigate(`/search/${searchTerm}`)
-        }
-    }
-    function onSearchKeyChange(event: KeyboardEvent<HTMLInputElement>) {
-        if(event.code === 'Enter' && searchTerm) {
-            navigate(`/search/${searchTerm}`)
-        }
-    }
 
     return (
         <Grid>
@@ -37,7 +23,7 @@ export function Home() {
             </GridRow>
             <GridRow>
                 <GridColumn>
-                    <Input value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} placeholder='Search...' fluid icon={<Icon name="search" link circular onClick={onSearchClick}/>} onKeyPress={onSearchKeyChange} />
+                    <Searchbar />
                 </GridColumn>
             </GridRow>
             <GridRow>

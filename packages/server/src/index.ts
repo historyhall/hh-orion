@@ -25,6 +25,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		{path: '/documents/get-all', action: async () => await new controllers.documentController(em).getAll()},
 		{path: '/documents/get-by-id', action: async data => await new controllers.documentController(em).getById(data)},
 		{path: '/documents/get-total', action: async () => await new controllers.documentController(em).getTotal()},
+		{path: '/documents/get-like-name', action: async data => await new controllers.documentController(em).getNameLike(data)},
 		{path: '/authors/get-all', action: async () => await new controllers.authorController(em).getAll()},
 		{path: '/authors/get-total', action: async () => await new controllers.authorController(em).getTotal()},
 		{path: '/users/get-all', action: async () => await new controllers.userController(em).getAll()},
@@ -34,7 +35,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	routes.map(route => {
 		app.get(route.path, async (req, res) => {
 			try {
-				d(route.path, req.query, req.query.data0);
+				d(route.path, req.query);
 				res.status(200).send(JSON.stringify(await route.action(req.query?.data0)));
 			} catch (error) {
 				d(error);
