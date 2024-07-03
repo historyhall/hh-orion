@@ -31,6 +31,7 @@ core () {
   runCommand $tid "yarn start:domain"
   runCommand $tid "yarn"
   tid=$(newTabWithNamePath "HH Server" "$DIR")
+  runCommand $tid "yarn start:server"
   tid=$(newTabWithNamePath "HH Migrate" "$DIR")
   runCommand $tid "cd ../migrate"
 }

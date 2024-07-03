@@ -12,27 +12,25 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 	});
 
 	useEffect(() => {
-		if (paramList) {
-			setLoading(true);
-			try {
-				let url = `${serverURL}/${path}`;
-				if (paramList) url += '?' + paramList;
+		setLoading(true);
+		try {
+			let url = `${serverURL}/${path}`;
+			if (paramList) url += '?' + paramList;
 
-				fetch(url).then(response => {
-					if (!response.ok) {
-						setError(response.statusText);
-					} else {
-						response.json().then(json => {
-							setData(json);
-							setError(undefined);
-						});
-					}
-				});
-			} catch (error) {
-				setError(`${error} Could not Fetch Data `);
-			} finally {
-				setLoading(false);
-			}
+			fetch(url).then(response => {
+				if (!response.ok) {
+					setError(response.statusText);
+				} else {
+					response.json().then(json => {
+						setData(json);
+						setError(undefined);
+					});
+				}
+			});
+		} catch (error) {
+			setError(`${error} Could not Fetch Data `);
+		} finally {
+			setLoading(false);
 		}
 	}, [paramList, setError, path, serverURL]);
 
