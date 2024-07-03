@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {BodyHeader, Loading} from "../Layout";
-import {useFetch} from "../server";
+import {useFetch} from "../useFetch";
 
 export function Document() {
     const {documentId} = useParams<{documentId: string}>()
