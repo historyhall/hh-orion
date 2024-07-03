@@ -19,4 +19,8 @@ export class UserController {
     login(email: string) {
         return this.em.find({email});
     }
+
+    register(email: string) {
+        return this.em.find({email});
+    }
 }

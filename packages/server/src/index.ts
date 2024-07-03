@@ -29,6 +29,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		{path: '/authors/get-all', action: async () => await new controllers.authorController(em).getAll()},
 		{path: '/authors/get-total', action: async () => await new controllers.authorController(em).getTotal()},
 		{path: '/users/login', action: async data => await new controllers.userController(em).login(data)},
+		{path: '/users/register', action: async data => await new controllers.userController(em).register(data)},
 		{path: '/users/get-all', action: async () => await new controllers.userController(em).getAll()},
 		{path: '/users/get-total', action: async () => await new controllers.userController(em).getTotal()},
 	];
