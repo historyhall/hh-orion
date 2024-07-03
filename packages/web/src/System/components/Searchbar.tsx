@@ -14,12 +14,13 @@ export function Searchbar() {
             navigate(`/search/${encodeURIComponent(searchTerm)}`)
         }
     }
+
     function onSearchKeyChange(event: KeyboardEvent<HTMLInputElement>) {
-        console.log(event)
         if(event.key === 'Enter' && searchTerm) {
             navigate(`/search/${encodeURIComponent(searchTerm)}`)
         }
     }
+
     return (
         <Input
             value={searchTerm || urlSearchTerm}
