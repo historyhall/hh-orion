@@ -15,7 +15,8 @@ export function Searchbar() {
         }
     }
     function onSearchKeyChange(event: KeyboardEvent<HTMLInputElement>) {
-        if(event.code === 'Enter' && searchTerm) {
+        console.log(event)
+        if(event.key === 'Enter' && searchTerm) {
             navigate(`/search/${encodeURIComponent(searchTerm)}`)
         }
     }
