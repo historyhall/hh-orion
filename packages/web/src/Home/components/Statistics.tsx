@@ -1,6 +1,6 @@
 import {Icon, Statistic, StatisticLabel, StatisticValue} from 'semantic-ui-react';
 import {Loading} from "../../Layout";
-import {useFetch} from "../../server";
+import {useFetch} from "../../useFetch";
 
 export function Statistics() {
     const {data: documentData, loading: documentLoading} = useFetch<number>('documents/get-total');
