@@ -15,4 +15,12 @@ export class UserController {
     getTotal() {
         return this.em.count({});
     }
+
+    login(email: string) {
+        return this.em.find({email});
+    }
+
+    register(email: string) {
+        return this.em.find({email});
+    }
 }

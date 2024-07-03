@@ -8,6 +8,8 @@ const d = debug('hh.domain.accounts.entities.User');
 export type MemberEntityConstructor = {
 	firstName: string;
 	lastName: string;
+	email: string;
+	password: string;
 };
 
 @Entity()
@@ -27,12 +29,20 @@ export class User {
 	@Property({type: 'text'})
 	lastName: string;
 
+	@Property({type: 'text'})
+	email: string;
+
+	@Property({type: 'text'})
+	password: string;
+
 	@ManyToMany('Author')
 	authors = new Collection<Author>(this);
 
-	constructor({firstName, lastName}: MemberEntityConstructor) {
+	constructor({firstName, lastName, email, password}: MemberEntityConstructor) {
 		d('Domain: Create New User');
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
 	}
 }
