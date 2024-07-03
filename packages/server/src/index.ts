@@ -3,9 +3,12 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
-import {controllers} from 'hh-orion-domain/dist';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
+import {Accounts} from './accounts';
+import {Documents} from './documents';
+import {System} from './System';
+import {Action} from './types';
 
 const d = debug('hh.server');
 
@@ -19,25 +22,12 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 
 	app.use(cors(corsOptions));
 
-	// eslint-disable-next-line no-unused-vars
-	const routes: {path: string; action: (data: any) => Promise<any>}[] = [
-		{path: '/migrations/get-all', action: async () => await new controllers.migrationController(em).getAll()},
-		{path: '/documents/get-all', action: async () => await new controllers.documentController(em).getAll()},
-		{path: '/documents/get-by-id', action: async data => await new controllers.documentController(em).getById(data)},
-		{path: '/documents/get-total', action: async () => await new controllers.documentController(em).getTotal()},
-		{path: '/documents/get-like-name', action: async data => await new controllers.documentController(em).getNameLike(data)},
-		{path: '/authors/get-all', action: async () => await new controllers.authorController(em).getAll()},
-		{path: '/authors/get-total', action: async () => await new controllers.authorController(em).getTotal()},
-		{path: '/users/login', action: async data => await new controllers.userController(em).login(data)},
-		{path: '/users/register', action: async data => await new controllers.userController(em).register(data)},
-		{path: '/users/get-all', action: async () => await new controllers.userController(em).getAll()},
-		{path: '/users/get-total', action: async () => await new controllers.userController(em).getTotal()},
-	];
+	const routes: Action[] = [...Accounts(em), ...Documents(em), ...System(em)];
 
 	routes.map(route => {
 		app.get(route.path, async (req, res) => {
+			d(route.path, req.query);
 			try {
-				d(route.path, req.query);
 				res.status(200).send(JSON.stringify(await route.action(req.query?.data0)));
 			} catch (error) {
 				d(error);
