@@ -3,11 +3,11 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
+import {System} from './System';
+import {Accounts} from './accounts';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
-import {Accounts} from './accounts';
 import {Documents} from './documents';
-import {System} from './System';
 import {Action} from './types';
 
 const d = debug('hh.server');
