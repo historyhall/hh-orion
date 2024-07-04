@@ -1,8 +1,8 @@
+import {schema} from "hh-orion-schema/dist";
 import {Link, useParams} from "react-router-dom";
 import {Card, CardContent, Divider, Label, List} from "semantic-ui-react";
 import {Loading} from "../../Layout";
 import {useFetch} from "../../useFetch";
-import {schema} from "hh-orion-schema/dist";
 
 type SearchResultsEntity = {
     id: string;

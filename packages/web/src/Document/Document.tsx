@@ -1,7 +1,7 @@
+import {schema} from "hh-orion-schema/dist";
 import {useParams} from "react-router-dom";
 import {BodyHeader, Loading} from "../Layout";
 import {useFetch} from "../useFetch";
-import {schema} from "hh-orion-schema/dist";
 
 export function Document() {
     const {documentId} = useParams<{documentId: string}>()

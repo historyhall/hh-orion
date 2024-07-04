@@ -1,7 +1,7 @@
 import {EntityManager} from "@mikro-orm/core";
 import {controllers} from "hh-orion-domain/dist";
-import {Action} from "../types";
 import {schema} from "hh-orion-schema/dist";
+import {Action} from "../types";
 
 export function Author(em: EntityManager): Action[] {
     return [

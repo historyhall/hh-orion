@@ -1,7 +1,7 @@
+import {schema} from "hh-orion-schema/dist";
 import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from "semantic-ui-react";
 import {Loading} from "../Layout";
 import {useFetch} from "../useFetch";
-import {schema} from "hh-orion-schema/dist";
 
 export function Migrations() {
     const {data, loading} = useFetch<{id: string, name: string, date: Date, success: boolean}[]>(schema.system.migration.getAll.route);

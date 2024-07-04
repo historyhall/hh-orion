@@ -1,7 +1,7 @@
+import {schema} from "hh-orion-schema/dist";
 import {Icon, Statistic, StatisticLabel, StatisticValue} from 'semantic-ui-react';
 import {Loading} from "../../Layout";
 import {useFetch} from "../../useFetch";
-import {schema} from "hh-orion-schema/dist";
 
 export function Statistics() {
     const {data: documentData, loading: documentLoading} = useFetch<number>(schema.documents.document.getTotal.route);
