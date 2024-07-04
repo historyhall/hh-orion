@@ -1,9 +1,9 @@
 
 export const author = {
     getAll: {
-        route: ''
+        route: 'authors/get-all'
     },
     getTotal: {
-        route: '',
+        route: 'authors/get-total',
     }
 }
