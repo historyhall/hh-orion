@@ -5,6 +5,6 @@ import {schema} from "hh-orion-schema/dist";
 
 export function Migration(em: EntityManager): Action[] {
     return [
-        {route: schema.system.migration.getAll, action: async () => await new controllers.migrationController(em).getAll()}
+        {route: schema.system.migration.getAll.route, action: async () => await new controllers.migrationController(em).getAll()}
     ]
 }

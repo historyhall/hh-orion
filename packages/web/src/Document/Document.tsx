@@ -1,10 +1,11 @@
 import {useParams} from "react-router-dom";
 import {BodyHeader, Loading} from "../Layout";
 import {useFetch} from "../useFetch";
+import {schema} from "hh-orion-schema/dist";
 
 export function Document() {
     const {documentId} = useParams<{documentId: string}>()
-    const {data, loading} = useFetch<{name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string}>('documents/get-by-id', [documentId || '']);
+    const {data, loading} = useFetch<{name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string}>(schema.documents.document.getById.route, [documentId || '']);
 
     if(loading) return <Loading />
     return (

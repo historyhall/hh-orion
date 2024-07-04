@@ -2,6 +2,7 @@ import {Link, useParams} from "react-router-dom";
 import {Card, CardContent, Divider, Label, List} from "semantic-ui-react";
 import {Loading} from "../../Layout";
 import {useFetch} from "../../useFetch";
+import {schema} from "hh-orion-schema/dist";
 
 type SearchResultsEntity = {
     id: string;
@@ -15,7 +16,7 @@ type SearchResultsEntity = {
 
 export function SearchResults() {
     const {searchTerm} = useParams<{searchTerm: string}>()
-    const {data, loading} = useFetch<SearchResultsEntity[]>('documents/get-like-name', [searchTerm || '']);
+    const {data, loading} = useFetch<SearchResultsEntity[]>(schema.documents.document.getNameLike.route, [searchTerm || '']);
 
     if(loading) return <Loading />;
 
