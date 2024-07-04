@@ -20,7 +20,7 @@ ADD packages/domain/package.json /app/packages/domain
 RUN yarn install --prod
 
 # Add built code
-ADD packages/schema/dist/ /app/schema/domain
+ADD packages/schema/dist/ /app/packages/schema
 ADD packages/domain/dist/ /app/packages/domain
 ADD packages/server/dist/ /app/packages/server
 ADD packages/domain/dist/ /app/packages/server/node_modules/hh-orion-domain/dist
