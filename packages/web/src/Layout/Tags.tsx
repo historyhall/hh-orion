@@ -8,7 +8,7 @@ interface Props {
 export function Tags({tags}: Props) {
     return (
         <>
-            {tags.map(tag => <Label key={tag.id}>{tag.text}</Label>)}
+            {tags.map(tag => <Label icon={tag.icon} key={tag.id}>{tag.text}</Label>)}
         </>
     )
 }

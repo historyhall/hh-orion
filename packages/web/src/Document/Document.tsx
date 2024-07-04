@@ -7,14 +7,15 @@ import {useFetch} from "../useFetch";
 
 export function Document() {
     const {documentId} = useParams<{documentId: string}>()
-    const {data, loading} = useFetch<{authors: {id: string, firstName: string, secondName: string, organization: string}[], name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string}>(schema.documents.document.getById.route, [documentId || '']);
+    const {data, loading} = useFetch<{authors: {id: string, firstName: string, lastName: string, organization: string}[], name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string}>(schema.documents.document.getById.route, [documentId || '']);
 
     if(loading) return <Loading />
+    console.log(data?.authors);
 
-    function getAuthorName(author: {firstName: string, secondName: string, organization: string}) {
+    function getAuthorName(author: {firstName: string, lastName: string, organization: string}) {
         if(author.firstName) {
             let name = author.firstName;
-            if(author.secondName) name += ` ${author.secondName}`
+            if(author.lastName) name += ` ${author.lastName}`
             if(author.organization) name += ` (${author.organization})`
             return name;
         }
