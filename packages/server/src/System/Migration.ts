@@ -4,6 +4,6 @@ import {Action} from "../types";
 
 export function Migration(em: EntityManager): Action[] {
     return [
-        {path: '/migrations/get-all', action: async () => await new controllers.migrationController(em).getAll()}
+        {route: '/migrations/get-all', action: async () => await new controllers.migrationController(em).getAll()}
     ]
 }

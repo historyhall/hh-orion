@@ -1,4 +1,4 @@
 export type Action = {
-	path: string;
+	route: string;
 	action: (type: any) => Promise<any>;
 };

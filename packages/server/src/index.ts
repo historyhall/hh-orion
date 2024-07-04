@@ -22,13 +22,13 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 
 	app.use(cors(corsOptions));
 
-	const routes: Action[] = [...Accounts(em), ...Documents(em), ...System(em)];
+	const endpoints: Action[] = [...Accounts(em), ...Documents(em), ...System(em)];
 
-	routes.map(route => {
-		app.get(route.path, async (req, res) => {
-			d(route.path, req.query);
+	endpoints.map(endpoint => {
+		app.get(endpoint.route, async (req, res) => {
+			d(endpoint.route, req.query);
 			try {
-				res.status(200).send(JSON.stringify(await route.action(req.query?.data0)));
+				res.status(200).send(JSON.stringify(await endpoint.action(req.query?.data0)));
 			} catch (error) {
 				d(error);
 			}
