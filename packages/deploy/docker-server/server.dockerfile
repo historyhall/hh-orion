@@ -23,6 +23,7 @@ RUN yarn install --prod
 ADD packages/schema/dist/ /app/packages/schema
 ADD packages/domain/dist/ /app/packages/domain
 ADD packages/server/dist/ /app/packages/server
+ADD packages/schema/dist/ /app/packages/schema/node_modules/hh-orion-schema/dist
 ADD packages/domain/dist/ /app/packages/server/node_modules/hh-orion-domain/dist
 
 ADD packages/deploy/docker-server/server.sh /app

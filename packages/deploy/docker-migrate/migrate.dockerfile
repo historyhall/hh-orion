@@ -20,9 +20,10 @@ ADD packages/domain/package.json /app/packages/domain
 RUN yarn install --prod
 
 # Add built code
-ADD packages/schema/dist/ /app/schema/domain
+ADD packages/schema/dist/ /app/packages/schema
 ADD packages/domain/dist/ /app/packages/domain
 ADD packages/migrate/dist/ /app/packages/migrate
+ADD packages/schema/dist/ /app/packages/migrate/node_modules/hh-orion-schema/dist
 ADD packages/domain/dist/ /app/packages/migrate/node_modules/hh-orion-domain/dist
 
 ADD packages/deploy/docker-migrate/migrate.sh /app
