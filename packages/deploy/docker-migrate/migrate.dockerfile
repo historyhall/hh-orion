@@ -6,11 +6,13 @@ RUN apt-get update
 
 # Create folders
 RUN mkdir -p /app/packages/migrate && \
-    mkdir -p /app/packages/domain
+    mkdir -p /app/packages/domain && \
+    mkdir -p /app/packages/schema
 WORKDIR /app
 
 # Add package.json files
 ADD packages/deploy/docker-common/package.json /app
+ADD packages/schema/package.json /app/packages/schema
 ADD packages/migrate/package.json /app/packages/migrate
 ADD packages/domain/package.json /app/packages/domain
 
@@ -18,6 +20,7 @@ ADD packages/domain/package.json /app/packages/domain
 RUN yarn install --prod
 
 # Add built code
+ADD packages/schema/dist/ /app/schema/domain
 ADD packages/domain/dist/ /app/packages/domain
 ADD packages/migrate/dist/ /app/packages/migrate
 ADD packages/domain/dist/ /app/packages/migrate/node_modules/hh-orion-domain/dist
