@@ -1,11 +1,12 @@
+import {schema} from "hh-orion-schema/dist";
 import {Icon, Statistic, StatisticLabel, StatisticValue} from 'semantic-ui-react';
 import {Loading} from "../../Layout";
 import {useFetch} from "../../useFetch";
 
 export function Statistics() {
-    const {data: documentData, loading: documentLoading} = useFetch<number>('documents/get-total');
-    const {data: authorData, loading: authorLoading} = useFetch<number>('authors/get-total');
-    const {data: userData, loading: userLoading} = useFetch<number>('users/get-total');
+    const {data: documentData, loading: documentLoading} = useFetch<number>(schema.documents.document.getTotal.route);
+    const {data: authorData, loading: authorLoading} = useFetch<number>(schema.accounts.author.getTotal.route);
+    const {data: userData, loading: userLoading} = useFetch<number>(schema.accounts.user.getTotal.route);
 
     if(documentLoading || authorLoading || userLoading) return <Loading />
 

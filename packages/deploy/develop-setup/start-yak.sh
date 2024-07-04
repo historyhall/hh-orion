@@ -27,9 +27,10 @@ core () {
   local tid
   tid=$(newTabWithNamePath "HH Web" "$DIR")
   runCommand $tid "yarn start:web"
+  tid=$(newTabWithNamePath "HH Schema" "$DIR")
+  runCommand $tid "yarn start:schema"
   tid=$(newTabWithNamePath "HH Domain" "$DIR")
   runCommand $tid "yarn start:domain"
-  runCommand $tid "yarn"
   tid=$(newTabWithNamePath "HH Server" "$DIR")
   runCommand $tid "yarn start:server"
   tid=$(newTabWithNamePath "HH Migrate" "$DIR")

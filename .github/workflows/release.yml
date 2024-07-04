@@ -31,6 +31,15 @@ jobs:
         run: |
           yarn
 
+      # Build Schema
+      - name: Build Docker - Schema
+        run: |
+          yarn build:schema
+
+      - name: Force installation of Schema package
+        run: |
+          yarn --force
+
       # Build Domain
       - name: Build Docker - Domain
         run: |

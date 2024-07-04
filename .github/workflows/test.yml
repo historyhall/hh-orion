@@ -29,7 +29,12 @@ jobs:
         run: |
           yarn
 
-      - name: Build domain
+      - name: Build Schema
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          yarn build:schema && yarn
+
+      - name: Build Domain
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           yarn build:domain && yarn
@@ -70,6 +75,19 @@ jobs:
       - name: Server - Test Dependencies
         run: |
           yarn test:server:deps
+
+      # Schema
+      - name: Schema - Test Lint
+        run: |
+          yarn test:schema:lint
+
+      - name: Schema - Test Types
+        run: |
+          yarn test:schema:types
+
+      - name: Schema - Test Dependencies
+        run: |
+          yarn test:schema:deps
 
       # Web
       - name: Web - Test Lint
