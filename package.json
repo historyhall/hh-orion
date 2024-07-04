@@ -11,7 +11,7 @@
   "scripts": {
     "build:domain": "cd ./packages/domain/ && yarn build",
     "build:migrate": "cd ./packages/migrate/ && yarn build",
-    "build:domain": "cd ./packages/schema/ && yarn build",
+    "build:schema": "cd ./packages/schema/ && yarn build",
     "build:server": "cd ./packages/server/ && yarn build",
     "build:web": "cd ./packages/web/ && yarn build",
     "fix:lint": "eslint --fix",
