@@ -11,6 +11,7 @@ export type Page = {
 
 export type Header = {
 	name: string;
+	description?: string;
 	icon: SemanticICONS;
 };
 
@@ -26,4 +27,10 @@ type SecondaryMenuItem = {
 	name: string;
 	icon: SemanticICONS;
 	path: string;
+};
+
+export type Tag = {
+	id: string;
+	icon: SemanticICONS;
+	text: string;
 };
