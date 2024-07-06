@@ -1,6 +1,6 @@
 import {Accounts} from './accounts';
-import {System} from './system';
 import {Documents} from './documents';
+import {System} from './system';
 
 export default {
 	Accounts,
