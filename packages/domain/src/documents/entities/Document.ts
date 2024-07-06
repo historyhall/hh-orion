@@ -27,7 +27,7 @@ export class Document {
     @Property({type: 'text'})
     name: String;
 
-    @Property({type: 'content'})
+    @Property({type: 'text'})
     content: String;
 
     @Property({type: 'number'})
