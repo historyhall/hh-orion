@@ -1,9 +1,9 @@
-import {accounts} from './accounts';
-import {documents} from './documents';
-import {system} from './system';
+import {Accounts} from './accounts';
+import {System} from './system';
+import {Documents} from './documents';
 
-export const schema = {
-	accounts,
-	documents,
-	system,
+export default {
+	Accounts,
+	Documents,
+	System,
 };

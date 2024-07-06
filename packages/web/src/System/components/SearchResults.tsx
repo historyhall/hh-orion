@@ -1,4 +1,4 @@
-import {schema} from "hh-orion-schema/dist";
+import Schema from "hh-orion-schema/dist";
 import {Link, useParams} from "react-router-dom";
 import {Card, CardContent, Divider, Label, List} from "semantic-ui-react";
 import {Loading} from "../../Layout";
@@ -16,7 +16,7 @@ type SearchResultsEntity = {
 
 export function SearchResults() {
     const {searchTerm} = useParams<{searchTerm: string}>()
-    const {data, loading} = useFetch<SearchResultsEntity[]>(schema.documents.document.getNameLike.route, [searchTerm || '']);
+    const {data, loading} = useFetch<SearchResultsEntity[]>(Schema.Documents.Document.routes.getNameLike, [searchTerm || '']);
 
     if(loading) return <Loading />;
 
