@@ -1,7 +1,5 @@
-import {routes as migrationRoutes} from './migration';
+import {Migration} from './migration';
 
-export namespace System {
-    export namespace Migration {
-        export const routes = migrationRoutes;
-    }
+export default {
+    Migration,
 }

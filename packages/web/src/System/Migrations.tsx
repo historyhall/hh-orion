@@ -4,7 +4,7 @@ import {Loading} from "../Layout";
 import {useFetch} from "../useFetch";
 
 export function Migrations() {
-    const {data, loading} = useFetch<{id: string, name: string, date: Date, success: boolean}[]>(Schema.System.Migration.routes.getAll);
+    const {data, loading} = useFetch<Schema.System.Migration.GetAll.Response>(Schema.System.Migration.GetAll.route);
     if(loading) return <Loading />
 
     return (
