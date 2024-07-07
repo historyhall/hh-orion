@@ -1,14 +1,6 @@
-export const document = {
-    getAll: {
-        route: 'documents/get-all'
-    },
-    getById: {
-        route: 'documents/get-by-id',
-    },
-    getTotal: {
-        route: 'documents/get-total',
-    },
-    getNameLike: {
-        route: 'documents/get-name-like',
-    }
-}
+export const routes = {
+    getAll: 'documents/get-all',
+    getById: 'documents/get-by-id',
+    getTotal: 'documents/get-total',
+    getNameLike: 'documents/get-name-like',
+};

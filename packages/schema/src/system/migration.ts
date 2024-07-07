@@ -1,5 +1,3 @@
-export const migration = {
-    getAll: {
-        route: 'migrations/get-all'
-    },
-}
+export const routes = {
+    getAll: 'migrations/get-all',
+};
