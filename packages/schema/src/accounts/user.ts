@@ -1,14 +1,6 @@
-export const user = {
-    login: {
-        route: 'users/login'
-    },
-    register: {
-        route: 'users/register',
-    },
-    getAll: {
-        route: 'users/get-all',
-    },
-    getTotal: {
-        route: 'users/get-total',
-    }
+export const routes = {
+    login: 'users/login',
+    register: 'users/register',
+    getAll: 'users/get-all',
+    getTotal:'users/get-total',
 }

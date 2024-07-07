@@ -1,5 +1,7 @@
-import {document} from "./document";
+import {routes as documentRoutes} from './document';
 
-export const documents = {
-    document
+export namespace Documents {
+    export namespace Document {
+        export const routes = documentRoutes;
+    }
 }
