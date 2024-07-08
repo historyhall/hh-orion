@@ -39,7 +39,9 @@ export function Document() {
             <Grid padded>
                 <GridRow>
                     <GridColumn>
-                        {data?.content}
+                        <div style={{whiteSpace: 'pre-wrap'}}>
+                            {data?.content}
+                        </div>
                     </GridColumn>
                 </GridRow>
             </Grid>
