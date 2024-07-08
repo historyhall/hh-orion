@@ -8,6 +8,5 @@ export function Document(em: EntityManager): Action[] {
         {route: Schema.Documents.Document.routes.getAll, action: async () => await new controllers.documentController(em).getAll()},
         {route: Schema.Documents.Document.routes.getById, action: async data => await new controllers.documentController(em).getById(data)},
         {route: Schema.Documents.Document.routes.getTotal, action: async () => await new controllers.documentController(em).getTotal()},
-        {route: Schema.Documents.Document.routes.getNameLike, action: async data => await new controllers.documentController(em).getNameLike(data)},
     ];
 }
