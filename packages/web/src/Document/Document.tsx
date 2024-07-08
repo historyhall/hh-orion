@@ -11,7 +11,6 @@ export function Document() {
     const {data, loading} = useFetch<{authors: {id: string, firstName: string, lastName: string, organization: string}[], name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string, content: string}>(Schema.Documents.Document.routes.getById, [documentId || '']);
 
     if(loading) return <Loading />
-    console.log(data?.authors);
 
     function getAuthorName(author: {firstName: string, lastName: string, organization: string}) {
         if(author.firstName) {
