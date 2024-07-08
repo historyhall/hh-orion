@@ -3,7 +3,7 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
-import {System} from './System';
+import {System} from './system';
 import {Accounts} from './accounts';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
