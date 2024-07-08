@@ -8,7 +8,7 @@ export class SearchController {
         this.em = em.getRepository(Migration);
     }
 
-    search() {
+    query() {
     }
     
     indexDocuments() {
