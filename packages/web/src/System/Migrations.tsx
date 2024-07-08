@@ -19,7 +19,7 @@ export function Migrations() {
             <TableBody>
                 {data?.map(migration => {
                     return (
-                        <TableRow key={migration.id}>
+                        <TableRow key={migration.id} positive={migration.success} negative={!migration.success}>
                             <TableCell>
                                 {migration.name}
                             </TableCell>

@@ -12,3 +12,4 @@ node_modules
 # Build
 dist
 /packages/deploy/server-backup/history_hall.sql
+*.pdf

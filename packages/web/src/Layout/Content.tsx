@@ -10,7 +10,7 @@ interface Props {
 }
 
 export function Content(page: Props) {
-    const contentWidth = page.sidebar ? 14 : 16
+    const contentWidth = page.sidebar ? 13 : 16
     return (
         <Grid padded stackable divided>
             <GridRow>
@@ -18,7 +18,7 @@ export function Content(page: Props) {
                     {page.header && <BodyHeader header={page.header} />}
                     <page.main />
                 </GridColumn>
-                {page?.sidebar && <GridColumn width={2}>Sidebar</GridColumn>}
+                {page?.sidebar && <GridColumn width={3}><page.sidebar /></GridColumn>}
             </GridRow>
         </Grid>
     )

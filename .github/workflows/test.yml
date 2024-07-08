@@ -25,17 +25,14 @@ jobs:
           key: ${{ runner.os }}-nm-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           yarn
 
       - name: Build Schema
-        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           yarn build:schema && yarn
 
       - name: Build Domain
-        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           yarn build:domain && yarn
 
