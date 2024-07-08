@@ -5,7 +5,7 @@ import {Action} from "../types";
 
 export function Search(em: EntityManager): Action[] {
     return [
-        {route: Schema.System.Search.routes.search, action: async () => await new controllers.searchController(em).search()},
+        {route: Schema.System.Search.routes.querry, action: async () => await new controllers.searchController(em).querry()},
         {route: Schema.System.Search.routes.indexDocuments, action: async () => await new controllers.searchController(em).indexDocuments()}
     ]
 }
