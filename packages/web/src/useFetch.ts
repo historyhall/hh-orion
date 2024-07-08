@@ -32,7 +32,7 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 		} finally {
 			setLoading(false);
 		}
-	}, [paramList, setError, path, environment.serverURL]);
+	}, [paramList, setError, path]);
 
 	return {data, loading, error};
 }
