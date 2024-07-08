@@ -4,10 +4,11 @@ import {BodyHeader, Loading} from "../Layout";
 import {Tags} from "../Layout/Tags";
 import {Tag} from "../types";
 import {useFetch} from "../useFetch";
+import {Grid, GridColumn, GridRow} from "semantic-ui-react";
 
 export function Document() {
     const {documentId} = useParams<{documentId: string}>()
-    const {data, loading} = useFetch<{authors: {id: string, firstName: string, lastName: string, organization: string}[], name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string}>(schema.documents.document.getById.route, [documentId || '']);
+    const {data, loading} = useFetch<{authors: {id: string, firstName: string, lastName: string, organization: string}[], name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string, content: string}>(schema.documents.document.getById.route, [documentId || '']);
 
     if(loading) return <Loading />
     console.log(data?.authors);
@@ -36,6 +37,13 @@ export function Document() {
         <>
             <BodyHeader header={{name: data?.name || '', icon: 'file alternate'}}/>
             <Tags tags={tags}/>
+            <Grid padded>
+                <GridRow>
+                    <GridColumn>
+                        {data?.content}
+                    </GridColumn>
+                </GridRow>
+            </Grid>
         </>
     );
 }

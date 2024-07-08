@@ -9,6 +9,6 @@ export class MigrationController {
     }
 
     getAll() {
-        return this.em.find({}, {orderBy: {date: 'desc'}});
+        return this.em.find({}, {orderBy: {name: 'desc'}});
     }
 }
