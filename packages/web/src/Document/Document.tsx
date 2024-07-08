@@ -1,4 +1,4 @@
-import {schema} from "hh-orion-schema/dist";
+import Schema from "hh-orion-schema/dist";
 import {useParams} from "react-router-dom";
 import {BodyHeader, Loading} from "../Layout";
 import {Tags} from "../Layout/Tags";
@@ -8,7 +8,7 @@ import {Grid, GridColumn, GridRow} from "semantic-ui-react";
 
 export function Document() {
     const {documentId} = useParams<{documentId: string}>()
-    const {data, loading} = useFetch<{authors: {id: string, firstName: string, lastName: string, organization: string}[], name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string, content: string}>(schema.documents.document.getById.route, [documentId || '']);
+    const {data, loading} = useFetch<{authors: {id: string, firstName: string, lastName: string, organization: string}[], name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string, content: string}>(Schema.Documents.Document.routes.getById, [documentId || '']);
 
     if(loading) return <Loading />
     console.log(data?.authors);
