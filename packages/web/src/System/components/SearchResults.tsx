@@ -16,7 +16,7 @@ type SearchResultsEntity = {
 
 export function SearchResults() {
     const {searchTerm} = useParams<{searchTerm: string}>()
-    const {data, loading} = useFetch<SearchResultsEntity[]>(Schema.Documents.Document.routes.getNameLike, [searchTerm || '']);
+    const {data, loading} = useFetch<SearchResultsEntity[]>(Schema.System.Search.routes.query, [searchTerm || '']);
 
     if(loading) return <Loading />;
 
