@@ -12,22 +12,10 @@ The following automated tests are run:
 - Global
   - `yarn fix:organize`
   - `yarn fix:package`
-- Web
-  - `yarn test:web:lint`
-  - `yarn test:web:types`
-  - `yarn test:web:deps`
-- Domain
-  - `yarn test:domain:lint`
-  - `yarn test:domain:types`
-  - `yarn test:domain:deps`
-- Server
-  - `yarn test:server:lint`
-  - `yarn test:server:types`
-  - `yarn test:server:deps`
-- Migrate
-  - `yarn test:server:lint`
-  - `yarn test:server:types`
-  - `yarn test:server:deps`
+- Packages (web, server, domain, migrate, schema)
+  - `yarn test:*package*:lint`
+  - `yarn test:*package*:types`
+  - `yarn test:*package*:deps`
 
 You can run these commands in the project root, to ensure that your code will pass the tests.
 

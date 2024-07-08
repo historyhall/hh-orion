@@ -10,6 +10,7 @@ export type DocumentEntityConstructor = {
     bytes: number;
     storagePath: string;
     filename: string;
+    content: string;
 };
 
 @Entity()
@@ -26,6 +27,9 @@ export class Document {
     @Property({type: 'text'})
     name: string;
 
+    @Property({type: 'text'})
+    content: String;
+
     @Property({type: 'number'})
     bytes: number;
 
@@ -38,11 +42,12 @@ export class Document {
     @ManyToMany('Author')
     authors = new Collection<Author>(this);
 
-    constructor({name, bytes, storagePath, filename}: DocumentEntityConstructor) {
+    constructor({name, bytes, storagePath, filename, content}: DocumentEntityConstructor) {
         d('Domain: Create New Document');
         this.name = name;
         this.bytes = bytes;
         this.storagePath = storagePath;
         this.filename = filename;
+        this.content = content;
     }
 }
