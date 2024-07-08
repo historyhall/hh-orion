@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {environment} from "./environment";
+import {environment} from './environment';
 
 export function useFetch<T>(path: string, params?: string[]): {data?: T; loading: boolean; error?: string} {
 	const [data, setData] = useState<any>();
