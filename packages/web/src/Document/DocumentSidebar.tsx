@@ -1,9 +1,9 @@
-import {Button} from "semantic-ui-react";
-import {useParams} from "react-router-dom";
-import {useFetch} from "../useFetch";
 import Schema from "hh-orion-schema/dist";
+import {useParams} from "react-router-dom";
+import {Button} from "semantic-ui-react";
 import {Loading} from "../Layout";
 import {environment} from "../environment";
+import {useFetch} from "../useFetch";
 
 export function DocumentSidebar() {
     const {documentId} = useParams<{documentId: string}>()
