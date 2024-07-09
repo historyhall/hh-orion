@@ -4,7 +4,7 @@ import {Migration} from "./entities";
 
 export const entities: EntityClass<Partial<any>>[] = [Migration];
 export const controllers = {
-    migrationController: MigrationController
+    migrationController: MigrationController,
     searchController: SearchController
 }
 
