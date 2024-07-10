@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {environment} from './environment';
 
-export function useFetch<T>(path: string, params?: string[]): {data?: T; loading: boolean; error?: string} {
+export function useFetch<T>(path: string, params?: string[], wait?: boolean): {data?: T; loading: boolean; error?: string} {
 	const [data, setData] = useState<any>();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
@@ -12,27 +12,29 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 	});
 
 	useEffect(() => {
-		setLoading(true);
-		try {
-			let url = `${environment.serverURL}/${path}`;
-			if (paramList) url += '?' + paramList;
+		if(wait !== true) {
+			setLoading(true);
+			try {
+				let url = `${environment.serverURL}/${path}`;
+				if (paramList) url += '?' + paramList;
 
-			fetch(url).then(response => {
-				if (!response.ok) {
-					setError(response.statusText);
-				} else {
-					response.json().then(json => {
-						setData(json);
-						setError(undefined);
-					});
-				}
-			});
-		} catch (error) {
-			setError(`${error} Could not Fetch Data `);
-		} finally {
-			setLoading(false);
+				fetch(url).then(response => {
+					if (!response.ok) {
+						setError(response.statusText);
+					} else {
+						response.json().then(json => {
+							setData(json);
+							setError(undefined);
+						});
+					}
+				});
+			} catch (error) {
+				setError(`${error} Could not Fetch Data `);
+			} finally {
+				setLoading(false);
+			}
 		}
-	}, [paramList, setError, path]);
+	}, [paramList, setError, path, wait]);
 
 	return {data, loading, error};
 }

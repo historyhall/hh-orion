@@ -3,6 +3,7 @@ import {MigrationStatus} from "./MigrationStatus";
 import {Search} from "./Search";
 import {System} from "./System";
 import {SearchStatus} from "./SearchStatus";
+import {SearchStatusSidebar} from "./SearchStatusSidebar";
 
 const pages: Record<string, Page> = {
     system: {
@@ -27,7 +28,8 @@ const pages: Record<string, Page> = {
         header: {
             name: 'Search Status',
             icon: 'database'
-        }
+        },
+        sidebar: SearchStatusSidebar,
     },
     searchResults: {
         path: '/search/:searchTerm',
