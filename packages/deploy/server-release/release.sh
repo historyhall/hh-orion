@@ -12,6 +12,11 @@ docker compose pull
 docker compose down
 docker compose up -d
 
+cd ../elasticsearch
+docker compose pull
+docker compose down
+docker compose up -d
+
 cd ../migrate
 docker compose pull
 docker compose down
