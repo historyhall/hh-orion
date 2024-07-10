@@ -13,5 +13,6 @@ export const environment = {
     dbRejectUnauthorized: process.env.DB_REJECT_UNAUTHORIZED === 'true',
     dbLogging: process.env.DB_LOGGING === 'true',
     corsOrigin: process.env.CORS_ORIGIN,
-    debug: process.env.DEUBG || 'hh.*'
+    debug: process.env.DEUBG || 'hh.*',
+    elasticSearchUrl: process.env.ELASTIC_SEARCH_URL || 'http://localhost:9200',
 };

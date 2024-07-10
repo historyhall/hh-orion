@@ -1,10 +1,11 @@
 import {EntityClass} from "@mikro-orm/core";
-import {MigrationController} from "./controllers";
+import {MigrationController, SearchController} from "./controllers";
 import {Migration} from "./entities";
 
 export const entities: EntityClass<Partial<any>>[] = [Migration];
 export const controllers = {
-    migrationController: MigrationController
+    migrationController: MigrationController,
+    searchController: SearchController
 }
 
 export * from './controllers';

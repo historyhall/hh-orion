@@ -19,10 +19,6 @@ export class DocumentController {
         return this.em.find({});
     }
 
-    getNameLike(term: string) {
-        return this.em.find({$or: [{name: {$ilike: `%${term}%`}}, {content: {$ilike: `%${term}%`}}]});
-    }
-
     getTotal() {
         return this.em.count({})
     }
