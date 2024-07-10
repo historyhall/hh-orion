@@ -12,7 +12,7 @@ export function useFetch<T>(path: string, params?: string[], wait?: boolean): {d
 	});
 
 	useEffect(() => {
-		if(wait !== true) {
+		if (wait !== true) {
 			setLoading(true);
 			try {
 				let url = `${environment.serverURL}/${path}`;

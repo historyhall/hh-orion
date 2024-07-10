@@ -14,17 +14,54 @@ export class SearchController {
         this.search = search
     }
 
-    query(query: string) {
-        return this.search.search(
+   async query(query: string) {
+        const result = await this.search.search(
             {
                 index: 'hh-index',
                 size: 20,
                 body: {
-                    match: {
-                        content: query
+                    query: {
+                        bool: {
+                            should: [
+                                {match: {
+                                        content: {
+                                            query: query,
+                                            operator: "or",
+                                            fuzziness: 5,
+                                        },
+                                    }},
+                                {match: {
+                                        name: {
+                                            query,
+                                            operator: "or",
+                                            fuzziness: 1,
+                                        },
+                                    }}
+                            ]
+                        },
+                    },
+                    highlight : {
+                        order: "score",
+                        pre_tags : ["<span style=\"background-color: #fbbd08\">"],
+                        post_tags : ["</span>"],
+                        fields : {
+                            title : {
+                                type: 'plain',
+                                fragment_size : query.length + 10
+                            },
+                            content : {
+                                type: 'unified',
+                                boundary_scanner: 'sentence',
+                                fragment_size : 0,
+                            }
+                        }
                     }
                 }
             });
+
+       console.log(result);
+
+        return result;
     }
     
     async indexDocuments() {
@@ -36,7 +73,11 @@ export class SearchController {
             await this.search.index({
                 id: document.id,
                 index: 'hh-index',
-                body: document,
+                body: {
+                    id: document.id,
+                    name: document.name.toLowerCase(),
+                    content: document.content.toLowerCase(),
+                },
                 type: 'index'
             });
         })
