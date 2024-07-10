@@ -70,6 +70,7 @@ export function SearchResults() {
                                             <p key={index} style={{color: 'black'}} dangerouslySetInnerHTML={{__html: text}}/>
                                         );
                                     }
+                                    return null;
                                 })}
                                 <Divider/>
                                 <Label size="small" color="yellow">
