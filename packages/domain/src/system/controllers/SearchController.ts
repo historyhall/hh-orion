@@ -1,6 +1,7 @@
 import {EntityManager} from "@mikro-orm/core";
 import debug from 'debug';
 import {Client} from "elasticsearch";
+import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
 
 const d = debug('hh.domain.system.controllers.SearchController');
@@ -12,6 +13,10 @@ export class SearchController {
     public constructor(em: EntityManager, search: Client) {
         this.em = em;
         this.search = search
+    }
+
+    private stripHTML(text: string) {
+        return text.replace(/<[^>]*>/g, '');
     }
 
    async query(query: string) {
@@ -27,7 +32,7 @@ export class SearchController {
                                         content: {
                                             query: query,
                                             operator: "or",
-                                            fuzziness: 5,
+                                            fuzziness: 1,
                                         },
                                     }},
                                 {match: {
@@ -67,17 +72,22 @@ export class SearchController {
         if (await this.search.indices.exists({index: 'hh-index'})) {
             await this.search.indices.delete({index: 'hh-index'});
         }
+
+        const authorController = new AuthorController(this.em);
         
         const documents = await this.em.find(Document, {});
         documents.map(async document => {
             d('index', document.id);
-            await this.search.index({
-                id: document.id,
+
+            await this.search.create({
                 index: 'hh-index',
+                id: document.id,
                 body: {
                     id: document.id,
-                    name: document.name.toLowerCase(),
-                    content: document.content.toLowerCase(),
+                    name: document.name,
+                    content: this.stripHTML(document.content),
+                    createdAt: document.createdAt.toString(),
+                    authors: await authorController.generateAuthorsList(document.authors),
                 },
                 type: 'index'
             });

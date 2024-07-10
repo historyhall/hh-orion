@@ -11,9 +11,7 @@ type DocumentEntity = {
     version: number;
     createdAt: string;
     name: string;
-    bytes: number;
-    storagePath: String;
-    filename: String;
+    authors: String;
 }
 
 type Hit = {
@@ -77,7 +75,7 @@ export function SearchResults() {
                                 {searchResult._source.createdAt}
                                 </Label>
                                 <Label size="small" color="yellow">
-                                    {searchResult._source.bytes}
+                                    {searchResult._source.authors}
                                 </Label>
                             </CardContent>
                         </Card>
