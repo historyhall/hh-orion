@@ -21,7 +21,7 @@ services:
       - "5433:80"
   search:
     container_name: search
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.14
+    image: elasticsearch:8.14.2
     restart: always
     ports:
       - "9200:9200"
