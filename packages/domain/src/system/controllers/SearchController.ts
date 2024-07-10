@@ -27,7 +27,7 @@ export class SearchController {
                                         content: {
                                             query: query,
                                             operator: "or",
-                                            fuzziness: 5,
+                                            fuzziness: 1,
                                         },
                                     }},
                                 {match: {
@@ -71,9 +71,10 @@ export class SearchController {
         const documents = await this.em.find(Document, {});
         documents.map(async document => {
             d('index', document.id);
-            await this.search.index({
-                id: document.id,
+
+            await this.search.create({
                 index: 'hh-index',
+                id: document.id,
                 body: {
                     id: document.id,
                     name: document.name.toLowerCase(),
