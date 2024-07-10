@@ -39,9 +39,7 @@ export function Document() {
             <Grid padded>
                 <GridRow>
                     <GridColumn>
-                        <div style={{whiteSpace: 'pre-wrap'}}>
-                            {data?.content}
-                        </div>
+                        <p dangerouslySetInnerHTML={{__html: data?.content || ''}}/>
                     </GridColumn>
                 </GridRow>
             </Grid>

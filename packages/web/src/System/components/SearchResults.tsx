@@ -11,9 +11,7 @@ type DocumentEntity = {
     version: number;
     createdAt: string;
     name: string;
-    bytes: number;
-    storagePath: String;
-    filename: String;
+    authors: String;
 }
 
 type Hit = {
@@ -55,6 +53,7 @@ export function SearchResults() {
     return (
         <>
             {data?.hits.hits.map(searchResult => {
+                console.log(searchResult);
                 return (
                     <Link to={`/document/${searchResult._source.id}`} key={searchResult._source.id} style={{width: '100%', padding: '8px'}}>
                         <Card fluid color='yellow'>
@@ -77,7 +76,7 @@ export function SearchResults() {
                                 {searchResult._source.createdAt}
                                 </Label>
                                 <Label size="small" color="yellow">
-                                    {searchResult._source.bytes}
+                                    {searchResult._source.authors}
                                 </Label>
                             </CardContent>
                         </Card>

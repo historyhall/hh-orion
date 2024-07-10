@@ -25,19 +25,19 @@ export class Document {
     createdAt = new Date();
 
     @Property({type: 'text'})
-    name: String;
+    name: string;
 
     @Property({type: 'text'})
-    content: String;
+    content: string;
 
     @Property({type: 'number'})
     bytes: number;
 
     @Property({type: 'text'})
-    storagePath: String;
+    storagePath: string;
 
     @Property({type: 'text'})
-    filename: String;
+    filename: string;
 
     @ManyToMany('Author')
     authors = new Collection<Author>(this);
