@@ -1,0 +1,10 @@
+search:
+  container_name: search
+  image: docker.elastic.co/elasticsearch/elasticsearch:8.14
+  restart: always
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+  environment:
+    - discovery.type=single-node
+    - bootstrap.memory_lock=true

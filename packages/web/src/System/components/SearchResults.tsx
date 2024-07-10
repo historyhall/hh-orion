@@ -54,8 +54,6 @@ export function SearchResults() {
 
     return (
         <>
-            {data?.hits.hits.length === 0 && <p>No results found...</p>}
-            {data?.hits && data.hits.total.value > 0 && <p>Display {data?.hits.hits.length} of {data?.hits.total.value} results</p>}
             {data?.hits.hits.map(searchResult => {
                 return (
                     <Link to={`/document/${searchResult._source.id}`} key={searchResult._source.id} style={{width: '100%', padding: '8px'}}>
@@ -69,7 +67,7 @@ export function SearchResults() {
                                 {searchResult.highlight?.content.map((text, index) => {
                                     if(index < 3) {
                                         return (
-                                            <div style={{color: 'black'}} dangerouslySetInnerHTML={{__html: text}}/>
+                                            <p key={index} style={{color: 'black'}} dangerouslySetInnerHTML={{__html: text}}/>
                                         );
                                     }
                                 })}
@@ -85,6 +83,8 @@ export function SearchResults() {
                     </Link>
                 );
             })}
+            {data?.hits.hits.length === 0 && <div>No results found...</div>}
+            {data?.hits && data.hits.total.value > 0 && <div>Displaying {data?.hits.hits.length} of {data?.hits.total.value} results.</div>}
         </>
     )
 }
