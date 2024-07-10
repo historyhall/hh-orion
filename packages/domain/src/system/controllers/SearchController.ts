@@ -1,8 +1,8 @@
 import {EntityManager} from "@mikro-orm/core";
 import debug from 'debug';
 import {Client} from "elasticsearch";
-import {Document} from "../../documents";
 import {AuthorController} from "../../accounts";
+import {Document} from "../../documents";
 
 const d = debug('hh.domain.system.controllers.SearchController');
 
