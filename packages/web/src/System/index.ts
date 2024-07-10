@@ -1,9 +1,9 @@
 import {Page} from "../types";
 import {MigrationStatus} from "./MigrationStatus";
 import {Search} from "./Search";
-import {System} from "./System";
 import {SearchStatus} from "./SearchStatus";
 import {SearchStatusSidebar} from "./SearchStatusSidebar";
+import {System} from "./System";
 
 const pages: Record<string, Page> = {
     system: {

@@ -1,9 +1,9 @@
-import {Client} from "elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
-import {Document} from "../../documents";
 import debug from 'debug';
+import {Client} from "elasticsearch";
+import {Document} from "../../documents";
 
-const d = debug('hh.search');
+const d = debug('hh.domain.system.controllers.SearchController');
 
 export class SearchController {
     public em
@@ -57,17 +57,18 @@ export class SearchController {
                         }
                     }
                 }
-            });
-
-       console.log(result);
+            }
+        );
 
         return result;
     }
     
     async indexDocuments() {
-        console.log('start index');
+        if (await this.search.indices.exists({index: 'hh-index'})) {
+            await this.search.indices.delete({index: 'hh-index'});
+        }
+        
         const documents = await this.em.find(Document, {});
-        console.log('docs', documents.length);
         documents.map(async document => {
             d('index', document.id);
             await this.search.index({

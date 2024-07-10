@@ -2,6 +2,9 @@ import debug from 'debug';
 import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'semantic-ui-css/semantic.min.css';
 import About from './About';
 import Donate from './Contribute';
 import Document from './Document';
@@ -11,9 +14,6 @@ import {Content} from './Layout/Content';
 import Profile from './Profile';
 import System from './System';
 import {Page} from './types';
-import 'semantic-ui-css/semantic.min.css';
-import 'react-toastify/dist/ReactToastify.css';
-import {ToastContainer} from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

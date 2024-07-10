@@ -2,6 +2,7 @@ import {MikroORM} from '@mikro-orm/core';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
+import {Client} from 'elasticsearch';
 import express, {Express} from 'express';
 import {Accounts} from './accounts';
 import {environment} from './core/environment';
@@ -9,7 +10,6 @@ import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
 import {System} from './system';
 import {Action} from './types';
-import {Client} from 'elasticsearch';
 
 const d = debug('hh.server');
 

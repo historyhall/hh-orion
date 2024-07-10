@@ -1,8 +1,8 @@
 import Schema from "hh-orion-schema/dist";
-import {Button} from "semantic-ui-react";
-import {useFetch} from "../useFetch";
 import {useEffect, useState} from "react";
 import {toast} from "react-toastify";
+import {Button} from "semantic-ui-react";
+import {useFetch} from "../useFetch";
 
 export function SearchStatusSidebar() {
     const [waiting, setWaiting] = useState(true);
