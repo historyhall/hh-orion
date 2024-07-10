@@ -53,7 +53,6 @@ export function SearchResults() {
     return (
         <>
             {data?.hits.hits.map(searchResult => {
-                console.log(searchResult);
                 return (
                     <Link to={`/document/${searchResult._source.id}`} key={searchResult._source.id} style={{width: '100%', padding: '8px'}}>
                         <Card fluid color='yellow'>

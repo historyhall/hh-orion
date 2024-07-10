@@ -17,7 +17,6 @@ export class AuthorController {
     }
 
     async generateAuthorsList(authors: Collection<Author,  object>) {
-        console.log(authors);
         let authorList = '';
         (await authors.loadItems()).forEach(author => {
             let name = '';
@@ -33,8 +32,7 @@ export class AuthorController {
             } else {
                 authorList += `, ${authorList}`;
             }
-        })
-        console.log(authorList);
+        });
         return authorList;
     }
 }
