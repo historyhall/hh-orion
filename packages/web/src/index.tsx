@@ -26,7 +26,7 @@ root.render(
 	<StrictMode>
 		<BrowserRouter>
 			<MainMenu pages={pages} />
-			<ToastContainer />
+			<ToastContainer pauseOnFocusLoss={false} theme="dark" position="bottom-right" />
 			<Routes>
 				{Object.values(pages).map(page => {
 					return <Route path={page.path} key={page.path} element={<Content main={page.component} sidebar={page?.sidebar} header={page.header} />} />;
