@@ -70,8 +70,11 @@ export class SearchController {
     
     async indexDocuments() {
         if (await this.search.indices.exists({index: 'hh-index'})) {
+            d('Delete existing index');
             await this.search.indices.delete({index: 'hh-index'});
         }
+        d('Create new index');
+        await this.search.indices.create({ index: 'hh-index' })
 
         const authorController = new AuthorController(this.em);
         
@@ -79,7 +82,8 @@ export class SearchController {
         documents.map(async document => {
             d('index', document.id);
 
-            await this.search.create({
+            // @ts-ignore
+            await this.search.index({
                 index: 'hh-index',
                 id: document.id,
                 body: {
@@ -89,7 +93,6 @@ export class SearchController {
                     createdAt: document.createdAt.toString(),
                     authors: await authorController.generateAuthorsList(document.authors),
                 },
-                type: 'index'
             });
         })
 
