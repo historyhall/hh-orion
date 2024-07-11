@@ -1,8 +1,8 @@
+import {Client} from '@elastic/elasticsearch';
 import {MikroORM} from '@mikro-orm/core';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
-import {Client} from '@elastic/elasticsearch';
 import express, {Express} from 'express';
 import {Accounts} from './accounts';
 import {environment} from './core/environment';

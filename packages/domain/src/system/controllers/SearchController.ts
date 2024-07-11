@@ -1,6 +1,6 @@
+import {Client} from "@elastic/elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
 import debug from 'debug';
-import {Client} from "@elastic/elasticsearch";
 import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
 

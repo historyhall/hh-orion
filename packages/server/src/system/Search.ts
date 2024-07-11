@@ -1,8 +1,8 @@
+import {Client} from "@elastic/elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
 import {controllers} from "hh-orion-domain/dist";
 import Schema from "hh-orion-schema/dist";
 import {Action} from "../types";
-import {Client} from "@elastic/elasticsearch";
 
 export function Search(em: EntityManager, search: Client): Action[] {
     return [
