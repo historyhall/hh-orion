@@ -1,6 +1,6 @@
 import {EntityManager} from "@mikro-orm/core";
 import debug from 'debug';
-import {Client} from "elasticsearch";
+import {Client} from "@elastic/elasticsearch";
 import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
 
@@ -20,7 +20,7 @@ export class SearchController {
     }
 
    async query(query: string) {
-        const result = await this.search.search(
+        return this.search.search(
             {
                 index: 'hh-index',
                 size: 20,
@@ -64,8 +64,6 @@ export class SearchController {
                 }
             }
         );
-
-        return result;
     }
     
     async indexDocuments() {
@@ -82,11 +80,10 @@ export class SearchController {
         documents.map(async document => {
             d('index', document.id);
 
-            // @ts-ignore
             await this.search.index({
                 index: 'hh-index',
                 id: document.id,
-                body: {
+                document: {
                     id: document.id,
                     name: document.name,
                     content: this.stripHTML(document.content),

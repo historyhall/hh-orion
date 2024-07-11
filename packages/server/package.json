@@ -17,7 +17,7 @@
     "cors": "^2.8.5",
     "debug": "^4.3.5",
     "dotenv": "^16.4.5",
-    "elasticsearch": "^16.7.3",
+    "@elastic/elasticsearch": "^8.14.0",
     "express": "^4.19.2",
     "hh-orion-domain": "0.1.0",
     "hh-orion-schema": "0.1.0",
