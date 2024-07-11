@@ -1,5 +1,5 @@
+import {Client} from "@elastic/elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
-import {Client} from "elasticsearch";
 import {controllers} from "hh-orion-domain/dist";
 import Schema from "hh-orion-schema/dist";
 import {Action} from "../types";

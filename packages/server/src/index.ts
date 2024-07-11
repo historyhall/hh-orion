@@ -1,8 +1,8 @@
+import {Client} from '@elastic/elasticsearch';
 import {MikroORM} from '@mikro-orm/core';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
-import {Client} from 'elasticsearch';
 import express, {Express} from 'express';
 import {Accounts} from './accounts';
 import {environment} from './core/environment';
@@ -22,10 +22,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	const em = orm.em.fork();
 	d('Start Search...');
 	const search = new Client({
-		ssl: {
-			rejectUnauthorized: false,
-		},
-		host: environment.elasticSearchUrl,
+		node: environment.elasticSearchUrl,
 	});
 
 	const corsOptions = {credentials: true, origin: environment.corsOrigin};

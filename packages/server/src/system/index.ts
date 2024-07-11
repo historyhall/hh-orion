@@ -1,5 +1,5 @@
+import {Client} from "@elastic/elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
-import {Client} from "elasticsearch";
 import {Migration} from "./Migration";
 import {Search} from './Search';
 
