@@ -1,6 +1,6 @@
+import {Client} from "@elastic/elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
 import debug from 'debug';
-import {Client} from "elasticsearch";
 import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
 
@@ -20,7 +20,7 @@ export class SearchController {
     }
 
    async query(query: string) {
-        const result = await this.search.search(
+        return this.search.search(
             {
                 index: 'hh-index',
                 size: 20,
@@ -64,14 +64,15 @@ export class SearchController {
                 }
             }
         );
-
-        return result;
     }
     
     async indexDocuments() {
         if (await this.search.indices.exists({index: 'hh-index'})) {
+            d('Delete existing index');
             await this.search.indices.delete({index: 'hh-index'});
         }
+        d('Create new index');
+        await this.search.indices.create({ index: 'hh-index' })
 
         const authorController = new AuthorController(this.em);
         
@@ -79,17 +80,16 @@ export class SearchController {
         documents.map(async document => {
             d('index', document.id);
 
-            await this.search.create({
+            await this.search.index({
                 index: 'hh-index',
                 id: document.id,
-                body: {
+                document: {
                     id: document.id,
                     name: document.name,
                     content: this.stripHTML(document.content),
                     createdAt: document.createdAt.toString(),
                     authors: await authorController.generateAuthorsList(document.authors),
                 },
-                type: 'index'
             });
         })
 
