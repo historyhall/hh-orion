@@ -1,3 +1,4 @@
+import {Client} from '@elastic/elasticsearch';
 import {MikroORM} from '@mikro-orm/core';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
@@ -13,16 +14,22 @@ import {Action} from './types';
 const d = debug('hh.server');
 
 MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
-	const app: Express = express();
-	const port = environment.serverPort;
-	const em = orm.em.fork();
-	const corsOptions = {credentials: true, origin: environment.corsOrigin};
-
 	debug.enable(environment.debug);
+
+	d('Starting Express...');
+	const app: Express = express();
+	d('Starting Mikrorm...');
+	const em = orm.em.fork();
+	d('Start Search...');
+	const search = new Client({
+		node: environment.elasticSearchUrl,
+	});
+
+	const corsOptions = {credentials: true, origin: environment.corsOrigin};
 
 	app.use(cors(corsOptions));
 
-	const endpoints: Action[] = [...Accounts(em), ...Documents(em), ...System(em)];
+	const endpoints: Action[] = [...Accounts(em), ...Documents(em), ...System(em, search)];
 
 	endpoints.map(endpoint => {
 		app.get(`/${endpoint.route}`, async (req, res) => {
@@ -37,6 +44,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 
 	app.use(express.static('./assets'));
 
+	const port = environment.serverPort;
 	app.listen(port, () => {
 		d(`Server is running at ${environment.corsOrigin}`);
 	});

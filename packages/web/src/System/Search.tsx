@@ -8,10 +8,6 @@ export function Search() {
             <Grid.Row>
                 <Grid.Column>
                     <Searchbar />
-                </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-                <Grid.Column>
                     <SearchResults />
                 </Grid.Column>
             </Grid.Row>

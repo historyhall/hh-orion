@@ -28,7 +28,7 @@ export class Document {
     name: string;
 
     @Property({type: 'text'})
-    content: String;
+    content: string;
 
     @Property({type: 'number'})
     bytes: number;

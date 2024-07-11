@@ -2,6 +2,8 @@ import debug from 'debug';
 import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'semantic-ui-css/semantic.min.css';
 import About from './About';
 import Donate from './Contribute';
@@ -24,6 +26,7 @@ root.render(
 	<StrictMode>
 		<BrowserRouter>
 			<MainMenu pages={pages} />
+			<ToastContainer pauseOnFocusLoss={false} theme="dark" position="bottom-right" />
 			<Routes>
 				{Object.values(pages).map(page => {
 					return <Route path={page.path} key={page.path} element={<Content main={page.component} sidebar={page?.sidebar} header={page.header} />} />;

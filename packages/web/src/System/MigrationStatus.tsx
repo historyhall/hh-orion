@@ -3,9 +3,9 @@ import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} fro
 import {Loading} from "../Layout";
 import {useFetch} from "../useFetch";
 
-export function Migrations() {
-    const {data, loading} = useFetch<Schema.System.Migration.GetAll.Response>(Schema.System.Migration.GetAll.route);
-    if(loading) return <Loading />
+export function MigrationStatus() {
+    const {data, loading} = useFetch<Schema.System.Migration.GetAll.Response>(Schema.System.Migration.routes.getAll);
+    if (loading) return <Loading />
 
     return (
         <Table>

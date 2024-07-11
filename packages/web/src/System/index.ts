@@ -1,6 +1,8 @@
 import {Page} from "../types";
-import {Migrations} from "./Migrations";
+import {MigrationStatus} from "./MigrationStatus";
 import {Search} from "./Search";
+import {SearchStatus} from "./SearchStatus";
+import {SearchStatusSidebar} from "./SearchStatusSidebar";
 import {System} from "./System";
 
 const pages: Record<string, Page> = {
@@ -12,13 +14,22 @@ const pages: Record<string, Page> = {
             icon: 'server'
         }
     },
-    systemMigrations: {
+    migrationStatus: {
         path: '/system/migrations',
-        component: Migrations,
+        component: MigrationStatus,
         header: {
-            name: 'Migrations',
+            name: 'Migration Status',
             icon: 'database'
         }
+    },
+    searchStatus: {
+        path: '/system/search',
+        component: SearchStatus,
+        header: {
+            name: 'Search Status',
+            icon: 'database'
+        },
+        sidebar: SearchStatusSidebar,
     },
     searchResults: {
         path: '/search/:searchTerm',
