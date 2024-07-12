@@ -34,12 +34,12 @@ export namespace Search {
     }
 
     export namespace IndexDocuments {
-        export declare type Response = boolean;
+        export type Response = boolean;
         export const route = 'search/index-documents';
     }
 
     export namespace Query {
-        export declare type Response = QueryResponse;
+        export type Response = QueryResponse;
         export const route = 'search/query';
     }
 }

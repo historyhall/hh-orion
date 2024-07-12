@@ -7,7 +7,7 @@ export namespace Migration {
     }
 
     export namespace GetAll {
-        export declare type Response = Migration[];
+        export type Response = Migration[];
         export const route = 'migrations/get-all';
     }
 }

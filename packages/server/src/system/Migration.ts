@@ -5,6 +5,6 @@ import {Action} from "../types";
 
 export function Migration(em: EntityManager): Action[] {
     return [
-        {route: Schema.System.Migration.routes.getAll, action: async () => await new controllers.migrationController(em).getAll()}
+        {route: Schema.System.Migration.GetAll.route, action: async () => await new controllers.migrationController(em).getAll()}
     ]
 }

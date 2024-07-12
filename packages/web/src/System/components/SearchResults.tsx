@@ -4,10 +4,6 @@ import {Card, CardContent, Divider, Label, List} from "semantic-ui-react";
 import {Loading} from "../../Layout";
 import {useFetch} from "../../useFetch";
 
-
-
-
-
 export function SearchResults() {
     const {searchTerm} = useParams<{searchTerm: string}>()
     const {data, loading} = useFetch<SearchResult>(Schema.System.Search.routes.query, [searchTerm || '']);
