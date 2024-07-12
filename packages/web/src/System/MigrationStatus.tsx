@@ -1,10 +1,10 @@
-import Schema from "hh-orion-schema/dist";
+import * as Schema from "hh-orion-schema/dist";
 import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from "semantic-ui-react";
 import {Loading} from "../Layout";
 import {useFetch} from "../useFetch";
 
 export function MigrationStatus() {
-    const {data, loading} = useFetch<Schema.System.Migration.GetAll.Response>(Schema.System.Migration.GetAll.route);
+    const {data, loading} = useFetch<Schema.migration.Response>(Schema.migration.route);
     if (loading) return <Loading />
 
     return (

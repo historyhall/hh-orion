@@ -1,8 +1,2 @@
-import {Migration} from './migration';
-import {Search} from './search';
-
-
-export default {
-    Migration,
-    Search,
-}
+export * as migration from './migration';
+export * as search from './search';
