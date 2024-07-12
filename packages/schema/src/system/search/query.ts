@@ -1,6 +1,5 @@
 type QueryResponse = {
     took: number,
-    time_out: boolean,
     _shards: {
         total: number,
         successful: number,

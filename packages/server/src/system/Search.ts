@@ -6,7 +6,12 @@ import {Action} from "../types";
 
 export function Search(em: EntityManager, search: Client): Action[] {
     return [
-        {route: Schema.system.search.query.route, action: async data => await new controllers.searchController(em, search).query(data)},
-        {route: Schema.system.search.indexDocuments.route, action: async () => await new controllers.searchController(em, search).indexDocuments()}
+        {
+            route: Schema.system.search.query.route,
+            action: async (data): Promise<Schema.system.search.query.response> => await new controllers.searchController(em, search).query(data)},
+        {
+            route: Schema.system.search.indexDocuments.route,
+            action: async (): Promise<Schema.system.search.indexDocuments.response> => await new controllers.searchController(em, search).indexDocuments()
+        }
     ]
 }
