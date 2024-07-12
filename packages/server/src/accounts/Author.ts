@@ -4,8 +4,9 @@ import Schema from "hh-orion-schema/dist";
 import {Action} from "../types";
 
 export function Author(em: EntityManager): Action[] {
+    console.log('fdsdfs', Schema);
     return [
-        {route: Schema.accounts.author.routes.getAll, action: async () => await new controllers.authorController(em).getAll()},
-        {route: Schema.accounts.author.routes.getTotal, action: async () => await new controllers.authorController(em).getTotal()},
+        {route: Schema.accounts.author.getAll.route, action: async () => await new controllers.authorController(em).getAll()},
+        {route: Schema.accounts.author.getTotal.route, action: async () => await new controllers.authorController(em).getTotal()},
     ];
 }

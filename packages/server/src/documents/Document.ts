@@ -5,8 +5,8 @@ import {Action} from "../types";
 
 export function Document(em: EntityManager): Action[] {
     return [
-        {route: Schema.documents.document.routes.getAll, action: async () => await new controllers.documentController(em).getAll()},
-        {route: Schema.documents.document.routes.getById, action: async data => await new controllers.documentController(em).getById(data)},
-        {route: Schema.documents.document.routes.getTotal, action: async () => await new controllers.documentController(em).getTotal()},
+        {route: Schema.documents.document.getAll.route, action: async () => await new controllers.documentController(em).getAll()},
+        {route: Schema.documents.document.getById.route, action: async data => await new controllers.documentController(em).getById(data)},
+        {route: Schema.documents.document.getTotal.route, action: async () => await new controllers.documentController(em).getTotal()},
     ];
 }
