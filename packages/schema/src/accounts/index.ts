@@ -1,2 +1,2 @@
-export * as author from 'author';
-export * as user from 'user';
+export * as author from './author';
+export * as user from './user';

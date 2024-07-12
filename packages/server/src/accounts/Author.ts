@@ -5,7 +5,7 @@ import {Action} from "../types";
 
 export function Author(em: EntityManager): Action[] {
     return [
-        {route: Schema.Accounts.Author.routes.getAll, action: async () => await new controllers.authorController(em).getAll()},
-        {route: Schema.Accounts.Author.routes.getTotal, action: async () => await new controllers.authorController(em).getTotal()},
+        {route: Schema.accounts.author.routes.getAll, action: async () => await new controllers.authorController(em).getAll()},
+        {route: Schema.accounts.author.routes.getTotal, action: async () => await new controllers.authorController(em).getTotal()},
     ];
 }

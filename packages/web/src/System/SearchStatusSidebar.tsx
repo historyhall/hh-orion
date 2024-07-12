@@ -6,7 +6,7 @@ import {useFetch} from "../useFetch";
 
 export function SearchStatusSidebar() {
     const [waiting, setWaiting] = useState(true);
-    const {data} = useFetch<boolean>(Schema.System.Search.routes.indexDocuments, [''], waiting);
+    const {data} = useFetch<boolean>(Schema.system.search.indexDocuments.route, [''], waiting);
 
     useEffect(() => {
         if(data) {

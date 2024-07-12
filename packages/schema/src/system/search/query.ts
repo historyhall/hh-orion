@@ -32,5 +32,5 @@ type QueryResponse = {
     }
 }
 
-export type Response = QueryResponse;
+export type response = QueryResponse;
 export const route = 'search/query';

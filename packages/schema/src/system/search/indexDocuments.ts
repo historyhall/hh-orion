@@ -1,2 +1,2 @@
-export type Response = boolean;
+export type response = boolean;
 export const route = 'search/index-documents';

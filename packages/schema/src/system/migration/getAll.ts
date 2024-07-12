@@ -4,5 +4,5 @@ type Migration = {
     date: Date;
     success: boolean;
 }
-export type Response = Migration[];
+export type response = Migration[];
 export const route = 'migrations/get-all';

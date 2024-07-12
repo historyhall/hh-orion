@@ -4,9 +4,9 @@ import {Loading} from "../../Layout";
 import {useFetch} from "../../useFetch";
 
 export function Statistics() {
-    const {data: documentData, loading: documentLoading} = useFetch<number>(Schema.Documents.Document.routes.getTotal);
-    const {data: authorData, loading: authorLoading} = useFetch<number>(Schema.Accounts.Author.routes.getTotal);
-    const {data: userData, loading: userLoading} = useFetch<number>(Schema.Accounts.User.routes.getTotal);
+    const {data: documentData, loading: documentLoading} = useFetch<Schema.documents.document.getTotal.response>(Schema.documents.document.getTotal.route);
+    const {data: authorData, loading: authorLoading} = useFetch<Schema.accounts.author.getTotal.response>(Schema.accounts.author.getTotal.route);
+    const {data: userData, loading: userLoading} = useFetch<Schema.accounts.user.getTotal.response>(Schema.accounts.user.getTotal.route);
 
     if(documentLoading || authorLoading || userLoading) return <Loading />
 
