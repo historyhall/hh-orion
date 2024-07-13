@@ -1,8 +1,4 @@
-type Migration = {
-    id: string;
-    name: string;
-    date: Date;
-    success: boolean;
-}
+import {Migration} from "./Migration";
+
 export type response = Migration[];
 export const route = 'migrations/get-all';
