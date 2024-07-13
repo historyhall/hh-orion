@@ -8,10 +8,6 @@ export class UserController {
         this.em = em.getRepository(User);
     }
 
-    getAll() {
-        return this.em.find({});
-    }
-
     getTotal() {
         return this.em.count({});
     }

@@ -15,10 +15,6 @@ export class DocumentController {
         return document;
     }
 
-    getAll() {
-        return this.em.find({});
-    }
-
     getTotal() {
         return this.em.count({})
     }

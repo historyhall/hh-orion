@@ -8,10 +8,6 @@ export class AuthorController {
         this.em = em.getRepository(Author);
     }
 
-    getAll() {
-        return this.em.find({});
-    }
-
     getTotal() {
         return this.em.count({})
     }

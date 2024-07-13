@@ -1,1 +1,0 @@
-export const route = 'document/get-all';
