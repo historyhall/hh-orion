@@ -8,7 +8,7 @@ export class AuthorController {
         this.em = em.getRepository(Author);
     }
 
-    getTotal() {
+    async getTotal() {
         return this.em.count({})
     }
 

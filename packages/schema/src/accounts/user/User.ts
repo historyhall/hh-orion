@@ -2,7 +2,7 @@ import {Author} from "../author/Author";
 
 export type User = {
     id: string;
-    version: string;
+    version: number;
     createdAt: Date;
     firstName: string;
     lastName: string;

@@ -8,15 +8,19 @@ export class UserController {
         this.em = em.getRepository(User);
     }
 
-    getTotal() {
+    async getTotal() {
         return this.em.count({});
     }
 
-    login(email: string) {
-        return this.em.find({email});
+    async login(email: string) {
+        const user =  await this.em.findOne({email});
+        if (!user) throw new Error('user not found');
+        return user;
     }
 
-    register(email: string) {
-        return this.em.find({email});
+    async register(email: string) {
+        const user =  await this.em.findOne({email});
+        if (!user) throw new Error('user not found');
+        return user;
     }
 }

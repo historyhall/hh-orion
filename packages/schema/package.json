@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^8.14.0",
+    "@mikro-orm/core": "^6.2.9",
     "typescript": "^5.5.3"
   }
 }

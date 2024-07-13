@@ -15,7 +15,7 @@ export class DocumentController {
         return document;
     }
 
-    getTotal() {
+    async getTotal() {
         return this.em.count({})
     }
 }

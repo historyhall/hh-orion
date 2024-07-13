@@ -12,14 +12,14 @@ export function Document() {
 
     if(loading) return <Loading />
 
-    function getAuthorName(author: {firstName: string, lastName: string, organization: string}) {
-        if(author.firstName) {
+    function getAuthorName(author: {firstName?: string, lastName?: string, organization?: string}) {
+        if(author?.firstName) {
             let name = author.firstName;
-            if(author.lastName) name += ` ${author.lastName}`
-            if(author.organization) name += ` (${author.organization})`
+            if(author?.lastName) name += ` ${author.lastName}`
+            if(author?.organization) name += ` (${author.organization})`
             return name;
         }
-        return author.organization;
+        return author?.organization;
     }
 
     const authors = data?.authors?.map(author => {

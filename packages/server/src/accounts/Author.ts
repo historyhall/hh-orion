@@ -7,7 +7,7 @@ export function Author(em: EntityManager): Action[] {
     return [
         {
             route: Schema.accounts.author.getTotal.route,
-            action: async (): Promise<void> => await new controllers.authorController(em).getTotal()
+            action: async (): Promise<Schema.accounts.author.getTotal.response> => await new controllers.authorController(em).getTotal()
         },
     ];
 }

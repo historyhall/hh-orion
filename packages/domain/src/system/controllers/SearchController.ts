@@ -26,7 +26,8 @@ export class SearchController {
     private stripHTML(text: string) {
         return text.replace(/<[^>]*>/g, '');
     }
-   async query(query: string) {
+    
+    async query(query: string) {
         return this.search.search<QueryType>(
             {
                 index: 'hh-index',
@@ -72,7 +73,7 @@ export class SearchController {
             }
         );
     }
-    
+
     async indexDocuments() {
         if (await this.search.indices.exists({index: 'hh-index'})) {
             d('Delete existing index');
@@ -82,7 +83,7 @@ export class SearchController {
         await this.search.indices.create({ index: 'hh-index' })
 
         const authorController = new AuthorController(this.em);
-        
+
         const documents = await this.em.find(Document, {});
         documents.map(async document => {
             d('index', document.id);
