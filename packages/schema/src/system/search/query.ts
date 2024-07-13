@@ -1,35 +1,12 @@
-type QueryResponse = {
-    took: number,
-    _shards: {
-        total: number,
-        successful: number,
-        skipped: number,
-        failed: number,
-    }
-    hits: {
-        total: {
-            value: 0,
-            relation: string,
-        }
-        max_score: number | null,
-        hits: {
-            _index: string,
-            _type: string,
-            _id: string,
-            _score: number,
-            _source: {
-                id: string;
-                version: number;
-                createdAt: string;
-                name: string;
-                authors: String;
-            },
-            highlight?: {
-                content: string[]
-            }
-        }[]
-    }
+import {AggregationsAggregate, SearchResponse} from "@elastic/elasticsearch/lib/api/types"
+
+type QueryType = {
+    id: string;
+    version: number;
+    createdAt: string;
+    name: string;
+    authors: String;
 }
 
-export type response = QueryResponse;
+export type response =  SearchResponse<QueryType, Record<string, AggregationsAggregate>>;
 export const route = 'search/query';

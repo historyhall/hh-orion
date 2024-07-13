@@ -6,6 +6,14 @@ import {Document} from "../../documents";
 
 const d = debug('hh.domain.system.controllers.SearchController');
 
+type QueryType = {
+    id: string;
+    version: number;
+    createdAt: string;
+    name: string;
+    authors: String;
+}
+
 export class SearchController {
     public em
     public search
@@ -18,9 +26,8 @@ export class SearchController {
     private stripHTML(text: string) {
         return text.replace(/<[^>]*>/g, '');
     }
-
    async query(query: string) {
-        return this.search.search(
+        return this.search.search<QueryType>(
             {
                 index: 'hh-index',
                 size: 20,
