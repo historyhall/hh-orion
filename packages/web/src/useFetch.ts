@@ -1,15 +1,12 @@
 import {useEffect, useState} from 'react';
 import {environment} from './environment';
 
-export function useFetch<T>(path: string, params?: string[]): {data?: T; loading: boolean; error?: string} {
+export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: boolean; error?: string} {
 	const [data, setData] = useState<any>();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
 
-	let paramList = '';
-	params?.forEach((param, index) => {
-		paramList = `${paramList}data${index}=${param}&`;
-	});
+	let paramList = new URLSearchParams(params as Record<string, string>).toString();
 
 	useEffect(() => {
 		setLoading(true);

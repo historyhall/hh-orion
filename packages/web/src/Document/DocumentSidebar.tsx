@@ -7,7 +7,7 @@ import {useFetch} from "../useFetch";
 
 export function DocumentSidebar() {
     const {documentId} = useParams<{documentId: string}>()
-    const {data, loading} = useFetch<Schema.documents.document.getById.response>(Schema.documents.document.getById.route, [documentId || '']);
+    const {data, loading} = useFetch<Schema.documents.document.getById.response, Schema.documents.document.getById.params>(Schema.documents.document.getById.route, {id: documentId || ''});
 
     if(loading) return <Loading />
 

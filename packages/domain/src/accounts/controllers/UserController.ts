@@ -1,4 +1,5 @@
 import {EntityManager} from "@mikro-orm/core";
+import * as Schema from "hh-orion-schema/dist";
 import {User} from "../entities";
 
 export class UserController {
@@ -12,14 +13,14 @@ export class UserController {
         return this.em.count({});
     }
 
-    async login(email: string) {
-        const user =  await this.em.findOne({email});
+    async login(data: Schema.accounts.user.login.params) {
+        const user =  await this.em.findOne({email: data.email});
         if (!user) throw new Error('user not found');
         return user;
     }
 
-    async register(email: string) {
-        const user =  await this.em.findOne({email});
+    async register(data: Schema.accounts.user.register.params) {
+        const user =  await this.em.findOne({email: data.email});
         if (!user) throw new Error('user not found');
         return user;
     }

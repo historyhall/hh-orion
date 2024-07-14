@@ -36,7 +36,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		app.get(`/${endpoint.route}`, async (req, res) => {
 			d(req.query);
 			try {
-				res.status(200).send(JSON.stringify(await endpoint.action(req.query?.data0)));
+				res.status(200).send(JSON.stringify(await endpoint.action(req.query)));
 			} catch (error) {
 				d(error);
 			}

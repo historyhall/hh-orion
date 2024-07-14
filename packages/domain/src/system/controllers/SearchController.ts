@@ -1,6 +1,7 @@
 import {Client} from "@elastic/elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
 import debug from 'debug';
+import * as Schema from "hh-orion-schema/dist";
 import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
 
@@ -27,7 +28,7 @@ export class SearchController {
         return text.replace(/<[^>]*>/g, '');
     }
     
-    async query(query: string) {
+    async query(data: Schema.system.search.query.params) {
         return this.search.search<QueryType>(
             {
                 index: 'hh-index',
@@ -38,14 +39,14 @@ export class SearchController {
                             should: [
                                 {match: {
                                         content: {
-                                            query: query,
+                                            query: data.query,
                                             operator: "or",
                                             fuzziness: 1,
                                         },
                                     }},
                                 {match: {
                                         name: {
-                                            query,
+                                            query: data.query,
                                             operator: "or",
                                             fuzziness: 1,
                                         },
@@ -60,7 +61,7 @@ export class SearchController {
                         fields : {
                             title : {
                                 type: 'plain',
-                                fragment_size : query.length + 10
+                                fragment_size : data.query.length + 10
                             },
                             content : {
                                 type: 'unified',

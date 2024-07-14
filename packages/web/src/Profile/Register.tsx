@@ -1,8 +1,12 @@
+import * as Schema from 'hh-orion-schema/dist'
 import {useState} from "react";
+import {toast} from "react-toastify";
 import {Button, Form, FormField, Input, Message} from "semantic-ui-react";
+import {useMutation} from "../useMutation";
 
 export function Register() {
     const [errorMessage, setErrorMessage] = useState("");
+    const {data, call} = useMutation<Schema.accounts.user.register.response, Schema.accounts.user.register.params>(Schema.accounts.user.register.route);
     const [inputs, setInputs] = useState<{firstName?: string, lastName?: string, email?: string, password1?: string, password2?: string}>({})
 
     function handleSubmit() {
@@ -18,6 +22,14 @@ export function Register() {
             setErrorMessage("Your passwords do not match");
         } else {
             setErrorMessage("");
+            call({firstName: inputs.firstName, lastName: inputs.lastName, email: inputs.email, password1: inputs.password1, password2: inputs.password2}).then(() => {
+                if(data) {
+                    toast.success('You have successfully logged in!');
+                } else {
+                    toast.error('Your username or password was incorrect');
+                }
+            });
+
         }
     }
 

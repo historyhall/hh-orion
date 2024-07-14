@@ -5,7 +5,7 @@ import {Button} from "semantic-ui-react";
 import {useMutation} from "../useMutation";
 
 export function SearchStatusSidebar() {
-    const {data, call} = useMutation<boolean>(Schema.system.search.indexDocuments.route);
+    const {data, call} = useMutation<Schema.system.search.indexDocuments.response, Schema.system.search.indexDocuments.params>(Schema.system.search.indexDocuments.route);
 
     useEffect(() => {
         if(data) {
@@ -14,6 +14,6 @@ export function SearchStatusSidebar() {
     }, [data])
 
     return (
-        <Button fluid icon="search plus" content="Recreate index" size="small" onClick={() => call([''])} disabled={data} />
+        <Button fluid icon="search plus" content="Recreate index" size="small" onClick={() => call()} disabled={data} />
     )
 }
