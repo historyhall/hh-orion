@@ -1,5 +1,6 @@
 import {EntityManager} from "@mikro-orm/core";
 import {Document} from "../entities";
+import * as Schema from "hh-orion-schema/dist";
 
 export class DocumentController {
     public em;
@@ -8,8 +9,8 @@ export class DocumentController {
         this.em = em.getRepository(Document);
     }
 
-    async getById(id: string) {
-        const document = await this.em.findOne({id}, {populate: ['authors']});
+    async getById(data: Schema.documents.document.getById.params) {
+        const document = await this.em.findOne({id: data.id}, {populate: ['authors']});
         if (!document) throw new Error('document not found');
         return document;
     }

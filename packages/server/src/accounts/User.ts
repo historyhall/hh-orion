@@ -7,14 +7,14 @@ export function User(em: EntityManager): Action[] {
     return [
         {
             route: Schema.accounts.user.login.route,
-            action: async (data): Promise<Schema.accounts.user.login.response> => {
+            action: async (data: Schema.accounts.user.login.params): Promise<Schema.accounts.user.login.response> => {
                 const user = await new controllers.userController(em).login(data)
 
                 return {...user, authors: user.authors.toArray()};
             }},
         {
             route: Schema.accounts.user.register.route,
-            action: async (data): Promise<Schema.accounts.user.register.response> => {
+            action: async (data: Schema.accounts.user.register.params): Promise<Schema.accounts.user.register.response> => {
                 const user = await new controllers.userController(em).register(data)
 
                 return {...user, authors: user.authors.toArray()};

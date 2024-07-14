@@ -1,3 +1,3 @@
 export type response = number;
-export type params = void;
+export type params = undefined;
 export const route = 'document/get-total';

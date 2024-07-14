@@ -1,3 +1,3 @@
 export type response = boolean;
-export type params = void;
+export type params = undefined;
 export const route = 'search/index-documents';
