@@ -6,6 +6,14 @@ import {Document} from "../../documents";
 
 const d = debug('hh.domain.system.controllers.SearchController');
 
+type QueryType = {
+    id: string;
+    version: number;
+    createdAt: string;
+    name: string;
+    authors: String;
+}
+
 export class SearchController {
     public em
     public search
@@ -18,9 +26,9 @@ export class SearchController {
     private stripHTML(text: string) {
         return text.replace(/<[^>]*>/g, '');
     }
-
-   async query(query: string) {
-        return this.search.search(
+    
+    async query(query: string) {
+        return this.search.search<QueryType>(
             {
                 index: 'hh-index',
                 size: 20,
@@ -65,7 +73,7 @@ export class SearchController {
             }
         );
     }
-    
+
     async indexDocuments() {
         if (await this.search.indices.exists({index: 'hh-index'})) {
             d('Delete existing index');
@@ -75,7 +83,7 @@ export class SearchController {
         await this.search.indices.create({ index: 'hh-index' })
 
         const authorController = new AuthorController(this.em);
-        
+
         const documents = await this.em.find(Document, {});
         documents.map(async document => {
             d('index', document.id);

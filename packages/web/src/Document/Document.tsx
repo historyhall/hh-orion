@@ -1,4 +1,4 @@
-import Schema from "hh-orion-schema/dist";
+import * as Schema from "hh-orion-schema/dist";
 import {useParams} from "react-router-dom";
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
 import {BodyHeader, Loading} from "../Layout";
@@ -8,18 +8,18 @@ import {useFetch} from "../useFetch";
 
 export function Document() {
     const {documentId} = useParams<{documentId: string}>()
-    const {data, loading} = useFetch<{authors: {id: string, firstName: string, lastName: string, organization: string}[], name: string, version: number, createdAt: string, bytes: number, storagePath: string, filename: string, content: string}>(Schema.Documents.Document.routes.getById, [documentId || '']);
+    const {data, loading} = useFetch<Schema.documents.document.getById.response>(Schema.documents.document.getById.route, [documentId || '']);
 
     if(loading) return <Loading />
 
-    function getAuthorName(author: {firstName: string, lastName: string, organization: string}) {
-        if(author.firstName) {
+    function getAuthorName(author: {firstName?: string, lastName?: string, organization?: string}) {
+        if(author?.firstName) {
             let name = author.firstName;
-            if(author.lastName) name += ` ${author.lastName}`
-            if(author.organization) name += ` (${author.organization})`
+            if(author?.lastName) name += ` ${author.lastName}`
+            if(author?.organization) name += ` (${author.organization})`
             return name;
         }
-        return author.organization;
+        return author?.organization;
     }
 
     const authors = data?.authors?.map(author => {

@@ -11,15 +11,10 @@ export class DocumentController {
     async getById(id: string) {
         const document = await this.em.findOne({id}, {populate: ['authors']});
         if (!document) throw new Error('document not found');
-
         return document;
     }
 
-    getAll() {
-        return this.em.find({});
-    }
-
-    getTotal() {
+    async getTotal() {
         return this.em.count({})
     }
 }

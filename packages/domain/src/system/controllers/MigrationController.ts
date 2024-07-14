@@ -8,7 +8,7 @@ export class MigrationController {
         this.em = em.getRepository(Migration);
     }
 
-    getAll() {
+    async getAll() {
         return this.em.find({}, {orderBy: {name: 'desc'}});
     }
 }

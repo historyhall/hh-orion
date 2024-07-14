@@ -10,6 +10,7 @@
     "test:types": "tsc"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^8.14.0",
     "typescript": "^5.5.3"
   }
 }

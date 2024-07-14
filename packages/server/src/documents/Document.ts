@@ -1,12 +1,20 @@
 import {EntityManager} from "@mikro-orm/core";
 import {controllers} from "hh-orion-domain/dist";
-import Schema from "hh-orion-schema/dist";
+import * as Schema from "hh-orion-schema/dist";
 import {Action} from "../types";
 
 export function Document(em: EntityManager): Action[] {
     return [
-        {route: Schema.Documents.Document.routes.getAll, action: async () => await new controllers.documentController(em).getAll()},
-        {route: Schema.Documents.Document.routes.getById, action: async data => await new controllers.documentController(em).getById(data)},
-        {route: Schema.Documents.Document.routes.getTotal, action: async () => await new controllers.documentController(em).getTotal()},
+        {
+            route: Schema.documents.document.getById.route,
+            action: async (data): Promise<Schema.documents.document.getById.response> => {
+                const document = await new controllers.documentController(em).getById(data)
+
+                return {...document, authors: document.authors.toArray()};
+        }},
+        {
+            route: Schema.documents.document.getTotal.route,
+            action: async (): Promise<Schema.documents.document.getTotal.response> => await new controllers.documentController(em).getTotal()
+        },
     ];
 }

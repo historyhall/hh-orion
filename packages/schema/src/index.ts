@@ -1,9 +1,3 @@
-import {Accounts} from './accounts';
-import {Documents} from './documents';
-import {System} from './system';
-
-export default {
-	Accounts,
-	Documents,
-	System,
-};
+export * as accounts from './accounts';
+export * as documents from './documents';
+export * as system from './system';
