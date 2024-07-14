@@ -7,8 +7,11 @@ export function Document(em: EntityManager): Action[] {
     return [
         {
             route: Schema.documents.document.getById.route,
-            action: async (data): Promise<Schema.documents.document.getById.response> => await new controllers.documentController(em).getById(data)
-        },
+            action: async (data): Promise<Schema.documents.document.getById.response> => {
+                const document = await new controllers.documentController(em).getById(data)
+
+                return {...document, authors: document.authors.toArray()};
+        }},
         {
             route: Schema.documents.document.getTotal.route,
             action: async (): Promise<Schema.documents.document.getTotal.response> => await new controllers.documentController(em).getTotal()
