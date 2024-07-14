@@ -1,12 +1,11 @@
 import * as Schema from "hh-orion-schema/dist";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {toast} from "react-toastify";
 import {Button} from "semantic-ui-react";
-import {useFetch} from "../useFetch";
+import {useMutation} from "../useMutation";
 
 export function SearchStatusSidebar() {
-    const [waiting, setWaiting] = useState(true);
-    const {data} = useFetch<boolean>(Schema.system.search.indexDocuments.route, [''], waiting);
+    const {data, call} = useMutation<boolean>(Schema.system.search.indexDocuments.route);
 
     useEffect(() => {
         if(data) {
@@ -15,6 +14,6 @@ export function SearchStatusSidebar() {
     }, [data])
 
     return (
-        <Button fluid icon="search plus" content="Recreate index" size="small" onClick={() => setWaiting(false)} disabled={data} />
+        <Button fluid icon="search plus" content="Recreate index" size="small" onClick={() => call([''])} disabled={data} />
     )
 }
