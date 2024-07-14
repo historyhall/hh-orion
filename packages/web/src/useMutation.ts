@@ -1,17 +1,17 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {environment} from './environment';
 
-export function useFetch<T>(path: string, params?: string[]): {data?: T; loading: boolean; error?: string} {
+// eslint-disable-next-line no-unused-vars
+export function useMutation<T>(path: string): {data?: T; loading: boolean; error?: string; call: (params?: string[]) => void} {
 	const [data, setData] = useState<any>();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
 
-	let paramList = '';
-	params?.forEach((param, index) => {
-		paramList = `${paramList}data${index}=${param}&`;
-	});
-
-	useEffect(() => {
+	function call(params?: string[]) {
+		let paramList = '';
+		params?.forEach((param, index) => {
+			paramList = `${paramList}data${index}=${param}&`;
+		});
 		setLoading(true);
 		try {
 			let url = `${environment.serverURL}/${path}`;
@@ -32,7 +32,7 @@ export function useFetch<T>(path: string, params?: string[]): {data?: T; loading
 		} finally {
 			setLoading(false);
 		}
-	}, [paramList, setError, path]);
+	}
 
-	return {data, loading, error};
+	return {data, loading, error, call};
 }
