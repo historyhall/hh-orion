@@ -1,6 +1,6 @@
 import {EntityManager} from "@mikro-orm/core";
-import {User} from "../entities";
 import * as Schema from "hh-orion-schema/dist";
+import {User} from "../entities";
 
 export class UserController {
     public em;

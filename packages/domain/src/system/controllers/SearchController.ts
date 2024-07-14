@@ -1,9 +1,9 @@
 import {Client} from "@elastic/elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
 import debug from 'debug';
+import * as Schema from "hh-orion-schema/dist";
 import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
-import * as Schema from "hh-orion-schema/dist";
 
 const d = debug('hh.domain.system.controllers.SearchController');
 

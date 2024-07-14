@@ -1,8 +1,8 @@
+import * as Schema from 'hh-orion-schema/dist'
 import {useState} from "react";
+import {toast} from "react-toastify";
 import {Button, Form, FormField, Input, Message} from "semantic-ui-react";
 import {useMutation} from "../useMutation";
-import * as Schema from 'hh-orion-schema/dist'
-import {toast} from "react-toastify";
 
 export function Register() {
     const [errorMessage, setErrorMessage] = useState("");
