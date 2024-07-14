@@ -4,7 +4,7 @@ import {Loading} from "../Layout";
 import {useFetch} from "../useFetch";
 
 export function MigrationStatus() {
-    const {data, loading} = useFetch<Schema.system.migration.getAll.response>(Schema.system.migration.getAll.route);
+    const {data, loading} = useFetch<Schema.system.migration.getAll.response, Schema.system.migration.getAll.params>(Schema.system.migration.getAll.route);
     if (loading) return <Loading />
 
     return (

@@ -6,7 +6,7 @@ import {useFetch} from "../../useFetch";
 
 export function SearchResults() {
     const {searchTerm} = useParams<{searchTerm: string}>()
-    const {data, loading} = useFetch<Schema.system.search.query.response>(Schema.system.search.query.route, [searchTerm || '']);
+    const {data, loading} = useFetch<Schema.system.search.query.response, Schema.system.search.query.params>(Schema.system.search.query.route, {query: searchTerm || ''});
 
     if(loading) return <Loading />;
 

@@ -6,7 +6,7 @@ import {toast} from "react-toastify";
 
 export function Login() {
     const [errorMessage, setErrorMessage] = useState("");
-    const {data, call} = useMutation<Schema.accounts.user.login.response>(Schema.accounts.user.login.route);
+    const {data, call} = useMutation<Schema.accounts.user.login.response, Schema.accounts.user.login.params>(Schema.accounts.user.login.route);
     const [inputs, setInputs] = useState<{email?: string, password?: string}>({})
 
     function handleSubmit() {
@@ -16,7 +16,7 @@ export function Login() {
             setErrorMessage("Please enter a password");
         } else {
             setErrorMessage("");
-            call([inputs.email, inputs.password]).then(() => {
+            call({email: inputs.email, password: inputs.password}).then(() => {
                 if(data) {
                     toast.success('You have successfully logged in!');
                 } else {
