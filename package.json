@@ -14,6 +14,7 @@
     "build:schema": "cd ./packages/schema/ && yarn build",
     "build:server": "cd ./packages/server/ && yarn build",
     "build:web": "cd ./packages/web/ && yarn build",
+    "clean": "./tools/clean.sh",
     "fix:lint": "eslint --fix",
     "fix:organize": "node node_modules/jscodeshift/bin/jscodeshift.js packages  --extensions=tsx,ts --parser=tsx -t tools/organize.ts",
     "fix:package": "sort-package-json \"package.json\" \"packages/*/package.json\"",
