@@ -26,13 +26,13 @@ show_help () {
 core () {
   local tid
   tid=$(newTabWithNamePath "HH Web" "$DIR")
-  runCommand $tid "yarn start:web"
+  runCommand $tid "cd ../web && yarn start"
   tid=$(newTabWithNamePath "HH Schema" "$DIR")
-  runCommand $tid "yarn start:schema"
+  runCommand $tid "cd ../schema && yarn start"
   tid=$(newTabWithNamePath "HH Domain" "$DIR")
-  runCommand $tid "yarn start:domain"
+  runCommand $tid "cd ../domain && yarn start"
   tid=$(newTabWithNamePath "HH Server" "$DIR")
-  runCommand $tid "yarn start:server"
+  runCommand $tid "cd ../server && yarn start"
   tid=$(newTabWithNamePath "HH Migrate" "$DIR")
   runCommand $tid "cd ../migrate"
 }
