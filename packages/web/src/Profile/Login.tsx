@@ -7,7 +7,7 @@ import {useMutation} from "../useMutation";
 export function Login() {
     const [errorMessage, setErrorMessage] = useState("");
     const {call} = useMutation<Schema.accounts.user.login.response, Schema.accounts.user.login.params>(Schema.accounts.user.login.route);
-    const [inputs, setInputs] = useState<{email?: string, password?: string}>({})
+    const [inputs, setInputs] = useState<{email?: string, password?: string}>({email: '', password: ''})
 
     function handleSubmit() {
         if(!inputs.email) {

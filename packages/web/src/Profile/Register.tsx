@@ -7,7 +7,7 @@ import {useMutation} from "../useMutation";
 export function Register() {
     const [errorMessage, setErrorMessage] = useState("");
     const {call} = useMutation<Schema.accounts.user.register.response, Schema.accounts.user.register.params>(Schema.accounts.user.register.route);
-    const [inputs, setInputs] = useState<{firstName?: string, lastName?: string, email?: string, password1?: string, password2?: string}>({})
+    const [inputs, setInputs] = useState<{firstName?: string, lastName?: string, email?: string, password1?: string, password2?: string}>({firstName: '', lastName: '', email: '', password1: '', password2: ''})
 
     function handleSubmit() {
         if(!inputs.firstName) {
