@@ -22,14 +22,13 @@ export function Register() {
             setErrorMessage("Your passwords do not match");
         } else {
             setErrorMessage("");
-            call({firstName: inputs.firstName, lastName: inputs.lastName, email: inputs.email, password1: inputs.password1, password2: inputs.password2}, (data, status) => {
-                console.log(data, status);
+            call({firstName: inputs.firstName, lastName: inputs.lastName, email: inputs.email, password1: inputs.password1, password2: inputs.password2}, (data, status, error) => {
                 if(status === 200) {
                     if(data) {
                         toast.success('You have successfully logged in!');
                     }
                 } else {
-                    toast.error('Your username or password was incorrect');
+                    toast.error(error);
                 }
             });
 

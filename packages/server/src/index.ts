@@ -39,7 +39,9 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 				const response = JSON.stringify(await endpoint.action(req.query));
 				d(response);
 				res.status(200).send(response);
-			} catch (error) {
+			} catch (error: unknown) {
+				res.statusMessage = error as string;
+				res.status(500).send({});
 				d(error);
 			}
 		});

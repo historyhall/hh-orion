@@ -11,7 +11,7 @@ export class DocumentController {
 
     async getById(data: Schema.documents.document.getById.params) {
         const document = await this.em.findOne({id: data.id}, {populate: ['authors']});
-        if (!document) throw new Error('document not found');
+        if (!document) throw new Error('A document with that id could not found.');
         return document;
     }
 

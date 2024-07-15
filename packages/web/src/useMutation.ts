@@ -1,15 +1,16 @@
 /* eslint-disable no-unused-vars */
 import {useState} from 'react';
 import {environment} from './environment';
+import {debug} from 'debug';
+
+const d = debug('hh.Profile.Register');
 
 export function useMutation<T, P>(
 	path: string,
-): {data?: T; loading: boolean; error?: string; status?: number; call: (params?: P, callback?: (data: T, status?: number) => void) => Promise<void>} {
-	const [data, setData] = useState<any>();
+): {loading: boolean; call: (params?: P, callback?: (data: T, status?: number, error?: string) => void) => Promise<void>} {
 	const [loading, setLoading] = useState<boolean>(false);
-	const [error, setError] = useState<string | undefined>();
 
-	async function call(params?: P, callback?: (data: T, status?: number) => void) {
+	async function call(params?: P, callback?: (data: T, status?: number, error?: string) => void) {
 		let paramList = new URLSearchParams(params as Record<string, string>).toString();
 		setLoading(true);
 		try {
@@ -18,17 +19,18 @@ export function useMutation<T, P>(
 
 			fetch(url).then(response => {
 				response.json().then(json => {
-					setData(json);
-					setError(undefined);
-					callback && callback(json, response.status);
+					if (response.status === 200) {
+					} else {
+						callback && callback(json, response.status, response.statusText);
+					}
 				});
 			});
 		} catch (error) {
-			setError(`${error} Could not Fetch Data `);
+			d(error);
 		} finally {
 			setLoading(false);
 		}
 	}
 
-	return {data, loading, error, call};
+	return {loading, call};
 }

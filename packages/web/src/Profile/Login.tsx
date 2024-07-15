@@ -16,14 +16,13 @@ export function Login() {
             setErrorMessage("Please enter a password");
         } else {
             setErrorMessage("");
-            call({email: inputs.email, password: inputs.password}, (data, status) => {
-                console.log(data, status);
+            call({email: inputs.email, password: inputs.password}, (data, status, error) => {
                 if(status === 200) {
                     if(data) {
                         toast.success('You have successfully logged in!');
                     }
                 } else {
-                    toast.error('Your username or password was incorrect');
+                    toast.error(error);
                 }
             })
         }
