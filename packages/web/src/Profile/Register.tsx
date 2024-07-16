@@ -3,9 +3,11 @@ import {useState} from "react";
 import {toast} from "react-toastify";
 import {Button, Form, FormField, Input, Message} from "semantic-ui-react";
 import {useMutation} from "../useMutation";
+import {useNavigate} from "react-router-dom";
 
 export function Register() {
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
     const {call} = useMutation<Schema.accounts.user.register.response, Schema.accounts.user.register.params>(Schema.accounts.user.register.route);
     const [inputs, setInputs] = useState<{firstName?: string, lastName?: string, email?: string, password1?: string, password2?: string}>({firstName: '', lastName: '', email: '', password1: '', password2: ''})
 
@@ -26,6 +28,7 @@ export function Register() {
                 if(status === 200) {
                     if(data) {
                         toast.success('You have successfully registered an account!');
+                        navigate('/profile/login');
                     }
                 } else {
                     toast.error(error);
@@ -52,11 +55,11 @@ export function Register() {
             </FormField>
             <FormField>
                 <label>Password</label>
-                <Input placeholder='Password' value={inputs.password1} onChange={event => setInputs({...inputs, password1: event.target.value})} />
+                <Input placeholder='Password' type="password" value={inputs.password1} onChange={event => setInputs({...inputs, password1: event.target.value})} />
             </FormField>
             <FormField>
                 <label>Confirm Password</label>
-                <Input placeholder='Confirm Password' value={inputs.password2} onChange={event => setInputs({...inputs, password2: event.target.value})} />
+                <Input placeholder='Confirm Password' type="password" value={inputs.password2} onChange={event => setInputs({...inputs, password2: event.target.value})} />
             </FormField>
             <Button type='submit'>Register</Button>
         </Form>
