@@ -1,4 +1,4 @@
-import * as Schema from "hh-orion-schema/dist";
+import {Schema} from "hh-orion-schema/dist";
 import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from "semantic-ui-react";
 import {Loading} from "../Layout";
 import {useFetch} from "../useFetch";

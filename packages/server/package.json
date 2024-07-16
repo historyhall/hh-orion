@@ -2,6 +2,7 @@
   "name": "hh-orion-server",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "tsc --build",
     "schema:changes": "yarn build && MIKRO_ORM_CLI_CONFIG=dist/core/mikro-orm.config.js yarn mikro-orm schema:update -d",
