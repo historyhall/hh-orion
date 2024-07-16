@@ -54,7 +54,6 @@ const pages: Record<string, Page> = {
             ]
         },
         path: '/profile',
-        component: Profile,
         permissions: {
             loggedOut: true,
         }

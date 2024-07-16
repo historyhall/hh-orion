@@ -4,11 +4,18 @@ import Cookies from 'js-cookie';
 export function isAuthorized(permissions?: Permissions) {
 	const isLoggedIn = !!Cookies.get('hh_token');
 
-	if (permissions?.loggedIn && isLoggedIn) {
+	// No permissions were defined, we return true;
+	if (!permissions) {
 		return true;
-	} else if (permissions?.loggedOut && !isLoggedIn) {
+	}
+
+	// User must be logged in;
+	if (permissions.loggedIn && isLoggedIn) {
 		return true;
-	} else if (!permissions) {
+	}
+
+	// User must be logged out;
+	if (permissions.loggedOut && !isLoggedIn) {
 		return true;
 	}
 	return false;

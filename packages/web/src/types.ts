@@ -5,7 +5,7 @@ export type Page = {
 	header?: Header;
 	menu?: Menu;
 	path: string;
-	component: () => JSX.Element;
+	component?: () => JSX.Element;
 	sidebar?: () => JSX.Element;
 	permissions?: Permissions;
 };
