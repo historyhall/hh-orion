@@ -14,7 +14,7 @@ import {Content} from './Layout/Content';
 import Profile from './Profile';
 import System from './System';
 import {Page} from './types';
-import {isLoggedIn} from './isLoggedIn';
+import {isAuthorized} from './isAuthorized';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
@@ -23,11 +23,7 @@ const pages: Record<string, Page> = {...Home, ...About, ...Document, ...Donate, 
 
 const authorizedPages: Page[] = [];
 Object.values(pages).forEach(page => {
-	if (page.permissions?.loggedIn && isLoggedIn()) {
-		authorizedPages.push(page);
-	} else if (page.permissions?.loggedOut && !isLoggedIn()) {
-		authorizedPages.push(page);
-	} else if (!page.permissions) {
+	if (isAuthorized(page.permissions)) {
 		authorizedPages.push(page);
 	}
 });
