@@ -1,11 +1,38 @@
-import {Logout} from "../Layout/Logout";
+import {Logout} from "./Logout";
 import {Page} from "../types";
 import {Login} from "./Login";
 import {Profile} from "./Profile";
 import {Register} from "./Register";
 
 const pages: Record<string, Page> = {
-    profile: {
+    profileLoggedIn: {
+        header: {
+            name: 'Profile',
+            icon: 'user'
+        },
+        menu: {
+            icon: 'user',
+            position: 'right',
+            secondaryMenuItem: [
+                {
+                    icon: 'user',
+                    name: 'Profile',
+                    path: '/profile',
+                },
+                {
+                    icon: 'sign out',
+                    name: 'Logout',
+                    path: '/profile/logout',
+                },
+            ]
+        },
+        path: '/profile',
+        component: Profile,
+        permissions: {
+            loggedIn: true,
+        }
+    },
+    profileLoggedOut: {
         header: {
             name: 'Profile',
             icon: 'user'
@@ -24,15 +51,13 @@ const pages: Record<string, Page> = {
                     name: 'Register',
                     path: '/profile/register',
                 },
-                // {
-                //     icon: 'sign out',
-                //     name: 'Logout',
-                //     path: '/profile/logout',
-                // },
             ]
         },
         path: '/profile',
-        component: Profile
+        component: Profile,
+        permissions: {
+            loggedOut: true,
+        }
     },
     login: {
         header: {
@@ -40,7 +65,10 @@ const pages: Record<string, Page> = {
             icon: 'sign in'
         },
         path: '/profile/login',
-        component: Login
+        component: Login,
+        permissions: {
+            loggedOut: true,
+        }
     },
     logout: {
         header: {
@@ -48,7 +76,10 @@ const pages: Record<string, Page> = {
             icon: 'sign out'
         },
         path: '/profile/logout',
-        component: Logout
+        component: Logout,
+        permissions: {
+            loggedIn: true,
+        }
     },
     register: {
         header: {
@@ -56,7 +87,10 @@ const pages: Record<string, Page> = {
             icon: 'signup'
         },
         path: '/profile/register',
-        component: Register
+        component: Register,
+        permissions: {
+            loggedOut: true,
+        }
     }
 }
 export default pages;

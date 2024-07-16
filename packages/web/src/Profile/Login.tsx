@@ -22,7 +22,7 @@ export function Login() {
                 if(status === 200) {
                     if(data) {
                         toast.success('You have successfully logged in!');
-                        document.cookie = `hh_token=${data}`
+                        document.cookie = `hh_token=${data};SameSite=Strict`
                         navigate('/');
                     }
                 } else {
