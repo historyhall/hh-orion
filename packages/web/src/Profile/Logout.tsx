@@ -7,9 +7,11 @@ export function Logout() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        Cookies.remove('hh_token');
-        toast.success('You have been logged out!');
-        navigate('/');
+        if(!!Cookies.get('hh_token')) {
+            Cookies.remove('hh_token');
+            toast.success('You have been logged out!');
+            navigate('/');
+        }
     })
 
     return <Fragment />;
