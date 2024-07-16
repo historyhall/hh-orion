@@ -1,9 +1,6 @@
 import {Permissions} from './types';
-import Cookies from 'js-cookie';
 
-export function isAuthorized(permissions?: Permissions) {
-	const isLoggedIn = !!Cookies.get('hh_token');
-
+export function isAuthorized(isLoggedIn: boolean, permissions?: Permissions) {
 	// No permissions were defined, we return true;
 	if (!permissions) {
 		return true;
