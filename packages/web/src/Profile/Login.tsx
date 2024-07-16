@@ -3,9 +3,11 @@ import {useState} from "react";
 import {toast} from "react-toastify";
 import {Button, Form, FormField, Input, Message} from "semantic-ui-react";
 import {useMutation} from "../useMutation";
+import {useNavigate} from "react-router-dom";
 
 export function Login() {
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
     const {call} = useMutation<Schema.accounts.user.login.response, Schema.accounts.user.login.params>(Schema.accounts.user.login.route);
     const [inputs, setInputs] = useState<{email?: string, password?: string}>({email: '', password: ''})
 
@@ -20,6 +22,8 @@ export function Login() {
                 if(status === 200) {
                     if(data) {
                         toast.success('You have successfully logged in!');
+                        document.cookie = `hh_token=${data}`
+                        navigate('/');
                     }
                 } else {
                     toast.error(error);

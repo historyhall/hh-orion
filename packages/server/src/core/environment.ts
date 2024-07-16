@@ -15,5 +15,5 @@ export const environment = {
     corsOrigin: process.env.CORS_ORIGIN,
     debug: process.env.DEUBG || 'hh.*',
     elasticSearchUrl: process.env.ELASTIC_SEARCH_URL || 'http://localhost:9200',
-    tokenSecret: process.env.TOKEN_SECRET,
+    tokenSecret: process.env.TOKEN_SECRET || 'ABC123',
 };
