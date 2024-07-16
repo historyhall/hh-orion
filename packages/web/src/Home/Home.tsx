@@ -1,6 +1,6 @@
 import {Grid, GridColumn, GridRow, Header} from "semantic-ui-react";
-import {Searchbar} from "../System/components/Searchbar";
-import {Statistics} from "./components/Statistics";
+import {Searchbar} from "../System/search/Searchbar";
+import {Statistics} from "./home/Statistics";
 
 export function Home() {
 

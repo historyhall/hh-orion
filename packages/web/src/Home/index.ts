@@ -1,6 +1,6 @@
 import {Page} from "../types";
 import {Home} from "./Home";
-import image from './components/logo.png';
+import image from './home/logo.png';
 
 const pages: Record<string, Page> = {
     home: {

@@ -1,7 +1,7 @@
-import {MainMenu} from "./MainMenu";
+import {MainMenu} from "./layout/MainMenu";
 import {ToastContainer} from "react-toastify";
 import {Route, Routes} from "react-router-dom";
-import {Content} from "./Content";
+import {Content} from "./layout/Content";
 import {Page} from "../types";
 import About from '../About';
 import Donate from '../Contribute';

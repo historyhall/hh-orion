@@ -1,6 +1,6 @@
 import {JSX} from "react";
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
-import {Header} from "../types";
+import {Header} from "../../types";
 import {BodyHeader} from "./BodyHeader";
 
 interface Props {

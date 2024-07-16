@@ -1,5 +1,5 @@
 import {Label} from "semantic-ui-react";
-import {Tag} from "../types";
+import {Tag} from "../../types";
 
 interface Props {
     tags: Tag[];
