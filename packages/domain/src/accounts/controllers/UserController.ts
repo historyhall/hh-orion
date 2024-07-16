@@ -1,6 +1,8 @@
 import {EntityManager} from "@mikro-orm/core";
 import * as Schema from "hh-orion-schema/dist";
 import {User} from "../entities";
+import {passwordHash} from "../../lib/passwordHash";
+import {compare} from "bcrypt";
 
 export class UserController {
     public em;
@@ -17,7 +19,9 @@ export class UserController {
         const existingUser =  await this.em.findOne({email: data.email});
         if (!existingUser) throw new Error('A user with that email could not be found.');
 
-        if(existingUser.password !== data.password)  throw new Error('The password was incorrect.');
+        const compareResult = await compare(data.password, existingUser.password);
+
+        if(!compareResult)  throw new Error('The password was incorrect.');
 
         return existingUser;
     }
@@ -28,7 +32,9 @@ export class UserController {
 
         if(data.password1 !== data.password2) throw new Error('The provided passwords do not match');
 
-        const user = new User({email: data.email, password: data.password1, firstName: data.firstName, lastName: data.lastName});
+        const hashedPassword = await passwordHash(data.password1);
+
+        const user = new User({email: data.email, password: hashedPassword, firstName: data.firstName, lastName: data.lastName});
 
         await this.em.insert(user);
         return user;

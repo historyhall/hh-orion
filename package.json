@@ -43,6 +43,7 @@
     "test:web:types": "cd ./packages/web/ && yarn tsc"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/debug": "^4.1.12",
     "@types/express": "^4.17.21",
