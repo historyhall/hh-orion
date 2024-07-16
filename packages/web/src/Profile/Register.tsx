@@ -25,7 +25,7 @@ export function Register() {
             call({firstName: inputs.firstName, lastName: inputs.lastName, email: inputs.email, password1: inputs.password1, password2: inputs.password2}, (data, status, error) => {
                 if(status === 200) {
                     if(data) {
-                        toast.success('You have successfully logged in!');
+                        toast.success('You have successfully registered an account!');
                     }
                 } else {
                     toast.error(error);
@@ -58,7 +58,7 @@ export function Register() {
                 <label>Confirm Password</label>
                 <Input placeholder='Confirm Password' value={inputs.password2} onChange={event => setInputs({...inputs, password2: event.target.value})} />
             </FormField>
-            <Button type='submit' onClick={handleSubmit}>Register</Button>
+            <Button type='submit'>Register</Button>
         </Form>
     );
 }

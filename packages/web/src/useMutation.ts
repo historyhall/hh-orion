@@ -24,7 +24,6 @@ export function useMutation<T, P>(
 			});
 		} catch (error) {
 			d(error);
-		} finally {
 		}
 	}
 
