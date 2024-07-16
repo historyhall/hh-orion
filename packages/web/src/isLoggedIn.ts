@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 export function isLoggedIn() {
-	return true;
+	return !!Cookies.get('hh_token');
 }

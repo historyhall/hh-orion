@@ -4,6 +4,7 @@ import {toast} from "react-toastify";
 import {Button, Form, FormField, Input, Message} from "semantic-ui-react";
 import {useMutation} from "../useMutation";
 import {useNavigate} from "react-router-dom";
+import Cookies from "js-cookie";
 
 export function Login() {
     const [errorMessage, setErrorMessage] = useState("");
@@ -22,7 +23,7 @@ export function Login() {
                 if(status === 200) {
                     if(data) {
                         toast.success('You have successfully logged in!');
-                        document.cookie = `hh_token=${data};SameSite=Strict`
+                        Cookies.set('hh_token', data);
                         navigate('/');
                     }
                 } else {
