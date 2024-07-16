@@ -7,5 +7,16 @@ import {m20240629b} from "./m20240629b";
 import {m20240702} from "./m20240702";
 import {m20240706} from "./m20240706";
 import {m20240706b} from "./m20240706b";
+import {m20240715} from "./m20240715";
 
-export const migrations: Migration[] = [m20240619, m20240627, m20240628, m20240629, m20240629b, m20240702, m20240706, m20240706b];
+export const migrations: Migration[] = [
+    m20240619,
+    m20240627,
+    m20240628,
+    m20240629,
+    m20240629b,
+    m20240702,
+    m20240706,
+    m20240706b,
+    m20240715
+];

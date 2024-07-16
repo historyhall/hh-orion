@@ -6,8 +6,8 @@ import {useMutation} from "../useMutation";
 
 export function Register() {
     const [errorMessage, setErrorMessage] = useState("");
-    const {data, call} = useMutation<Schema.accounts.user.register.response, Schema.accounts.user.register.params>(Schema.accounts.user.register.route);
-    const [inputs, setInputs] = useState<{firstName?: string, lastName?: string, email?: string, password1?: string, password2?: string}>({})
+    const {call} = useMutation<Schema.accounts.user.register.response, Schema.accounts.user.register.params>(Schema.accounts.user.register.route);
+    const [inputs, setInputs] = useState<{firstName?: string, lastName?: string, email?: string, password1?: string, password2?: string}>({firstName: '', lastName: '', email: '', password1: '', password2: ''})
 
     function handleSubmit() {
         if(!inputs.firstName) {
@@ -22,11 +22,13 @@ export function Register() {
             setErrorMessage("Your passwords do not match");
         } else {
             setErrorMessage("");
-            call({firstName: inputs.firstName, lastName: inputs.lastName, email: inputs.email, password1: inputs.password1, password2: inputs.password2}).then(() => {
-                if(data) {
-                    toast.success('You have successfully logged in!');
+            call({firstName: inputs.firstName, lastName: inputs.lastName, email: inputs.email, password1: inputs.password1, password2: inputs.password2}, (data, status, error) => {
+                if(status === 200) {
+                    if(data) {
+                        toast.success('You have successfully registered an account!');
+                    }
                 } else {
-                    toast.error('Your username or password was incorrect');
+                    toast.error(error);
                 }
             });
 
@@ -56,7 +58,7 @@ export function Register() {
                 <label>Confirm Password</label>
                 <Input placeholder='Confirm Password' value={inputs.password2} onChange={event => setInputs({...inputs, password2: event.target.value})} />
             </FormField>
-            <Button type='submit' onClick={handleSubmit}>Register</Button>
+            <Button type='submit'>Register</Button>
         </Form>
     );
 }

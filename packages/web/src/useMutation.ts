@@ -1,35 +1,31 @@
-import {useState} from 'react';
+import {debug} from 'debug';
+/* eslint-disable no-unused-vars */
 import {environment} from './environment';
 
-// eslint-disable-next-line no-unused-vars
-export function useMutation<T, P>(path: string): {data?: T; loading: boolean; error?: string; call: (params?: P) => Promise<void>} {
-	const [data, setData] = useState<any>();
-	const [loading, setLoading] = useState<boolean>(false);
-	const [error, setError] = useState<string | undefined>();
+const d = debug('hh.web.useMutation');
 
-	async function call(params?: P) {
+export function useMutation<T, P>(
+	path: string,
+): {call: (params?: P, callback?: (data: T, status?: number, error?: string) => void) => Promise<void>} {
+	async function call(params?: P, callback?: (data: T, status?: number, error?: string) => void) {
 		let paramList = new URLSearchParams(params as Record<string, string>).toString();
-		setLoading(true);
 		try {
 			let url = `${environment.serverURL}/${path}`;
 			if (paramList) url += '?' + paramList;
 
 			fetch(url).then(response => {
-				if (!response.ok) {
-					setError(response.statusText);
-				} else {
-					response.json().then(json => {
-						setData(json);
-						setError(undefined);
-					});
-				}
+				response.json().then(json => {
+					if (response.status === 200) {
+						callback && callback(json, response.status);
+					} else {
+						callback && callback(json, response.status, response.statusText);
+					}
+				});
 			});
 		} catch (error) {
-			setError(`${error} Could not Fetch Data `);
-		} finally {
-			setLoading(false);
+			d(error);
 		}
 	}
 
-	return {data, loading, error, call};
+	return {call};
 }

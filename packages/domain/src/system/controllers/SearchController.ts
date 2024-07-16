@@ -4,6 +4,7 @@ import debug from 'debug';
 import * as Schema from "hh-orion-schema/dist";
 import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
+import {stripHtmlFromString} from "../../lib/stripHtmlFromString";
 
 const d = debug('hh.domain.system.controllers.SearchController');
 
@@ -22,10 +23,6 @@ export class SearchController {
     public constructor(em: EntityManager, search: Client) {
         this.em = em;
         this.search = search
-    }
-
-    private stripHTML(text: string) {
-        return text.replace(/<[^>]*>/g, '');
     }
     
     async query(data: Schema.system.search.query.params) {
@@ -95,7 +92,7 @@ export class SearchController {
                 document: {
                     id: document.id,
                     name: document.name,
-                    content: this.stripHTML(document.content),
+                    content: stripHtmlFromString(document.content),
                     createdAt: document.createdAt.toString(),
                     authors: await authorController.generateAuthorsList(document.authors),
                 },

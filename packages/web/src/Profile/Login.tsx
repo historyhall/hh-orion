@@ -1,13 +1,13 @@
 import * as Schema from 'hh-orion-schema/dist'
-import { useState} from "react";
+import {useState} from "react";
 import {toast} from "react-toastify";
 import {Button, Form, FormField, Input, Message} from "semantic-ui-react";
 import {useMutation} from "../useMutation";
 
 export function Login() {
     const [errorMessage, setErrorMessage] = useState("");
-    const {data, call} = useMutation<Schema.accounts.user.login.response, Schema.accounts.user.login.params>(Schema.accounts.user.login.route);
-    const [inputs, setInputs] = useState<{email?: string, password?: string}>({})
+    const {call} = useMutation<Schema.accounts.user.login.response, Schema.accounts.user.login.params>(Schema.accounts.user.login.route);
+    const [inputs, setInputs] = useState<{email?: string, password?: string}>({email: '', password: ''})
 
     function handleSubmit() {
         if(!inputs.email) {
@@ -16,13 +16,15 @@ export function Login() {
             setErrorMessage("Please enter a password");
         } else {
             setErrorMessage("");
-            call({email: inputs.email, password: inputs.password}).then(() => {
-                if(data) {
-                    toast.success('You have successfully logged in!');
+            call({email: inputs.email, password: inputs.password}, (data, status, error) => {
+                if(status === 200) {
+                    if(data) {
+                        toast.success('You have successfully logged in!');
+                    }
                 } else {
-                    toast.error('Your username or password was incorrect');
+                    toast.error(error);
                 }
-            });
+            })
         }
     }
 

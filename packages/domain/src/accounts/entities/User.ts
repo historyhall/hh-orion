@@ -1,4 +1,4 @@
-import {Collection, Entity, ManyToMany, PrimaryKey, Property} from '@mikro-orm/core';
+import {Collection, Entity, ManyToMany, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
 import {Author} from "./Author";
@@ -30,6 +30,7 @@ export class User {
 	lastName: string;
 
 	@Property({type: 'text'})
+	@Unique()
 	email: string;
 
 	@Property({type: 'text'})
