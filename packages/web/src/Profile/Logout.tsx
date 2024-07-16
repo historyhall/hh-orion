@@ -1,15 +1,15 @@
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
-import {useEffect} from "react";
+import {Fragment, useEffect} from "react";
 
 export function Logout() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        document.cookie = `hh_token=`
-        navigate('/');
+        document.cookie = `hh_token=;SameSite=Strict`
         toast.success('You have been logged out!');
+        navigate('/');
     })
 
-    return <p>You are being logged out...</p>;
+    return <Fragment />;
 }
