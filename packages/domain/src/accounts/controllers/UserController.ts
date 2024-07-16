@@ -1,8 +1,8 @@
 import {EntityManager} from "@mikro-orm/core";
-import * as Schema from "hh-orion-schema/dist";
-import {User} from "../entities";
-import {passwordHash} from "../../lib/passwordHash";
 import {compare} from "bcrypt";
+import * as Schema from "hh-orion-schema/dist";
+import {passwordHash} from "../../lib/passwordHash";
+import {User} from "../entities";
 
 export class UserController {
     public em;

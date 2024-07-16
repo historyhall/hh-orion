@@ -1,8 +1,8 @@
+import {debug} from 'debug';
 /* eslint-disable no-unused-vars */
 import {environment} from './environment';
-import {debug} from 'debug';
 
-const d = debug('hh.Profile.Register');
+const d = debug('hh.web.useMutation');
 
 export function useMutation<T, P>(
 	path: string,
