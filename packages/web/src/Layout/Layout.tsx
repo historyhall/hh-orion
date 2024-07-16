@@ -1,8 +1,7 @@
-import {MainMenu} from "./layout/MainMenu";
-import {ToastContainer} from "react-toastify";
+import Cookies from "js-cookie";
+import {useEffect, useState} from "react";
 import {Route, Routes, useLocation} from "react-router-dom";
-import {Content} from "./layout/Content";
-import {Page} from "../types";
+import {ToastContainer} from "react-toastify";
 import About from '../About';
 import Donate from '../Contribute';
 import Document from '../Document';
@@ -10,8 +9,9 @@ import Home from '../Home';
 import Profile from '../Profile';
 import System from '../System';
 import {isAuthorized} from '../isAuthorized';
-import Cookies from "js-cookie";
-import {useEffect, useState} from "react";
+import {Page} from "../types";
+import {Content} from "./layout/Content";
+import {MainMenu} from "./layout/MainMenu";
 
 export function Layout() {
     const pages: Record<string, Page> = {...Home, ...About, ...Document, ...Donate, ...Profile, ...System};

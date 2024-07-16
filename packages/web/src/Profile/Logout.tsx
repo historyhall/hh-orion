@@ -1,7 +1,7 @@
-import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
-import {Fragment, useEffect} from "react";
 import Cookies from "js-cookie";
+import {Fragment, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 export function Logout() {
     const navigate = useNavigate()

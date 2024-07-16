@@ -1,6 +1,6 @@
-import {Logout} from "./Logout";
 import {Page} from "../types";
 import {Login} from "./Login";
+import {Logout} from "./Logout";
 import {Profile} from "./Profile";
 import {Register} from "./Register";
 

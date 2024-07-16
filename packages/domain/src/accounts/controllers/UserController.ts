@@ -1,9 +1,9 @@
 import {EntityManager} from "@mikro-orm/core";
 import {compare} from "bcrypt";
 import * as Schema from "hh-orion-schema/dist";
+import {sign} from "jsonwebtoken";
 import {passwordHash} from "../../lib/passwordHash";
 import {User} from "../entities";
-import {sign} from "jsonwebtoken";
 
 export class UserController {
     public em;

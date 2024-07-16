@@ -2,10 +2,10 @@ import * as Schema from "hh-orion-schema/dist";
 import {useParams} from "react-router-dom";
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
 import {Loading} from "../Layout";
-import {Tags} from "./document/Tags";
+import {BodyHeader} from "../Layout/layout/BodyHeader";
 import {Tag} from "../types";
 import {useFetch} from "../useFetch";
-import {BodyHeader} from "../Layout/layout/BodyHeader";
+import {Tags} from "./document/Tags";
 
 export function Document() {
     const {documentId} = useParams<{documentId: string}>()

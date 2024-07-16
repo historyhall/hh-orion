@@ -1,9 +1,9 @@
 import * as Schema from 'hh-orion-schema/dist'
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 import {Button, Form, FormField, Input, Message} from "semantic-ui-react";
 import {useMutation} from "../useMutation";
-import {useNavigate} from "react-router-dom";
 
 export function Register() {
     const [errorMessage, setErrorMessage] = useState("");
