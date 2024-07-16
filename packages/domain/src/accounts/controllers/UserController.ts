@@ -14,9 +14,12 @@ export class UserController {
     }
 
     async login(data: Schema.accounts.user.login.params) {
-        const user =  await this.em.findOne({email: data.email});
-        if (!user) throw new Error('A user with that email could not be found.');
-        return user;
+        const existingUser =  await this.em.findOne({email: data.email});
+        if (!existingUser) throw new Error('A user with that email could not be found.');
+
+        if(existingUser.password !== data.password)  throw new Error('The password was incorrect.');
+
+        return existingUser;
     }
 
     async register(data: Schema.accounts.user.register.params) {
