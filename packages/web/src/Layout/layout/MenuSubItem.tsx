@@ -25,12 +25,12 @@ export function MenuSubItem({menu, path}: Props) {
                             <DropdownMenu>
                                 {menu.secondaryMenuItem.map(secondary => {
                                     return (
-                                        <DropdownItem key={secondary.path}>
-                                            <Link to={secondary.path} style={{color: 'black'}}>
-                                                    {secondary.icon && <Icon name={secondary.icon} />}
-                                                    {secondary.name && <>{secondary.name}</>}
-                                            </Link>
-                                        </DropdownItem>
+                                        <Link to={secondary.path} key={secondary.path} >
+                                            <DropdownItem style={{color: 'black'}}>
+                                                        {secondary.icon && <Icon name={secondary.icon} />}
+                                                        {secondary.name && <>{secondary.name}</>}
+                                            </DropdownItem>
+                                        </Link>
                                     );
                                 })}
                             </DropdownMenu>

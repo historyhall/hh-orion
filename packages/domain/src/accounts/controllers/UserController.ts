@@ -1,14 +1,17 @@
 import {EntityManager} from "@mikro-orm/core";
 import {compare} from "bcrypt";
 import {Schema} from "hh-orion-schema/dist";
+import {sign} from "jsonwebtoken";
 import {passwordHash} from "../../lib/passwordHash";
 import {User} from "../entities";
 
 export class UserController {
     public em;
+    public tokenSecret;
 
-    public constructor(em: EntityManager) {
+    public constructor(em: EntityManager, tokenSecret: string) {
         this.em = em.getRepository(User);
+        this.tokenSecret = tokenSecret;
     }
 
     async getTotal() {
@@ -23,7 +26,7 @@ export class UserController {
 
         if(!compareResult)  throw new Error('The password was incorrect.');
 
-        return existingUser;
+        return sign({id: existingUser.id, email: existingUser.email}, this.tokenSecret, {expiresIn: '7d'});
     }
 
     async register(data: Schema.accounts.user.register.params) {
@@ -37,6 +40,6 @@ export class UserController {
         const user = new User({email: data.email, password: hashedPassword, firstName: data.firstName, lastName: data.lastName});
 
         await this.em.insert(user);
-        return user;
+        return true;
     }
 }
