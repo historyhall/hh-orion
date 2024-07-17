@@ -1,3 +1,2 @@
-export {MainMenu} from './MainMenu';
+export {Layout} from './Layout';
 export {Loading} from './Loading';
-export {BodyHeader} from './BodyHeader';

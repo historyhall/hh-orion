@@ -1,3 +1,3 @@
 export function Profile() {
-    return <p>You are not logged in.</p>;
+    return <p>If you can see this, you are logged in.</p>;
 }

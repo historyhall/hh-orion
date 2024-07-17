@@ -29,7 +29,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 
 	app.use(cors(corsOptions));
 
-	const endpoints: Action[] = [...Accounts(em), ...Documents(em), ...System(em, search)];
+	const endpoints: Action[] = [...Accounts(em, environment.tokenSecret), ...Documents(em), ...System(em, search)];
 
 	endpoints.map(endpoint => {
 		d(endpoint.route);

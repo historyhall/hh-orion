@@ -5,8 +5,9 @@ export type Page = {
 	header?: Header;
 	menu?: Menu;
 	path: string;
-	component: () => JSX.Element;
+	component?: () => JSX.Element;
 	sidebar?: () => JSX.Element;
+	permissions?: Permissions;
 };
 
 export type Header = {
@@ -33,4 +34,9 @@ export type Tag = {
 	id: string;
 	icon: SemanticICONS;
 	text: string;
+};
+
+export type Permissions = {
+	loggedIn?: true;
+	loggedOut?: true;
 };
