@@ -1,4 +1,4 @@
-import * as Schema from 'hh-orion-schema/dist'
+import {Schema} from 'hh-orion-schema/dist'
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";

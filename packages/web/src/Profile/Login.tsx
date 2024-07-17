@@ -1,5 +1,5 @@
-import * as Schema from 'hh-orion-schema/dist'
-import Cookies from "js-cookie";
+import {Schema} from 'hh-orion-schema/dist'
+import Cookies from 'js-cookie';
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
