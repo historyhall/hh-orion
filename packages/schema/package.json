@@ -2,6 +2,8 @@
   "name": "hh-orion-schema",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index",
+  "types": "dist/index",
   "scripts": {
     "build": "tsc --build && yarn tsc ",
     "start": "tsc --build --watch && yarn tsc ",
@@ -12,5 +14,8 @@
   "dependencies": {
     "@elastic/elasticsearch": "^8.14.0",
     "typescript": "^5.5.3"
+  },
+  "publishConfig": {
+    "directory": "dist"
   }
 }

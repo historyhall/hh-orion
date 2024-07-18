@@ -2,6 +2,8 @@
   "name": "hh-orion-domain",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index",
+  "types": "dist/index",
   "scripts": {
     "build": "tsc --build && yarn tsc ",
     "start": "tsc --build --watch && yarn tsc ",
@@ -18,5 +20,8 @@
     "jsonwebtoken": "^9.0.2",
     "typescript": "^5.5.3",
     "uuid": "^10.0.0"
+  },
+  "publishConfig": {
+    "directory": "dist"
   }
 }

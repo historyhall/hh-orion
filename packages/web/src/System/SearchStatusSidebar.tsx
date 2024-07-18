@@ -1,4 +1,4 @@
-import * as Schema from "hh-orion-schema/dist";
+import * as Schema from "hh-orion-schema";
 import {toast} from "react-toastify";
 import {Button} from "semantic-ui-react";
 import {useMutation} from "../useMutation";

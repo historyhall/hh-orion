@@ -1,4 +1,4 @@
-import * as Schema from "hh-orion-schema/dist";
+import * as Schema from "hh-orion-schema";
 import {Link, useParams} from "react-router-dom";
 import {Card, CardContent, Divider, Label, List} from "semantic-ui-react";
 import {Loading} from "../../Layout";
