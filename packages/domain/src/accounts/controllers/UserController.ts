@@ -45,6 +45,15 @@ export class UserController {
         return token;
     }
 
+    async logout() {
+        const session = await this.sessionRepo.findOne({token: this.userData.token});
+        if(!session) throw new Error('Session not found.');
+
+        await this.sessionRepo.nativeDelete({id: session.id});
+
+        return true;
+    }
+
     async register(data: Schema.accounts.user.register.params) {
         const existingUser =  await this.userRepo.findOne({email: data.email});
         if (existingUser) throw new Error('A user already exists with that email.');

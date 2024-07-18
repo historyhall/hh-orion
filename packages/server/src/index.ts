@@ -53,6 +53,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 				agent,
 				ipAddress,
 				userId: tokenPayload?.id,
+				token,
 			};
 
 			try {
