@@ -2,7 +2,6 @@
   "name": "hh-orion-domain",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "tsc --build && yarn tsc ",
     "start": "tsc --build --watch && yarn tsc ",

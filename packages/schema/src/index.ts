@@ -1,1 +1,3 @@
-export * as Schema from './schema';
+export * as accounts from './accounts';
+export * as documents from './documents';
+export * as system from './system';

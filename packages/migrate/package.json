@@ -2,7 +2,6 @@
   "name": "hh-orion-migrate",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "tsc --build",
     "start": "ts-node-dev src/index.ts",

@@ -1,7 +1,7 @@
 import {Client} from "@elastic/elasticsearch";
 import {EntityManager} from "@mikro-orm/core";
 import debug from 'debug';
-import {Schema} from "hh-orion-schema/dist";
+import * as Schema from "hh-orion-schema/dist";
 import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
 import {stripHtmlFromString} from "../../lib/stripHtmlFromString";
