@@ -2,14 +2,14 @@ import {Collection, EntityManager} from "@mikro-orm/core";
 import {Author} from "../entities";
 
 export class AuthorController {
-    public em;
+    public authorRepo;
 
     public constructor(em: EntityManager) {
-        this.em = em.getRepository(Author);
+        this.authorRepo = em.getRepository(Author);
     }
 
     async getTotal() {
-        return this.em.count({})
+        return this.authorRepo.count({})
     }
 
     async generateAuthorsList(authors: Collection<Author,  object>) {

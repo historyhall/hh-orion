@@ -18,10 +18,12 @@ type QueryType = {
 
 export class SearchController {
     public em
+    public documentRepo
     public search
 
     public constructor(em: EntityManager, search: Client) {
         this.em = em;
+        this.documentRepo = em.getRepository(Document);
         this.search = search
     }
     
@@ -82,7 +84,7 @@ export class SearchController {
 
         const authorController = new AuthorController(this.em);
 
-        const documents = await this.em.find(Document, {});
+        const documents = await this.documentRepo.find( {});
         documents.map(async document => {
             d('index', document.id);
 

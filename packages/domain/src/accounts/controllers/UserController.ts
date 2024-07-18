@@ -6,20 +6,22 @@ import {passwordHash} from "../../lib/passwordHash";
 import {Session, User} from "../entities";
 
 export class UserController {
-    public em;
+    public userRepo;
+    public sessionRepo;
     public tokenSecret;
 
     public constructor(em: EntityManager, tokenSecret: string) {
-        this.em = em.getRepository(User);
+        this.sessionRepo = em.getRepository(Session);
+        this.userRepo = em.getRepository(User);
         this.tokenSecret = tokenSecret;
     }
 
     async getTotal() {
-        return this.em.count({});
+        return this.userRepo.count({});
     }
 
     async login(data: Schema.accounts.user.login.params) {
-        const user =  await this.em.findOne({email: data.email});
+        const user =  await this.userRepo.findOne({email: data.email});
         if (!user) throw new Error('A user with that email could not be found.');
 
         const compareResult = await compare(data.password, user.password);
@@ -34,13 +36,13 @@ export class UserController {
         const token = sign({id: user.id, email: user.email}, this.tokenSecret, {expiresIn: secondsUntilExpired});
 
         const session = new Session({user, expiryDate, token, ipAddress: 'test' })
-        await this.em.insert(session);
+        await this.sessionRepo.insert(session);
 
         return token;
     }
 
     async register(data: Schema.accounts.user.register.params) {
-        const existingUser =  await this.em.findOne({email: data.email});
+        const existingUser =  await this.userRepo.findOne({email: data.email});
         if (existingUser) throw new Error('A user already exists with that email.');
 
         if(data.password1 !== data.password2) throw new Error('The provided passwords do not match');
@@ -49,7 +51,7 @@ export class UserController {
 
         const user = new User({email: data.email, password: hashedPassword, firstName: data.firstName, lastName: data.lastName});
 
-        await this.em.insert(user);
+        await this.userRepo.insert(user);
         return true;
     }
 }
