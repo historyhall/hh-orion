@@ -4,16 +4,19 @@ import * as Schema from "hh-orion-schema";
 import {sign} from "jsonwebtoken";
 import {passwordHash} from "../../lib/passwordHash";
 import {Session, User} from "../entities";
+import {UserData} from "../../types";
 
 export class UserController {
     public userRepo;
     public sessionRepo;
     public tokenSecret;
+    public userData;
 
-    public constructor(em: EntityManager, tokenSecret: string) {
+    public constructor(em: EntityManager, userData: UserData, tokenSecret: string) {
         this.sessionRepo = em.getRepository(Session);
         this.userRepo = em.getRepository(User);
         this.tokenSecret = tokenSecret;
+        this.userData = userData;
     }
 
     async getTotal() {
@@ -35,7 +38,7 @@ export class UserController {
 
         const token = sign({id: user.id, email: user.email}, this.tokenSecret, {expiresIn: secondsUntilExpired});
 
-        const session = new Session({user, expiryDate, token, ipAddress: 'test' })
+        const session = new Session({user, expiryDate, token, ipAddress: this.userData.ipAddress})
         await this.sessionRepo.insert(session);
 
         return token;

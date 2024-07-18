@@ -1,12 +1,15 @@
 import {EntityManager} from "@mikro-orm/core";
 import * as Schema from "hh-orion-schema";
 import {Document} from "../entities";
+import {UserData} from "../../types";
 
 export class DocumentController {
     public documentRepo;
+    public userData;
 
-    public constructor(em: EntityManager) {
+    public constructor(em: EntityManager, userData: UserData) {
         this.documentRepo = em.getRepository(Document);
+        this.userData = userData;
     }
 
     async getById(data: Schema.documents.document.getById.params) {

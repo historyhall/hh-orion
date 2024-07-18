@@ -8,3 +8,7 @@ export type Domain = {
 	entities: EntityClass<Partial<any>>[];
 	controllers: Class[];
 };
+
+export type UserData = {
+	ipAddress: string;
+};

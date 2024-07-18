@@ -9,7 +9,7 @@ import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
 import {System} from './system';
-import {Action} from './types';
+import {Action, UserData} from './types';
 
 const d = debug('hh.server');
 
@@ -35,8 +35,18 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		d(endpoint.route);
 		app.get(`/${endpoint.route}`, async (req, res) => {
 			d(req.query);
+
+			let ipAddress = req.ip || req.socket.remoteAddress || '';
+			if (ipAddress.startsWith('::ffff:')) {
+				ipAddress = ipAddress.substring(7);
+			}
+
+			const userData: UserData = {
+				ipAddress,
+			};
+
 			try {
-				const response = JSON.stringify(await endpoint.action(req.query));
+				const response = JSON.stringify(await endpoint.action(userData, req.query));
 				d(response);
 				res.status(200).send(response);
 			} catch (error: unknown) {
