@@ -10,6 +10,7 @@ export function Document(em: EntityManager): Action[] {
             action: async (userData: UserData,data: Schema.documents.document.getById.params): Promise<Schema.documents.document.getById.response> => {
                 const document = await new controllers.documentController(em, userData).getById(data)
 
+                // @ts-ignore
                 return {...document, authors: document.authors.toArray()};
         }},
         {

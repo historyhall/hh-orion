@@ -1,5 +1,6 @@
 export type UserData = {
 	ipAddress: string;
+	userId?: string;
 };
 
 export type Action = {

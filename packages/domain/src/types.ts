@@ -11,4 +11,5 @@ export type Domain = {
 
 export type UserData = {
 	ipAddress: string;
+	userId?: string;
 };
