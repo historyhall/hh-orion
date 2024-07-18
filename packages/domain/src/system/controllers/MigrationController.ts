@@ -1,6 +1,6 @@
 import {EntityManager} from "@mikro-orm/core";
-import {Migration} from "../entities";
 import {UserData} from "../../types";
+import {Migration} from "../entities";
 
 export class MigrationController {
     public migrationRepo;

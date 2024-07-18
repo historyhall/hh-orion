@@ -1,7 +1,7 @@
 import {EntityManager} from "@mikro-orm/core";
 import * as Schema from "hh-orion-schema";
-import {Document} from "../entities";
 import {UserData} from "../../types";
+import {Document} from "../entities";
 
 export class DocumentController {
     public documentRepo;

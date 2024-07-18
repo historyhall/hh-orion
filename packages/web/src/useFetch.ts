@@ -1,6 +1,6 @@
+import Cookies from 'js-cookie';
 import {useEffect, useState} from 'react';
 import {environment} from './environment';
-import Cookies from 'js-cookie';
 
 export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: boolean; error?: string} {
 	const [data, setData] = useState<any>();

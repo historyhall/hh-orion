@@ -3,8 +3,8 @@ import {compare} from "bcrypt";
 import * as Schema from "hh-orion-schema";
 import {sign} from "jsonwebtoken";
 import {passwordHash} from "../../lib/passwordHash";
-import {Session, User} from "../entities";
 import {TokenConstructor, UserData} from "../../types";
+import {Session, User} from "../entities";
 
 export class UserController {
     public userRepo;

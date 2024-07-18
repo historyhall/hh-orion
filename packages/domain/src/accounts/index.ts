@@ -1,8 +1,8 @@
 import {EntityClass} from "@mikro-orm/core";
 import {AuthorController, UserController} from "./controllers";
+import {SessionController} from "./controllers/SessionController";
 import {Author, Session} from "./entities";
 import {User} from "./entities";
-import {SessionController} from "./controllers/SessionController";
 
 export const entities: EntityClass<Partial<any>>[] = [Author, Session, User];
 export const controllers = {

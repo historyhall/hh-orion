@@ -3,7 +3,7 @@ import debug from 'debug';
 import {v4} from 'uuid';
 import {User} from "./User";
 
-const d = debug('hh.domain.accounts.entities.User');
+const d = debug('hh.domain.accounts.entities.Session');
 
 export type SessionEntityConstructor = {
     expiryDate: Date;

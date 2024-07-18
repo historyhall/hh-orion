@@ -4,13 +4,13 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
+import {decode} from 'jsonwebtoken';
 import {Accounts} from './accounts';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
 import {System} from './system';
 import {Action, TokenPayload, UserData} from './types';
-import {decode} from 'jsonwebtoken';
 
 const d = debug('hh.server');
 

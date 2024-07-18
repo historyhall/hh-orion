@@ -1,7 +1,7 @@
 import {debug} from 'debug';
+import Cookies from 'js-cookie';
 /* eslint-disable no-unused-vars */
 import {environment} from './environment';
-import Cookies from 'js-cookie';
 
 const d = debug('hh.web.useMutation');
 

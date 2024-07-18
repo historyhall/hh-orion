@@ -1,6 +1,6 @@
 import {Collection, EntityManager} from "@mikro-orm/core";
-import {Author} from "../entities";
 import {UserData} from "../../types";
+import {Author} from "../entities";
 
 export class AuthorController {
     public authorRepo

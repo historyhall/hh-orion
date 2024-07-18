@@ -1,6 +1,6 @@
 import {EntityManager} from "@mikro-orm/core";
-import {Session} from "../entities";
 import {UserData} from "../../types";
+import {Session} from "../entities";
 
 export class SessionController {
     public sessionRepo;
