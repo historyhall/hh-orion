@@ -6,4 +6,5 @@ export type Session = {
     user: User;
     token: string;
     ipAddress: string;
+    agent: string;
 }

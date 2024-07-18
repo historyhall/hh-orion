@@ -1,4 +1,5 @@
 export type UserData = {
+	agent: string;
 	ipAddress: string;
 	userId?: string;
 };

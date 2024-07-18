@@ -10,4 +10,4 @@ updates:
       - "/"
       - "/packages/**/*"
     schedule:
-      interval: "weekly"
+      interval: "daily"

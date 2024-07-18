@@ -25,6 +25,7 @@ export function ActiveSessions() {
                     <TableRow>
                         <TableHeaderCell>Expiry Date</TableHeaderCell>
                         <TableHeaderCell>IP Address</TableHeaderCell>
+                        <TableHeaderCell>Agent</TableHeaderCell>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -36,6 +37,9 @@ export function ActiveSessions() {
                                 </TableCell>
                                 <TableCell>
                                     {session.ipAddress}
+                                </TableCell>
+                                <TableCell>
+                                    {session.agent}
                                 </TableCell>
                             </TableRow>
                         )

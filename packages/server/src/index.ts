@@ -37,6 +37,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		app.get(`/${endpoint.route}`, async (req, res) => {
 			d(req.query);
 
+			const agent = req.headers['user-agent'] || 'Unknown';
 			let ipAddress = req.ip || req.socket.remoteAddress || '';
 			if (ipAddress.startsWith('::ffff:')) {
 				ipAddress = ipAddress.substring(7);
@@ -49,6 +50,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 			}
 
 			const userData: UserData = {
+				agent,
 				ipAddress,
 				userId: tokenPayload?.id,
 			};
