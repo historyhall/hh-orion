@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import {useEffect, useState} from 'react';
 import {environment} from './environment';
 
@@ -14,7 +15,9 @@ export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: bo
 			let url = `${environment.serverURL}/${path}`;
 			if (paramList) url += '?' + paramList;
 
-			fetch(url).then(response => {
+			const headers = new Headers({Authorization: Cookies.get('hh_token') || ''});
+
+			fetch(url, {headers}).then(response => {
 				if (!response.ok) {
 					setError(response.statusText);
 				} else {

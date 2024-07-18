@@ -4,12 +4,13 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
+import {decode} from 'jsonwebtoken';
 import {Accounts} from './accounts';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
 import {System} from './system';
-import {Action} from './types';
+import {Action, TokenPayload, UserData} from './types';
 
 const d = debug('hh.server');
 
@@ -35,8 +36,25 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		d(endpoint.route);
 		app.get(`/${endpoint.route}`, async (req, res) => {
 			d(req.query);
+
+			let ipAddress = req.ip || req.socket.remoteAddress || '';
+			if (ipAddress.startsWith('::ffff:')) {
+				ipAddress = ipAddress.substring(7);
+			}
+
+			const token = req.headers.authorization;
+			let tokenPayload: TokenPayload | undefined;
+			if (token) {
+				tokenPayload = decode(token, {complete: true})?.payload as TokenPayload;
+			}
+
+			const userData: UserData = {
+				ipAddress,
+				userId: tokenPayload?.id,
+			};
+
 			try {
-				const response = JSON.stringify(await endpoint.action(req.query));
+				const response = JSON.stringify(await endpoint.action(userData, req.query));
 				d(response);
 				res.status(200).send(response);
 			} catch (error: unknown) {

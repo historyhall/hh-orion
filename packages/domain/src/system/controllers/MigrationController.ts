@@ -1,14 +1,17 @@
 import {EntityManager} from "@mikro-orm/core";
+import {UserData} from "../../types";
 import {Migration} from "../entities";
 
 export class MigrationController {
-    public em;
+    public migrationRepo;
+    public userData;
 
-    public constructor(em: EntityManager) {
-        this.em = em.getRepository(Migration);
+    public constructor(em: EntityManager, userData: UserData) {
+        this.migrationRepo = em.getRepository(Migration);
+        this.userData = userData;
     }
 
     async getAll() {
-        return this.em.find({}, {orderBy: {name: 'desc'}});
+        return this.migrationRepo.find({}, {orderBy: {name: 'desc'}});
     }
 }

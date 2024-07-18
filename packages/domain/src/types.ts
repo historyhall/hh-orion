@@ -8,3 +8,18 @@ export type Domain = {
 	entities: EntityClass<Partial<any>>[];
 	controllers: Class[];
 };
+
+export type UserData = {
+	ipAddress: string;
+	userId?: string;
+};
+
+export type TokenConstructor = {
+	id: string;
+	email: string;
+};
+
+export type TokenPayload = {
+	iat: number;
+	exp: number;
+} & TokenConstructor;

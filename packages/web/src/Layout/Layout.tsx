@@ -3,10 +3,10 @@ import {useEffect, useState} from "react";
 import {Route, Routes, useLocation} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import About from '../About';
+import Account from '../Account';
 import Donate from '../Contribute';
 import Document from '../Document';
 import Home from '../Home';
-import Profile from '../Profile';
 import System from '../System';
 import {isAuthorized} from '../isAuthorized';
 import {Page} from "../types";
@@ -14,7 +14,7 @@ import {Content} from "./layout/Content";
 import {MainMenu} from "./layout/MainMenu";
 
 export function Layout() {
-    const pages: Record<string, Page> = {...Home, ...About, ...Document, ...Donate, ...Profile, ...System};
+    const pages: Record<string, Page> = {...Home, ...About, ...Account, ...Document, ...Donate, ...System};
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const location = useLocation();
 

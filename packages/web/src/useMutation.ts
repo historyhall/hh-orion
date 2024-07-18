@@ -1,4 +1,5 @@
 import {debug} from 'debug';
+import Cookies from 'js-cookie';
 /* eslint-disable no-unused-vars */
 import {environment} from './environment';
 
@@ -13,7 +14,9 @@ export function useMutation<T, P>(
 			let url = `${environment.serverURL}/${path}`;
 			if (paramList) url += '?' + paramList;
 
-			fetch(url).then(response => {
+			const headers = new Headers({Authorization: Cookies.get('hh_token') || ''});
+
+			fetch(url, {headers}).then(response => {
 				response.json().then(json => {
 					if (response.status === 200) {
 						callback && callback(json, response.status);

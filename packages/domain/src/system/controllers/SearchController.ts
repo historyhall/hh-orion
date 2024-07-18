@@ -5,6 +5,7 @@ import * as Schema from "hh-orion-schema";
 import {AuthorController} from "../../accounts";
 import {Document} from "../../documents";
 import {stripHtmlFromString} from "../../lib/stripHtmlFromString";
+import {UserData} from "../../types";
 
 const d = debug('hh.domain.system.controllers.SearchController');
 
@@ -17,12 +18,16 @@ type QueryType = {
 }
 
 export class SearchController {
-    public em
-    public search
+    public em;
+    public documentRepo;
+    public search;
+    public userData;
 
-    public constructor(em: EntityManager, search: Client) {
+    public constructor(em: EntityManager, userData: UserData, search: Client) {
         this.em = em;
+        this.documentRepo = em.getRepository(Document);
         this.search = search
+        this.userData = userData;
     }
     
     async query(data: Schema.system.search.query.params) {
@@ -80,9 +85,9 @@ export class SearchController {
         d('Create new index');
         await this.search.indices.create({ index: 'hh-index' })
 
-        const authorController = new AuthorController(this.em);
+        const authorController = new AuthorController(this.em, this.userData);
 
-        const documents = await this.em.find(Document, {});
+        const documents = await this.documentRepo.find( {});
         documents.map(async document => {
             d('index', document.id);
 
