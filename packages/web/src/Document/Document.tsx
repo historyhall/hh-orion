@@ -1,4 +1,4 @@
-import * as Schema from "hh-orion-schema/dist";
+import * as Schema from "hh-orion-schema";
 import {useParams} from "react-router-dom";
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
 import {Loading} from "../Layout";

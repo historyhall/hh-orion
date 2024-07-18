@@ -9,8 +9,13 @@
     "test:lint": "eslint",
     "test:types": "tsc"
   },
+  "main": "dist/index",
+  "types": "dist/index",
   "dependencies": {
     "@elastic/elasticsearch": "^8.14.0",
     "typescript": "^5.5.3"
+  },
+  "publishConfig": {
+    "directory": "dist"
   }
 }
