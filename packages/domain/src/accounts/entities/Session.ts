@@ -18,7 +18,7 @@ export class Session {
     @PrimaryKey({type: 'uuid'})
     id = v4();
 
-    @Property({type: 'date'})
+    @Property({type: 'datetime'})
     expiryDate = new Date();
 
     @ManyToOne('User')
