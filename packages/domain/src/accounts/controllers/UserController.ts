@@ -46,7 +46,7 @@ export class UserController {
     }
 
     async logout() {
-        const session = await this.sessionRepo.findOne({token: this.userData.token});
+        const session = await this.sessionRepo.findOne({token: this.userData.authenticatedUser?.token});
         if(!session) throw new Error('Session not found.');
 
         await this.sessionRepo.nativeDelete({id: session.id});

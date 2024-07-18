@@ -13,9 +13,9 @@ export class SessionController {
     }
 
     getByUserId() {
-        if(!this.userData.userId) throw new Error('User is not logged in');
+        if(!this.userData.authenticatedUser?.userId) throw new Error('User is not logged in');
 
-        return this.sessionRepo.find({user: this.userData.userId});
+        return this.sessionRepo.find({user: this.userData.authenticatedUser?.userId});
     }
 
     async deleteById(data: Schema.accounts.session.deleteById.params) {
