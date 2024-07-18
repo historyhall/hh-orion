@@ -1,5 +1,4 @@
 import * as Schema from "hh-orion-schema"
-// import * as Schema from "hh-orion-schema";
 import {
     Header as SemanticHeader,
     HeaderContent,
@@ -15,7 +14,6 @@ import {useFetch} from "../../useFetch";
 export function ActiveSessions() {
     const {data, loading} = useFetch<Schema.accounts.session.getByUserId.response, Schema.accounts.session.getByUserId.params>(Schema.accounts.session.getByUserId.route);
     if (loading) return <Loading />
-    console.log(data);
 
     return (
         <>
