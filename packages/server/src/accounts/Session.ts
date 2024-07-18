@@ -12,7 +12,7 @@ export function Session(em: EntityManager): Action[] {
 
                 // @ts-ignore
                 return sessions.map(session => {
-                    const authors = session.user.authors.toArray();
+                    const authors = session.user?.authors?.toArray();
                     return {...session, user: {...session.user, authors}}
                 });
             },

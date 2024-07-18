@@ -4,7 +4,7 @@ import * as Schema from "hh-orion-schema";
 import {sign} from "jsonwebtoken";
 import {passwordHash} from "../../lib/passwordHash";
 import {Session, User} from "../entities";
-import {UserData} from "../../types";
+import {TokenConstructor, UserData} from "../../types";
 
 export class UserController {
     public userRepo;
@@ -36,7 +36,8 @@ export class UserController {
         const expiryDate = new Date(currentTime.getTime() + (86400000 * 7));
         const secondsUntilExpired = (expiryDate.getTime() - currentTime.getTime()) / 1000;
 
-        const token = sign({id: user.id, email: user.email}, this.tokenSecret, {expiresIn: secondsUntilExpired});
+        const payload: TokenConstructor = {id: user.id, email: user.email};
+        const token = sign(payload, this.tokenSecret, {expiresIn: secondsUntilExpired});
 
         const session = new Session({user, expiryDate, token, ipAddress: this.userData.ipAddress})
         await this.sessionRepo.insert(session);

@@ -9,7 +9,8 @@ import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
 import {System} from './system';
-import {Action, UserData} from './types';
+import {Action, TokenPayload, UserData} from './types';
+import {decode} from 'jsonwebtoken';
 
 const d = debug('hh.server');
 
@@ -41,8 +42,15 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 				ipAddress = ipAddress.substring(7);
 			}
 
+			const token = req.headers.authorization;
+			let tokenPayload: TokenPayload | undefined;
+			if (token) {
+				tokenPayload = decode(token, {complete: true})?.payload as TokenPayload;
+			}
+
 			const userData: UserData = {
 				ipAddress,
+				userId: tokenPayload?.id,
 			};
 
 			try {
