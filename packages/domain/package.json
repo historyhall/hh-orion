@@ -2,6 +2,8 @@
   "name": "hh-orion-domain",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index",
+  "types": "dist/index",
   "scripts": {
     "build": "tsc --build && yarn tsc ",
     "start": "tsc --build --watch && yarn tsc ",
@@ -9,8 +11,6 @@
     "test:lint": "eslint",
     "test:types": "tsc"
   },
-  "main": "dist/index",
-  "types": "dist/index",
   "dependencies": {
     "@elastic/elasticsearch": "^8.14.0",
     "@mikro-orm/core": "^6.2.9",
