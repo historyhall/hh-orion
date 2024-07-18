@@ -1,5 +1,5 @@
 import {EntityManager} from "@mikro-orm/core";
-import {controllers} from "hh-orion-domaint";
+import {controllers} from "hh-orion-domain";
 import * as Schema from "hh-orion-schema";
 import {Action} from "../types";
 

@@ -1,5 +1,5 @@
 import {defineConfig, PostgreSqlDriver} from "@mikro-orm/postgresql";
-import {entities} from "hh-orion-domaint";
+import {entities} from "hh-orion-domain";
 import {environment} from './environment';
 
 export default defineConfig({
