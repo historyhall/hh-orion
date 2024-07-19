@@ -1,14 +1,13 @@
-import {Table, TableHeader, TableHeaderCell, TableRow} from "semantic-ui-react";
+import {Table, TableHeader, TableHeaderCell, TableRow} from 'semantic-ui-react';
 
 export function SearchStatus() {
-
-    return (
-        <Table>
-            <TableHeader>
-                <TableRow>
-                    <TableHeaderCell>Name</TableHeaderCell>
-                </TableRow>
-            </TableHeader>
-        </Table>
-    );
+	return (
+		<Table>
+			<TableHeader>
+				<TableRow>
+					<TableHeaderCell>Name</TableHeaderCell>
+				</TableRow>
+			</TableHeader>
+		</Table>
+	);
 }

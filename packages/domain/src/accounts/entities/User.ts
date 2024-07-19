@@ -1,7 +1,7 @@
 import {Collection, Entity, ManyToMany, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
-import {Author} from "./Author";
+import {Author} from './Author';
 
 const d = debug('hh.domain.accounts.entities.User');
 
