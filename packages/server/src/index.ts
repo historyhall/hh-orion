@@ -4,13 +4,13 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
-import {decode} from 'jsonwebtoken';
 import {Accounts} from './accounts';
+import {authenticateUser} from './authenticateUser';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
 import {System} from './system';
-import {Action, TokenPayload, UserData} from './types';
+import {Action} from './types';
 
 const d = debug('hh.server');
 
@@ -37,21 +37,14 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		app.get(`/${endpoint.route}`, async (req, res) => {
 			d(req.query);
 
+			const agent = req.headers['user-agent'] || 'Unknown';
 			let ipAddress = req.ip || req.socket.remoteAddress || '';
+
 			if (ipAddress.startsWith('::ffff:')) {
 				ipAddress = ipAddress.substring(7);
 			}
 
-			const token = req.headers.authorization;
-			let tokenPayload: TokenPayload | undefined;
-			if (token) {
-				tokenPayload = decode(token, {complete: true})?.payload as TokenPayload;
-			}
-
-			const userData: UserData = {
-				ipAddress,
-				userId: tokenPayload?.id,
-			};
+			const userData = await authenticateUser(em, agent, ipAddress, req.headers.authorization);
 
 			try {
 				const response = JSON.stringify(await endpoint.action(userData, req.query));

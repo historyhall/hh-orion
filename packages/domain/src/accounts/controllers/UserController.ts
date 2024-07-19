@@ -24,7 +24,7 @@ export class UserController {
     }
 
     async login(data: Schema.accounts.user.login.params) {
-        const user =  await this.userRepo.findOne({email: data.email});
+        const user =  await this.userRepo.findOne({email: data.email.toLowerCase()});
         if (!user) throw new Error('A user with that email could not be found.');
 
         const compareResult = await compare(data.password, user.password);
@@ -33,16 +33,25 @@ export class UserController {
 
         const currentTime = new Date();
         // Milliseconds in a day, multiplied by 7 days.
-        const expiryDate = new Date(currentTime.getTime() + (86400000 * 7));
+        const expiryDate = new Date(currentTime.getTime() + (86400000 * 60));
         const secondsUntilExpired = (expiryDate.getTime() - currentTime.getTime()) / 1000;
 
         const payload: TokenConstructor = {id: user.id, email: user.email};
         const token = sign(payload, this.tokenSecret, {expiresIn: secondsUntilExpired});
 
-        const session = new Session({user, expiryDate, token, ipAddress: this.userData.ipAddress})
+        const session = new Session({user, expiryDate, token, ipAddress: this.userData.ipAddress, agent: this.userData.agent})
         await this.sessionRepo.insert(session);
 
         return token;
+    }
+
+    async logout() {
+        const session = await this.sessionRepo.findOne({token: this.userData.authenticatedUser?.token});
+        if(!session) throw new Error('Session not found.');
+
+        await this.sessionRepo.nativeDelete({id: session.id});
+
+        return true;
     }
 
     async register(data: Schema.accounts.user.register.params) {
@@ -53,7 +62,7 @@ export class UserController {
 
         const hashedPassword = await passwordHash(data.password1);
 
-        const user = new User({email: data.email, password: hashedPassword, firstName: data.firstName, lastName: data.lastName});
+        const user = new User({email: data.email.toLowerCase(), password: hashedPassword, firstName: data.firstName, lastName: data.lastName});
 
         await this.userRepo.insert(user);
         return true;

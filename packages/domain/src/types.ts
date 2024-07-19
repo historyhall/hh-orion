@@ -10,8 +10,12 @@ export type Domain = {
 };
 
 export type UserData = {
+	agent: string;
 	ipAddress: string;
-	userId?: string;
+	authenticatedUser?: {
+		userId: string;
+		token: string;
+	};
 };
 
 export type TokenConstructor = {

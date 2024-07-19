@@ -10,6 +10,7 @@ export type SessionEntityConstructor = {
     user: User;
     token: string;
     ipAddress: string;
+    agent: string;
 };
 
 @Entity()
@@ -17,7 +18,7 @@ export class Session {
     @PrimaryKey({type: 'uuid'})
     id = v4();
 
-    @Property({type: 'date'})
+    @Property({type: 'datetime'})
     expiryDate = new Date();
 
     @ManyToOne('User')
@@ -30,11 +31,15 @@ export class Session {
     @Property({type: 'text'})
     ipAddress: string;
 
-    constructor({expiryDate, user, token, ipAddress}: SessionEntityConstructor) {
+    @Property({type: 'text'})
+    agent: string;
+
+    constructor({expiryDate, user, token, ipAddress, agent}: SessionEntityConstructor) {
         d('Domain: Create New User');
         this.expiryDate = expiryDate;
         this.user = user;
         this.token = token;
         this.ipAddress = ipAddress;
+        this.agent = agent;
     }
 }
