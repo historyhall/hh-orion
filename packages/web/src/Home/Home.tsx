@@ -1,5 +1,6 @@
-import {Grid, GridColumn, GridRow, Header} from "semantic-ui-react";
-import {Searchbar} from "../System/search/Searchbar";
+import {Grid, GridColumn, GridRow} from "semantic-ui-react";
+import {Introduction} from "./home/Introduction";
+import {Search} from "./home/Search";
 import {Statistics} from "./home/Statistics";
 
 export function Home() {
@@ -8,27 +9,12 @@ export function Home() {
         <Grid>
             <GridRow>
                 <GridColumn>
-                    <Header content="Welcome to History Hall" />
+                    <Introduction />
                 </GridColumn>
             </GridRow>
             <GridRow>
                 <GridColumn>
-                    <p>We are an advanced research database and virtual museum. Start searching below to explore our virtual halls.</p>
-                </GridColumn>
-            </GridRow>
-            <GridRow>
-                <GridColumn>
-                    <Header content="Search our Collection" />
-                </GridColumn>
-            </GridRow>
-            <GridRow>
-                <GridColumn>
-                    <Searchbar />
-                </GridColumn>
-            </GridRow>
-            <GridRow>
-                <GridColumn>
-                    <Header content="Current Statistics" />
+                    <Search />
                 </GridColumn>
             </GridRow>
             <GridRow>

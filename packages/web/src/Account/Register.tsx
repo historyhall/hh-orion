@@ -12,13 +12,16 @@ export function Register() {
     const [inputs, setInputs] = useState<{firstName?: string, lastName?: string, email?: string, password1?: string, password2?: string}>({firstName: '', lastName: '', email: '', password1: '', password2: ''})
 
     function handleSubmit() {
+        const emailRegex = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
         if(!inputs.firstName) {
             setErrorMessage("Please enter your first name");
         } else if(!inputs.lastName) {
             setErrorMessage("Please enter your second name");
         } else if(!inputs.email) {
             setErrorMessage("Please enter a valid email");
-        } else if(!inputs.password1) {
+        } else if(!emailRegex.test(inputs.email)) {
+            setErrorMessage("The email you entered is not valid.");
+        }  else if(!inputs.password1) {
             setErrorMessage("Please enter a password");
         } else if(inputs.password1 !== inputs.password2) {
             setErrorMessage("Your passwords do not match");

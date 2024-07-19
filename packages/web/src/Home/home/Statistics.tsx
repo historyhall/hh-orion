@@ -1,5 +1,5 @@
 import * as Schema from "hh-orion-schema";
-import {Icon, Statistic, StatisticLabel, StatisticValue} from 'semantic-ui-react';
+import {Grid, GridColumn, GridRow, Header, Icon, Statistic, StatisticLabel, StatisticValue} from 'semantic-ui-react';
 import {Loading} from "../../Layout";
 import {useFetch} from "../../useFetch";
 
@@ -11,19 +11,32 @@ export function Statistics() {
     if(documentLoading || authorLoading || userLoading) return <Loading />
 
     return (
-        <>
-            <Statistic>
-                <StatisticValue><Icon name='file alternate' />{documentData}</StatisticValue>
-                <StatisticLabel>Documents</StatisticLabel>
-            </Statistic>
-            <Statistic>
-                <StatisticValue><Icon name='user' />{authorData}</StatisticValue>
-                <StatisticLabel>Authors</StatisticLabel>
-            </Statistic>
-            <Statistic>
-                <StatisticValue><Icon name='user' />{userData}</StatisticValue>
-                <StatisticLabel>Users</StatisticLabel>
-            </Statistic>
-        </>
+        <Grid stackable container>
+            <GridRow columns={1}>
+                <GridColumn>
+                    <Header content="Current Statistics" />
+                </GridColumn>
+            </GridRow>
+            <GridRow columns={3}>
+                <GridColumn textAlign="center">
+                    <Statistic>
+                        <StatisticValue><Icon name='file alternate' />{documentData}</StatisticValue>
+                        <StatisticLabel>Documents</StatisticLabel>
+                    </Statistic>
+                </GridColumn>
+                <GridColumn textAlign="center">
+                    <Statistic>
+                        <StatisticValue><Icon name='user' />{authorData}</StatisticValue>
+                        <StatisticLabel>Authors</StatisticLabel>
+                    </Statistic>
+                </GridColumn>
+                <GridColumn textAlign="center">
+                    <Statistic>
+                        <StatisticValue><Icon name='user' />{userData}</StatisticValue>
+                        <StatisticLabel>Users</StatisticLabel>
+                    </Statistic>
+                </GridColumn>
+            </GridRow>
+        </Grid>
     );
 }
