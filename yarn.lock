@@ -1775,15 +1775,6 @@
     mikro-orm "6.3.0"
     reflect-metadata "0.2.2"
 
-"@mikro-orm/knex@6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@mikro-orm/knex/-/knex-6.2.9.tgz#f56a07d4f2f18e6b90811c9b6e987c5c3c85c7bf"
-  integrity sha512-eSHPiS5em+RGv/jx5lP7a1xDVVlnrG+l90/7N7WAgTGcPOzyILVw9EJOZl2KR8dh8EfPI6Wm35Lo4qkO2LoDUg==
-  dependencies:
-    fs-extra "11.2.0"
-    knex "3.1.0"
-    sqlstring "2.3.3"
-
 "@mikro-orm/knex@6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@mikro-orm/knex/-/knex-6.3.0.tgz#8c1b1291fe7ba78b5de272c29eae190a9061a972"
@@ -1793,13 +1784,13 @@
     knex "3.1.0"
     sqlstring "2.3.3"
 
-"@mikro-orm/postgresql@^6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@mikro-orm/postgresql/-/postgresql-6.2.9.tgz#480322affb69482204d7170a0865c53936185c30"
-  integrity sha512-CRW5QPvsQhlhRZbx9SsgLrdC7LxCSbz+Pm5rAA8S1SAZG8qJ1WxMovHF61PFZj/7rydnb9fSh4nVwfutOyYwWg==
+"@mikro-orm/postgresql@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/postgresql/-/postgresql-6.3.0.tgz#c61d398df205b91cf6999d2ba92917a56851bcdb"
+  integrity sha512-4WSoV24MFmIGA4rJFXiMyV55kcy95rLRvqHnZSV2cxFlcYipp644Qk9H7XyUJOzFg/ZTlNK5rIIsBsmTmGOXPg==
   dependencies:
-    "@mikro-orm/knex" "6.2.9"
-    pg "8.11.5"
+    "@mikro-orm/knex" "6.3.0"
+    pg "8.12.0"
     postgres-array "3.0.2"
     postgres-date "2.1.0"
     postgres-interval "4.0.2"
@@ -8169,10 +8160,10 @@ pg-types@^2.1.0:
     postgres-date "~1.0.4"
     postgres-interval "^1.1.0"
 
-pg@8.11.5:
-  version "8.11.5"
-  resolved "https://registry.yarnpkg.com/pg/-/pg-8.11.5.tgz#e722b0a5f1ed92931c31758ebec3ddf878dd4128"
-  integrity sha512-jqgNHSKL5cbDjFlHyYsCXmQDrfIX/3RsNwYqpd4N0Kt8niLuNoRNH+aazv6cOd43gPh9Y4DjQCtb+X0MH0Hvnw==
+pg@8.12.0:
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-8.12.0.tgz#9341724db571022490b657908f65aee8db91df79"
+  integrity sha512-A+LHUSnwnxrnL/tZ+OLfqR1SxLN3c/pgDztZ47Rpbsd4jUytsTtwQo/TLPRzPJMp/1pbhYVhH9cuSZLAajNfjQ==
   dependencies:
     pg-connection-string "^2.6.4"
     pg-pool "^3.6.2"
