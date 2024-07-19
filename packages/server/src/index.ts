@@ -29,6 +29,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	const corsOptions = {credentials: true, origin: environment.corsOrigin};
 
 	app.use(cors(corsOptions));
+	app.enable('trust proxy');
 
 	const endpoints: Action[] = [...Accounts(em, environment.tokenSecret), ...Documents(em), ...System(em, search)];
 
