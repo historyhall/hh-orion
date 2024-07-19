@@ -1,4 +1,4 @@
-import {Session} from "./Session";
+import {Session} from './Session';
 
 export type response = Session[];
 export type params = undefined;

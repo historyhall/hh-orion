@@ -1,4 +1,4 @@
-import {Migration} from "./Migration";
+import {Migration} from './Migration';
 
 export type response = Migration[];
 export type params = undefined;
