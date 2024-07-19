@@ -28,7 +28,7 @@ export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: bo
 				}
 			});
 		} catch (error) {
-			setError(`${error} Could not Fetch Data `);
+			setError(`${error}`);
 		} finally {
 			setLoading(false);
 		}
