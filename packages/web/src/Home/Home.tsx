@@ -1,7 +1,7 @@
 import {Grid, GridColumn, GridRow} from "semantic-ui-react";
-import {Statistics} from "./home/Statistics";
-import {Search} from "./home/Search";
 import {Introduction} from "./home/Introduction";
+import {Search} from "./home/Search";
+import {Statistics} from "./home/Statistics";
 
 export function Home() {
 
