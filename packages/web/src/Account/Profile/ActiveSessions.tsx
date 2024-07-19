@@ -1,4 +1,7 @@
 import * as Schema from "hh-orion-schema"
+import Cookies from "js-cookie";
+import {useEffect, useState} from "react";
+import {toast} from "react-toastify";
 import {
     Button,
     Header as SemanticHeader,
@@ -12,9 +15,6 @@ import {
 import {Loading} from "../../Layout";
 import {useFetch} from "../../useFetch";
 import {useMutation} from "../../useMutation";
-import {toast} from "react-toastify";
-import Cookies from "js-cookie";
-import {useEffect, useState} from "react";
 
 export function ActiveSessions() {
     const [sessions, setSessions] = useState<Schema.accounts.session.getByUserId.response>();

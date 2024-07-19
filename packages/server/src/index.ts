@@ -5,12 +5,12 @@ import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
 import {Accounts} from './accounts';
+import {authenticateUser} from './authenticateUser';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
 import {System} from './system';
 import {Action} from './types';
-import {authenticateUser} from './authenticateUser';
 
 const d = debug('hh.server');
 

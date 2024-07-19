@@ -1,7 +1,7 @@
 import {EntityManager} from "@mikro-orm/core";
+import * as Schema from "hh-orion-schema";
 import {UserData} from "../../types";
 import {Session} from "../entities";
-import * as Schema from "hh-orion-schema";
 
 export class SessionController {
     public sessionRepo;

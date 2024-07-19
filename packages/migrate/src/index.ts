@@ -4,8 +4,8 @@ import debug from 'debug';
 import {Migration} from 'hh-orion-domain/dist';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
-import {migrations} from './migrations';
 import {maintenance} from './maintenance';
+import {migrations} from './migrations';
 
 const d = debug('hh.migrate');
 

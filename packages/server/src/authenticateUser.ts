@@ -1,7 +1,7 @@
-import {TokenPayload, UserData} from './types';
-import {decode} from 'jsonwebtoken';
 import {EntityManager} from '@mikro-orm/core';
 import {Session} from 'hh-orion-domain';
+import {decode} from 'jsonwebtoken';
+import {TokenPayload, UserData} from './types';
 
 export async function authenticateUser(em: EntityManager, agent: string, ipAddress: string, token?: string): Promise<UserData> {
 	let tokenPayload: TokenPayload | undefined;

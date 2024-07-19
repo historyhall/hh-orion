@@ -1,9 +1,9 @@
+import * as Schema from 'hh-orion-schema';
 import Cookies from "js-cookie";
 import {Fragment, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 import {useMutation} from "../useMutation";
-import * as Schema from 'hh-orion-schema';
 
 export function Logout() {
     const navigate = useNavigate();
