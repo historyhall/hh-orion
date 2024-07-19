@@ -17,15 +17,15 @@ import Cookies from "js-cookie";
 import {useEffect, useState} from "react";
 
 export function ActiveSessions() {
+    const [sessions, setSessions] = useState<Schema.accounts.session.getByUserId.response>();
     const {data, loading} = useFetch<Schema.accounts.session.getByUserId.response, Schema.accounts.session.getByUserId.params>(Schema.accounts.session.getByUserId.route);
     const {call} = useMutation<Schema.accounts.session.deleteById.response, Schema.accounts.session.deleteById.params>(Schema.accounts.session.deleteById.route)
-    const [sessions, setSessions] = useState<Schema.accounts.session.getByUserId.response>();
 
     useEffect(() => {
         if(data && !sessions) {
             setSessions(data.sort((a, b) => new Date(b.expiryDate).getTime() - new Date(a.expiryDate).getTime()));
         }
-    }, [data]);
+    }, [data, sessions]);
 
     if (loading) return <Loading />
 
