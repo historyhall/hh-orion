@@ -1,5 +1,5 @@
-import {ActiveSessions} from "./Profile/ActiveSessions";
+import {ActiveSessions} from './Profile/ActiveSessions';
 
 export function Profile() {
-    return <ActiveSessions />;
+	return <ActiveSessions />;
 }

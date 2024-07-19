@@ -1,1 +1,1 @@
-export {DocumentController} from "./DocumentController";
+export {DocumentController} from './DocumentController';
