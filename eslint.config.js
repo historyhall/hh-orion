@@ -1,7 +1,9 @@
 import tseslint from 'typescript-eslint';
 import parser from "@typescript-eslint/parser";
+import eslintPlugin from "@typescript-eslint/eslint-plugin";
 import reactHooks from "eslint-plugin-react-hooks";
 import eslintPluginPrettier from "eslint-plugin-prettier";
+import eslintPluginReact from "eslint-plugin-react";
 
 export default tseslint.config(
     {
@@ -10,12 +12,18 @@ export default tseslint.config(
         },
         plugins: {
             'react-hooks':  reactHooks,
-            'prettier': eslintPluginPrettier
+            'prettier': eslintPluginPrettier,
+            'react': eslintPluginReact,
+            'eslintPlugin': eslintPlugin
+        },
+        settings: {
+            react: {
+                version: "detect"
+            }
         },
         files: ["packages/**/src/**/*.ts", "packages/**/src/**/*.tsx", ],
         rules: {
             // General
-            'no-underscore-dangle': ['warn', {allowAfterThis: true, allow: ['_id']}],
             'class-methods-use-this': 'off',
             'global-require': 'error',
             'prefer-arrow-callback': ['error', {allowNamedFunctions: true}],
@@ -45,13 +53,12 @@ export default tseslint.config(
             // React
             'react/jsx-uses-react': ['off'],
             'react/react-in-jsx-scope': ['off'],
-            // 'react/forbid-prop-types': 'error',
             'react/jsx-indent': ['off'],
             'react/jsx-indent-props': ['off'],
-            // 'react/jsx-filename-extension': ['error', {extensions: ['.tsx']}],
+            'react/jsx-filename-extension': ['error', {extensions: ['.tsx']}],
             'react/require-default-props': 'off',
-            // 'react/prefer-stateless-function': 'error',
-            // 'react/no-unknown-property': ['error', {ignore: ['for']}],
+            'react/prefer-stateless-function': 'error',
+            'react/no-unknown-property': ['error', {ignore: ['for']}],
             'react/no-unused-prop-types': 'off',
             'react/no-typos': 'off',
             'react/no-children-prop': 'off',
