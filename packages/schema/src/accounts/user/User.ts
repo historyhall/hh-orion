@@ -1,12 +1,12 @@
-import {Author} from "../author/Author";
+import {Author} from '../author/Author';
 
 export type User = {
-    id: string;
-    version: number;
-    createdAt: Date;
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    authors: Author[]
-}
+	id: string;
+	version: number;
+	createdAt: Date;
+	firstName: string;
+	lastName: string;
+	email: string;
+	password: string;
+	authors: Author[];
+};
