@@ -1,5 +1,5 @@
-import {Button, Header} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
+import {Button, Header} from 'semantic-ui-react';
 
 export function Contribute() {
 	return (
