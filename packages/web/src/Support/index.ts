@@ -1,6 +1,7 @@
 import {Page} from '../types';
 import {Support} from './Support';
 import {SupportPlans} from './SupportPlans';
+import {SupportUploadDocuments} from './SupportUploadDocuments';
 
 const pages: Record<string, Page> = {
 	support: {
@@ -22,6 +23,14 @@ const pages: Record<string, Page> = {
 		},
 		component: SupportPlans,
 		path: '/support/plans',
+	},
+	supportUploadDocuments: {
+		header: {
+			name: 'Upload Documents',
+			icon: 'clipboard',
+		},
+		component: SupportUploadDocuments,
+		path: '/support/upload-documents',
 	},
 };
 export default pages;
