@@ -20,7 +20,6 @@ export type UserData = {
 
 export type TokenConstructor = {
 	id: string;
-	email: string;
 };
 
 export type TokenPayload = {

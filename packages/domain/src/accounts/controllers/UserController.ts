@@ -36,7 +36,7 @@ export class UserController {
 		const expiryDate = new Date(currentTime.getTime() + 86400000 * 60);
 		const secondsUntilExpired = (expiryDate.getTime() - currentTime.getTime()) / 1000;
 
-		const payload: TokenConstructor = {id: user.id, email: user.email};
+		const payload: TokenConstructor = {id: user.id};
 		const token = sign(payload, this.tokenSecret, {expiresIn: secondsUntilExpired});
 
 		const session = new Session({user, expiryDate, token, ipAddress: this.userData.ipAddress, agent: this.userData.agent});
