@@ -5,7 +5,7 @@ import {Author} from './Author';
 
 const d = debug('hh.domain.accounts.entities.User');
 
-export type MemberEntityConstructor = {
+export type UserEntityConstructor = {
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -36,10 +36,13 @@ export class User {
 	@Property({type: 'text'})
 	password: string;
 
+	@Property({type: 'boolean'})
+	verified = false;
+
 	@ManyToMany('Author')
 	authors = new Collection<Author>(this);
 
-	constructor({firstName, lastName, email, password}: MemberEntityConstructor) {
+	constructor({firstName, lastName, email, password}: UserEntityConstructor) {
 		d('Domain: Create New User');
 		this.firstName = firstName;
 		this.lastName = lastName;
