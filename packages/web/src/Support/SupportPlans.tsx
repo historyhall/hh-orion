@@ -2,7 +2,7 @@ import {Button, Icon, Table, TableBody, TableCell, TableHeader, TableHeaderCell,
 
 export function SupportPlans() {
 	return (
-		<Table definition celled>
+		<Table definition celled stackable={false}>
 			<TableHeader>
 				<TableRow>
 					<TableHeaderCell />
