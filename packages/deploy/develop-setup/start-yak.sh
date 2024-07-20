@@ -26,15 +26,15 @@ show_help () {
 core () {
   local tid
   tid=$(newTabWithNamePath "HH Web" "$DIR")
-  runCommand $tid "cd ../web && yarn start"
+  runCommand $tid "cd ../web && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH Schema" "$DIR")
-  runCommand $tid "cd ../schema && yarn start"
+  runCommand $tid "cd ../schema && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH Domain" "$DIR")
-  runCommand $tid "cd ../domain && yarn start"
+  runCommand $tid "cd ../domain && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH Server" "$DIR")
-  runCommand $tid "cd ../server && yarn start"
+  runCommand $tid "cd ../server && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH Migrate" "$DIR")
-  runCommand $tid "cd ../migrate"
+  runCommand $tid "cd ../migrate && nvm use"
 }
 
 close () {
