@@ -15,7 +15,6 @@ export type Action = {
 
 export type TokenConstructor = {
 	id: string;
-	email: string;
 };
 
 export type TokenPayload = {
