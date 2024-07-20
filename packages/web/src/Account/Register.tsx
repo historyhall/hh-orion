@@ -31,6 +31,8 @@ export function Register() {
 			setErrorMessage('Please enter a password');
 		} else if (inputs.password1 !== inputs.password2) {
 			setErrorMessage('Your passwords do not match');
+		} else if (inputs.password1.length < 8) {
+			setErrorMessage('Your password should be atleast 8 characters long');
 		} else {
 			setErrorMessage('');
 			call(

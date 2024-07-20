@@ -55,10 +55,15 @@ export class UserController {
 	}
 
 	async register(data: Schema.accounts.user.register.params) {
+		const emailRegex = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
+
+		if(!emailRegex.test(data.email)) throw new Error("The provided email is not valid");
+
 		const existingUser = await this.userRepo.findOne({email: data.email});
 		if (existingUser) throw new Error('A user already exists with that email.');
 
 		if (data.password1 !== data.password2) throw new Error('The provided passwords do not match');
+		if (data.password1.length < 8) throw new Error('Your password should be atleast 8 characters long');
 
 		const hashedPassword = await passwordHash(data.password1);
 
