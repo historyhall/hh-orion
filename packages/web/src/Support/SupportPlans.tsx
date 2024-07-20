@@ -15,8 +15,14 @@ export function SupportPlans() {
 				<TableRow>
 					<TableCell>Cost</TableCell>
 					<TableCell>Free</TableCell>
-					<TableCell>Coming Soon</TableCell>
-					<TableCell>Coming Soon</TableCell>
+					<TableCell>
+						<Icon color="yellow" name="warning circle" />
+						Coming Soon
+					</TableCell>
+					<TableCell>
+						<Icon color="yellow" name="warning circle" />
+						Coming Soon
+					</TableCell>
 				</TableRow>
 				<TableRow>
 					<TableCell>Private Documents</TableCell>
