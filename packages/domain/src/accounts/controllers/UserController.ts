@@ -57,7 +57,7 @@ export class UserController {
 	async register(data: Schema.accounts.user.register.params) {
 		const emailRegex = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
 
-		if(!emailRegex.test(data.email)) throw new Error("The provided email is not valid");
+		if (!emailRegex.test(data.email)) throw new Error('The provided email is not valid');
 
 		const existingUser = await this.userRepo.findOne({email: data.email});
 		if (existingUser) throw new Error('A user already exists with that email.');
