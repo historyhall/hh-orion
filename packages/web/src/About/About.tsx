@@ -12,8 +12,8 @@ export function About() {
 					content="Digital storage of documents means that they are stored forever and will not deteriorate or get damaged!"
 				/>
 				<ListItem
-					header="Document Catagorization"
-					content="Documents are categorized by geo location and timeframe, allowing users to easiliy search and discover what they are looking for."
+					header="Document Categorization"
+					content="Documents are categorized by geo location and timeframe, allowing users to easily search and discover what they are looking for."
 				/>
 			</List>
 		</>

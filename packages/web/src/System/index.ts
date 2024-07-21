@@ -1,4 +1,5 @@
 import {Page} from '../types';
+import {Error} from './Error';
 import {MigrationStatus} from './MigrationStatus';
 import {Search} from './Search';
 import {SearchStatus} from './SearchStatus';
@@ -38,6 +39,10 @@ const pages: Record<string, Page> = {
 			name: 'Search',
 			icon: 'search',
 		},
+	},
+	error: {
+		path: '*',
+		component: Error,
 	},
 };
 export default pages;
