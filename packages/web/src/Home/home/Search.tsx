@@ -6,7 +6,7 @@ export function Search() {
 		<Grid stackable container>
 			<GridRow columns={1}>
 				<GridColumn>
-					<Header content="Search our Collection" />
+					<Header content="Search our Collection" color="yellow" size="huge" />
 				</GridColumn>
 			</GridRow>
 			<GridRow columns={1}>
