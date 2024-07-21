@@ -41,7 +41,6 @@
     "react-toastify": "^10.0.5",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.5",
-    "style-loader": "^4.0.0",
     "typescript": "^5.5.3"
   }
 }
