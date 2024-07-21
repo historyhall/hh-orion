@@ -1,9 +1,9 @@
+import {Link} from 'react-router-dom';
 import {Dropdown, DropdownMenu, Image, Menu, MenuItem, MenuMenu} from 'semantic-ui-react';
 import {Page} from '../../types';
-import {MenuSubItem} from './MenuSubItem';
 import {useIsMobile} from '../../useIsMobile';
+import {MenuSubItem} from './MenuSubItem';
 import {MenuSubItemMobile} from './MenuSubItemMobile';
-import {Link} from 'react-router-dom';
 import logo from './logo.png';
 
 interface Props {
