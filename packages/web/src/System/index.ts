@@ -1,10 +1,10 @@
 import {Page} from '../types';
+import {Error} from './Error';
 import {MigrationStatus} from './MigrationStatus';
 import {Search} from './Search';
 import {SearchStatus} from './SearchStatus';
 import {SearchStatusSidebar} from './SearchStatusSidebar';
 import {System} from './System';
-import {Error} from './Error';
 
 const pages: Record<string, Page> = {
 	system: {

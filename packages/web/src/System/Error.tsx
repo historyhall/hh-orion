@@ -1,4 +1,4 @@
-import { Grid, GridColumn, GridRow, Header } from 'semantic-ui-react';
+import {Grid, GridColumn, GridRow, Header} from 'semantic-ui-react';
 
 export function Error() {
 	return (
