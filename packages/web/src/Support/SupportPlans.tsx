@@ -1,8 +1,11 @@
 import {Button, Icon, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from 'semantic-ui-react';
+import {useIsMobile} from '../useIsMobile';
 
 export function SupportPlans() {
+	const isMobile = useIsMobile();
+
 	return (
-		<Table definition celled>
+		<Table definition celled unstackable compact={isMobile ? 'very' : undefined}>
 			<TableHeader>
 				<TableRow>
 					<TableHeaderCell />
@@ -39,13 +42,13 @@ export function SupportPlans() {
 				<TableRow>
 					<TableCell />
 					<TableCell>
-						<Button content="Subscribe Now" positive disabled />
+						<Button content="Subscribe" positive disabled size={isMobile ? 'tiny' : 'medium'} style={{padding: isMobile ? 6 : undefined}} />
 					</TableCell>
 					<TableCell>
-						<Button content="Subscribe Now" positive disabled />
+						<Button content="Subscribe" positive disabled size={isMobile ? 'tiny' : 'medium'} style={{padding: isMobile ? 6 : undefined}} />
 					</TableCell>
 					<TableCell>
-						<Button content="Subscribe Now" positive disabled />
+						<Button content="Subscribe" positive disabled size={isMobile ? 'tiny' : 'medium'} style={{padding: isMobile ? 6 : undefined}} />
 					</TableCell>
 				</TableRow>
 			</TableBody>
