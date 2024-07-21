@@ -13,9 +13,10 @@ import {isAuthorized} from '../isAuthorized';
 import {Page} from '../types';
 import {Content} from './layout/Content';
 import {MainMenu} from './layout/MainMenu';
+import Explore from '../Explore';
 
 export function Layout() {
-	const pages: Record<string, Page> = {...Home, ...About, ...Support, ...Account, ...Document, ...Donate, ...System};
+	const pages: Record<string, Page> = {...Home, ...Explore, ...About, ...Support, ...Account, ...Document, ...Donate, ...System};
 	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 	const location = useLocation();
 
