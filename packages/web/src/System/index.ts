@@ -4,6 +4,7 @@ import {Search} from './Search';
 import {SearchStatus} from './SearchStatus';
 import {SearchStatusSidebar} from './SearchStatusSidebar';
 import {System} from './System';
+import {Error} from './Error';
 
 const pages: Record<string, Page> = {
 	system: {
@@ -38,6 +39,10 @@ const pages: Record<string, Page> = {
 			name: 'Search',
 			icon: 'search',
 		},
+	},
+	error: {
+		path: '*',
+		component: Error,
 	},
 };
 export default pages;
