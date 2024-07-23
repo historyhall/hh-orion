@@ -16,6 +16,6 @@
     "dotenv": "^16.4.5",
     "hh-orion-domain": "0.1.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   }
 }
