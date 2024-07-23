@@ -12,6 +12,7 @@ import {m20240717} from './m20240717';
 import {m20240718} from './m20240718';
 import {m20240718b} from './m20240718b';
 import {m20240721} from './m20240721';
+import {m20240721b} from './m20240721b';
 
 export const migrations: Migration[] = [
 	m20240619,
@@ -27,4 +28,5 @@ export const migrations: Migration[] = [
 	m20240718,
 	m20240718b,
 	m20240721,
+	m20240721b,
 ];
