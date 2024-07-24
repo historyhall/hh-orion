@@ -250,10 +250,8 @@ const countries: {id: string; name: string; code: string}[] = [
 function action() {
 	let insert = '';
 	countries.forEach(c => {
-		console.log(c);
 		insert = insert + `INSERT INTO country(id, version, name, code) VALUES('${c.id}', 1, '${c.name}', '${c.code}');`;
 	});
-	console.log(insert);
 	return insert;
 }
 

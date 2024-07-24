@@ -2,7 +2,7 @@ import {Entity, PrimaryKey, Property, Unique} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
 
-const d = debug('hh.domain.documents.entities.Document');
+const d = debug('hh.domain.documents.entities.Country');
 
 export type CountryEntityConstructor = {
 	name: string;

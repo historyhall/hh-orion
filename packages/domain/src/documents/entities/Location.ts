@@ -3,7 +3,7 @@ import debug from 'debug';
 import {v4} from 'uuid';
 import {Country} from './Country';
 
-const d = debug('hh.domain.documents.entities.Document');
+const d = debug('hh.domain.documents.entities.Location');
 
 export type DocumentEntityConstructor = {
 	longitude: string;
