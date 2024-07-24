@@ -23,7 +23,7 @@
     "hh-orion-schema": "0.1.0",
     "jsonwebtoken": "^9.0.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "devDependencies": {
     "@mikro-orm/cli": "^6.3.0"
