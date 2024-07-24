@@ -67,6 +67,6 @@
     "jscodeshift": "^0.16.1",
     "prettier": "^3.3.3",
     "sort-package-json": "^2.10.0",
-    "typescript-eslint": "^7.16.1"
+    "typescript-eslint": "^7.17.0"
   }
 }
