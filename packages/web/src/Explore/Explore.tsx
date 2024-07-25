@@ -1,14 +1,14 @@
-import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
-import {Card, CardContent, CardHeader, Divider, Flag, FlagNameValues, Icon} from 'semantic-ui-react';
-import {useFetch} from '../useFetch';
 import * as Schema from 'hh-orion-schema';
-import {Loading} from '../Layout';
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import 'leaflet/dist/leaflet.css';
+import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
 import {Link} from 'react-router-dom';
-import { stripHtmlFromString } from '../lib/stripHtmlFromString';
+import {Card, CardContent, CardHeader, Divider, Flag, FlagNameValues, Icon} from 'semantic-ui-react';
+import {Loading} from '../Layout';
+import {stripHtmlFromString} from '../lib/stripHtmlFromString';
+import {useFetch} from '../useFetch';
 
 let DefaultIcon = L.icon({
 	iconUrl: icon,

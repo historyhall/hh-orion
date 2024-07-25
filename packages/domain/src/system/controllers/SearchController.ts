@@ -93,7 +93,6 @@ export class SearchController {
 		const documents = await this.documentRepo.find({});
 		documents.map(async document => {
 			d('index', document.id);
-			console.log(document.location);
 
 			await this.search.index<QueryType>({
 				index: 'hh-index',
