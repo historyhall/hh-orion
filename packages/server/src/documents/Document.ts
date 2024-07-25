@@ -6,6 +6,13 @@ import {Action, UserData} from '../types';
 export function Document(em: EntityManager): Action[] {
 	return [
 		{
+			route: Schema.documents.document.getAll.route,
+			action: async (userData: UserData): Promise<Schema.documents.document.getAll.response> => {
+				// @ts-ignore
+				return await new controllers.documentController(em, userData).getAll();
+			},
+		},
+		{
 			route: Schema.documents.document.getById.route,
 			action: async (userData: UserData, data: Schema.documents.document.getById.params): Promise<Schema.documents.document.getById.response> => {
 				const document = await new controllers.documentController(em, userData).getById(data);

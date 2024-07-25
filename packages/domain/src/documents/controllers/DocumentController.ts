@@ -21,4 +21,8 @@ export class DocumentController {
 	async getTotal() {
 		return this.documentRepo.count({});
 	}
+
+	async getAll() {
+		return this.documentRepo.findAll();
+	}
 }
