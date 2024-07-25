@@ -14,6 +14,9 @@ const pages: Record<string, Page> = {
 			name: 'System',
 			icon: 'server',
 		},
+		permissions: {
+			loggedIn: true,
+		},
 	},
 	migrationStatus: {
 		path: '/system/migrations',
@@ -21,6 +24,9 @@ const pages: Record<string, Page> = {
 		header: {
 			name: 'Migration Status',
 			icon: 'database',
+		},
+		permissions: {
+			loggedIn: true,
 		},
 	},
 	searchStatus: {
@@ -31,6 +37,9 @@ const pages: Record<string, Page> = {
 			icon: 'database',
 		},
 		sidebar: SearchStatusSidebar,
+		permissions: {
+			loggedIn: true,
+		},
 	},
 	searchResults: {
 		path: '/search/:searchTerm',
