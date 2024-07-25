@@ -1,7 +1,8 @@
 export type QueryType = {
 	id: string;
-	version: number;
 	createdAt: string;
+	content: string;
 	name: string;
-	authors: String;
+	authors: string;
+	countryCode: string;
 };

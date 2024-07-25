@@ -1,4 +1,5 @@
 import {Author} from '../../accounts/author/Author';
+import {Location} from '../Location/Location';
 
 export type Document = {
 	id: string;
@@ -10,4 +11,5 @@ export type Document = {
 	filename: string;
 	content: string;
 	authors: Author[];
+	location: Location;
 };

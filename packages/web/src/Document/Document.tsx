@@ -1,6 +1,6 @@
 import * as Schema from 'hh-orion-schema';
 import {useParams} from 'react-router-dom';
-import {Grid, GridColumn, GridRow} from 'semantic-ui-react';
+import {Flag, FlagNameValues, Grid, GridColumn, GridRow} from 'semantic-ui-react';
 import {Loading} from '../Layout';
 import {BodyHeader} from '../Layout/layout/BodyHeader';
 import {Tag} from '../types';
@@ -41,6 +41,7 @@ export function Document() {
 		<>
 			<BodyHeader header={{name: data?.name || '', icon: 'file alternate'}} />
 			<Tags tags={tags} />
+			<Flag name={data?.location.country.code as FlagNameValues} style={{float: 'right'}} />
 			<Grid padded>
 				<GridRow>
 					<GridColumn>
