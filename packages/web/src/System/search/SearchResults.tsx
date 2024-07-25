@@ -1,6 +1,6 @@
 import * as Schema from 'hh-orion-schema';
 import {Link, useParams} from 'react-router-dom';
-import {Card, CardContent, Divider, Label, List} from 'semantic-ui-react';
+import {Card, CardContent, Divider, Flag, FlagNameValues, Label, List} from 'semantic-ui-react';
 import {Loading} from '../../Layout';
 import {useFetch} from '../../useFetch';
 
@@ -23,6 +23,7 @@ export function SearchResults() {
 									<Card.Header>
 										<List.Icon name="file alternate" size="large" verticalAlign="middle" />
 										{searchResult._source.name}
+										<Flag name={searchResult._source.countryCode as FlagNameValues} style={{float: 'right'}} />
 									</Card.Header>
 									<Divider />
 									{searchResult.highlight?.content.map((text, index) => {
