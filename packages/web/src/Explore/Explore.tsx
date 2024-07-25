@@ -1,8 +1,21 @@
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
-import {Divider} from 'semantic-ui-react';
+import {Card, CardContent, CardHeader, Divider, Flag, FlagNameValues, Icon} from 'semantic-ui-react';
 import {useFetch} from '../useFetch';
 import * as Schema from 'hh-orion-schema';
 import {Loading} from '../Layout';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import {Link} from 'react-router-dom';
+import { stripHtmlFromString } from '../lib/stripHtmlFromString';
+
+let DefaultIcon = L.icon({
+	iconUrl: icon,
+	shadowUrl: iconShadow,
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 export function Explore() {
 	const position = {lat: 54, lng: -105};
@@ -11,15 +24,29 @@ export function Explore() {
 	);
 
 	if (loading) return <Loading />;
-	console.log(data);
+
 	return (
 		<>
 			<MapContainer center={position} zoom={4} style={{width: '100%', height: '100vh', zIndex: 10, display: 'block'}} attributionControl={false}>
 				<TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}" />
 				{data?.map(document => {
 					return (
-						<Marker position={{lat: parseFloat(document.location.latitude), lng: parseFloat(document.location.longitude)}}>
-							<Popup>{document.name}</Popup>
+						<Marker position={{lat: parseFloat(document.location.latitude), lng: parseFloat(document.location.longitude)}} key={document.id}>
+							<Popup>
+								<Link to={`/document/${document.id}`} style={{width: '100%', padding: '8px'}}>
+									<Card color="yellow">
+										<CardContent>
+											<CardHeader>
+												<Icon name="file alternate" size="large" verticalAlign="middle" />
+												{document.name}
+												<Flag name={document.location.country.code as FlagNameValues} style={{float: 'right'}} />
+											</CardHeader>
+											<Divider />
+											<p style={{color: 'black'}}>{stripHtmlFromString(document.content.substring(0, 250))}...</p>
+										</CardContent>
+									</Card>
+								</Link>
+							</Popup>
 						</Marker>
 					);
 				})}
