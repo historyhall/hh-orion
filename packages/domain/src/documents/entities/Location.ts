@@ -25,7 +25,7 @@ export class Location {
 	@Property({type: 'text'})
 	latitude: string;
 
-	@ManyToOne('Country')
+	@ManyToOne('Country', {eager: true})
 	country: Country;
 
 	constructor({longitude, latitude, country}: DocumentEntityConstructor) {
