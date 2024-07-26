@@ -5,12 +5,14 @@ export function Introduction() {
 		<Grid stackable container>
 			<GridRow columns={1}>
 				<GridColumn>
-					<Header content="Welcome to History Hall" />
+					<Header content="Welcome to History Hall" color="yellow" size="huge" />
 				</GridColumn>
 			</GridRow>
 			<GridRow columns={1}>
 				<GridColumn>
-					<p>We are an advanced research database and virtual museum. Start searching below to explore our virtual halls.</p>
+					<strong style={{color: 'white', fontSize: '18px'}}>
+						Explore our advanced research platform, designed for Historians, Professors, and Archaeologist.
+					</strong>
 				</GridColumn>
 			</GridRow>
 		</Grid>

@@ -1,8 +1,8 @@
 import {EntityClass} from '@mikro-orm/core';
 import {DocumentController} from './controllers';
-import {Document} from './entities';
+import {Country, Document, Location} from './entities';
 
-export const entities: EntityClass<Partial<any>>[] = [Document];
+export const entities: EntityClass<Partial<any>>[] = [Country, Document, Location];
 export const controllers = {
 	documentController: DocumentController,
 };

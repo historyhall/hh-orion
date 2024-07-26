@@ -6,6 +6,7 @@ import About from '../About';
 import Account from '../Account';
 import Donate from '../Contribute';
 import Document from '../Document';
+import Explore from '../Explore';
 import Home from '../Home';
 import Support from '../Support';
 import System from '../System';
@@ -15,7 +16,7 @@ import {Content} from './layout/Content';
 import {MainMenu} from './layout/MainMenu';
 
 export function Layout() {
-	const pages: Record<string, Page> = {...Home, ...About, ...Support, ...Account, ...Document, ...Donate, ...System};
+	const pages: Record<string, Page> = {...Home, ...Explore, ...About, ...Support, ...Account, ...Document, ...Donate, ...System};
 	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 	const location = useLocation();
 

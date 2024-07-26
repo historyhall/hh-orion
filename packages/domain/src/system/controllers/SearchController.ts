@@ -9,12 +9,13 @@ import {UserData} from '../../types';
 
 const d = debug('hh.domain.system.controllers.SearchController');
 
-type QueryType = {
+export type QueryType = {
 	id: string;
-	version: number;
 	createdAt: string;
+	content: string;
 	name: string;
-	authors: String;
+	authors: string;
+	countryCode: string;
 };
 
 export class SearchController {
@@ -93,7 +94,7 @@ export class SearchController {
 		documents.map(async document => {
 			d('index', document.id);
 
-			await this.search.index({
+			await this.search.index<QueryType>({
 				index: 'hh-index',
 				id: document.id,
 				document: {
@@ -102,6 +103,7 @@ export class SearchController {
 					content: stripHtmlFromString(document.content),
 					createdAt: document.createdAt.toString(),
 					authors: await authorController.generateAuthorsList(document.authors),
+					countryCode: document.location.country.code,
 				},
 			});
 		});

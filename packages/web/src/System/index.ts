@@ -1,4 +1,5 @@
 import {Page} from '../types';
+import {Error} from './Error';
 import {MigrationStatus} from './MigrationStatus';
 import {Search} from './Search';
 import {SearchStatus} from './SearchStatus';
@@ -13,6 +14,9 @@ const pages: Record<string, Page> = {
 			name: 'System',
 			icon: 'server',
 		},
+		permissions: {
+			loggedIn: true,
+		},
 	},
 	migrationStatus: {
 		path: '/system/migrations',
@@ -20,6 +24,9 @@ const pages: Record<string, Page> = {
 		header: {
 			name: 'Migration Status',
 			icon: 'database',
+		},
+		permissions: {
+			loggedIn: true,
 		},
 	},
 	searchStatus: {
@@ -30,6 +37,9 @@ const pages: Record<string, Page> = {
 			icon: 'database',
 		},
 		sidebar: SearchStatusSidebar,
+		permissions: {
+			loggedIn: true,
+		},
 	},
 	searchResults: {
 		path: '/search/:searchTerm',
@@ -38,6 +48,10 @@ const pages: Record<string, Page> = {
 			name: 'Search',
 			icon: 'search',
 		},
+	},
+	error: {
+		path: '*',
+		component: Error,
 	},
 };
 export default pages;

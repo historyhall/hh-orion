@@ -9,7 +9,7 @@ export function Tags({tags}: Props) {
 	return (
 		<>
 			{tags.map(tag => (
-				<Label icon={tag.icon} key={tag.id} content={tag.text} />
+				<Label icon={tag.icon} key={tag.id} content={tag.text} size="small" color="yellow" style={{marginTop: '4px'}} />
 			))}
 		</>
 	);

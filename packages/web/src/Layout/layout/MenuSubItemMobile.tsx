@@ -1,6 +1,6 @@
 import {Fragment} from 'react';
 import {Link} from 'react-router-dom';
-import {Dropdown, DropdownItem, DropdownMenu, Icon, MenuItem} from 'semantic-ui-react';
+import {Dropdown, DropdownItem, DropdownMenu, Icon} from 'semantic-ui-react';
 import {Menu} from '../../types';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 	path: string;
 }
 
-export function MenuSubItem({menu, path}: Props) {
+export function MenuSubItemMobile({menu, path}: Props) {
 	return (
 		<Fragment>
 			{(menu.name || menu.icon) && (
@@ -31,10 +31,10 @@ export function MenuSubItem({menu, path}: Props) {
 					)}
 					{!menu.secondaryMenuItem && (
 						<Link to={path}>
-							<MenuItem>
+							<DropdownItem style={{color: 'black'}}>
 								{menu.icon && <Icon name={menu.icon} />}
 								{menu.name && <>{menu.name}</>}
-							</MenuItem>
+							</DropdownItem>
 						</Link>
 					)}
 				</>
