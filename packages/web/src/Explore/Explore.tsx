@@ -29,8 +29,15 @@ export function Explore() {
 
 	return (
 		<>
-			<MapContainer center={position} zoom={4} style={{width: '100%', height: '100vh', zIndex: 10, display: 'block'}} attributionControl={false}>
-				<TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}" />
+			<MapContainer
+				center={position}
+				zoom={4}
+				style={{width: '100%', height: '100vh', zIndex: 10, display: 'block'}}
+				attributionControl={false}
+				minZoom={3}
+				maxZoom={18}
+			>
+				<TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}" />
 				{data?.map(document => {
 					return (
 						<Marker position={{lat: parseFloat(document.location.latitude), lng: parseFloat(document.location.longitude)}} key={document.id}>
@@ -56,7 +63,8 @@ export function Explore() {
 			</MapContainer>
 			<Divider />
 			<p style={{fontSize: '11px'}}>
-				Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC
+				Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri
+				(Thailand), TomTom, 2012
 			</p>
 		</>
 	);
