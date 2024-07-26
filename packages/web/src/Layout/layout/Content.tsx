@@ -15,7 +15,7 @@ export function Content(page: Props) {
 	if (!page.main) return null;
 
 	return (
-		<Grid padded divided>
+		<Grid padded divided stackable>
 			<GridRow>
 				<GridColumn width={contentWidth}>
 					{page.header && <BodyHeader header={page.header} />}
