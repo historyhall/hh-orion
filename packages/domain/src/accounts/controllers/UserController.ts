@@ -27,7 +27,7 @@ export class UserController {
 		const user = await this.userRepo.findOne({email: data.email.toLowerCase()});
 		if (!user) throw new Error('A user with that email could not be found.');
 
-		if(!user.verified) throw new Error('Your user account has not been verified.')
+		if (!user.verified) throw new Error('Your user account has not been verified.');
 
 		const compareResult = await compare(data.password, user.password);
 
