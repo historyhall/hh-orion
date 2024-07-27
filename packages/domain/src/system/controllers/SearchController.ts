@@ -110,4 +110,13 @@ export class SearchController {
 
 		return true;
 	}
+
+	async indexStatistics() {
+		const documentCount = await this.documentRepo.count({});
+		const indexCount = await this.search.count({index: 'hh-index'});
+		return {
+			indexCount: indexCount.count,
+			documentCount,
+		};
+	}
 }
