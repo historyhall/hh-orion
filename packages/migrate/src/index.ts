@@ -52,9 +52,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 	await Promise.all(
 		maintenance.map(async maintenanceTask => {
 			const duplicateMaintenance = await em.findOne(Migration, {name: maintenanceTask.name, success: true, date: {$gte: new Date()}});
-			console.log('maint', duplicateMaintenance);
 			if (!duplicateMaintenance) {
-				console.log('run');
 				let migration;
 				try {
 					d(`Run maintenance: ${maintenanceTask.name}`);
