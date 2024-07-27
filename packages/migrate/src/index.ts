@@ -25,8 +25,8 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 
 	await Promise.all(
 		migrations.map(async migrationTask => {
-			const duplicateMigration = await em.find(Migration, {name: migrationTask.name, success: true});
-			if (duplicateMigration.length === 0) {
+			const duplicateMigration = await em.findOne(Migration, {name: migrationTask.name, success: true});
+			if (!duplicateMigration) {
 				let migration;
 				try {
 					d(`Run migration: ${migrationTask.name}`);
@@ -50,25 +50,30 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(async orm => {
 	);
 
 	await Promise.all(
-		maintenance.map(async job => {
-			let migration;
-			try {
-				d(`Run maintenance: ${job.name}`);
-				await em.transactional(async () => {
-					await em.execute(job.action);
-				});
+		maintenance.map(async maintenanceTask => {
+			const duplicateMaintenance = await em.findOne(Migration, {name: maintenanceTask.name, success: true, date: {$gte: new Date()}});
+			console.log('maint', duplicateMaintenance);
+			if (!duplicateMaintenance) {
+				console.log('run');
+				let migration;
+				try {
+					d(`Run maintenance: ${maintenanceTask.name}`);
+					await em.transactional(async () => {
+						await em.execute(maintenanceTask.action);
+					});
 
-				migration = new Migration({
-					name: job.name,
-					success: true,
-				});
-			} catch {
-				migration = new Migration({
-					name: job.name,
-					success: false,
-				});
+					migration = new Migration({
+						name: maintenanceTask.name,
+						success: true,
+					});
+				} catch {
+					migration = new Migration({
+						name: maintenanceTask.name,
+						success: false,
+					});
+				}
+				await em.persistAndFlush(migration);
 			}
-			await em.persistAndFlush(migration);
 		}),
 	);
 
