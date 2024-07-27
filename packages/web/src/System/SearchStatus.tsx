@@ -1,7 +1,7 @@
-import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from 'semantic-ui-react';
-import {useFetch} from '../useFetch';
 import * as Schema from 'hh-orion-schema';
+import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from 'semantic-ui-react';
 import {Loading} from '../Layout';
+import {useFetch} from '../useFetch';
 
 export function SearchStatus() {
 	const {data, loading} = useFetch<Schema.system.search.indexStatistics.response, Schema.system.search.indexStatistics.params>(
@@ -14,7 +14,7 @@ export function SearchStatus() {
 			<TableHeader>
 				<TableRow>
 					<TableHeaderCell>Document Count</TableHeaderCell>
-					<TableHeaderCell>IndexCount Count</TableHeaderCell>
+					<TableHeaderCell>Index Count</TableHeaderCell>
 				</TableRow>
 			</TableHeader>
 			<TableBody>
