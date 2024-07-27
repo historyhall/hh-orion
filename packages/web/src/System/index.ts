@@ -17,6 +17,10 @@ const pages: Record<string, Page> = {
 		permissions: {
 			loggedIn: true,
 		},
+		menu: {
+			name: 'System',
+			icon: 'server',
+		}
 	},
 	migrationStatus: {
 		path: '/system/migrations',

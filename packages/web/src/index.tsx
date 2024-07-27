@@ -1,5 +1,4 @@
 import debug from 'debug';
-import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,9 +12,7 @@ const d = debug('hh.web');
 d('Start Web');
 
 root.render(
-	<StrictMode>
-		<BrowserRouter>
-			<Layout />
-		</BrowserRouter>
-	</StrictMode>,
+	<BrowserRouter>
+		<Layout />
+	</BrowserRouter>,
 );
