@@ -18,9 +18,9 @@ import {useFetch} from '../../useFetch';
 import {useMutation} from '../../useMutation';
 
 export function UserDetails() {
-	const [sessions, setSessions] = useState<Schema.accounts.session.getByUserId.response>();
-	const {data, loading} = useFetch<Schema.accounts.session.getByUserId.response, Schema.accounts.session.getByUserId.params>(
-		Schema.accounts.session.getByUserId.route,
+	const [sessions, setSessions] = useState<Schema.accounts.session.getByActiveUserId.response>();
+	const {data, loading} = useFetch<Schema.accounts.session.getByActiveUserId.response, Schema.accounts.session.getByActiveUserId.params>(
+		Schema.accounts.session.getByActiveUserId.route,
 	);
 	const {call} = useMutation<Schema.accounts.session.deleteById.response, Schema.accounts.session.deleteById.params>(
 		Schema.accounts.session.deleteById.route,
@@ -64,7 +64,7 @@ export function UserDetails() {
 										onClick={() => {
 											call({id: session.id})
 												.then(() => {
-													let updateSessions: Schema.accounts.session.getByUserId.response = [];
+													let updateSessions: Schema.accounts.session.getByActiveUserId.response = [];
 													sessions.forEach(s => {
 														if (session.id !== s.id) {
 															updateSessions.push(s);
