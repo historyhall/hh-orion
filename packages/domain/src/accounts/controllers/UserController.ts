@@ -74,4 +74,13 @@ export class UserController {
 		await this.userRepo.insert(user);
 		return true;
 	}
+
+	async getByActiveUserId() {
+		if (!this.userData.authenticatedUser?.userId) throw new Error('User is not logged in');
+
+		const user = await this.userRepo.findOne({id: this.userData.authenticatedUser?.userId});
+		if (!user) throw new Error('User not found');
+
+		return user;
+	}
 }

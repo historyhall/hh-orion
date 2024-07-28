@@ -12,7 +12,7 @@ export class SessionController {
 		this.userData = userData;
 	}
 
-	getByUserId() {
+	getByActiveUserId() {
 		if (!this.userData.authenticatedUser?.userId) throw new Error('User is not logged in');
 
 		return this.sessionRepo.find({user: this.userData.authenticatedUser?.userId});

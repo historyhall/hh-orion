@@ -25,5 +25,12 @@ export function User(em: EntityManager, tokenSecret: string): Action[] {
 			action: async (userData: UserData): Promise<Schema.accounts.user.getTotal.response> =>
 				await new controllers.userController(em, userData, tokenSecret).getTotal(),
 		},
+		{
+			route: Schema.accounts.user.getByActiveUserId.route,
+			action: async (userData: UserData): Promise<Schema.accounts.user.getByActiveUserId.response> => {
+				const user = await new controllers.userController(em, userData, tokenSecret).getByActiveUserId();
+				return {...user, authors: user.authors.toArray()} as unknown as Schema.accounts.user.getByActiveUserId.response;
+			},
+		},
 	];
 }
