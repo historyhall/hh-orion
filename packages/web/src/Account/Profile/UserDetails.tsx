@@ -1,9 +1,9 @@
 import * as Schema from 'hh-orion-schema';
-import {Loading} from '../../Layout';
-import {useFetch} from '../../useFetch';
 import {Card, CardContent, CardHeader, CardMeta, Image} from 'semantic-ui-react';
-import user from './user.png';
+import {Loading} from '../../Layout';
 import {formatDate} from '../../lib/formatDate';
+import {useFetch} from '../../useFetch';
+import user from './user.png';
 
 export function UserDetails() {
 	const {data, loading} = useFetch<Schema.accounts.user.getByActiveUserId.response, Schema.accounts.user.getByActiveUserId.params>(

@@ -20,7 +20,7 @@ const pages: Record<string, Page> = {
 		menu: {
 			name: 'System',
 			icon: 'server',
-		}
+		},
 	},
 	migrationStatus: {
 		path: '/system/migrations',
