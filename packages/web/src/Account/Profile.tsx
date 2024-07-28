@@ -1,5 +1,11 @@
 import {ActiveSessions} from './Profile/ActiveSessions';
+import {UserDetails} from './Profile/UserDetails';
 
 export function Profile() {
-	return <ActiveSessions />;
+	return (
+		<>
+			<UserDetails />
+			<ActiveSessions />
+		</>
+	);
 }
