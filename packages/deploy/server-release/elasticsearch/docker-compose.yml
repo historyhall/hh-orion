@@ -10,3 +10,8 @@ services:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
       - xpack.security.enabled=false
+    volumes:
+      - ./elasticsearch:/usr/share/elasticsearch/data
+
+# Permisions for mounted volume
+# sudo chown -R 1000:root elasticsearch
