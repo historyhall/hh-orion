@@ -28,7 +28,7 @@
     ]
   },
   "dependencies": {
-    "debug": "^4.3.5",
+    "debug": "^4.3.6",
     "eslint-config-react-app": "^7.0.1",
     "hh-orion-schema": "0.1.0",
     "js-cookie": "^3.0.5",
