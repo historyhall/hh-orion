@@ -13,8 +13,8 @@ import {useFetch} from '../useFetch';
 let DefaultIcon = L.icon({
 	iconUrl: icon,
 	shadowUrl: iconShadow,
-	iconSize: [24, 36],
-	iconAnchor: [12, 36],
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
