@@ -59,7 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",
     "depcheck": "^1.4.7",
-    "eslint": "^9.7.0",
+    "eslint": "^9.8.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.35.0",
