@@ -1,6 +1,23 @@
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
+    root /var/www/mail;
+    server_name mail.historyhall.org www.mail.historyhall.org;
+    client_max_body_size 5000m;
+    location ~ \.php$ {
+        try_files $uri index.php index.html;
+        fastcgi_intercept_errors on;
+        fastcgi_param REQUEST_METHOD $request_method;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_index Resources.php;
+        #fastcgi_pass 127.0.0.1:9000;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+   }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
     server_name registry.historyhall.org www.registry.historyhall.org;
     client_max_body_size 5000m;
     location / {
