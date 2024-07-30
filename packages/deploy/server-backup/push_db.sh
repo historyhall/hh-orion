@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source .env
 
-sql="postgres://$DB_USERNAME:$DB_PASSWORD@$DB_DOMAIN:$DB_PORT/$DB_NAME"
+sql="postgres://$PUSH_DB_USERNAME:$PUSH_DB_PASSWORD@$PUSH_DB_DOMAIN:$PUSH_DB_PORT/$PUSH_DB_NAME"
 
 psql "$sql" <<EOF
   DO \$\$ DECLARE
