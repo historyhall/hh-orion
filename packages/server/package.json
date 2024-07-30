@@ -16,7 +16,7 @@
     "@mikro-orm/core": "^6.2.9",
     "@mikro-orm/postgresql": "^6.3.1",
     "cors": "^2.8.5",
-    "debug": "^4.3.5",
+    "debug": "^4.3.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "hh-orion-domain": "0.1.0",
