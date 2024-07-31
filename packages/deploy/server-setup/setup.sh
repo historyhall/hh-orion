@@ -19,6 +19,7 @@ sudo systemctl restart nginx
 sudo certbot --nginx -d historyhall.org -d www.historyhall.org
 sudo certbot --nginx -d registry.historyhall.org -d www.registry.historyhall.org
 sudo certbot --nginx -d api.historyhall.org -d www.api.historyhall.org
+sudo certbot --nginx -d mail.historyhall.org -d www.mail.historyhall.org
 
 # Docker Registry
 sudo mkdir -p /srv/docker-registry/registry;
@@ -38,3 +39,10 @@ sudo groupadd docker;
 sudo usermod -aG docker $USER;
 
 newgrp docker;
+
+# Mail server
+sudo apt install php-fpm
+sudo mkdir -v /var/www/mail /var/www/mail
+
+# Test and Reload nginx
+sudo nginx -t && sudo service nginx reload

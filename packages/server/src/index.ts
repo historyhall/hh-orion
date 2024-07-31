@@ -55,9 +55,13 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 					d(response);
 					res.status(200).send(response);
 				} catch (error: unknown) {
-					res.statusMessage = JSON.stringify(error);
-					res.status(500).send({});
-					d(error);
+					if (typeof error === 'string') {
+						res.statusMessage = error;
+					} else if (error instanceof Error) {
+						res.statusMessage = error.toString();
+					} else {
+						res.statusMessage = JSON.stringify(error);
+					}
 				}
 			}
 		});

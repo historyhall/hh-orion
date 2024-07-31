@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source .env
 
-sql="postgres://$DB_USERNAME:$DB_PASSWORD@$DB_DOMAIN:$DB_PORT/$DB_NAME"
+sql="postgres://$PULL_DB_USERNAME:$PULL_DB_PASSWORD@$PULL_DB_DOMAIN:$PULL_DB_PORT/$PULL_DB_NAME"
 
 pg_dump -v "$sql" > history_hall.sql
