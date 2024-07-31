@@ -9,6 +9,7 @@ export function Migration(em: EntityManager): Action[] {
 			route: Schema.system.migration.getAll.route,
 			action: async (userData: UserData): Promise<Schema.system.migration.getAll.response> =>
 				await new controllers.migrationController(em, userData).getAll(),
+			requiresAuthorization: true,
 		},
 	];
 }
