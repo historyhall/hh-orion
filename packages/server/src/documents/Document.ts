@@ -11,6 +11,7 @@ export function Document(em: EntityManager): Action[] {
 				// @ts-ignore
 				return await new controllers.documentController(em, userData).getAll();
 			},
+			requiresAuthorization: false,
 		},
 		{
 			route: Schema.documents.document.getById.route,
@@ -20,11 +21,13 @@ export function Document(em: EntityManager): Action[] {
 				// @ts-ignore
 				return {...document, authors: document.authors.toArray()};
 			},
+			requiresAuthorization: false,
 		},
 		{
 			route: Schema.documents.document.getTotal.route,
 			action: async (userData: UserData): Promise<Schema.documents.document.getTotal.response> =>
 				await new controllers.documentController(em, userData).getTotal(),
+			requiresAuthorization: false,
 		},
 	];
 }
