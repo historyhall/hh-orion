@@ -16,11 +16,13 @@ export function Session(em: EntityManager): Action[] {
 					return {...session, user: {...session.user, authors}};
 				});
 			},
+			requiresAuthorization: true,
 		},
 		{
 			route: Schema.accounts.session.deleteById.route,
 			action: async (userData: UserData, data): Promise<Schema.accounts.session.deleteById.response> =>
 				new controllers.sessionController(em, userData).deleteById(data),
+			requiresAuthorization: true,
 		},
 	];
 }

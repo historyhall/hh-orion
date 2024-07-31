@@ -12,13 +12,11 @@ export function Logout() {
 	useEffect(() => {
 		const token = Cookies.get('hh_token');
 		if (!!token) {
-			call()
-				.then(() => {
-					Cookies.remove('hh_token');
-					toast.success('You have been logged out!');
-					navigate('/');
-				})
-				.catch(error => toast.error(error));
+			call(undefined, () => {
+				Cookies.remove('hh_token');
+				toast.success('You have been logged out!');
+				navigate('/');
+			}).catch(error => toast.error(error));
 		}
 	});
 

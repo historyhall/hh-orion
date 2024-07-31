@@ -47,14 +47,18 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 
 			const userData = await authenticateUser(em, agent, ipAddress, req.headers.authorization);
 
-			try {
-				const response = JSON.stringify(await endpoint.action(userData, req.query));
-				d(response);
-				res.status(200).send(response);
-			} catch (error: unknown) {
-				res.statusMessage = JSON.stringify(error);
-				res.status(500).send({});
-				d(error);
+			if (!userData.authenticatedUser && endpoint.requiresAuthorization) {
+				res.status(401).send({});
+			} else {
+				try {
+					const response = JSON.stringify(await endpoint.action(userData, req.query));
+					d(response);
+					res.status(200).send(response);
+				} catch (error: unknown) {
+					res.statusMessage = JSON.stringify(error);
+					res.status(500).send({});
+					d(error);
+				}
 			}
 		});
 	});
