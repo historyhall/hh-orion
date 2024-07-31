@@ -1,8 +1,8 @@
 import {debug} from 'debug';
 import Cookies from 'js-cookie';
+import {useNavigate} from 'react-router-dom';
 /* eslint-disable no-unused-vars */
 import {environment} from './environment';
-import {useNavigate} from 'react-router-dom';
 
 const d = debug('hh.web.useMutation');
 
