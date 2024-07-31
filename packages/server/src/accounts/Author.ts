@@ -9,7 +9,7 @@ export function Author(em: EntityManager): Action[] {
 			route: Schema.accounts.author.getTotal.route,
 			action: async (userData: UserData): Promise<Schema.accounts.author.getTotal.response> =>
 				await new controllers.authorController(em, userData).getTotal(),
-			requiresAuthorization: true,
+			requiresAuthorization: false,
 		},
 	];
 }

@@ -1,11 +1,13 @@
 import Cookies from 'js-cookie';
 import {useEffect, useState} from 'react';
 import {environment} from './environment';
+import { useNavigate } from 'react-router-dom';
 
 export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: boolean; error?: string} {
 	const [data, setData] = useState<any>();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
+	const navigate = useNavigate();
 
 	let paramList = new URLSearchParams(params as Record<string, string>).toString();
 
@@ -18,13 +20,15 @@ export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: bo
 			const headers = new Headers({Authorization: Cookies.get('hh_token') || ''});
 
 			fetch(url, {headers}).then(response => {
-				if (!response.ok) {
-					setError(response.statusText);
-				} else {
+				if (response.status === 200) {
 					response.json().then(json => {
 						setData(json);
 						setError(undefined);
 					});
+				} else if (response.status === 401) {
+					navigate('/profile/logout');
+				} else {
+					setError(response.statusText);
 				}
 			});
 		} catch (error) {

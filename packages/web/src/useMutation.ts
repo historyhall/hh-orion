@@ -2,12 +2,14 @@ import {debug} from 'debug';
 import Cookies from 'js-cookie';
 /* eslint-disable no-unused-vars */
 import {environment} from './environment';
+import {useNavigate} from 'react-router-dom';
 
 const d = debug('hh.web.useMutation');
 
 export function useMutation<T, P>(
 	path: string,
 ): {call: (params?: P, callback?: (data: T, status?: number, error?: string) => void) => Promise<void>} {
+	const navigate = useNavigate();
 	async function call(params?: P, callback?: (data: T, status?: number, error?: string) => void) {
 		let paramList = new URLSearchParams(params as Record<string, string>).toString();
 		try {
@@ -20,6 +22,8 @@ export function useMutation<T, P>(
 				response.json().then(json => {
 					if (response.status === 200) {
 						callback && callback(json, response.status);
+					} else if (response.status === 401) {
+						navigate('/profile/logout');
 					} else {
 						callback && callback(json, response.status, response.statusText);
 					}

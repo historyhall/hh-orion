@@ -62,18 +62,16 @@ export function ActiveSessions() {
 										content="Log Out"
 										disabled={session.token === Cookies.get('hh_token')}
 										onClick={() => {
-											call({id: session.id})
-												.then(() => {
-													let updateSessions: Schema.accounts.session.getByActiveUserId.response = [];
-													sessions.forEach(s => {
-														if (session.id !== s.id) {
-															updateSessions.push(s);
-														}
-													});
-													setSessions(updateSessions);
-													toast.success('This session was logged out.');
-												})
-												.catch(error => toast.error(error));
+											call({id: session.id}, () => {
+												let updateSessions: Schema.accounts.session.getByActiveUserId.response = [];
+												sessions.forEach(s => {
+													if (session.id !== s.id) {
+														updateSessions.push(s);
+													}
+												});
+												setSessions(updateSessions);
+												toast.success('This session was logged out.');
+											}).catch(error => toast.error(error));
 										}}
 									/>
 								</TableCell>
