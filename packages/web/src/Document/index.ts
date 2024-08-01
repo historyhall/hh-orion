@@ -21,9 +21,9 @@ const pages: Record<string, Page> = {
 			icon: 'upload',
 			position: 'right',
 		},
-		// permissions: {
-		// 	loggedIn: true,
-		// },
+		permissions: {
+			loggedIn: true,
+		},
 	},
 };
 export default pages;
