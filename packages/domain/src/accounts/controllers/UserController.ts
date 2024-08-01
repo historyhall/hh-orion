@@ -1,9 +1,9 @@
 import {EntityManager} from '@mikro-orm/core';
 import {compare} from 'bcrypt';
 import * as Schema from 'hh-orion-schema';
-import {sign} from 'jsonwebtoken';
+import {decode, sign} from 'jsonwebtoken';
 import {passwordHash} from '../../lib/passwordHash';
-import {TokenConstructor, UserData} from '../../types';
+import {TokenConstructor, TokenPayload, UserData} from '../../types';
 import {Session, User} from '../entities';
 
 export class UserController {
@@ -82,5 +82,29 @@ export class UserController {
 		if (!user) throw new Error('User not found');
 
 		return user;
+	}
+
+	async authentication(agent: string, ipAddress: string, token?: string): Promise<UserData> {
+		let tokenPayload: TokenPayload | undefined;
+		if (token) {
+			tokenPayload = decode(token, {complete: true})?.payload as TokenPayload;
+		}
+
+		let authenticatedUser;
+		if (token && tokenPayload?.id) {
+			const activeSession = await this.sessionRepo.findOne({token});
+			if (activeSession && activeSession.expiryDate.getTime() > new Date().getTime()) {
+				authenticatedUser = {
+					userId: tokenPayload?.id,
+					token,
+				};
+			}
+		}
+
+		return {
+			agent,
+			ipAddress,
+			authenticatedUser,
+		};
 	}
 }

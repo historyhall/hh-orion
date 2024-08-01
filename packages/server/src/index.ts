@@ -5,12 +5,12 @@ import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
 import {Accounts} from './accounts';
-import {authenticateUser} from './authenticateUser';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
 import {System} from './system';
 import {Action} from './types';
+import {UserController} from 'hh-orion-domain';
 
 const d = debug('hh.server');
 
@@ -45,7 +45,8 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 				ipAddress = ipAddress.substring(7);
 			}
 
-			const userData = await authenticateUser(em, agent, ipAddress, req.headers.authorization);
+			const userController = new UserController(em, {agent, ipAddress}, environment.tokenSecret);
+			const userData = await userController.authentication(agent, ipAddress, req.headers.authorization);
 
 			if (!userData.authenticatedUser && endpoint.requiresAuthorization) {
 				res.status(401).send({});
