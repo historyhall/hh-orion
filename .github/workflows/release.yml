@@ -59,6 +59,11 @@ jobs:
         run: |
           yarn build:server && docker build -t historyhall-server:$VERSION -t historyhall-server:latest -f packages/deploy/docker-server/server.dockerfile .
 
+      # Docker File Upload
+      - name: Build Docker - File Upload
+        run: |
+          yarn build:file-upload && docker build -t historyhall-file-upload:$VERSION -t historyhall-file-upload:latest -f packages/deploy/docker-file-upload/file-upload.dockerfile .
+
       # Docker Migrate
       - name: Build Docker - Migrate
         run: |
@@ -72,6 +77,10 @@ jobs:
       - name: Push Docker - Server
         run: |
           docker tag historyhall-server registry.historyhall.org/historyhall-server && docker push registry.historyhall.org/historyhall-server
+
+      - name: Push Docker - File Upload
+        run: |
+          docker tag historyhall-file-upload registry.historyhall.org/historyhall-file-upload && docker push registry.historyhall.org/historyhall-file-upload
 
       - name: Push Docker - Migrate
         run: |

@@ -26,6 +26,7 @@
     "start:migrate": "cd ./packages/migrate/ && yarn start",
     "start:schema": "cd ./packages/schema/ && yarn start",
     "start:server": "cd ./packages/server/ && yarn start",
+    "start:file-upload": "cd ./packages/file-upload/ && yarn start",
     "start:web": "cd ./packages/web/ && yarn start",
     "test:domain:deps": "cd ./packages/domain/ && yarn depcheck",
     "test:domain:lint": "cd ./packages/domain/ && yarn eslint",
@@ -41,7 +42,10 @@
     "test:server:types": "cd ./packages/server/ && yarn tsc",
     "test:web:deps": "cd ./packages/web/ && yarn depcheck",
     "test:web:lint": "cd ./packages/web/ && yarn eslint",
-    "test:web:types": "cd ./packages/web/ && yarn tsc"
+    "test:web:types": "cd ./packages/web/ && yarn tsc",
+    "test:file-upload:deps": "cd ./packages/file-upload/ && yarn depcheck",
+    "test:file-upload:lint": "cd ./packages/file-upload/ && yarn eslint",
+    "test:file-upload:types": "cd ./packages/file-upload/ && yarn tsc"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

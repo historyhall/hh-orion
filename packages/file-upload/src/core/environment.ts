@@ -4,7 +4,7 @@ import * as process from 'node:process';
 config();
 
 export const environment = {
-	serverPort: process.env.SERVER_PORT || '5001',
+	serverPort: process.env.SERVER_PORT || '5002',
 	dbUsername: process.env.DB_USERNAME,
 	dbPassword: process.env.DB_PASSWORD,
 	dbDomain: process.env.DB_DOMAIN || 'localhost',
