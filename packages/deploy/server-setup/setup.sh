@@ -38,3 +38,13 @@ sudo groupadd docker;
 sudo usermod -aG docker $USER;
 
 newgrp docker;
+
+# Mail server - roundcube
+sudo apt install php-fpm php-dom php-mbstring php-intl php-curl php-pdo-pgsql
+sudo mkdir -v /var/www/mail /var/www/mail
+
+# Mail server - dovecot
+sudo apt install dovecot-imapd
+
+# Test and Reload nginx
+sudo nginx -t && sudo service nginx reload
