@@ -1,5 +1,18 @@
 import {ChangeEvent, DragEvent, useRef, useState} from 'react';
-import {Button, Grid, GridColumn, GridRow, Header, Icon, Segment, HeaderSubheader} from 'semantic-ui-react';
+import {
+	Button,
+	Grid,
+	GridColumn,
+	GridRow,
+	Header,
+	Icon,
+	Segment,
+	HeaderSubheader,
+	CardGroup,
+	Card,
+	CardDescription,
+	Divider,
+} from 'semantic-ui-react';
 
 enum FileStatusEnum {
 	Pending = 'Pending',
@@ -19,7 +32,24 @@ export function Upload() {
 	const [highlight, setHighlight] = useState(false);
 	const [disabled, setDisabled] = useState(false);
 	const fileInputRef = useRef<HTMLInputElement>(null);
-	const maxDocUploadSizeMb = '15';
+	const maxDocUploadSizeMb = 15;
+
+	function cardColor(status: FileStatusEnum) {
+		switch (status) {
+			case FileStatusEnum.Pending:
+				return undefined;
+			case FileStatusEnum.Success:
+				return 'green';
+			case FileStatusEnum.Failure:
+				return 'red';
+			case FileStatusEnum.Duplicate:
+				return 'orange';
+			case FileStatusEnum.Uploading:
+				return 'teal';
+			default:
+				return undefined;
+		}
+	}
 
 	function fileListToArray(list: FileList) {
 		const array: File[] = [];
@@ -72,7 +102,46 @@ export function Upload() {
 		if (!disabled) fileInputRef.current?.click();
 	}
 
-	function submitFiles() {
+	async function submitFiles() {
+		setDisabled(true);
+		await Promise.all(
+			uploads.map((upload, index) => async () => {
+				const currentFile = uploads;
+				if (upload.file.size > maxDocUploadSizeMb * 1048576) {
+					currentFile[index].status = FileStatusEnum.Failure;
+					setUploads([...currentFile]);
+				} else if (upload.status === FileStatusEnum.Pending) {
+					currentFile[index].status = FileStatusEnum.Uploading;
+					setUploads([...currentFile]);
+
+					const formData = new FormData();
+					formData.append('file', upload.file);
+
+					try {
+						const response = await fetch('test', {
+							method: 'POST',
+							mode: 'cors',
+							credentials: 'include',
+							body: formData,
+						});
+
+						if (response.status === 200) {
+							currentFile[index].status = FileStatusEnum.Success;
+							setUploads([...currentFile]);
+						} else if (response.status === 522) {
+							currentFile[index].status = FileStatusEnum.Duplicate;
+							setUploads([...currentFile]);
+						} else {
+							currentFile[index].status = FileStatusEnum.Failure;
+							setUploads([...currentFile]);
+						}
+					} catch {
+						currentFile[index].status = FileStatusEnum.Failure;
+						setUploads([...currentFile]);
+					}
+				}
+			}),
+		);
 		setDisabled(false);
 	}
 
@@ -101,11 +170,39 @@ export function Upload() {
 							style={{display: 'none'}}
 							ref={fileInputRef}
 							type="file"
-							multiple={false}
+							multiple={true}
 							onChange={onFilesAdded}
 							accept=".pdf, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff, .heic, .avif"
 						/>
 					</Segment>
+				</GridColumn>
+			</GridRow>
+			<GridRow>
+				<GridColumn>
+					<CardGroup>
+						{uploads.map(upload => {
+							return (
+								<Card key={upload.file.name} color={cardColor(upload.status)}>
+									<Card.Content>
+										<CardDescription>
+											<Icon name="file" color={cardColor(upload.status)} size="large" />
+											<Icon
+												style={{cursor: 'pointer', float: 'right'}}
+												name="delete"
+												onClick={() => setUploads(uploads.filter(currentFiles => currentFiles.file.name !== upload.file.name))}
+												color="red"
+											/>
+											{upload.file.name}
+										</CardDescription>
+										<Divider />
+										<CardDescription>
+											<Card.Meta>{upload.status}</Card.Meta>
+										</CardDescription>
+									</Card.Content>
+								</Card>
+							);
+						})}
+					</CardGroup>
 				</GridColumn>
 			</GridRow>
 			<GridRow>
