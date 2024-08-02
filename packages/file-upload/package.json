@@ -12,7 +12,6 @@
     "test:types": "tsc"
   },
   "dependencies": {
-    "@elastic/elasticsearch": "^8.14.0",
     "@mikro-orm/core": "^6.2.9",
     "@mikro-orm/postgresql": "^6.3.1",
     "cors": "^2.8.5",
@@ -20,8 +19,6 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "hh-orion-domain": "0.1.0",
-    "hh-orion-schema": "0.1.0",
-    "jsonwebtoken": "^9.0.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4"
   },
