@@ -9,6 +9,9 @@ docker compose down
 cd ../migrate
 docker compose down
 
+cd ../file-upload
+docker compose down
+
 cd ../server
 docker compose down
 

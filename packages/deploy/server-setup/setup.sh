@@ -19,6 +19,7 @@ sudo systemctl restart nginx
 sudo certbot --nginx -d historyhall.org -d www.historyhall.org
 sudo certbot --nginx -d registry.historyhall.org -d www.registry.historyhall.org
 sudo certbot --nginx -d api.historyhall.org -d www.api.historyhall.org
+sudo certbot --nginx -d upload.historyhall.org -d www.upload.historyhall.org
 sudo certbot --nginx -d mail.historyhall.org -d www.mail.historyhall.org
 
 # Docker Registry

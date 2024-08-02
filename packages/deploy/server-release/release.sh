@@ -22,6 +22,11 @@ docker compose pull
 docker compose down
 docker compose up -d
 
+cd ../file-upload
+docker compose pull
+docker compose down
+docker compose up -d
+
 cd ../server
 docker compose pull
 docker compose down
