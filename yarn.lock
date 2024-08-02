@@ -1784,7 +1784,7 @@
     knex "3.1.0"
     sqlstring "2.3.3"
 
-"@mikro-orm/postgresql@^6.3.2":
+"@mikro-orm/postgresql@^6.3.1", "@mikro-orm/postgresql@^6.3.2":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@mikro-orm/postgresql/-/postgresql-6.3.2.tgz#eb1ef651f39c9814a56acc26eaa2da0598699e48"
   integrity sha512-GX1PFNKHN3RmbE+ypW5tXgcLmJ6ClfdAO+DFmRx6tuJ40vexRp2xaw8j+4xd2yKF0f+gS0K9HExr9FdFB53tng==
