@@ -73,6 +73,19 @@ jobs:
         run: |
           yarn test:server:deps
 
+      # File Upload
+      - name: File Upload - Test Lint
+        run: |
+          yarn test:file-upload:lint
+
+      - name: File Upload - Test Types
+        run: |
+          yarn test:file-upload:types
+
+      - name: File Upload - Test Dependencies
+        run: |
+          yarn test:file-upload:deps
+
       # Schema
       - name: Schema - Test Lint
         run: |

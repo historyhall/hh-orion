@@ -1,6 +1,23 @@
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
+    root /var/www/mail;
+    server_name mail.historyhall.org www.mail.historyhall.org;
+    index index.html index.htm index.php;
+    location / {
+         try_files $uri $uri/ /index.php$is_args$args;
+    }
+    location ~ \.php$ {
+       fastcgi_split_path_info ^(.+\.php)(/.+)$;
+       fastcgi_pass unix:/var/run/php/php-fpm.sock;
+       fastcgi_index index.php;
+       include fastcgi.conf;
+    }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
     server_name registry.historyhall.org www.registry.historyhall.org;
     client_max_body_size 5000m;
     location / {
@@ -18,6 +35,19 @@ server {
     client_max_body_size 5000m;
     location / {
         proxy_pass http://localhost:5001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name upload.historyhall.org www.upload.historyhall.org;
+    client_max_body_size 5000m;
+    location / {
+        proxy_pass http://localhost:5002;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $remote_addr;

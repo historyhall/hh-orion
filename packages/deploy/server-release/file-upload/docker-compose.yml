@@ -1,0 +1,13 @@
+services:
+  registry:
+    container_name: file-upload
+    restart: always
+    image: registry.historyhall.org/historyhall-file-upload
+    environment:
+      - TZ="America/Winnipeg"
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
+    volumes:
+      - ./.env:/app/packages/file-upload/.env
+      - ../server/assets:/app/packages/server/assets
+    ports:
+      - "5002:5002"

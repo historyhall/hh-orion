@@ -19,6 +19,8 @@ sudo systemctl restart nginx
 sudo certbot --nginx -d historyhall.org -d www.historyhall.org
 sudo certbot --nginx -d registry.historyhall.org -d www.registry.historyhall.org
 sudo certbot --nginx -d api.historyhall.org -d www.api.historyhall.org
+sudo certbot --nginx -d upload.historyhall.org -d www.upload.historyhall.org
+sudo certbot --nginx -d mail.historyhall.org -d www.mail.historyhall.org
 
 # Docker Registry
 sudo mkdir -p /srv/docker-registry/registry;
@@ -39,12 +41,12 @@ sudo usermod -aG docker $USER;
 
 newgrp docker;
 
-# Mail server - roundcube
+# Mail Server - Roundcube
 sudo apt install php-fpm php-dom php-mbstring php-intl php-curl php-pdo-pgsql
 sudo mkdir -v /var/www/mail /var/www/mail
 
-# Mail server - dovecot
+# Mail Server - Dovecot
 sudo apt install dovecot-imapd
 
-# Test and Reload nginx
+# Test and Reload Nginx
 sudo nginx -t && sudo service nginx reload

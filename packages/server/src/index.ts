@@ -4,8 +4,8 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
+import {UserController} from 'hh-orion-domain';
 import {Accounts} from './accounts';
-import {authenticateUser} from './authenticateUser';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {Documents} from './documents';
@@ -45,7 +45,8 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 				ipAddress = ipAddress.substring(7);
 			}
 
-			const userData = await authenticateUser(em, agent, ipAddress, req.headers.authorization);
+			const userController = new UserController(em, {agent, ipAddress}, environment.tokenSecret);
+			const userData = await userController.authentication(agent, ipAddress, req.headers.authorization);
 
 			if (!userData.authenticatedUser && endpoint.requiresAuthorization) {
 				res.status(401).send({});
@@ -55,9 +56,13 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 					d(response);
 					res.status(200).send(response);
 				} catch (error: unknown) {
-					res.statusMessage = JSON.stringify(error);
-					res.status(500).send({});
-					d(error);
+					if (typeof error === 'string') {
+						res.statusMessage = error;
+					} else if (error instanceof Error) {
+						res.statusMessage = error.toString();
+					} else {
+						res.statusMessage = JSON.stringify(error);
+					}
 				}
 			}
 		});
