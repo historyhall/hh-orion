@@ -1775,15 +1775,6 @@
     mikro-orm "6.3.2"
     reflect-metadata "0.2.2"
 
-"@mikro-orm/knex@6.3.1":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@mikro-orm/knex/-/knex-6.3.1.tgz#fdc0c713a4de9fd52dfdefdf8686966fa519c956"
-  integrity sha512-mEEGmFx7Plv5AZG/L7b7qwWuHUXcz1nRYcvhDsAAM8QnFveXzzvDhYTRF2SHLfvrEp1JY23CA0oBwD8mbtkecg==
-  dependencies:
-    fs-extra "11.2.0"
-    knex "3.1.0"
-    sqlstring "2.3.3"
-
 "@mikro-orm/knex@6.3.2":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@mikro-orm/knex/-/knex-6.3.2.tgz#a2cd57676f4085978872d1c51fc9c3c34a6d5df3"
@@ -1793,12 +1784,12 @@
     knex "3.1.0"
     sqlstring "2.3.3"
 
-"@mikro-orm/postgresql@^6.3.1":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@mikro-orm/postgresql/-/postgresql-6.3.1.tgz#99928d5704b39f0f8b2108dfde9ba8c5cb690338"
-  integrity sha512-K5YxXjHG5rAzJmLKQvwSURgAG1grWJEJkghDA64rPiQc3tHBKFqL7AOWQ94sWjczLNEFilDKuJ4vaRzfsVYw0w==
+"@mikro-orm/postgresql@^6.3.2":
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/postgresql/-/postgresql-6.3.2.tgz#eb1ef651f39c9814a56acc26eaa2da0598699e48"
+  integrity sha512-GX1PFNKHN3RmbE+ypW5tXgcLmJ6ClfdAO+DFmRx6tuJ40vexRp2xaw8j+4xd2yKF0f+gS0K9HExr9FdFB53tng==
   dependencies:
-    "@mikro-orm/knex" "6.3.1"
+    "@mikro-orm/knex" "6.3.2"
     pg "8.12.0"
     postgres-array "3.0.2"
     postgres-date "2.1.0"
