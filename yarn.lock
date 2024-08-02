@@ -1750,7 +1750,7 @@
     semver "^7.3.5"
     tar "^6.1.11"
 
-"@mikro-orm/cli@^6.3.2":
+"@mikro-orm/cli@^6.3.1", "@mikro-orm/cli@^6.3.2":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@mikro-orm/cli/-/cli-6.3.2.tgz#bbb5d3c9112912e37c1efb713890bce1b1eefba9"
   integrity sha512-4XJ8TiA0JAQS5AHF7muz+RrMKDdXCBg0x8E7mwgH/Bk2FBxK178NVtk6ov/CEBuLja8MiBgzGG3jh65sV0wUFQ==
