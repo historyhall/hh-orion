@@ -6,8 +6,8 @@ const d = debug('tacs.file-upload.upload.endpoints.fileUpload');
 
 export interface Request {
 	busboy?: BusboyChecker;
-	pipe: <T extends NodeJS.WritableStream>(destination: T, options?: {end?: boolean | undefined} | undefined) => T;
-	on: (event: 'finish' | 'aborted' | 'error', listener: () => void) => void;
+	pipe: (destination: BusboyChecker) => void;
+	on: (key: 'finish' | 'aborted' | 'error', listener: () => void) => void;
 }
 
 export async function upload(req: Request) {
