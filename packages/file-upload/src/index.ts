@@ -3,11 +3,11 @@ import {PostgreSqlDriver} from '@mikro-orm/postgresql';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
+import {UserController} from 'hh-orion-domain';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
-import {UserController} from 'hh-orion-domain';
 
-const d = debug('hh.server');
+const d = debug('hh.file-upload');
 
 MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	debug.enable(environment.debug);
