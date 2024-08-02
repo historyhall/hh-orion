@@ -6,6 +6,8 @@ import express, {Express} from 'express';
 import {UserController} from 'hh-orion-domain';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
+import {upload} from './upload';
+import busboy from 'connect-busboy';
 
 const d = debug('hh.file-upload');
 
@@ -22,7 +24,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	app.use(cors(corsOptions));
 	app.enable('trust proxy');
 
-	app.get(`/upload`, async (req, res) => {
+	app.get(`/upload`, busboy(), async (req, res) => {
 		d(req.query);
 
 		const agent = req.headers['user-agent'] || 'Unknown';
@@ -39,10 +41,9 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 			res.status(401).send({});
 		} else {
 			try {
-				if ('duplicate') {
-					res.status(522).send({});
-				}
-				res.status(200).send();
+				// 200 = success, 522 = duplicate
+				const code = await upload(req);
+				res.status(code).send();
 			} catch (error: unknown) {
 				if (typeof error === 'string') {
 					res.statusMessage = error;
