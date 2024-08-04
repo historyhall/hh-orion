@@ -9,7 +9,7 @@ export type UserData = {
 
 export type Action = {
 	route: string;
-	// eslint-disable-next-line no-unused-vars
+
 	action: (userData: UserData, type: any) => Promise<any>;
 	requiresAuthorization: boolean;
 };
