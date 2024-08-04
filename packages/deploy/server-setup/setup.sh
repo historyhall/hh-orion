@@ -41,9 +41,12 @@ sudo usermod -aG docker $USER;
 
 newgrp docker;
 
-# Mail server
-sudo apt install php-fpm
+# Mail Server - Roundcube
+sudo apt install php-fpm php-dom php-mbstring php-intl php-curl php-pdo-pgsql
 sudo mkdir -v /var/www/mail /var/www/mail
 
-# Test and Reload nginx
+# Mail Server - Dovecot
+sudo apt install dovecot-imapd
+
+# Test and Reload Nginx
 sudo nginx -t && sudo service nginx reload

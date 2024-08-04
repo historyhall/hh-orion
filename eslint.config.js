@@ -14,7 +14,7 @@ export default tseslint.config(
             'react-hooks':  reactHooks,
             'prettier': eslintPluginPrettier,
             'react': eslintPluginReact,
-            'eslintPlugin': eslintPlugin
+            '@typescript-eslint': eslintPlugin,
         },
         settings: {
             react: {
@@ -30,7 +30,6 @@ export default tseslint.config(
             'no-return-assign': ['error', 'except-parens'],
             'no-console': ['error'],
             'no-plusplus': 'off',
-            'no-unused-vars': ['error', {varsIgnorePattern: 'd', argsIgnorePattern: 'server|context|ctx|type'}],
             'lines-between-class-members': ['off'],
             'no-use-before-define': ['off'],
             'func-names': ['error', 'always'],
@@ -38,7 +37,7 @@ export default tseslint.config(
 
             // Typescript
             '@typescript-eslint/indent': ['off'],
-            // '@typescript-eslint/no-unused-vars': ['error', {varsIgnorePattern: 'd'}],
+            '@typescript-eslint/no-unused-vars': ['error', {varsIgnorePattern: 'd'}],
             '@typescript-eslint/no-unused-expressions': ['off'], // This was disabled because some upgrade to airbnb rules.
             '@typescript-eslint/explicit-member-accessibility': ['off'],
             '@typescript-eslint/explicit-function-return-type': ['off', {allowExpressions: true, allowTypedFunctionExpressions: true}],
