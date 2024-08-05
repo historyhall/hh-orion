@@ -22,13 +22,13 @@ enum FileStatusEnum {
 	Uploading = 'Uploading',
 }
 
-type Upload = {
+type UploadType = {
 	status: FileStatusEnum;
 	file: File;
 };
 
 export function Upload() {
-	const [uploads, setUploads] = useState<Upload[]>([]);
+	const [uploads, setUploads] = useState<UploadType[]>([]);
 	const [highlight, setHighlight] = useState(false);
 	const [disabled, setDisabled] = useState(false);
 	const fileInputRef = useRef<HTMLInputElement>(null);
