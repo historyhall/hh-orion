@@ -11,4 +11,6 @@ export const controllers = {
 };
 
 export * from './accounts/';
+export * from './documents/';
 export * from './system/';
+export * from './types';

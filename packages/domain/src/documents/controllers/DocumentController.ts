@@ -25,4 +25,8 @@ export class DocumentController {
 	async getAll() {
 		return this.documentRepo.findAll();
 	}
+
+	documentExists(hash: string) {
+		return this.documentRepo.count({hash});
+	}
 }

@@ -1,10 +1,15 @@
 import debug from 'debug';
 import type {Readable} from 'node:stream';
 import {BusboyChecker} from './BusboyChecker';
+import {DocumentController} from 'hh-orion-domain';
 // @ts-ignore
 import HashTransform from 'hash-transform';
 import {writeToStorage} from './lib/writeToStorage';
 import {mimeTypeToFileExtension} from './lib/mimeTypeToFileExtension';
+import {Connection, EntityManager, IDatabaseDriver} from '@mikro-orm/core';
+import {PostgreSqlDriver, SqlEntityManager} from '@mikro-orm/postgresql';
+import * as fs from 'node:fs';
+import {UserData} from 'hh-orion-domain';
 
 const d = debug('hh.file-upload.upload.endpoints.fileUpload');
 
@@ -14,7 +19,7 @@ export interface Request {
 	on: (key: 'finish' | 'aborted' | 'error', listener: () => void) => void;
 }
 
-export async function upload(req: Request) {
+export async function upload(req: Request, em: SqlEntityManager<PostgreSqlDriver> & EntityManager<IDatabaseDriver<Connection>>, userData: UserData) {
 	const storagePath = 'assets/content';
 	if (!req.busboy) {
 		throw new Error('no multipart');
@@ -28,15 +33,18 @@ export async function upload(req: Request) {
 		req.busboy?.on('file', async (fieldName: string, readable: Readable, fileData: {filename: string; encoding: string; mimeType: string}) => {
 			d(`Starting: ${fileData.filename} ${fileData.mimeType}`);
 			busboyFinished.startFile(fieldName, fileData.filename);
+			const documentController = new DocumentController(em, userData);
 
-			const duplicate = false;
-			// TODO handle duplicate
-			if (!duplicate) {
-				const hash = new HashTransform('sha256');
-				const tmpFile = await writeToStorage(readable.pipe(hash), storagePath, mimeTypeToFileExtension(fileData.mimeType));
-				console.log(tmpFile, storagePath, hash.hash);
+			const hash = new HashTransform('sha256');
+			const filePath = await writeToStorage(readable.pipe(hash), storagePath, mimeTypeToFileExtension(fileData.mimeType));
+
+			const duplicateCount = await documentController.documentExists(hash);
+			if (duplicateCount === 0) {
+				//TODO create document entity
+				console.log(filePath, storagePath, hash.hash);
 				code = 200;
-			} else if (duplicate) {
+			} else {
+				fs.unlink(filePath, err => d(err));
 				code = 522;
 				return;
 			}

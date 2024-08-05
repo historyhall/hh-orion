@@ -42,7 +42,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 		} else {
 			try {
 				// @ts-ignore
-				const code = await upload(req);
+				const code = await upload(req, em, userData);
 				res.status(code).send({});
 			} catch (error: unknown) {
 				if (typeof error === 'string') {
