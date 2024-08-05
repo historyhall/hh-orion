@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build:domain": "cd ./packages/domain/ && yarn build",
+    "build:file-upload": "cd ./packages/file-upload/ && yarn build",
     "build:migrate": "cd ./packages/migrate/ && yarn build",
     "build:schema": "cd ./packages/schema/ && yarn build",
     "build:server": "cd ./packages/server/ && yarn build",
