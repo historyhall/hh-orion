@@ -12,3 +12,4 @@ export type Action = {
 
 	action: (userData: UserData, type: any) => Promise<any>;
 };
+

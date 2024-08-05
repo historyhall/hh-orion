@@ -24,7 +24,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 	app.use(cors(corsOptions));
 	app.enable('trust proxy');
 
-	app.get(`/upload`, busboy(), async (req, res) => {
+	app.post(`/upload`, busboy(), async (req, res) => {
 		d(req.query);
 
 		const agent = req.headers['user-agent'] || 'Unknown';
@@ -41,7 +41,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 			res.status(401).send({});
 		} else {
 			try {
-				// 200 = success, 522 = duplicate
+				// @ts-ignore
 				const code = await upload(req);
 				res.status(code).send({});
 			} catch (error: unknown) {

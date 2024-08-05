@@ -5962,6 +5962,11 @@ has-unicode@^2.0.1:
   resolved "https://registry.yarnpkg.com/has-unicode/-/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9"
   integrity sha512-8Rf9Y83NBReMnx0gFzA8JImQACstCYWUplepDa9xprwwtmgEZUF0h/i5xSA625zB/I37EtrswSST6OXxwaaIJQ==
 
+hash-transform@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hash-transform/-/hash-transform-1.0.1.tgz#08f6cd093c9be2e8c9465ca667218c6500a7d852"
+  integrity sha512-HhAg48FcvajUv0s7GgcpZiA3FJs0JxWA/K0Aq+aXQy7163NRuZ5xRS4GjS/GVXbCkd8QROUlVnBx2kEjtSCh8g==
+
 hasown@^2.0.0, hasown@^2.0.1, hasown@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/hasown/-/hasown-2.0.2.tgz#003eaf91be7adc372e84ec59dc37252cedb80003"

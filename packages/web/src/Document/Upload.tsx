@@ -29,7 +29,7 @@ type UploadType = {
 };
 
 export function Upload() {
-	const {call} = useUpload('upload');
+	const {call} = useUpload();
 	const [uploads, setUploads] = useState<UploadType[]>([]);
 	const [highlight, setHighlight] = useState(false);
 	const [disabled, setDisabled] = useState(false);

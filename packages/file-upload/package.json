@@ -19,6 +19,7 @@
     "debug": "^4.3.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "hash-transform": "^1.0.1",
     "hh-orion-domain": "0.1.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4"
