@@ -32,7 +32,9 @@ core () {
   tid=$(newTabWithNamePath "HH Domain" "$DIR")
   runCommand $tid "cd ../domain && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH Server" "$DIR")
-  runCommand $tid "cd ../server && nvm use && yarn start"
+  runCommand $tid "cd ../domain && nvm use && yarn start"
+  tid=$(newTabWithNamePath "HH File Upload" "$DIR")
+  runCommand $tid "cd ../file-upload && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH Migrate" "$DIR")
   runCommand $tid "cd ../migrate && nvm use"
 }
@@ -48,14 +50,6 @@ close () {
 case "$1" in
   "core")
     core
-    exit 0;
-  ;;
-  "coreplus")
-    coreplus
-    exit 0;
-  ;;
-  "server")
-    server
     exit 0;
   ;;
   "close")
