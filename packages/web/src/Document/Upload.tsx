@@ -13,6 +13,7 @@ import {
 	CardDescription,
 	Divider,
 } from 'semantic-ui-react';
+import {useUpload} from '../useUpload';
 
 enum FileStatusEnum {
 	Pending = 'Pending',
@@ -28,6 +29,7 @@ type UploadType = {
 };
 
 export function Upload() {
+	const {call} = useUpload('upload');
 	const [uploads, setUploads] = useState<UploadType[]>([]);
 	const [highlight, setHighlight] = useState(false);
 	const [disabled, setDisabled] = useState(false);
@@ -105,7 +107,7 @@ export function Upload() {
 	async function submitFiles() {
 		setDisabled(true);
 		await Promise.all(
-			uploads.map((upload, index) => async () => {
+			uploads.map(async (upload, index) => {
 				const currentFile = uploads;
 				if (upload.file.size > maxDocUploadSizeMb * 1048576) {
 					currentFile[index].status = FileStatusEnum.Failure;
@@ -118,23 +120,18 @@ export function Upload() {
 					formData.append('file', upload.file);
 
 					try {
-						const response = await fetch('test', {
-							method: 'POST',
-							mode: 'cors',
-							credentials: 'include',
-							body: formData,
+						call(formData, status => {
+							if (status === 200) {
+								currentFile[index].status = FileStatusEnum.Success;
+								setUploads([...currentFile]);
+							} else if (status === 522) {
+								currentFile[index].status = FileStatusEnum.Duplicate;
+								setUploads([...currentFile]);
+							} else {
+								currentFile[index].status = FileStatusEnum.Failure;
+								setUploads([...currentFile]);
+							}
 						});
-
-						if (response.status === 200) {
-							currentFile[index].status = FileStatusEnum.Success;
-							setUploads([...currentFile]);
-						} else if (response.status === 522) {
-							currentFile[index].status = FileStatusEnum.Duplicate;
-							setUploads([...currentFile]);
-						} else {
-							currentFile[index].status = FileStatusEnum.Failure;
-							setUploads([...currentFile]);
-						}
 					} catch {
 						currentFile[index].status = FileStatusEnum.Failure;
 						setUploads([...currentFile]);

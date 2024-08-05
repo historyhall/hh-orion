@@ -43,7 +43,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 			try {
 				// 200 = success, 522 = duplicate
 				const code = await upload(req);
-				res.status(code).send();
+				res.status(code).send({});
 			} catch (error: unknown) {
 				if (typeof error === 'string') {
 					res.statusMessage = error;
@@ -52,6 +52,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 				} else {
 					res.statusMessage = JSON.stringify(error);
 				}
+				res.status(500).send({});
 			}
 		}
 	});
