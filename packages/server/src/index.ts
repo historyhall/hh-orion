@@ -63,6 +63,7 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 					} else {
 						res.statusMessage = JSON.stringify(error);
 					}
+					res.status(500).send({});
 				}
 			}
 		});

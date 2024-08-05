@@ -16,7 +16,7 @@ import {Content} from './layout/Content';
 import {MainMenu} from './layout/MainMenu';
 
 export function Layout() {
-	const pages: Record<string, Page> = {...Home, ...Explore, ...About, ...Support, ...Account, ...Document, ...Donate, ...System};
+	const pages: Record<string, Page> = {...Home, ...Explore, ...About, ...Support, ...Document, ...Donate, ...System, ...Account};
 	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 	const location = useLocation();
 

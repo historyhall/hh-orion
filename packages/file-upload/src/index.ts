@@ -55,4 +55,9 @@ MikroORM.init<PostgreSqlDriver>(mikroOrmConfig).then(orm => {
 			}
 		}
 	});
+
+	const port = environment.serverPort;
+	app.listen(port, () => {
+		d(`Server is running at ${environment.corsOrigin}`);
+	});
 });
