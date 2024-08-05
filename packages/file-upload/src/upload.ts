@@ -3,8 +3,8 @@ import type {Readable} from 'node:stream';
 import {BusboyChecker} from './BusboyChecker';
 // @ts-ignore
 import HashTransform from 'hash-transform';
-import {writeToStorage} from "./lib/writeToStorage";
-import {mimeTypeToFileExtension} from "./lib/mimeTypeToFileExtension";
+import {writeToStorage} from './lib/writeToStorage';
+import {mimeTypeToFileExtension} from './lib/mimeTypeToFileExtension';
 
 const d = debug('hh.file-upload.upload.endpoints.fileUpload');
 
