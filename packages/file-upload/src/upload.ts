@@ -1,7 +1,7 @@
 import debug from 'debug';
 import type {Readable} from 'node:stream';
 import {BusboyChecker} from './BusboyChecker';
-import {DocumentController} from 'hh-orion-domain';
+import {DocumentController, Location, Document, CountryController} from 'hh-orion-domain';
 // @ts-ignore
 import HashTransform from 'hash-transform';
 import {writeToStorage} from './lib/writeToStorage';
@@ -10,6 +10,8 @@ import {Connection, EntityManager, IDatabaseDriver} from '@mikro-orm/core';
 import {PostgreSqlDriver, SqlEntityManager} from '@mikro-orm/postgresql';
 import * as fs from 'node:fs';
 import {UserData} from 'hh-orion-domain';
+import {CounterStream} from './lib/CounterStream';
+import {join} from 'node:path';
 
 const d = debug('hh.file-upload.upload.endpoints.fileUpload');
 
@@ -20,7 +22,7 @@ export interface Request {
 }
 
 export async function upload(req: Request, em: SqlEntityManager<PostgreSqlDriver> & EntityManager<IDatabaseDriver<Connection>>, userData: UserData) {
-	const storagePath = 'assets/content';
+	const contentRoot = 'assets/content';
 	if (!req.busboy) {
 		throw new Error('no multipart');
 	}
@@ -33,18 +35,33 @@ export async function upload(req: Request, em: SqlEntityManager<PostgreSqlDriver
 		req.busboy?.on('file', async (fieldName: string, readable: Readable, fileData: {filename: string; encoding: string; mimeType: string}) => {
 			d(`Starting: ${fileData.filename} ${fileData.mimeType}`);
 			busboyFinished.startFile(fieldName, fileData.filename);
+			const countryController = new CountryController(em, userData);
 			const documentController = new DocumentController(em, userData);
 
 			const hash = new HashTransform('sha256');
-			const filePath = await writeToStorage(readable.pipe(hash), storagePath, mimeTypeToFileExtension(fileData.mimeType));
+			const counter = new CounterStream();
+			const path = await writeToStorage(readable.pipe(hash).pipe(counter), contentRoot, mimeTypeToFileExtension(fileData.mimeType));
 
-			const duplicateCount = await documentController.documentExists(hash);
+			const duplicateCount = await documentController.documentExists(hash.hash);
 			if (duplicateCount === 0) {
-				//TODO create document entity
-				console.log(filePath, storagePath, hash.hash);
+				const country = await countryController.getByName('Canada');
+				const location = new Location({country, latitude: '0', longitude: '0'});
+				const document = new Document({
+					filename: path.filename,
+					storagePath: path.storagePath,
+					hash: hash.hash,
+					bytes: counter.counter,
+					location,
+					name: 'unknown',
+					content: 'unknown',
+				});
+
+				em.persist(location);
+				em.persist(document);
+				await em.flush();
 				code = 200;
 			} else {
-				fs.unlink(filePath, err => d(err));
+				fs.unlink(join(path.storagePath, path.filename), err => d(err));
 				code = 522;
 				return;
 			}

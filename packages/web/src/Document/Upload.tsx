@@ -156,7 +156,7 @@ export function Upload() {
 						onDrop={onDrop}
 						onClick={openFileDialog}
 						onKeyDown={openFileDialog}
-						style={{backgroundColor: highlight ? '#e0e1e2' : undefined}}
+						style={{backgroundColor: highlight ? '#e0e1e2' : undefined, cursor: 'pointer'}}
 					>
 						<Header icon size="medium">
 							<Icon name="upload" />
