@@ -12,4 +12,5 @@ export type Document = {
 	content: string;
 	authors: Author[];
 	location: Location;
+	hash: string;
 };
