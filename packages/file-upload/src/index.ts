@@ -1,5 +1,6 @@
 import {MikroORM} from '@mikro-orm/core';
 import {PostgreSqlDriver} from '@mikro-orm/postgresql';
+import busboy from 'connect-busboy';
 import cors from 'cors';
 import debug from 'debug';
 import express, {Express} from 'express';
@@ -7,7 +8,6 @@ import {UserController} from 'hh-orion-domain';
 import {environment} from './core/environment';
 import mikroOrmConfig from './core/mikro-orm.config';
 import {upload} from './upload';
-import busboy from 'connect-busboy';
 
 const d = debug('hh.file-upload');
 

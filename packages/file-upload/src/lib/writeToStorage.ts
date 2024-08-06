@@ -1,7 +1,7 @@
-import {Readable} from 'node:stream';
-import {join} from 'node:path';
 import {createWriteStream} from 'fs';
 import * as fs from 'node:fs';
+import {join} from 'node:path';
+import {Readable} from 'node:stream';
 import {randomString} from './randomString';
 
 export async function writeToStorage(tmpStream: Readable, tmpFolder: string, extension: string): Promise<{filename: string; storagePath: string}> {

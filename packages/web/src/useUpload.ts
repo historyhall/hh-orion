@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom';
 import {environment} from './environment';
 
-const d = debug('hh.web.useMutation');
+const d = debug('hh.web.useUpload');
 
 export function useUpload(): {
 	call: (formData: FormData, callback?: (status?: number, error?: string) => void) => Promise<void>;

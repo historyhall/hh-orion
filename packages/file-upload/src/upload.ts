@@ -1,19 +1,19 @@
-import debug from 'debug';
-import type {Readable} from 'node:stream';
-import {BusboyChecker} from './BusboyChecker';
-import {DocumentController, Location, Document, CountryController} from 'hh-orion-domain';
-// @ts-ignore
-import HashTransform from 'hash-transform';
-import {writeToStorage} from './lib/writeToStorage';
-import {mimeTypeToFileExtension} from './lib/mimeTypeToFileExtension';
 import {Connection, EntityManager, IDatabaseDriver} from '@mikro-orm/core';
 import {PostgreSqlDriver, SqlEntityManager} from '@mikro-orm/postgresql';
-import * as fs from 'node:fs';
+import debug from 'debug';
+// @ts-ignore
+import HashTransform from 'hash-transform';
+import {DocumentController, Location, Document, CountryController} from 'hh-orion-domain';
 import {UserData} from 'hh-orion-domain';
-import {CounterStream} from './lib/CounterStream';
+import * as fs from 'node:fs';
 import {join} from 'node:path';
+import type {Readable} from 'node:stream';
+import {BusboyChecker} from './BusboyChecker';
+import {CounterStream} from './lib/CounterStream';
+import {mimeTypeToFileExtension} from './lib/mimeTypeToFileExtension';
+import {writeToStorage} from './lib/writeToStorage';
 
-const d = debug('hh.file-upload.upload.endpoints.fileUpload');
+const d = debug('hh.file-upload.upload');
 
 export interface Request {
 	busboy?: BusboyChecker;
