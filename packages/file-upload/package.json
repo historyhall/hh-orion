@@ -12,7 +12,7 @@
     "test:types": "tsc"
   },
   "dependencies": {
-    "@mikro-orm/core": "^6.3.3",
+    "@mikro-orm/core": "^6.3.4",
     "@mikro-orm/postgresql": "^6.3.3",
     "connect-busboy": "^1.0.0",
     "cors": "^2.8.5",
