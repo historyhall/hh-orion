@@ -63,7 +63,6 @@ export async function upload(req: Request, em: SqlEntityManager<PostgreSqlDriver
 			} else {
 				fs.unlink(join(path.storagePath, path.filename), err => d(err));
 				code = 522;
-				return;
 			}
 
 			busboyFinished.endFile(fieldName, fileData.filename);
