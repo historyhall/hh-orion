@@ -1,8 +1,9 @@
-import {Collection, Entity, ManyToMany, OneToOne, PrimaryKey, Property} from '@mikro-orm/core';
+import {Collection, Entity, Enum, ManyToMany, OneToOne, PrimaryKey, Property} from '@mikro-orm/core';
 import debug from 'debug';
 import {v4} from 'uuid';
 import {Author} from '../../accounts';
 import {Location} from './Location';
+import * as Schema from 'hh-orion-schema';
 
 const d = debug('hh.domain.documents.entities.Document');
 
@@ -51,6 +52,9 @@ export class Document {
 	@ManyToMany('Author')
 	authors = new Collection<Author>(this);
 
+	@Enum({items: () => Schema.documents.document.DocumentStatusEnum, type: 'string'})
+	status: Schema.documents.document.DocumentStatusEnum;
+
 	constructor({name, bytes, storagePath, filename, content, location, hash}: DocumentEntityConstructor) {
 		d('Domain: Create New Document');
 		this.name = name;
@@ -60,5 +64,6 @@ export class Document {
 		this.content = content;
 		this.location = location;
 		this.hash = hash;
+		this.status = Schema.documents.document.DocumentStatusEnum.Pending;
 	}
 }

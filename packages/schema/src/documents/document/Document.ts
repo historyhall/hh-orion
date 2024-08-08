@@ -1,6 +1,11 @@
 import {Author} from '../../accounts/author/Author';
 import {Location} from '../Location/Location';
 
+export enum DocumentStatusEnum {
+	Pending = 'Pending',
+	Published = 'Published',
+}
+
 export type Document = {
 	id: string;
 	version: number;
@@ -13,4 +18,5 @@ export type Document = {
 	authors: Author[];
 	location: Location;
 	hash: string;
+	status: DocumentStatusEnum;
 };

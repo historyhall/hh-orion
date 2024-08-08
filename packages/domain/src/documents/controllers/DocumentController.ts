@@ -23,7 +23,7 @@ export class DocumentController {
 	}
 
 	async getAll() {
-		return this.documentRepo.findAll();
+		return this.documentRepo.find({status: Schema.documents.document.DocumentStatusEnum.Published});
 	}
 
 	documentExists(hash: string) {
