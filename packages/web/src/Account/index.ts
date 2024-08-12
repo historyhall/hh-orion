@@ -4,7 +4,7 @@ import {Logout} from './Logout';
 import {Profile} from './Profile';
 import {Register} from './Register';
 
-const pages: Record<string, Page> = {
+export const pages: Record<string, Page> = {
 	profileLoggedIn: {
 		header: {
 			name: 'Profile',
@@ -92,4 +92,3 @@ const pages: Record<string, Page> = {
 		},
 	},
 };
-export default pages;

@@ -1,7 +1,7 @@
 import {Page} from '../types';
 import {Explore} from './Explore';
 
-const pages: Record<string, Page> = {
+export const pages: Record<string, Page> = {
 	explore: {
 		path: '/explore',
 		component: Explore,
@@ -15,4 +15,3 @@ const pages: Record<string, Page> = {
 		},
 	},
 };
-export default pages;

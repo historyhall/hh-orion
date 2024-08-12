@@ -3,7 +3,7 @@ import {Document} from './Document';
 import {DocumentSidebar} from './DocumentSidebar';
 import {Upload} from './Upload';
 
-const pages: Record<string, Page> = {
+export const pages: Record<string, Page> = {
 	document: {
 		path: '/document/:documentId',
 		component: Document,
@@ -26,4 +26,3 @@ const pages: Record<string, Page> = {
 		},
 	},
 };
-export default pages;

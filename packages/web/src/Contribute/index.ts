@@ -1,7 +1,7 @@
 import {Page} from '../types';
 import {Contribute} from './Contribute';
 
-const pages: Record<string, Page> = {
+export const pages: Record<string, Page> = {
 	contribute: {
 		header: {
 			name: 'Contribute',
@@ -15,4 +15,3 @@ const pages: Record<string, Page> = {
 		component: Contribute,
 	},
 };
-export default pages;
