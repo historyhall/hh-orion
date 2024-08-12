@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {Button, Form, FormField, Input, Message} from 'semantic-ui-react';
 import {useMutation} from '../useMutation';
+import {pages} from "../Home";
 
 export function Login() {
 	const [errorMessage, setErrorMessage] = useState('');
@@ -24,7 +25,7 @@ export function Login() {
 					if (data) {
 						toast.success('You have successfully logged in!');
 						Cookies.set('hh_token', data);
-						navigate('/');
+						navigate(pages.home.path);
 					}
 				} else {
 					toast.error(error);

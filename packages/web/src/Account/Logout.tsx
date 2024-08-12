@@ -4,6 +4,7 @@ import {Fragment, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {useMutation} from '../useMutation';
+import {pages} from '../Home';
 
 export function Logout() {
 	const navigate = useNavigate();
@@ -15,7 +16,7 @@ export function Logout() {
 			call(undefined, () => {
 				Cookies.remove('hh_token');
 				toast.success('You have been logged out!');
-				navigate('/');
+				navigate(pages.home.path);
 			}).catch(error => toast.error(error));
 		}
 	});

@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {Button, Form, FormField, Input, Message} from 'semantic-ui-react';
 import {useMutation} from '../useMutation';
+import {pages} from "./index";
 
 export function Register() {
 	const [errorMessage, setErrorMessage] = useState('');
@@ -41,7 +42,7 @@ export function Register() {
 					if (status === 200) {
 						if (data) {
 							toast.success('You have successfully registered an account!');
-							navigate('/profile/login');
+							navigate(pages.login.path);
 						}
 					} else {
 						toast.error(error);

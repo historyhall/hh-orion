@@ -2,6 +2,7 @@ import {debug} from 'debug';
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom';
 import {environment} from './environment';
+import {pages} from './Account';
 
 const d = debug('hh.web.useUpload');
 
@@ -20,7 +21,7 @@ export function useUpload(): {
 					if (response.status === 200) {
 						callback && callback(response.status);
 					} else if (response.status === 401) {
-						navigate('/profile/logout');
+						navigate(pages.logout.path);
 					} else {
 						callback && callback(response.status, response.statusText);
 					}

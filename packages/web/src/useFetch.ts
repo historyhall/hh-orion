@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {environment} from './environment';
+import {pages} from './Account';
 
 export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: boolean; error?: string} {
 	const [data, setData] = useState<any>();
@@ -26,7 +27,7 @@ export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: bo
 						setError(undefined);
 					});
 				} else if (response.status === 401) {
-					navigate('/profile/logout');
+					navigate(pages.logout.path);
 				} else {
 					setError(response.statusText);
 				}

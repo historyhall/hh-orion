@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {Card, CardContent, CardHeader, CardMeta, Icon} from 'semantic-ui-react';
-import pages from './index';
+import {pages} from './index';
 
 export function System() {
 	return (
