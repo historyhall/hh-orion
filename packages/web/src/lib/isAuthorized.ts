@@ -1,4 +1,4 @@
-import {Permissions} from './types';
+import {Permissions} from '../types';
 
 export function isAuthorized(isLoggedIn: boolean, permissions?: Permissions) {
 	// No permissions were defined, we return true;
