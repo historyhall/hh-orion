@@ -1,8 +1,8 @@
 import {debug} from 'debug';
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom';
+import {pages} from './Account';
 import {environment} from './environment';
-import {pages} from "./Account";
 
 const d = debug('hh.web.useMutation');
 

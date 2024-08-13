@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie';
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {environment} from './environment';
 import {pages} from './Account';
+import {environment} from './environment';
 
 export function useFetch<T, P>(path: string, params?: P): {data?: T; loading: boolean; error?: string} {
 	const [data, setData] = useState<any>();

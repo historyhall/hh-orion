@@ -4,8 +4,8 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {Button, Form, FormField, Input, Message} from 'semantic-ui-react';
+import {pages} from '../Home';
 import {useMutation} from '../useMutation';
-import {pages} from "../Home";
 
 export function Login() {
 	const [errorMessage, setErrorMessage] = useState('');

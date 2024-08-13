@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {Button, Form, FormField, Input, Message} from 'semantic-ui-react';
 import {useMutation} from '../useMutation';
-import {pages} from "./index";
+import {pages} from './index';
 
 export function Register() {
 	const [errorMessage, setErrorMessage] = useState('');

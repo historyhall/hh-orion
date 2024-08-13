@@ -3,8 +3,8 @@ import Cookies from 'js-cookie';
 import {Fragment, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
-import {useMutation} from '../useMutation';
 import {pages} from '../Home';
+import {useMutation} from '../useMutation';
 
 export function Logout() {
 	const navigate = useNavigate();
