@@ -6,7 +6,7 @@ import {SearchStatus} from './SearchStatus';
 import {SearchStatusSidebar} from './SearchStatusSidebar';
 import {System} from './System';
 
-const pages: Record<string, Page> = {
+export const pages: Record<string, Page> = {
 	system: {
 		path: '/system',
 		component: System,
@@ -58,4 +58,3 @@ const pages: Record<string, Page> = {
 		component: Error,
 	},
 };
-export default pages;

@@ -3,7 +3,7 @@ import {Support} from './Support';
 import {SupportPlans} from './SupportPlans';
 import {SupportUploadDocuments} from './SupportUploadDocuments';
 
-const pages: Record<string, Page> = {
+export const pages: Record<string, Page> = {
 	support: {
 		header: {
 			name: 'Support',
@@ -33,4 +33,3 @@ const pages: Record<string, Page> = {
 		path: '/support/upload-documents',
 	},
 };
-export default pages;

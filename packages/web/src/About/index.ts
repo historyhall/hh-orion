@@ -1,7 +1,7 @@
 import {Page} from '../types';
 import {About} from './About';
 
-const pages: Record<string, Page> = {
+export const pages: Record<string, Page> = {
 	about: {
 		header: {
 			name: 'About',
@@ -15,4 +15,3 @@ const pages: Record<string, Page> = {
 		component: About,
 	},
 };
-export default pages;

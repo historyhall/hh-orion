@@ -1,7 +1,7 @@
 import {Page} from '../types';
 import {Home} from './Home';
 
-const pages: Record<string, Page> = {
+export const pages: Record<string, Page> = {
 	home: {
 		menu: {
 			name: 'Home',
@@ -11,4 +11,3 @@ const pages: Record<string, Page> = {
 		component: Home,
 	},
 };
-export default pages;

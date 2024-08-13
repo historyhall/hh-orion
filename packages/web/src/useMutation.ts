@@ -1,6 +1,7 @@
 import {debug} from 'debug';
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom';
+import {pages} from './Account';
 import {environment} from './environment';
 
 const d = debug('hh.web.useMutation');
@@ -22,7 +23,7 @@ export function useMutation<T, P>(
 					if (response.status === 200) {
 						callback && callback(json, response.status);
 					} else if (response.status === 401) {
-						navigate('/profile/logout');
+						navigate(pages.logout.path);
 					} else {
 						callback && callback(json, response.status, response.statusText);
 					}
