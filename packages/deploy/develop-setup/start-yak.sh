@@ -32,7 +32,7 @@ core () {
   tid=$(newTabWithNamePath "HH Domain" "$DIR")
   runCommand $tid "cd ../domain && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH Server" "$DIR")
-  runCommand $tid "cd ../domain && nvm use && yarn start"
+  runCommand $tid "cd ../server && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH File Upload" "$DIR")
   runCommand $tid "cd ../file-upload && nvm use && yarn start"
   tid=$(newTabWithNamePath "HH Migrate" "$DIR")
