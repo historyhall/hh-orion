@@ -8,6 +8,6 @@ services:
       - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY="/data"
     volumes:
       - ./.env:/app/packages/file-upload/.env
-      - ../server/assets:/app/packages/server/assets
+      - ./../server/assets:/app/packages/file-upload/assets
     ports:
       - "5002:5002"

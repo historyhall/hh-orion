@@ -33,7 +33,7 @@ export async function upload(req: Request, em: SqlEntityManager<PostgreSqlDriver
 
 	await new Promise((resolve, reject) => {
 		req.busboy?.on('file', async (fieldName: string, readable: Readable, fileData: {filename: string; encoding: string; mimeType: string}) => {
-			d(`Starting: ${fileData.filename} ${fileData.mimeType}`);
+			d('Starting file:', `${fileData.filename} ${fileData.mimeType}`);
 			busboyFinished.startFile(fieldName, fileData.filename);
 			const countryController = new CountryController(em, userData);
 			const documentController = new DocumentController(em, userData);
@@ -44,6 +44,7 @@ export async function upload(req: Request, em: SqlEntityManager<PostgreSqlDriver
 
 			const duplicateCount = await documentController.documentExists(hash.hash);
 			if (duplicateCount === 0) {
+				d('Creating entities...');
 				const country = await countryController.getByName('Canada');
 				const location = new Location({country, latitude: '0', longitude: '0'});
 				const document = new Document({
@@ -56,14 +57,16 @@ export async function upload(req: Request, em: SqlEntityManager<PostgreSqlDriver
 					content: 'unknown',
 				});
 
+				d('Persisting entities...');
 				em.persist(location);
 				em.persist(document);
+				d('Flushing entities...');
 				await em.flush();
 				code = 200;
 			} else {
-				fs.unlink(join(path.storagePath, path.filename), err => d(err));
+				d('Duplicate File Detected!');
+				fs.unlink(join(path.storagePath, path.filename), () => d('Duplicate File Removed!'));
 				code = 522;
-				return;
 			}
 
 			busboyFinished.endFile(fieldName, fileData.filename);
