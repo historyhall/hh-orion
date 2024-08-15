@@ -1,11 +1,11 @@
+import debug from 'debug';
 import {createWriteStream} from 'fs';
 import * as fs from 'node:fs';
 import {join} from 'node:path';
 import {Readable} from 'node:stream';
 import {randomString} from './randomString';
-import debug from 'debug';
 
-const d = debug('hh.file-upload.upload.writeToStorage');
+const d = debug('hh.file-upload.lib.writeToStorage');
 
 export async function writeToStorage(tmpStream: Readable, tmpFolder: string, extension: string): Promise<{filename: string; storagePath: string}> {
 	function pad(number: number, length: number) {
