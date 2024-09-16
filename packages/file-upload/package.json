@@ -25,7 +25,7 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@mikro-orm/cli": "^6.3.7"
+    "@mikro-orm/cli": "^6.3.10"
   },
   "mikro-orm": {
     "useTsNode": true,
