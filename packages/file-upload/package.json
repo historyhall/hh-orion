@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@mikro-orm/core": "^6.3.7",
-    "@mikro-orm/postgresql": "^6.3.7",
+    "@mikro-orm/postgresql": "^6.3.12",
     "connect-busboy": "^1.0.0",
     "cors": "^2.8.5",
     "debug": "^4.3.6",
