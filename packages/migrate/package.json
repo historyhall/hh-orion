@@ -10,7 +10,7 @@
     "test:types": "tsc"
   },
   "dependencies": {
-    "@mikro-orm/core": "^6.3.7",
+    "@mikro-orm/core": "^6.3.13",
     "@mikro-orm/postgresql": "^6.3.7",
     "debug": "^4.3.6",
     "dotenv": "^16.4.5",

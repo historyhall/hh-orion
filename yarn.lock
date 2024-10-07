@@ -1762,7 +1762,7 @@
     tsconfig-paths "4.2.0"
     yargs "17.7.2"
 
-"@mikro-orm/core@6.3.7", "@mikro-orm/core@^6.3.7":
+"@mikro-orm/core@6.3.7":
   version "6.3.7"
   resolved "https://registry.yarnpkg.com/@mikro-orm/core/-/core-6.3.7.tgz#1b718abb0c1f49e769ac5e207889e8be70fb6c40"
   integrity sha512-S8K257sTTUpnWCgtpJ4EI5kurSP6ha4Zwv1Moy9X33p4xH7JIpEHq5EVTTNZEaj/HbyX/nVRIqAm7ssUBcM1tA==
@@ -1773,6 +1773,19 @@
     fs-extra "11.2.0"
     globby "11.1.0"
     mikro-orm "6.3.7"
+    reflect-metadata "0.2.2"
+
+"@mikro-orm/core@^6.3.13":
+  version "6.3.13"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/core/-/core-6.3.13.tgz#6726c7cf65138332732ed04c0e0c52481715b448"
+  integrity sha512-gNvk/98Xe283+Yn4CFxNNJmx1iXT8gRfDn4agjFUa4pI9pVw+idkxOljXuLlvoW44ybiwji8qagaoY+tmD0BTQ==
+  dependencies:
+    dataloader "2.2.2"
+    dotenv "16.4.5"
+    esprima "4.0.1"
+    fs-extra "11.2.0"
+    globby "11.1.0"
+    mikro-orm "6.3.13"
     reflect-metadata "0.2.2"
 
 "@mikro-orm/knex@6.3.7":
@@ -7538,6 +7551,11 @@ micromatch@^4.0.2, micromatch@^4.0.4, micromatch@^4.0.5, micromatch@^4.0.7:
   dependencies:
     braces "^3.0.3"
     picomatch "^2.3.1"
+
+mikro-orm@6.3.13:
+  version "6.3.13"
+  resolved "https://registry.yarnpkg.com/mikro-orm/-/mikro-orm-6.3.13.tgz#b8b6a56f777bc22a5847879a181db30af6fe2c45"
+  integrity sha512-la2qeQjTMcpctz7hWs+sIe+qC3uNRe8e0Tv7aVw0ZTG3YcZe14lRWtaHM1HMc1Xdt/Fj1buxLx+yFCpiPZx5VQ==
 
 mikro-orm@6.3.7:
   version "6.3.7"
